@@ -1,0 +1,42 @@
+{
+  "id": "godbound",
+  "title": "godbound",
+  "description": "The godbound system for FoundryVTT!",
+  "version": "1.2.0",
+  "compatibility": {
+    "minimum": 10,
+    "verified": "10.287",
+    "maximum": 10
+  },
+  "authors": [
+    {
+      "name": "AlbrechtWM"
+    }
+  ],
+  "esmodules": [
+    "module/godbound.mjs"
+  ],
+  "styles": [
+    "css/godbound.css",
+    "css/css.css",
+    "css/charsheet.css"
+  ],
+  "scripts": [],
+  "packs": [],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    }
+  ],
+  "gridDistance": 5,
+  "gridUnits": "ft",
+  "primaryTokenAttribute": "health",
+  "secondaryTokenAttribute": "power",
+  "url": "",
+  "manifest": "",
+  "download": "",
+  "license": "LICENSE.txt",
+  "changelog": "CHANGELOG.md"
+}

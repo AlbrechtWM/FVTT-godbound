@@ -1,0 +1,535 @@
+{
+  "Actor": {
+    "types": [
+      "character",
+      "npc",
+      "faction"
+    ],
+    "templates": {
+      "bio": {
+        "name": "",
+        "description": "",
+        "goals": "",
+        "portrait": null,
+        "languages": "",
+        "notes": "",
+        "faction": {
+          "name": "",
+          "id": ""
+        },
+        "id": ""
+      },
+      "dominion": {
+        "total": 0,
+        "spent": 0,
+        "free": 0,
+        "gainPerMonth": 0,
+        "projects": null
+      },
+      "project": {
+        "name": "",
+        "difficulty": "",
+        "scope": "",
+        "resistance": 0,
+        "isComplete": false,
+        "dominionSpent": 0,
+        "influenceCommitted": 0,
+        "totalCost": 0,
+        "remainingCost": 0
+      },
+      "problem": {
+        "name": "",
+        "description": "",
+        "trouble": 0
+      },
+      "interest": {
+        "name": "",
+        "description": "",
+        "value": 0,
+        "factionID": ""
+      },
+      "feature": {
+        "name": "",
+        "description": ""
+      },
+      "immunities": {
+        "damageTypes": null,
+        "conditions": null,
+        "effects": null,
+        "lowMagic": false,
+        "highMagic": false
+      },
+      "resistances": {
+        "damageTypes": null,
+        "conditions": null,
+        "effects": null,
+        "lowMagic": false,
+        "highMagic": false
+      },
+      "vulnerabilities": {
+        "damageTypes": null,
+        "conditions": null,
+        "effects": null,
+        "lowMagic": false,
+        "highMagic": false
+      },
+      "possessions": {
+        "wealth": 0,
+        "artifacts": null,
+        "treasures": null,
+        "minorMagicItems": null,
+        "equipment": null
+      },
+      "coreStats": {
+        "levelOrHD": 1,
+        "useHD": false,
+        "isImmuneVsNonMagicalAttack": false,
+        "actionsPerRound": 1,
+        "attacksPerAction": 1,
+        "attacks": null,
+        "saves": {
+          "hardiness": {
+            "base": 16,
+            "levelModifier": 0,
+            "attributeModifier": 0,
+            "isArmorPenalty": false,
+            "miscModifier": 0,
+            "isAutomatic": false,
+            "dc": -1
+          },
+          "evasion": {
+            "base": 16,
+            "levelModifier": 0,
+            "attributeModifier": 0,
+            "isArmorPenalty": false,
+            "miscModifier": 0,
+            "isAutomatic": false,
+            "dc": -1
+          },
+          "spirit": {
+            "base": 16,
+            "levelModifier": 0,
+            "attributeModifier": 0,
+            "isArmorPenalty": false,
+            "miscModifier": 0,
+            "isAutomatic": false,
+            "dc": -1
+          }
+        },
+        "ac": {
+          "base": 9,
+          "useBaseOverride": false,
+          "baseOverrideValue": 3,
+          "armorType": "",
+          "armorModifier": 0,
+          "savePenalties": {
+            "isHardinessPenalty": false,
+            "isEvasionPenalty": false,
+            "isSpiritPenalty": false
+          },
+          "dexMod": 0,
+          "hasShield": false,
+          "miscModifier": 0,
+          "total": 9
+        },
+        "hp": {
+          "current": 0,
+          "miscBonus": 0,
+          "max": 0,
+          "isHD": false
+        },
+        "effort": {
+          "max": 0,
+          "committed": 0,
+          "free": 0,
+          "baseCostModifier": 0
+        },
+        "movement": {
+          "movementDistance": 30,
+          "movementUnits": "",
+          "movementType": "",
+          "isLOSMove": false
+        },
+        "abilities": {
+          "divineEffortCostModifier": 0,
+          "words": null,
+          "gifts": null,
+          "lowMagicPaths": null,
+          "highMagicRanks": 0,
+          "highMagicSpells": null,
+          "specialAbilities": null,
+          "specialTraits": null,
+          "lesserStrifes": null,
+          "trueStrifes": null,
+          "talents": null
+        },
+        "conditions": null
+      }
+    },
+    "character": {
+      "templates": [
+        "bio",
+        "coreStats",
+        "dominion",
+        "possessions",
+        "immunities",
+        "resistances",
+        "vulnerabilities"
+      ],
+      "attributes": {
+        "str": {
+          "baseScore": 0,
+          "useBaseOverride": false,
+          "baseOverrideValue": 0,
+          "miscScoreModifier": 0,
+          "score": 0,
+          "mod": 0
+        },
+        "dex": {
+          "baseScore": 0,
+          "useBaseOverride": false,
+          "baseOverrideValue": 0,
+          "miscScoreModifier": 0,
+          "score": 0,
+          "mod": 0
+        },
+        "con": {
+          "baseScore": 0,
+          "useBaseOverride": false,
+          "baseOverrideValue": 0,
+          "miscScoreModifier": 0,
+          "score": 0,
+          "mod": 0
+        },
+        "int": {
+          "baseScore": 0,
+          "useBaseOverride": false,
+          "baseOverrideValue": 0,
+          "miscScoreModifier": 0,
+          "score": 0,
+          "mod": 0
+        },
+        "wis": {
+          "baseScore": 0,
+          "useBaseOverride": false,
+          "baseOverrideValue": 0,
+          "miscScoreModifier": 0,
+          "score": 0,
+          "mod": 0
+        },
+        "cha": {
+          "baseScore": 0,
+          "useBaseOverride": false,
+          "baseOverrideValue": 0,
+          "miscScoreModifier": 0,
+          "score": 0,
+          "mod": 0
+        }
+      },
+      "xp": 0,
+      "frayDie": "1d8",
+      "useFrayVsWorthyFoes": false,
+      "influence": {
+        "max": 0,
+        "committed": 0,
+        "free": 0
+      },
+      "abilityPoints": {
+        "total": 0,
+        "spent": 0,
+        "free": 0
+      }
+    },
+    "npc": {
+      "templates": [
+        "bio",
+        "coreStats",
+        "possessions",
+        "immunities",
+        "resistances",
+        "vulnerabilities"
+      ],
+      "morale": 0,
+      "isMob": false,
+      "mobSize": "",
+      "tactics": {
+        "dieType": "",
+        "entries": null
+      }
+    },
+    "faction": {
+      "templates": [
+        "bio",
+        "dominion"
+      ],
+      "power": 0,
+      "actionDie": "",
+      "cohesion": {
+        "current": 0,
+        "max": 0
+      },
+      "trouble": {
+        "current": 0,
+        "max": 0
+      },
+      "features": null,
+      "problems": null,
+      "interests": null
+    }
+  },
+  "Item": {
+    "types": [
+      "lowMagicPath",
+      "lowMagicSpell",
+      "highMagicRank",
+      "highMagicSpell",
+      "word",
+      "gift",
+      "specialAbility",
+      "specialTrait",
+      "lesserStrife",
+      "trueStrife",
+      "talent",
+      "artifact",
+      "minorMagicItem",
+      "treasure",
+      "equipment"
+    ],
+    "templates": {
+      "base": {
+        "name": "",
+        "description": "",
+        "id": "",
+        "icon": null
+      },
+      "duration": {
+        "durationRemaining": 0,
+        "durationUnits": "",
+        "isScene": false,
+        "isSustained": false,
+        "isInstant": false,
+        "isPermanent": false
+      },
+      "attack": {
+        "name": "",
+        "description": "",
+        "targetActors": null,
+        "range": {
+          "rangeSize": 0,
+          "rangeUnits": "",
+          "isRangeLOS": false
+        },
+        "area": {
+          "isArea": false,
+          "areaShape": "",
+          "areaSize": 0,
+          "areaUnits": "",
+          "isAreaLOS": false
+        },
+        "isSmite": false,
+        "effortCommitment": "",
+        "toHit": {
+          "totalBonus": 0,
+          "levelBonus": 0,
+          "isAutomatic": false,
+          "miscBonus": 0,
+          "relevantAttribute": "",
+          "attributeBonus": 0
+        },
+        "isAdvantaged": false,
+        "isDisadvantaged": false,
+        "damage": null,
+        "effects": null
+      },
+      "damage": {
+        "numDie": 0,
+        "dieType": "",
+        "isStraight": false,
+        "isMagicalAttack": false,
+        "relevantAttribute": "",
+        "attributeBonus": 0,
+        "damageDescriptor": "",
+        "damageType": null,
+        "miscBonus": 0,
+        "isAdvantaged": false,
+        "isDisadvantaged": false
+      },
+      "effect": {
+        "name": "",
+        "description": "",
+        "targetActors": null,
+        "conditions": null
+      },
+      "condition": {
+        "name": "",
+        "description": "",
+        "duration": null,
+        "enhancements": null,
+        "impairments": null,
+        "icon": null
+      },
+      "status": {
+        "targetElement": "",
+        "modifierNumber": 0,
+        "action": "",
+        "change": null
+      },
+      "damageTypes": {
+        "icon": null,
+        "name": "",
+        "primaryCategory": "",
+        "secondaryCategory": "",
+        "tertiaryCategory": ""
+      }
+    },
+    "word": {
+      "templates": [
+        "base"
+      ],
+      "specialTraits": null,
+      "specialAbilities": null,
+      "universalGifts": null,
+      "lesserGifts": null,
+      "greaterGifts": null
+    },
+    "gift": {
+      "templates": [
+        "base",
+        "attack",
+        "damage",
+        "effect",
+        "duration"
+      ],
+      "specialTraits": null,
+      "specialAbilities": null,
+      "speed": "",
+      "effortCommitment": ""
+    },
+    "specialAbility": {
+      "templates": [
+        "base",
+        "attack",
+        "damage",
+        "effect",
+        "duration"
+      ],
+      "speed": "",
+      "effortCommitment": ""
+    },
+    "specialTrait": {
+      "templates": [
+        "base",
+        "effect",
+        "duration"
+      ]
+    },
+    "lowMagicPath": {
+      "templates": [
+        "base"
+      ],
+      "masteryLevel": 0,
+      "hasSpontaneousCasting": false,
+      "hasPreparedSpells": false,
+      "hasSummons": false,
+      "requiresSpellMaterials": false,
+      "castTime": 0,
+      "castTimeUnits": "",
+      "spells": null
+    },
+    "lowMagicSpell": {
+      "templates": [
+        "base",
+        "attack",
+        "damage",
+        "effect",
+        "duration"
+      ],
+      "selfCondition": null,
+      "selfDamage": null
+    },
+    "highMagicRank": {
+      "templates": [
+        "base"
+      ],
+      "spellsGrantedOnObtaining": 0,
+      "timeToLearnNewInvocation": "",
+      "castSlowly": "",
+      "castQuickly": "",
+      "castInstantly": ""
+    },
+    "highMagicSpell": {
+      "templates": [
+        "base",
+        "attack",
+        "damage",
+        "effect",
+        "duration"
+      ],
+      "castingSpeed": "",
+      "effortCommitment": "",
+      "isExcellentPaused": false,
+      "selfCondition": null,
+      "selfDamage": null,
+      "arcaneConnectionRequired": false
+    },
+    "lesserStrife": {},
+    "trueStrife": {},
+    "talent": {},
+    "treasure": {
+      "templates": [
+        "base"
+      ],
+      "origin": "",
+      "bulk": "",
+      "defense": "",
+      "interestedParties": ""
+    },
+    "equipment": {
+      "templates": [
+        "base",
+        "attack",
+        "damage"
+      ],
+      "weight": "",
+      "value": "",
+      "quantity": 0,
+      "isEquipped": false
+    },
+    "artifact": {
+      "templates": [
+        "base",
+        "attack",
+        "damage"
+      ],
+      "specialTraits": null,
+      "specialAbilities": null,
+      "lesserGifts": null,
+      "greaterGifts": null,
+      "creationCost": 0,
+      "effort": {
+        "max": 0,
+        "committed": 0,
+        "free": 0,
+        "baseCostModifier": 0
+      },
+      "selfCondition": null,
+      "selfDamage": null,
+      "isEquipped": false
+    },
+    "minorMagicItem": {
+      "templates": [
+        "base",
+        "attack",
+        "damage",
+        "effect",
+        "duration"
+      ],
+      "creationCost": 0,
+      "creationTime": "",
+      "quantity": 0,
+      "isEquipped": false,
+      "specialTraits": null,
+      "specialAbilities": null
+    }
+  }
+}

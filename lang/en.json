@@ -1,0 +1,22 @@
+{
+  "godbound.AbilityStr": "Strength",
+  "godbound.AbilityCon": "Constitution",
+  "godbound.AbilityDex": "Dexterity",
+  "godbound.AbilityInt": "Intelligence",
+  "godbound.AbilityWis": "Wisdom",
+  "godbound.AbilityCha": "Charisma",
+
+  "godbound.AbilityStrAbbr": "str",
+  "godbound.AbilityConAbbr": "con",
+  "godbound.AbilityDexAbbr": "dex",
+  "godbound.AbilityIntAbbr": "int",
+  "godbound.AbilityWisAbbr": "wis",
+  "godbound.AbilityChaAbbr": "cha",
+
+  "godbound.EffectCreate": "Create Effect",
+  "godbound.EffectToggle": "Toggle Effect",
+  "godbound.EffectEdit": "Edit Effect",
+  "godbound.EffectDelete": "Delete Effect",
+
+  "godbound.Add": "Add"
+}
