@@ -6,8 +6,8 @@
       "faction"
     ],
     "templates": {
-      "bio": {
-        "bio": {
+      "base": {
+        "base": {
           "name": "",
           "description": "",
           "goals": "",
@@ -190,7 +190,7 @@
     },
     "character": {
       "templates": [
-        "bio",
+        "base",
         "coreStats",
         "dominion",
         "possessions",
@@ -264,7 +264,7 @@
     },
     "npc": {
       "templates": [
-        "bio",
+        "base",
         "coreStats",
         "possessions",
         "immunities",
@@ -281,7 +281,7 @@
     },
     "faction": {
       "templates": [
-        "bio",
+        "base",
         "dominion"
       ],
       "power": 0,
@@ -319,89 +319,105 @@
     ],
     "templates": {
       "base": {
-        "name": "",
-        "description": "",
-        "id": "",
-        "icon": null
+        "base": {
+          "name": "",
+          "description": "",
+          "id": "",
+          "icon": null
+        }
       },
       "duration": {
-        "durationRemaining": 0,
-        "durationUnits": "",
-        "isScene": false,
-        "isSustained": false,
-        "isInstant": false,
-        "isPermanent": false
+        "duration": {
+          "durationRemaining": 0,
+          "durationUnits": "",
+          "isScene": false,
+          "isSustained": false,
+          "isInstant": false,
+          "isPermanent": false
+        }
       },
       "attack": {
-        "name": "",
-        "description": "",
-        "targetActors": null,
-        "range": {
-          "rangeSize": 0,
-          "rangeUnits": "",
-          "isRangeLOS": false
-        },
-        "area": {
-          "isArea": false,
-          "areaShape": "",
-          "areaSize": 0,
-          "areaUnits": "",
-          "isAreaLOS": false
-        },
-        "isSmite": false,
-        "effortCommitment": "",
-        "toHit": {
-          "totalBonus": 0,
-          "levelBonus": 0,
-          "isAutomatic": false,
-          "miscBonus": 0,
-          "relevantAttribute": "",
-          "attributeBonus": 0
-        },
-        "isAdvantaged": false,
-        "isDisadvantaged": false,
-        "damage": null,
-        "effects": null
+        "attack": {
+          "name": "",
+          "description": "",
+          "targetActors": null,
+          "range": {
+            "rangeSize": 0,
+            "rangeUnits": "",
+            "isRangeLOS": false
+          },
+          "area": {
+            "isArea": false,
+            "areaShape": "",
+            "areaSize": 0,
+            "areaUnits": "",
+            "isAreaLOS": false
+          },
+          "isSmite": false,
+          "effortCommitment": "",
+          "toHit": {
+            "totalBonus": 0,
+            "levelBonus": 0,
+            "isAutomatic": false,
+            "miscBonus": 0,
+            "relevantAttribute": "",
+            "attributeBonus": 0
+          },
+          "isAdvantaged": false,
+          "isDisadvantaged": false,
+          "damage": null,
+          "effects": null
+        }
       },
       "damage": {
-        "numDie": 0,
-        "dieType": "",
-        "isStraight": false,
-        "isMagicalAttack": false,
-        "relevantAttribute": "",
-        "attributeBonus": 0,
-        "damageDescriptor": "",
-        "damageType": null,
-        "miscBonus": 0,
-        "isAdvantaged": false,
-        "isDisadvantaged": false
+        "damage": {
+          "numDie": 0,
+          "dieType": "",
+          "isStraight": false,
+          "isMagicalAttack": false,
+          "relevantAttribute": "",
+          "attributeBonus": 0,
+          "damageDescriptor": "",
+          "damageType": null,
+          "miscBonus": 0,
+          "isAdvantaged": false,
+          "isDisadvantaged": false
+        }
       },
       "effect": {
-        "name": "",
-        "description": "",
-        "targetActors": null,
-        "conditions": null
+        "effect": {
+          "name": "",
+          "description": "",
+          "targetActors": null,
+          "conditions": null
+        }
       },
       "condition": {
-        "name": "",
-        "description": "",
-        "duration": null,
-        "enhancements": null,
-        "impairments": null,
-        "icon": null
+        "condition": {
+          "name": "",
+          "description": "",
+          "duration": null,
+          "enhancements": null,
+          "impairments": null,
+          "icon": null
+        }
       },
       "status": {
-        "targetElement": "",
-        "modifierNumber": 0,
-        "action": "",
-        "change": null
+        "status": {
+          "targetElement": "",
+          "modifierNumber": 0,
+          "action": "",
+          "change": null
+        }
       },
-      "damageTypes": {
-        "icon": null,
-        "name": "",
-        "primaryCategory": "",
-        "secondaryCategory": "",
-        "tertiaryCategory": ""
+      "damageType": {
+        "damageType": {
+          "icon": null,
+          "name": "",
+          "primaryCategory": "",
+          "secondaryCategory": "",
+          "tertiaryCategory": ""
+        }
       }
     },
     "word": {
