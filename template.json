@@ -7,163 +7,185 @@
     ],
     "templates": {
       "bio": {
-        "name": "",
-        "description": "",
-        "goals": "",
-        "portrait": null,
-        "languages": "",
-        "notes": "",
-        "faction": {
+        "bio": {
           "name": "",
-          "id": ""
+          "description": "",
+          "goals": "",
+          "portrait": null,
+          "languages": "",
+          "notes": "",
+          "faction": {
+            "name": "",
+            "id": ""
+          }
         },
         "id": ""
       },
       "dominion": {
-        "total": 0,
-        "spent": 0,
-        "free": 0,
-        "gainPerMonth": 0,
-        "projects": null
+        "dominion": {
+          "total": 0,
+          "spent": 0,
+          "free": 0,
+          "gainPerMonth": 0,
+          "projects": null
+        }
       },
       "project": {
-        "name": "",
-        "difficulty": "",
-        "scope": "",
-        "resistance": 0,
-        "isComplete": false,
-        "dominionSpent": 0,
-        "influenceCommitted": 0,
-        "totalCost": 0,
-        "remainingCost": 0
+        "project": {
+          "name": "",
+          "difficulty": "",
+          "scope": "",
+          "resistance": 0,
+          "isComplete": false,
+          "dominionSpent": 0,
+          "influenceCommitted": 0,
+          "totalCost": 0,
+          "remainingCost": 0
+        }
       },
       "problem": {
-        "name": "",
-        "description": "",
-        "trouble": 0
+        "problem": {
+          "name": "",
+          "description": "",
+          "trouble": 0
+        }
       },
       "interest": {
-        "name": "",
-        "description": "",
-        "value": 0,
-        "factionID": ""
+        "interest": {
+          "name": "",
+          "description": "",
+          "value": 0,
+          "factionID": ""
+        }
       },
       "feature": {
-        "name": "",
-        "description": ""
+        "feature": {
+          "name": "",
+          "description": ""
+        }
       },
       "immunities": {
-        "damageTypes": null,
-        "conditions": null,
-        "effects": null,
-        "lowMagic": false,
-        "highMagic": false
+        "immunities": {
+          "damageTypes": null,
+          "conditions": null,
+          "effects": null,
+          "lowMagic": false,
+          "highMagic": false
+        }
       },
       "resistances": {
-        "damageTypes": null,
-        "conditions": null,
-        "effects": null,
-        "lowMagic": false,
-        "highMagic": false
+        "resistances": {
+          "damageTypes": null,
+          "conditions": null,
+          "effects": null,
+          "lowMagic": false,
+          "highMagic": false
+        }
       },
       "vulnerabilities": {
-        "damageTypes": null,
-        "conditions": null,
-        "effects": null,
-        "lowMagic": false,
-        "highMagic": false
+        "vulnerabilities": {
+          "damageTypes": null,
+          "conditions": null,
+          "effects": null,
+          "lowMagic": false,
+          "highMagic": false
+        }
       },
       "possessions": {
-        "wealth": 0,
-        "artifacts": null,
-        "treasures": null,
-        "minorMagicItems": null,
-        "equipment": null
+        "possessions": {
+          "wealth": 0,
+          "artifacts": null,
+          "treasures": null,
+          "minorMagicItems": null,
+          "equipment": null
+        }
       },
       "coreStats": {
-        "levelOrHD": 1,
-        "useHD": false,
-        "isImmuneVsNonMagicalAttack": false,
-        "actionsPerRound": 1,
-        "attacksPerAction": 1,
-        "attacks": null,
-        "saves": {
-          "hardiness": {
-            "base": 16,
-            "levelModifier": 0,
-            "attributeModifier": 0,
-            "isArmorPenalty": false,
-            "miscModifier": 0,
-            "isAutomatic": false,
-            "dc": -1
+        "coreStats": {
+          "levelOrHD": 1,
+          "useHD": false,
+          "isImmuneVsNonMagicalAttack": false,
+          "actionsPerRound": 1,
+          "attacksPerAction": 1,
+          "attacks": null,
+          "saves": {
+            "hardiness": {
+              "base": 16,
+              "levelModifier": 0,
+              "attributeModifier": 0,
+              "isArmorPenalty": false,
+              "miscModifier": 0,
+              "isAutomatic": false,
+              "dc": -1
+            },
+            "evasion": {
+              "base": 16,
+              "levelModifier": 0,
+              "attributeModifier": 0,
+              "isArmorPenalty": false,
+              "miscModifier": 0,
+              "isAutomatic": false,
+              "dc": -1
+            },
+            "spirit": {
+              "base": 16,
+              "levelModifier": 0,
+              "attributeModifier": 0,
+              "isArmorPenalty": false,
+              "miscModifier": 0,
+              "isAutomatic": false,
+              "dc": -1
+            }
           },
-          "evasion": {
-            "base": 16,
-            "levelModifier": 0,
-            "attributeModifier": 0,
-            "isArmorPenalty": false,
+          "ac": {
+            "base": 9,
+            "useBaseOverride": false,
+            "baseOverrideValue": 3,
+            "armorType": "",
+            "armorModifier": 0,
+            "savePenalties": {
+              "isHardinessPenalty": false,
+              "isEvasionPenalty": false,
+              "isSpiritPenalty": false
+            },
+            "dexMod": 0,
+            "hasShield": false,
             "miscModifier": 0,
-            "isAutomatic": false,
-            "dc": -1
+            "total": 9
           },
-          "spirit": {
-            "base": 16,
-            "levelModifier": 0,
-            "attributeModifier": 0,
-            "isArmorPenalty": false,
-            "miscModifier": 0,
-            "isAutomatic": false,
-            "dc": -1
-          }
-        },
-        "ac": {
-          "base": 9,
-          "useBaseOverride": false,
-          "baseOverrideValue": 3,
-          "armorType": "",
-          "armorModifier": 0,
-          "savePenalties": {
-            "isHardinessPenalty": false,
-            "isEvasionPenalty": false,
-            "isSpiritPenalty": false
+          "hp": {
+            "current": 0,
+            "miscBonus": 0,
+            "max": 0,
+            "isHD": false
           },
-          "dexMod": 0,
-          "hasShield": false,
-          "miscModifier": 0,
-          "total": 9
-        },
-        "hp": {
-          "current": 0,
-          "miscBonus": 0,
-          "max": 0,
-          "isHD": false
-        },
-        "effort": {
-          "max": 0,
-          "committed": 0,
-          "free": 0,
-          "baseCostModifier": 0
-        },
-        "movement": {
-          "movementDistance": 30,
-          "movementUnits": "",
-          "movementType": "",
-          "isLOSMove": false
-        },
-        "abilities": {
-          "divineEffortCostModifier": 0,
-          "words": null,
-          "gifts": null,
-          "lowMagicPaths": null,
-          "highMagicRanks": 0,
-          "highMagicSpells": null,
-          "specialAbilities": null,
-          "specialTraits": null,
-          "lesserStrifes": null,
-          "trueStrifes": null,
-          "talents": null
-        },
-        "conditions": null
+          "effort": {
+            "max": 0,
+            "committed": 0,
+            "free": 0,
+            "baseCostModifier": 0
+          },
+          "movement": {
+            "movementDistance": 30,
+            "movementUnits": "",
+            "movementType": "",
+            "isLOSMove": false
+          },
+          "abilities": {
+            "divineEffortCostModifier": 0,
+            "words": null,
+            "gifts": null,
+            "lowMagicPaths": null,
+            "highMagicRanks": 0,
+            "highMagicSpells": null,
+            "specialAbilities": null,
+            "specialTraits": null,
+            "lesserStrifes": null,
+            "trueStrifes": null,
+            "talents": null
+          },
+          "conditions": null
+        }
       }
     },
     "character": {

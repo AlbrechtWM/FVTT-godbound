@@ -14,7 +14,7 @@
     }
   ],
   "esmodules": [
-    "module/godbound.mjs"
+    "system/godbound.mjs"
   ],
   "styles": [
     "css/godbound.css",
