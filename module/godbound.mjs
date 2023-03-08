@@ -48,9 +48,9 @@ Hooks.once('init', async function() {
   Actors.unregisterSheet("core", ActorSheet);
   Items.unregisterSheet("core", ItemSheet);
   Items.registerSheet("godbound", godboundItemSheet, { makeDefault: true });
-  Actors.registerSheet("godbound", godboundNPCActorSheet, { makeDefault: false });
-  Actors.registerSheet("godbound", godboundCharacterActorSheet, { makeDefault: false });
-  Actors.registerSheet("godbound", godboundFactionActorSheet, { makeDefault: false });
+  Actors.registerSheet("godbound", godboundNPCActorSheet, { types: ["npc"],makeDefault: false });
+  Actors.registerSheet("godbound", godboundCharacterActorSheet, { types: ["character"],makeDefault: false });
+  Actors.registerSheet("godbound", godboundFactionActorSheet, { types: ["faction"],makeDefault: false });
 
   // Preload Handlebars templates.
   return preloadHandlebarsTemplates();

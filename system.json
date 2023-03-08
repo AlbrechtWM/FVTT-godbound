@@ -18,6 +18,7 @@
   ],
   "styles": [
     "css/godbound.css",
+    "css/base.css",
     "css/css.css",
     "css/charsheet.css"
   ],

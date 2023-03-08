@@ -56,7 +56,6 @@ export class godboundNPCActor extends Actor {
     const data = super.getRollData();
 
     // Prepare character roll data.
-    this._getCharacterRollData(data);
     this._getNpcRollData(data);
 
     return data;

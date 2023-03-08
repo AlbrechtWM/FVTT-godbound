@@ -35,15 +35,14 @@ export class godboundFactionActor extends Actor {
 
     // Make separate methods for each Actor type (character, npc, etc.) to keep
     // things organized.
-    this._prepareCharacterData(actorData);
-    this._prepareNpcData(actorData);
+    this._prepareFactionData(actorData);
   }
 
   /**
    * Prepare Character type specific data
    */
-  _prepareCharacterData(actorData) {
-    if (actorData.type !== 'character') return;
+  _prepareFactionData(actorData) {
+    if (actorData.type !== 'faction') return;
 
     // Make modifications to data here. For example:
     const systemData = actorData.system;
@@ -56,25 +55,13 @@ export class godboundFactionActor extends Actor {
   }
 
   /**
-   * Prepare NPC type specific data.
-   */
-  _prepareNpcData(actorData) {
-    if (actorData.type !== 'npc') return;
-
-    // Make modifications to data here. For example:
-    const systemData = actorData.system;
-    systemData.xp = (systemData.cr * systemData.cr) * 100;
-  }
-
-  /**
    * Override getRollData() that's supplied to rolls.
    */
   getRollData() {
     const data = super.getRollData();
 
     // Prepare character roll data.
-    this._getCharacterRollData(data);
-    this._getNpcRollData(data);
+    this._getFactionRollData(data);
 
     return data;
   }
@@ -82,8 +69,8 @@ export class godboundFactionActor extends Actor {
   /**
    * Prepare character roll data.
    */
-  _getCharacterRollData(data) {
-    if (this.type !== 'character') return;
+  _getFactionRollData(data) {
+    if (this.type !== 'faction') return;
 
     // Copy the ability scores to the top level, so that rolls can use
     // formulas like `@str.mod + 4`.
@@ -97,15 +84,6 @@ export class godboundFactionActor extends Actor {
     if (data.attributes.level) {
       data.lvl = data.attributes.level.value ?? 0;
     }
-  }
-
-  /**
-   * Prepare NPC roll data.
-   */
-  _getNpcRollData(data) {
-    if (this.type !== 'npc') return;
-
-    // Process additional NPC data here.
   }
 
 }
