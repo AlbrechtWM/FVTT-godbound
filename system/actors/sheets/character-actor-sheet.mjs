@@ -1,4 +1,4 @@
-import {onManageActiveEffect, prepareActiveEffectCategories} from "../../helpers/effects.mjs";
+import { onManageActiveEffect, prepareActiveEffectCategories } from "../../helpers/effects.mjs";
 
 /**
  * Extend the basic ActorSheet with some very simple modifications
@@ -13,7 +13,7 @@ export class godboundCharacterActorSheet extends ActorSheet {
       template: "systems/godbound/system/actors/templates/character-actor-sheet.html",
       width: 600,
       height: 600
-     //tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "features" }]
+      //tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "features" }]
     });
   }
 
@@ -25,12 +25,12 @@ export class godboundCharacterActorSheet extends ActorSheet {
   /* -------------------------------------------- */
 
   /** @override */
-  getData() {
+  getData(...args) {
     // Retrieve the data structure from the base sheet. You can inspect or log
     // the context variable to see the structure, but some key properties for
     // sheets are the actor object, the data object, whether or not it's
     // editable, the items array, and the effects array.
-    console.log("GET DATA CALLED!");
+    console.log("GET DATA CALLED WITH ARGS: " + JSON.stringify(args));
     const context = super.getData();
 
     // Use a safe clone of the actor data for further operations.
@@ -52,11 +52,84 @@ export class godboundCharacterActorSheet extends ActorSheet {
     // Prepare active effects
     //context.effects = prepareActiveEffectCategories(this.actor.effects);
 
-    //console.log(context);
+    console.log("Has shield A: " + context.system.coreStats.ac.hasShield);
     //console.log(context.system);
-    context.abilityPointsFree = context.system.abilityPoints.total - context.system.abilityPoints.spent;
+    context.abilityPointsFree = this.calculateAbilityPointsRemaining(context);
+    this.calculateDerivedAttributes(context);
+    this.calculateAC(context);
 
+    //console.log(context);
+    console.log("Has shield B: " + context.system.coreStats.ac.hasShield);
     return context;
+  }
+
+  calculateAbilityPointsRemaining(context) {
+    return context.system.abilityPoints.total - context.system.abilityPoints.spent;
+  }
+
+  calculateDerivedAttributes(context) {
+    for (let attr of Object.values(context.system.attributes)) {
+      //calc mods
+      if (attr.score <= 3) {
+        attr.mod = -3;
+      }
+      else if (attr.score <= 5) {
+        attr.mod = -2;
+      }
+      else if (attr.score <= 8) {
+        attr.mod = -1;
+      }
+      else if (attr.score <= 12) {
+        attr.mod = 0;
+      }
+      else if (attr.score <= 15) {
+        attr.mod = 1;
+      }
+      else if (attr.score <= 17) {
+        attr.mod = 2;
+      }
+      else if (attr.score <= 18) {
+        attr.mod = 3;
+      }
+      else if (attr.score >= 19) {
+        attr.mod = 4;
+      }
+
+      //calc check dc's
+      attr.checkDC = 21 - attr.score;
+    }
+  }
+
+  calculateAC(context) {
+    let base = 9;
+
+    switch (context.system.coreStats.ac.armorType) {
+      case "none":
+        base = 9;
+        break;
+      case "light":
+        base = 7;
+        break;
+      case "medium":
+        base = 5;
+        break;
+      case "heavy":
+        base = 3;
+        break;
+      case "special":
+        base = 3;
+        break;
+      default:
+        context.system.coreStats.ac.armorType = "none";
+        base = 9;
+        break;
+    }
+
+
+    context.system.coreStats.ac.total = base - context.system.coreStats.ac.miscModifier - context.system.attributes.dex.mod;
+    if (context.system.coreStats.ac.armorType !== "special" && context.system.coreStats.ac.hasShield) {
+      context.system.coreStats.ac.total--;
+    }
   }
 
   /** @override */
@@ -131,43 +204,43 @@ export class godboundCharacterActorSheet extends ActorSheet {
   /* -------------------------------------------- */
 
 
-    // Render the item sheet for viewing/editing prior to the editable check.
-    // html.find('.item-edit').click(ev => {
-    //   const li = $(ev.currentTarget).parents(".item");
-    //   const item = this.actor.items.get(li.data("itemId"));
-    //   item.sheet.render(true);
-    // });
+  // Render the item sheet for viewing/editing prior to the editable check.
+  // html.find('.item-edit').click(ev => {
+  //   const li = $(ev.currentTarget).parents(".item");
+  //   const item = this.actor.items.get(li.data("itemId"));
+  //   item.sheet.render(true);
+  // });
 
-    // // -------------------------------------------------------------
-    // // Everything below here is only needed if the sheet is editable
-    // if (!this.isEditable) return;
+  // // -------------------------------------------------------------
+  // // Everything below here is only needed if the sheet is editable
+  // if (!this.isEditable) return;
 
-    // // Add Inventory Item
-    // html.find('.item-create').click(this._onItemCreate.bind(this));
+  // // Add Inventory Item
+  // html.find('.item-create').click(this._onItemCreate.bind(this));
 
-    // // Delete Inventory Item
-    // html.find('.item-delete').click(ev => {
-    //   const li = $(ev.currentTarget).parents(".item");
-    //   const item = this.actor.items.get(li.data("itemId"));
-    //   item.delete();
-    //   li.slideUp(200, () => this.render(false));
-    // });
+  // // Delete Inventory Item
+  // html.find('.item-delete').click(ev => {
+  //   const li = $(ev.currentTarget).parents(".item");
+  //   const item = this.actor.items.get(li.data("itemId"));
+  //   item.delete();
+  //   li.slideUp(200, () => this.render(false));
+  // });
 
-    // // Active Effect management
-    // html.find(".effect-control").click(ev => onManageActiveEffect(ev, this.actor));
+  // // Active Effect management
+  // html.find(".effect-control").click(ev => onManageActiveEffect(ev, this.actor));
 
-    // // Rollable abilities.
-    // html.find('.rollable').click(this._onRoll.bind(this));
+  // // Rollable abilities.
+  // html.find('.rollable').click(this._onRoll.bind(this));
 
-    // // Drag events for macros.
-    // if (this.actor.isOwner) {
-    //   let handler = ev => this._onDragStart(ev);
-    //   html.find('li.item').each((i, li) => {
-    //     if (li.classList.contains("inventory-header")) return;
-    //     li.setAttribute("draggable", true);
-    //     li.addEventListener("dragstart", handler, false);
-    //   });
-    // }
+  // // Drag events for macros.
+  // if (this.actor.isOwner) {
+  //   let handler = ev => this._onDragStart(ev);
+  //   html.find('li.item').each((i, li) => {
+  //     if (li.classList.contains("inventory-header")) return;
+  //     li.setAttribute("draggable", true);
+  //     li.addEventListener("dragstart", handler, false);
+  //   });
+  // }
   // }
 
   // /**

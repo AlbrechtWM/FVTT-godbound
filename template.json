@@ -138,17 +138,8 @@
             }
           },
           "ac": {
-            "base": 9,
-            "useBaseOverride": false,
-            "baseOverrideValue": 3,
-            "armorType": "",
-            "armorModifier": 0,
-            "savePenalties": {
-              "isHardinessPenalty": false,
-              "isEvasionPenalty": false,
-              "isSpiritPenalty": false
-            },
-            "dexMod": 0,
+            "armorType": "none",
+            "armorDescription": "",
             "hasShield": false,
             "miscModifier": 0,
             "total": 9
@@ -205,6 +196,7 @@
           "baseOverrideValue": 0,
           "miscScoreModifier": 0,
           "score": 0,
+          "checkDC": 0,
           "mod": 0
         },
         "dex": {
@@ -213,6 +205,7 @@
           "baseOverrideValue": 0,
           "miscScoreModifier": 0,
           "score": 0,
+          "checkDC": 0,
           "mod": 0
         },
         "con": {
@@ -221,6 +214,7 @@
           "baseOverrideValue": 0,
           "miscScoreModifier": 0,
           "score": 0,
+          "checkDC": 0,
           "mod": 0
         },
         "int": {
@@ -229,6 +223,7 @@
           "baseOverrideValue": 0,
           "miscScoreModifier": 0,
           "score": 0,
+          "checkDC": 0,
           "mod": 0
         },
         "wis": {
@@ -237,6 +232,7 @@
           "baseOverrideValue": 0,
           "miscScoreModifier": 0,
           "score": 0,
+          "checkDC": 0,
           "mod": 0
         },
         "cha": {
@@ -245,6 +241,7 @@
           "baseOverrideValue": 0,
           "miscScoreModifier": 0,
           "score": 0,
+          "checkDC": 0,
           "mod": 0
         }
       },
