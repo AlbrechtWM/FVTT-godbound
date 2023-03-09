@@ -258,8 +258,7 @@
       },
       "abilityPoints": {
         "total": 0,
-        "spent": 0,
-        "free": 0
+        "spent": 0
       }
     },
     "npc": {

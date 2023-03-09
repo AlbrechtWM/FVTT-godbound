@@ -12,8 +12,8 @@ export class godboundCharacterActorSheet extends ActorSheet {
       classes: ["godbound", "sheet", "actor"],
       template: "systems/godbound/system/actors/templates/character-actor-sheet.html",
       width: 600,
-      height: 600,
-      // tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "features" }]
+      height: 600
+     //tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "features" }]
     });
   }
 
@@ -30,6 +30,7 @@ export class godboundCharacterActorSheet extends ActorSheet {
     // the context variable to see the structure, but some key properties for
     // sheets are the actor object, the data object, whether or not it's
     // editable, the items array, and the effects array.
+    console.log("GET DATA CALLED!");
     const context = super.getData();
 
     // Use a safe clone of the actor data for further operations.
@@ -39,11 +40,11 @@ export class godboundCharacterActorSheet extends ActorSheet {
     context.system = actorData.system;
     context.flags = actorData.flags;
 
-    // Prepare character data and items.
-    if (actorData.type == 'character') {
-      //this._prepareItems(context);
-      this._prepareCharacterData(context);
-    }
+    // // Prepare character data and items.
+    // if (actorData.type == 'character') {
+    //   //this._prepareItems(context);
+    //   this._prepareCharacterData(context);
+    // }
 
     // Add roll data for TinyMCE editors.
     //context.rollData = context.actor.getRollData();
@@ -51,23 +52,32 @@ export class godboundCharacterActorSheet extends ActorSheet {
     // Prepare active effects
     //context.effects = prepareActiveEffectCategories(this.actor.effects);
 
+    //console.log(context);
+    //console.log(context.system);
+    context.abilityPointsFree = context.system.abilityPoints.total - context.system.abilityPoints.spent;
+
     return context;
   }
 
-  /**
-   * Organize and classify Items for Character sheets.
-   *
-   * @param {Object} actorData The actor to prepare.
-   *
-   * @return {undefined}
-   */
-  _prepareCharacterData(context) {
-    // Handle ability scores.
-    // for (let [k, v] of Object.entries(context.system.abilities)) {
-    //   v.label = game.i18n.localize(CONFIG.godbound.abilities[k]) ?? k;
-    // }
-    //console.log(game);
+  /** @override */
+  activateListeners(html) {
+    super.activateListeners(html);
   }
+
+  // /**
+  //  * Organize and classify Items for Character sheets.
+  //  *
+  //  * @param {Object} actorData The actor to prepare.
+  //  *
+  //  * @return {undefined}
+  //  */
+  // _prepareCharacterData(context) {
+  //   // Handle ability scores.
+  //   // for (let [k, v] of Object.entries(context.system.abilities)) {
+  //   //   v.label = game.i18n.localize(CONFIG.godbound.abilities[k]) ?? k;
+  //   // }
+  //   //console.log(game);
+  // }
 
   // /**
   //  * Organize and classify Items for Character sheets.
@@ -120,9 +130,6 @@ export class godboundCharacterActorSheet extends ActorSheet {
 
   /* -------------------------------------------- */
 
-  /** @override */
-  // activateListeners(html) {
-  //   super.activateListeners(html);
 
     // Render the item sheet for viewing/editing prior to the editable check.
     // html.find('.item-edit').click(ev => {

@@ -125,9 +125,10 @@ export class godboundNPCActorSheet extends ActorSheet {
 
   // /* -------------------------------------------- */
 
-  // /** @override */
-  // activateListeners(html) {
-  //   super.activateListeners(html);
+  /** @override */
+  activateListeners(html) {
+    super.activateListeners(html);
+  }
 
   //   // Render the item sheet for viewing/editing prior to the editable check.
   //   html.find('.item-edit').click(ev => {
