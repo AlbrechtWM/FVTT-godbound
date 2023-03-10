@@ -1,6 +1,7 @@
 import { onManageActiveEffect, prepareActiveEffectCategories } from "../../helpers/effects.mjs";
 import CoreStats from './helpers/coreStats.mjs';
 import Character from './helpers/character.mjs';
+import Dominion from './helpers/dominion.mjs';
 
 /**
  * Extend the basic ActorSheet with some very simple modifications
@@ -72,6 +73,12 @@ export class godboundCharacterActorSheet extends ActorSheet {
 
     //Effort
     CoreStats.calculateEffort(context);
+
+    //Influence
+    Character.calculateInfluencePointsRemaining(context);
+
+    //Dominion
+    Dominion.calculateDominionPointsRemaining(context);
 
     //console.log(context);
     return context;

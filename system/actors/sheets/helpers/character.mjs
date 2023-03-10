@@ -43,4 +43,12 @@ const calculateAbilityPointsRemaining = (context) => {
     context.system.abilityPoints.free = context.system.abilityPoints.total - context.system.abilityPoints.spent;
   }
 
-export default { calculateDerivedAttributes, calculateAbilityPointsRemaining};
+  /**
+ * Calculates remaining influence points
+ * @param {Object} context - actor context
+ */
+const calculateInfluencePointsRemaining = (context) => {
+    context.system.influence.free = context.system.influence.max - context.system.influence.committed;
+  }
+
+export default { calculateDerivedAttributes, calculateAbilityPointsRemaining, calculateInfluencePointsRemaining};

@@ -1189,18 +1189,18 @@
 							</div>
 							<div
 								class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-md">
-								<input type="number" name="attr_influence_total" value="2">
+								<input type="number" name="system.influence.max"
+								value="{{system.influence.max}}" data-dtype="Number">
 							</div>
 							<div
 								class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-md">
-								<input type="hidden" name="attr_calc_influence_spent" value="0">
-								<input type="number" name="attr_influence_spent" value="0" disabled="true"
-									data-formula="@{calc_influence_spent}">
+								<input type="number" name="system.influence.committed"
+								value="{{system.influence.committed}}" data-dtype="Number">
 							</div>
 							<div
 								class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-md">
-								<input type="number" name="attr_influence_free" value="2" disabled="true"
-									data-formula="(@{influence_total}-@{influence_spent})">
+								<input type="number" name="system.influence.free"
+								value="{{system.influence.free}}" disabled="true" data-dtype="Number">
 							</div>
 							<div
 								class="sheet-col-1-4 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-md">
@@ -1214,25 +1214,26 @@
 							</div>
 							<div
 								class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-md">
-								<input type="number" name="attr_dominion_total" value="0">
+								<input type="number" name="system.dominion.total"
+								value="{{system.dominion.total}}" data-dtype="Number">
 							</div>
 							<div
 								class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-md">
-								<input type="hidden" name="attr_calc_dominion_spent" value="0">
-								<input type="number" name="attr_dominion_spent" value="0" disabled="true"
-									data-formula="@{calc_dominion_spent}">
+								<input type="number" name="system.dominion.spent"
+								value="{{system.dominion.spent}}" data-dtype="Number">
 							</div>
 							<div
 								class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-md">
-								<input type="number" name="attr_dominion_free" value="0" disabled="true"
-									data-formula="(@{dominion_total}-@{dominion_spent})">
+								<input type="number" name="system.dominion.free"
+								value="{{system.dominion.free}}" disabled="true" data-dtype="Number">
 							</div>
 							<div class="sheet-col-1-4 sheet-attr sheet-center sheet-pad-t-sm sheet-pad-r-md">
-								<input type="number" name="attr_dominion_monthly" value="0">
+								<input type="number" name="system.dominion.gainPerMonth"
+								value="{{system.dominion.gainPerMonth}}" data-dtype="Number">
 							</div>
 						</div>
-						<hr>
-						<div class="sheet-row sheet-pad-b-sm">
+						<!-- <hr> TODO good to use elsewhere, this creates that nice line -->
+						<!-- TODO add back in later when system more developed <div class="sheet-row sheet-pad-b-sm">
 							<div
 								class="sheet-col-9-20 sheet-attr sheet-vert-middle sheet-right sheet-pad-l-sm sheet-pad-t-md sheet-pad-r-md">
 								Misc Effort Spent
@@ -1244,7 +1245,7 @@
 							<div class="sheet-col-2-5 sheet-vert-middle sheet-pad-t-sm sheet-pad-r-md">
 								(healing and other)
 							</div>
-						</div>
+						</div> -->
 
 						<div class="sheet-row sheet-pad-b-sm">
 							<div
