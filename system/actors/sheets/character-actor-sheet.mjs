@@ -178,7 +178,6 @@ export class godboundCharacterActorSheet extends ActorSheet {
 
   }
 
-
   /**
    * Calculates the total saving throw bonus
    * @param {Object} context - Entire game context
