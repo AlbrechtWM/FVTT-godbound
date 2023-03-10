@@ -25,12 +25,11 @@ export class godboundCharacterActorSheet extends ActorSheet {
   /* -------------------------------------------- */
 
   /** @override */
-  getData(...args) {
+  getData() {
     // Retrieve the data structure from the base sheet. You can inspect or log
     // the context variable to see the structure, but some key properties for
     // sheets are the actor object, the data object, whether or not it's
     // editable, the items array, and the effects array.
-    console.log("GET DATA CALLED WITH ARGS: " + JSON.stringify(args));
     const context = super.getData();
 
     // Use a safe clone of the actor data for further operations.
@@ -52,14 +51,15 @@ export class godboundCharacterActorSheet extends ActorSheet {
     // Prepare active effects
     //context.effects = prepareActiveEffectCategories(this.actor.effects);
 
-    console.log("Has shield A: " + context.system.coreStats.ac.hasShield);
     //console.log(context.system);
     context.abilityPointsFree = this.calculateAbilityPointsRemaining(context);
     this.calculateDerivedAttributes(context);
     this.calculateAC(context);
+    this.calculateSavingThrowBonuses(context);
+    this.calculateSavingThrowPenalties(context);
+    this.calculateSavingThrowTotal(context);
 
     //console.log(context);
-    console.log("Has shield B: " + context.system.coreStats.ac.hasShield);
     return context;
   }
 
@@ -130,6 +130,71 @@ export class godboundCharacterActorSheet extends ActorSheet {
     if (context.system.coreStats.ac.armorType !== "special" && context.system.coreStats.ac.hasShield) {
       context.system.coreStats.ac.total--;
     }
+  }
+
+  /**
+   * Calculates saving throw bonuses based on stat modifiers - can eventually take buffs, etc
+   * @param {Object} context - Entire game context
+   */
+  calculateSavingThrowBonuses(context) {
+    const types = {
+      hardiness: ['str', 'con'],
+      evasion: ['int', 'dex'],
+      spirit: ['wis', 'cha'],
+    };
+
+    const mods = {
+      str: context.system.attributes.str.mod,
+      con: context.system.attributes.con.mod,
+      dex: context.system.attributes.dex.mod,
+      int: context.system.attributes.int.mod,
+      cha: context.system.attributes.cha.mod,
+      wis: context.system.attributes.wis.mod,
+    }
+
+    // Iterate through all save types and get max of the type of stat mod that effects this roll
+    Object.entries(types).forEach(([type, modName]) => {
+      context.system.coreStats.saves[type].attributeModifier = Math.max(mods[modName[0]], mods[modName[1]]);
+    });
+
+  }
+
+  /**
+   * Calculates saving throw penalties based on various penalty modifiers - arrays below can take additional values
+   * @param {Object} context - Entire game context
+   */
+  calculateSavingThrowPenalties(context) {
+    // Add additional entries to these arrays when additional modifiers are required
+    const types = {
+      hardiness: [context.system.coreStats.saves.hardiness.isArmorPenalty ? -4 : 0],
+      evasion: [context.system.coreStats.saves.evasion.isArmorPenalty ? -4 : 0],
+      spirit: [context.system.coreStats.saves.spirit.isArmorPenalty ? -4 : 0],
+    };
+
+    // Iterate through all save types and then use Array.reduce to calculate a running total of modifiers
+    Object.entries(types).forEach(([type, modifiers]) => {
+      context.system.coreStats.saves[type].penaltyModifier = modifiers.reduce((a, b) => a + b, 0);
+    });
+
+  }
+
+
+  /**
+   * Calculates the total saving throw bonus
+   * @param {Object} context - Entire game context
+   */
+  calculateSavingThrowTotal(context) {
+    const types = [
+      'hardiness',
+      'evasion',
+      'spirit',
+    ];
+
+    types.forEach((type) => {
+      context.system.coreStats.saves[type].total = 16 - (context.system.coreStats.saves[type].penaltyModifier)
+        + (context.system.coreStats.saves[type].attributeModifier * -1) - context.system.coreStats.levelOrHD;
+    });
+
   }
 
   /** @override */

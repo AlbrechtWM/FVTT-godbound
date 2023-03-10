@@ -113,28 +113,34 @@
               "base": 16,
               "levelModifier": 0,
               "attributeModifier": 0,
+              "penaltyModifier": 0,
               "isArmorPenalty": false,
               "miscModifier": 0,
               "isAutomatic": false,
-              "dc": -1
+              "dc": -1,
+              "total": 0
             },
             "evasion": {
               "base": 16,
               "levelModifier": 0,
               "attributeModifier": 0,
+              "penaltyModifier": 0,
               "isArmorPenalty": false,
               "miscModifier": 0,
               "isAutomatic": false,
-              "dc": -1
+              "dc": -1,
+              "total": 0
             },
             "spirit": {
               "base": 16,
               "levelModifier": 0,
               "attributeModifier": 0,
+              "penaltyModifier": 0,
               "isArmorPenalty": false,
               "miscModifier": 0,
               "isAutomatic": false,
-              "dc": -1
+              "dc": -1,
+              "total": 0
             }
           },
           "ac": {
