@@ -22,7 +22,6 @@ const calculateSavingThrowBonuses = (context) => {
     Object.entries(types).forEach(([type, modName]) => {
         context.system.coreStats.saves[type].attributeModifier = Math.max(mods[modName[0]], mods[modName[1]]);
     });
-
 }
 
 /**
@@ -41,7 +40,6 @@ const calculateSavingThrowPenalties = (context) => {
     Object.entries(types).forEach(([type, modifiers]) => {
         context.system.coreStats.saves[type].penaltyModifier = modifiers.reduce((a, b) => a + b, 0);
     });
-
 }
 
 /**
@@ -59,7 +57,6 @@ const calculateSavingThrowTotal = (context) => {
         context.system.coreStats.saves[type].total = 16 - (context.system.coreStats.saves[type].penaltyModifier)
             + (context.system.coreStats.saves[type].attributeModifier * -1) - context.system.coreStats.levelOrHD;
     });
-
 }
 
 export default { calculateSavingThrowBonuses, calculateSavingThrowPenalties, calculateSavingThrowTotal };
