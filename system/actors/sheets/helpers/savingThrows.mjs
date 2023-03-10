@@ -46,7 +46,7 @@ const calculateSavingThrowPenalties = (context) => {
  * Calculates the total saving throw bonus
  * @param {Object} context - Entire game context
  */
-const calculateSavingThrowTotal = (context) => {
+const calculateSavingThrowTotals = (context) => {
     const types = [
         'hardiness',
         'evasion',
@@ -59,4 +59,4 @@ const calculateSavingThrowTotal = (context) => {
     });
 }
 
-export default { calculateSavingThrowBonuses, calculateSavingThrowPenalties, calculateSavingThrowTotal };
+export default { calculateSavingThrowBonuses, calculateSavingThrowPenalties, calculateSavingThrowTotals };

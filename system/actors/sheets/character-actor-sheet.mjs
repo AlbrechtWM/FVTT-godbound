@@ -63,7 +63,7 @@ export class godboundCharacterActorSheet extends ActorSheet {
     // Saving throws
     SavingThrows.calculateSavingThrowBonuses(context);
     SavingThrows.calculateSavingThrowPenalties(context);
-    SavingThrows.calculateSavingThrowTotal(context);
+    SavingThrows.calculateSavingThrowTotals(context);
 
     //console.log(context);
     return context;
