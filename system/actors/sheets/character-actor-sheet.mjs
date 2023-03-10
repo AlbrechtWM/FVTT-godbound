@@ -1,6 +1,6 @@
 import { onManageActiveEffect, prepareActiveEffectCategories } from "../../helpers/effects.mjs";
-import SavingThrows from './helpers/savingThrows.mjs';
-import Attributes from './helpers/attributes.mjs';
+import CoreStats from './helpers/coreStats.mjs';
+import Character from './helpers/character.mjs';
 
 /**
  * Extend the basic ActorSheet with some very simple modifications
@@ -53,24 +53,28 @@ export class godboundCharacterActorSheet extends ActorSheet {
     // Prepare active effects
     //context.effects = prepareActiveEffectCategories(this.actor.effects);
 
-    //console.log(context.system);
-    context.abilityPointsFree = this.calculateAbilityPointsRemaining(context);
+    //Ability Points
+    Character.calculateAbilityPointsRemaining(context);
 
     // Attributes
-    Attributes.calculateDerivedAttributes(context);
-    Attributes.calculateAC(context);
+    Character.calculateDerivedAttributes(context);
+ 
+    //Armor Class
+    CoreStats.calculateAC(context);
 
     // Saving throws
-    SavingThrows.calculateSavingThrowBonuses(context);
-    SavingThrows.calculateSavingThrowPenalties(context);
-    SavingThrows.calculateSavingThrowTotals(context);
+    CoreStats.calculateSavingThrowBonuses(context);
+    CoreStats.calculateSavingThrowPenalties(context);
+    CoreStats.calculateSavingThrowTotals(context);
+
+    //HP
+    CoreStats.calculateMaxHP(context);
+
+    //Effort
+    CoreStats.calculateEffort(context);
 
     //console.log(context);
     return context;
-  }
-
-  calculateAbilityPointsRemaining(context) {
-    return context.system.abilityPoints.total - context.system.abilityPoints.spent;
   }
 
   /** @override */

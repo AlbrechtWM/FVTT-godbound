@@ -261,8 +261,15 @@
       },
       "abilityPoints": {
         "total": 0,
-        "spent": 0
-      }
+        "spent": 0,
+        "free": 0
+      },
+      "facts":
+      [
+        "",
+        "",
+        ""
+      ]
     },
     "npc": {
       "templates": [

@@ -75,6 +75,10 @@ Handlebars.registerHelper('toLowerCase', function(str) {
   return str.toLowerCase();
 });
 
+Handlebars.registerHelper('getStringArrayValue', function(strArray, index) {
+  return strArray[index];
+});
+
 /* -------------------------------------------- */
 /*  Ready Hook                                  */
 /* -------------------------------------------- */

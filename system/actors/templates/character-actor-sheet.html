@@ -21,6 +21,11 @@
 										<hr>
 									</div>
 								</div>
+								<div
+									class="sheet-row sheet-pad-b-md sheet-pad-t-md sheet-pad-r-md sheet-pad-l-md flexrow">
+									<img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}"
+										height="150" width="150" />
+								</div>
 
 								<div class="sheet-row sheet-pad-b-sm">
 									<div
@@ -31,39 +36,6 @@
 										class="sheet-col-11-15 sheet-attr sheet-vert-middle sheet-pad-t-sm sheet-pad-r-sm">
 										<input type="text" name="system.base.name" value="{{system.base.name}}"
 											data-dtype="String">
-									</div>
-								</div>
-								<div class="sheet-row sheet-pad-b-sm">
-									<div
-										class="sheet-col-4-15 sheet-attr sheet-vert-top sheet-right sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-md">
-										Description
-									</div>
-									<div class="sheet-col-11-15 sheet-attr sheet-vert-middle sheet-pad-r-sm">
-										<textarea class="sheet-medium-textarea sheet-resize-vertical"
-											name="system.base.description"
-											placeholder="Character description">{{system.base.description}}</textarea>
-									</div>
-								</div>
-								<div class="sheet-row sheet-pad-b-sm">
-									<div
-										class="sheet-col-4-15 sheet-attr sheet-vert-top sheet-right sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-md">
-										Language
-									</div>
-									<div class="sheet-col-11-15 sheet-attr sheet-vert-middle sheet-pad-r-sm">
-										<textarea class="sheet-small-textarea sheet-resize-vertical"
-											name="system.base.languages"
-											placeholder="Languages known">{{system.base.languages}}</textarea>
-									</div>
-								</div>
-								<div class="sheet-row sheet-pad-b-md">
-									<div
-										class="sheet-col-4-15 sheet-attr sheet-vert-top sheet-right sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-md">
-										Goal
-									</div>
-									<div class="sheet-col-11-15 sheet-attr sheet-vert-middle sheet-pad-r-sm">
-										<textarea class="sheet-medium-textarea sheet-resize-vertical"
-											name="system.base.goals" data-dtype="String"
-											placeholder="Goals">{{system.base.goals}}</textarea>
 									</div>
 								</div>
 								<div class="sheet-row sheet-pad-b-md">
@@ -118,7 +90,7 @@
 									</div>
 									<div
 										class="sheet-col-1-10 sheet-attr sheet-vert-middle sheet-center sheet-pad-r-md">
-										<input type="number" value="{{abilityPointsFree}}" data-dtype="Number"
+										<input type="number" name="system.abilityPoints.free" value="{{system.abilityPoints.free}}" data-dtype="Number"
 											disabled="true">
 									</div>
 									<div
@@ -126,7 +98,129 @@
 										<br>
 									</div>
 								</div>
-
+								<br/>
+								<div class="sheet-row sheet-pad-b-sm">
+									<div
+										class="sheet-col-4-15 sheet-attr sheet-vert-top sheet-right sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-md">
+										Description
+									</div>
+									<div class="sheet-col-11-15 sheet-attr sheet-vert-middle sheet-pad-r-sm">
+										<textarea class="sheet-small-textarea sheet-resize-vertical"
+											name="system.base.description"
+											placeholder="Character description">{{system.base.description}}</textarea>
+									</div>
+								</div>
+								<div class="sheet-row sheet-pad-b-sm">
+									<div
+										class="sheet-col-4-15 sheet-attr sheet-vert-top sheet-right sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-md">
+										Language
+									</div>
+									<div class="sheet-col-11-15 sheet-attr sheet-vert-middle sheet-pad-r-sm">
+										<textarea class="sheet-small-textarea sheet-resize-vertical"
+											name="system.base.languages"
+											placeholder="Languages known">{{system.base.languages}}</textarea>
+									</div>
+								</div>
+								<div class="sheet-row sheet-pad-b-md">
+									<div
+										class="sheet-col-4-15 sheet-attr sheet-vert-top sheet-right sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-md">
+										Goal
+									</div>
+									<div class="sheet-col-11-15 sheet-attr sheet-vert-middle sheet-pad-r-sm">
+										<textarea class="sheet-small-textarea sheet-resize-vertical"
+											name="system.base.goals" data-dtype="String"
+											placeholder="Goals">{{system.base.goals}}</textarea>
+									</div>
+								</div>
+								<div class="sheet-row">
+									<div
+										class="sheet-col-1 sheet-title-banner-subheading sheet-pad-t-md sheet-pad-b-sm sheet-mar-t-md sheet-mar-b-sm">
+										<h3>Facts</h3>
+									</div>
+								</div>
+								<div class="sheet-row sheet-pad-b-sm">
+									<div
+										class="sheet-col-7-25 sheet-attr sheet-vert-top sheet-left sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-md">
+										Fact:
+									</div>
+									<div class="sheet-col-18-25 sheet-attr sheet-vert-top sheet-pad-r-sm">
+										<textarea class="sheet-small-textarea sheet-left sheet-resize-vertical"
+											name="system.facts.0"
+											placeholder="New Fact">{{getStringArrayValue system.facts 0}}</textarea>
+									</div>
+								</div>
+								<div class="sheet-row sheet-pad-b-sm">
+									<div
+										class="sheet-col-7-25 sheet-attr sheet-vert-top sheet-left sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-md">
+										Fact:
+									</div>
+									<div class="sheet-col-18-25 sheet-attr sheet-vert-top sheet-pad-r-sm">
+										<textarea class="sheet-small-textarea sheet-resize-vertical"
+											name="system.facts.1"
+											placeholder="New Fact">{{getStringArrayValue system.facts 1}}</textarea>
+									</div>
+								</div>
+								<div class="sheet-row sheet-pad-b-sm">
+									<div
+										class="sheet-col-7-25 sheet-attr sheet-vert-top sheet-left sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-md">
+										Fact:
+									</div>
+									<div class="sheet-col-18-25 sheet-attr sheet-vert-top sheet-pad-r-sm">
+										<textarea class="sheet-small-textarea sheet-resize-vertical"
+											name="system.facts.2"
+											placeholder="New Fact">{{getStringArrayValue system.facts 2}}</textarea>
+									</div>
+								</div>
+								<fieldset class="repeating_facts" style="display: none;">
+									<div class="sheet-row sheet-mar-b-sm">
+										<div
+											class="sheet-col-7-25 sheet-attr sheet-vert-top sheet-left sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-md">
+											Fact:
+										</div>
+										<div class="sheet-col-18-25 sheet-attr sheet-vert-top sheet-pad-r-sm">
+											<textarea class="sheet-small-textarea sheet-resize-vertical"
+												name="attr_other_fact_repeat" placeholder="Other fact"></textarea>
+										</div>
+									</div>
+								</fieldset>
+								<div class="repcontainer" data-groupname="repeating_facts"></div>
+								<div class="repcontrol flexrow flex-between" data-groupname="repeating_facts">
+									<button class="btn repcontrol_edit flex0">Modify</button><button
+										class="btn repcontrol_add flex0">+Add</button>
+								</div>
+							</div>
+							<div class="sheet-col-1-2 sheet-pad-t-md sheet-pad-r-md sheet-pad-b-sm">
+								<div class="sheet-row">
+									<div
+										class="sheet-col-1 sheet-title-banner-subheading sheet-pad-t-md sheet-pad-b-sm sheet-mar-t-md sheet-mar-b-sm">
+										<h3>Hit Points</h3>
+									</div>
+								</div>
+								<div class="sheet-row sheet-pad-b-sm">
+									<div
+										class="sheet-col-1-5 sheet-attr sheet-vert-middle sheet-right sheet-pad-l-sm sheet-pad-r-md">
+										Current
+									</div>
+									<div class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-pad-r-md">
+										<input type="number" name="system.coreStats.hp.current"
+											value="{{system.coreStats.hp.current}}" data-dtype="Number">
+									</div>
+									<div
+										class="sheet-col-1-4 sheet-attr sheet-vert-middle sheet-right sheet-pad-l-sm sheet-pad-r-md">
+										Bonus HP
+									</div>
+									<div class="sheet-col-1-10 sheet-attr sheet-vert-middle sheet-pad-r-md">
+										<input type="number" name="system.coreStats.hp.miscBonus"
+											value="{{system.coreStats.hp.miscBonus}}" data-dtype="Number">
+									</div>
+									<div class="sheet-col-1-5 sheet-attr sheet-vert-middle sheet-right sheet-pad-r-md">
+										Max HP
+									</div>
+									<div class="sheet-col-1-10 sheet-attr sheet-vert-middle sheet-pad-r-sm">
+										<input type="number" disabled="true" name="system.coreStats.hp.max"
+											value="{{system.coreStats.hp.max}}" data-dtype="Number">
+									</div>
+								</div>
 								<div class="sheet-row">
 									<div
 										class="sheet-col-1 sheet-title-banner-subheading sheet-pad-t-md sheet-pad-b-sm sheet-mar-t-md sheet-mar-b-sm">
@@ -346,15 +440,21 @@
 									</div>
 									<div
 										class="sheet-col-1-5 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-md">
-										<input type="number" disabled="true" name="system.coreStats.saves.hardiness.total" value="{{system.coreStats.saves.hardiness.total}}">
+										<input type="number" disabled="true"
+											name="system.coreStats.saves.hardiness.total"
+											value="{{system.coreStats.saves.hardiness.total}}">
 									</div>
 									<div
 										class="sheet-col-1-5 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-md">
-										<input type="number" disabled="true" name="system.coreStats.saves.hardiness.attributeModifier" value="{{system.coreStats.saves.hardiness.attributeModifier}}">
+										<input type="number" disabled="true"
+											name="system.coreStats.saves.hardiness.attributeModifier"
+											value="{{system.coreStats.saves.hardiness.attributeModifier}}">
 									</div>
 									<div
 										class="sheet-col-1-5 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-md">
-										<input type="number" disabled="true" name="system.coreStats.saves.hardiness.penaltyModifier" value="{{system.coreStats.saves.hardiness.penaltyModifier}}">
+										<input type="number" disabled="true"
+											name="system.coreStats.saves.hardiness.penaltyModifier"
+											value="{{system.coreStats.saves.hardiness.penaltyModifier}}">
 									</div>
 									<div
 										class="sheet-col-1-10 sheet-attr sheet-vert-middle sheet-center sheet-pad-r-sm">
@@ -369,15 +469,20 @@
 									</div>
 									<div
 										class="sheet-col-1-5 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-md">
-										<input type="number" disabled="true" name="system.coreStats.saves.evasion.total" value="{{system.coreStats.saves.evasion.total}}">
+										<input type="number" disabled="true" name="system.coreStats.saves.evasion.total"
+											value="{{system.coreStats.saves.evasion.total}}">
 									</div>
 									<div
 										class="sheet-col-1-5 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-md">
-										<input type="number" disabled="true" name="system.coreStats.saves.evasion.attributeModifier" value="{{system.coreStats.saves.evasion.attributeModifier}}">
+										<input type="number" disabled="true"
+											name="system.coreStats.saves.evasion.attributeModifier"
+											value="{{system.coreStats.saves.evasion.attributeModifier}}">
 									</div>
 									<div
 										class="sheet-col-1-5 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-md">
-										<input type="number" disabled="true" name="system.coreStats.saves.evasion.penaltyModifier" value="{{system.coreStats.saves.evasion.penaltyModifier}}">
+										<input type="number" disabled="true"
+											name="system.coreStats.saves.evasion.penaltyModifier"
+											value="{{system.coreStats.saves.evasion.penaltyModifier}}">
 									</div>
 									<div
 										class="sheet-col-1-10 sheet-attr sheet-vert-middle sheet-center sheet-pad-r-sm">
@@ -392,15 +497,20 @@
 									</div>
 									<div
 										class="sheet-col-1-5 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-md">
-										<input type="number" disabled="true" name="system.coreStats.saves.spirit.total" value="{{system.coreStats.saves.spirit.total}}">
+										<input type="number" disabled="true" name="system.coreStats.saves.spirit.total"
+											value="{{system.coreStats.saves.spirit.total}}">
 									</div>
 									<div
 										class="sheet-col-1-5 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-md">
-										<input type="number" disabled="true" name="system.coreStats.saves.spirit.attributeModifier" value="{{system.coreStats.saves.spirit.attributeModifier}}">
+										<input type="number" disabled="true"
+											name="system.coreStats.saves.spirit.attributeModifier"
+											value="{{system.coreStats.saves.spirit.attributeModifier}}">
 									</div>
 									<div
 										class="sheet-col-1-5 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-md">
-										<input type="number" disabled="true" name="system.coreStats.saves.spirit.penaltyModifier" value="{{system.coreStats.saves.spirit.penaltyModifier}}">
+										<input type="number" disabled="true"
+											name="system.coreStats.saves.spirit.penaltyModifier"
+											value="{{system.coreStats.saves.spirit.penaltyModifier}}">
 									</div>
 									<div
 										class="sheet-col-1-10 sheet-attr sheet-vert-middle sheet-center sheet-pad-r-sm">
@@ -408,96 +518,30 @@
 											value=""></button>
 									</div>
 								</div>
-
 								<div class="sheet-row">
 									<div
-										class="sheet-col-1 sheet-title-banner-subheading sheet-pad-t-md sheet-pad-b-sm sheet-mar-t-md sheet-mar-b-sm">
-										<h3>Hit Points</h3>
-									</div>
-								</div>
-								<div class="sheet-row sheet-pad-b-sm">
-									<div
-										class="sheet-col-1-5 sheet-attr sheet-vert-middle sheet-right sheet-pad-l-sm sheet-pad-r-md">
-										Current
-									</div>
-									<div class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-pad-r-md">
-										<input type="number" name="attr_hit_points" value="8">
+										class="sheet-col-8-23 sheet-attr sheet-vert-middle sheet-right sheet-pad-l-sm sheet-pad-r-md">
+										Save Penalties:
 									</div>
 									<div
-										class="sheet-col-1-4 sheet-attr sheet-vert-middle sheet-right sheet-pad-l-sm sheet-pad-r-md">
-										Bonus HP
+										class="sheet-col-5-23 sheet-attr sheet-vert-middle sheet-pad-t-md sheet-pad-r-md sheet-pad-b-sm sheet-mar-t-md">
+										<input type="checkbox" class="sheet-box-check"
+											name="system.coreStats.saves.hardiness.isArmorPenalty" {{checked
+											system.coreStats.saves.hardiness.isArmorPenalty}}><label>Hardiness</label>
 									</div>
-									<div class="sheet-col-1-10 sheet-attr sheet-vert-middle sheet-pad-r-md">
-										<input type="number" name="attr_hit_points_bonus" value="0">
-									</div>
-									<div class="sheet-col-1-5 sheet-attr sheet-vert-middle sheet-right sheet-pad-r-md">
-										Max HP
-									</div>
-									<div class="sheet-col-1-10 sheet-attr sheet-vert-middle sheet-pad-r-sm">
-										<input type="hidden" name="attr_calc_hit_points_increase" value="0"
-											disabled="true"
-											data-formula="((4*(@{level}-1))+(ceil((@{constitution_mod})/2)*(@{level}-1)))">
-										<input type="number" name="attr_hit_points_max" value="8" disabled="true"
-											data-formula="(8+@{constitution_mod}+@{calc_hit_points_increase}+@{hit_points_bonus})">
-									</div>
-								</div>
-							</div>
-							<div class="sheet-col-1-2 sheet-pad-t-md sheet-pad-r-md sheet-pad-b-sm">
-
-								<div class="sheet-row">
 									<div
-										class="sheet-col-1 sheet-title-banner-subheading sheet-pad-t-md sheet-pad-b-sm sheet-mar-t-md sheet-mar-b-sm">
-										<h3>Facts</h3>
+										class="sheet-col-5-23 sheet-attr sheet-vert-middle sheet-pad-t-md sheet-pad-r-md sheet-pad-b-sm sheet-mar-t-md">
+										<input type="checkbox" class="sheet-box-check"
+											name="system.coreStats.saves.evasion.isArmorPenalty" {{checked
+											system.coreStats.saves.evasion.isArmorPenalty}}><label>Evasion</label>
 									</div>
-								</div>
-								<div class="sheet-row sheet-pad-b-sm">
 									<div
-										class="sheet-col-7-25 sheet-attr sheet-vert-top sheet-right sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-md">
-										Origin
-									</div>
-									<div class="sheet-col-18-25 sheet-attr sheet-vert-top sheet-pad-r-sm">
-										<textarea class="sheet-small-textarea sheet-resize-vertical" name="attr_origin"
-											placeholder="Origin fact"></textarea>
+										class="sheet-col-5-23 sheet-attr sheet-vert-middle sheet-pad-t-md sheet-pad-r-sm sheet-pad-b-sm sheet-mar-t-md">
+										<input type="checkbox" class="sheet-box-check"
+											name="system.coreStats.saves.spirit.isArmorPenalty" {{checked
+											system.coreStats.saves.spirit.isArmorPenalty}}><label>Spirit</label>
 									</div>
 								</div>
-								<div class="sheet-row sheet-pad-b-sm">
-									<div
-										class="sheet-col-7-25 sheet-attr sheet-vert-top sheet-right sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-md">
-										Past Career
-									</div>
-									<div class="sheet-col-18-25 sheet-attr sheet-vert-top sheet-pad-r-sm">
-										<textarea class="sheet-small-textarea sheet-resize-vertical"
-											name="attr_past_career" placeholder="Career fact"></textarea>
-									</div>
-								</div>
-								<div class="sheet-row sheet-pad-b-sm">
-									<div
-										class="sheet-col-7-25 sheet-attr sheet-vert-top sheet-right sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-md">
-										Relationship
-									</div>
-									<div class="sheet-col-18-25 sheet-attr sheet-vert-top sheet-pad-r-sm">
-										<textarea class="sheet-small-textarea sheet-resize-vertical"
-											name="attr_relationship" placeholder="Relationship fact"></textarea>
-									</div>
-								</div>
-								<fieldset class="repeating_facts" style="display: none;">
-									<div class="sheet-row sheet-mar-b-sm">
-										<div
-											class="sheet-col-7-25 sheet-attr sheet-vert-top sheet-right sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-md">
-											Other
-										</div>
-										<div class="sheet-col-18-25 sheet-attr sheet-vert-top sheet-pad-r-sm">
-											<textarea class="sheet-small-textarea sheet-resize-vertical"
-												name="attr_other_fact_repeat" placeholder="Other fact"></textarea>
-										</div>
-									</div>
-								</fieldset>
-								<div class="repcontainer" data-groupname="repeating_facts"></div>
-								<div class="repcontrol flexrow flex-between" data-groupname="repeating_facts">
-									<button class="btn repcontrol_edit flex0">Modify</button><button
-										class="btn repcontrol_add flex0">+Add</button>
-								</div>
-
 								<div class="sheet-row">
 									<div
 										class="sheet-col-1 sheet-title-banner-subheading sheet-pad-t-md sheet-pad-b-sm sheet-mar-t-md sheet-mar-b-sm">
@@ -560,35 +604,24 @@
 								<div class="sheet-row sheet-pad-b-sm">
 									<div class="sheet-col-1 sheet-attr sheet-pad-r-sm">
 										<textarea class="sheet-small-textarea sheet-resize-vertical"
-											name="attr_armor_description" placeholder="Armor description"></textarea>
+											name="system.coreStats.ac.armorDescription"
+											placeholder="Armor description">{{system.coreStats.ac.armorDescription}}</textarea>
 									</div>
 								</div>
-								<div class="sheet-row">
+								<div class="sheet-rowd sheet-pad-b-sm">
 									<div
-										class="sheet-col-8-23 sheet-attr sheet-vert-middle sheet-right sheet-pad-l-sm sheet-pad-r-md">
-										Save Penalties
+										class="sheet-col-1 sheet-title-banner-subheading sheet-pad-t-md sheet-pad-b-sm sheet-mar-t-md">
+										<h3>Notes:</h3>
 									</div>
-									<div
-										class="sheet-col-5-23 sheet-attr sheet-vert-middle sheet-pad-t-md sheet-pad-r-md sheet-pad-b-sm sheet-mar-t-md">
-										<input type="checkbox" class="sheet-box-check"
-											name="system.coreStats.saves.hardiness.isArmorPenalty" {{checked
-											system.coreStats.saves.hardiness.isArmorPenalty}}><label>Hardiness</label>
-									</div>
-									<div
-										class="sheet-col-5-23 sheet-attr sheet-vert-middle sheet-pad-t-md sheet-pad-r-md sheet-pad-b-sm sheet-mar-t-md">
-										<input type="checkbox" class="sheet-box-check"
-											name="system.coreStats.saves.evasion.isArmorPenalty" {{checked
-											system.coreStats.saves.evasion.isArmorPenalty}}><label>Evasion</label>
-									</div>
-									<div
-										class="sheet-col-5-23 sheet-attr sheet-vert-middle sheet-pad-t-md sheet-pad-r-sm sheet-pad-b-sm sheet-mar-t-md">
-										<input type="checkbox" class="sheet-box-check"
-											name="system.coreStats.saves.spirit.isArmorPenalty" {{checked
-											system.coreStats.saves.spirit.isArmorPenalty}}><label>Spirit</label>
+								</div>
+								<div class="sheet-row sheet-pad-b-sm">
+									<div class="sheet-col-1 sheet-pad-t-sm sheet-pad-r-sm">
+										<textarea class="sheet-medium-textarea sheet-resize-vertical"
+											name="system.base.notes">{{system.base.notes}}</textarea>
 									</div>
 								</div>
 
-								<div class="sheet-row">
+								<!-- <div class="sheet-row">
 									<div
 										class="sheet-col-1 sheet-title-banner-subheading sheet-pad-t-md sheet-pad-b-sm sheet-mar-t-md sheet-mar-b-sm">
 										<h3>Auto-Hit Attacks</h3>
@@ -611,8 +644,8 @@
 										class="sheet-col-1-10 sheet-attr sheet-vert-middle sheet-center sheet-underline sheet-pad-r-sm">
 										Roll
 									</div>
-								</div>
-								<div class="sheet-row sheet-pad-b-sm">
+								</div> -->
+								<!-- <div class="sheet-row sheet-pad-b-sm">
 									<div
 										class="sheet-col-11-20 sheet-attr sheet-vert-middle sheet-pad-l-sm sheet-pad-r-md">
 										<input type="text" name="attr_auto_attack_name" value="Fray Die"
@@ -635,8 +668,8 @@
 										<button type="roll" class="sheet-button ui-draggable" name="roll_fray"
 											value=""></button>
 									</div>
-								</div>
-								<fieldset class="repeating_autoattacks" style="display: none;">
+								</div> -->
+								<!-- <fieldset class="repeating_autoattacks" style="display: none;">
 									<div class="sheet-row sheet-mar-b-sm">
 										<div
 											class="sheet-col-11-20 sheet-attr sheet-vert-middle sheet-pad-l-sm sheet-pad-r-md">
@@ -670,9 +703,9 @@
 								<div class="repcontrol flexrow flex-between" data-groupname="repeating_autoattacks">
 									<button class="btn repcontrol_edit flex0">Modify</button><button
 										class="btn repcontrol_add flex0">+Add</button>
-								</div>
+								</div> -->
 
-								<div class="sheet-row">
+								<!-- <div class="sheet-row">
 									<div
 										class="sheet-col-1 sheet-title-banner-subheading sheet-pad-t-md sheet-pad-b-sm sheet-mar-t-md sheet-mar-b-sm">
 										<h3>Multi-Die Damage Rolls</h3>
@@ -743,9 +776,9 @@
 								<div class="repcontrol flexrow flex-between" data-groupname="repeating_multidieattacks">
 									<button class="btn repcontrol_edit flex0">Modify</button><button
 										class="btn repcontrol_add flex0">+Add</button>
-								</div>
+								</div> -->
 
-								<div class="sheet-row">
+								<!-- <div class="sheet-row">
 									<div
 										class="sheet-col-1 sheet-title-banner-subheading sheet-pad-t-md sheet-pad-b-sm sheet-mar-t-md sheet-mar-b-sm">
 										<h3>Damage Chart</h3>
@@ -840,7 +873,7 @@
 										class="sheet-col-1-10 sheet- sheet-attr sheet-vert-middle sheet-center sheet-pad-r-sm">
 										<br>
 									</div>
-								</div>
+								</div>-->
 							</div>
 						</div>
 						<div class="sheet-row">
@@ -1131,27 +1164,18 @@
 							</div>
 							<div
 								class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-md">
-								<input type="number" name="attr_effort_total" value="2">
+								<input type="number" name="system.coreStats.effort.max"
+								value="{{system.coreStats.effort.max}}" data-dtype="Number">
 							</div>
 							<div
 								class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-md">
-								<input type="hidden" name="attr_calc_word_effort_spent" value="0">
-								<input type="hidden" name="attr_calc_gift_effort_spent" value="0">
-								<input type="hidden" name="attr_calc_miracle_effort_spent" value="0">
-								<input type="hidden" name="attr_calc_technique_effort_spent" value="0">
-								<input type="hidden" name="attr_calc_invocation_gate_effort_spent" value="0">
-								<input type="hidden" name="attr_calc_invocation_way_effort_spent" value="0">
-								<input type="hidden" name="attr_calc_invocation_throne_effort_spent" value="0">
-								<input type="hidden" name="attr_calc_artifact_effort_spent" value="0">
-								<input type="hidden" name="attr_calc_effort_spent"
-									value="(@{calc_word_effort_spent}+@{calc_gift_effort_spent}+@{calc_miracle_effort_spent}+@{calc_technique_effort_spent}+@{calc_invocation_gate_effort_spent}+@{calc_invocation_way_effort_spent}+@{calc_invocation_throne_effort_spent}+@{calc_artifact_effort_spent})">
-								<input type="number" name="attr_effort_spent" value="0" disabled="true"
-									data-formula="(@{calc_effort_spent}+@{miracle_succeed_on_save_effort}+@{miracle_suppress_effect_effort})">
+								<input type="number" name="system.coreStats.effort.committed"
+								value="{{system.coreStats.effort.committed}}" data-dtype="Number">
 							</div>
 							<div
 								class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-md">
-								<input type="number" name="attr_effort_free" value="2" disabled="true"
-									data-formula="(@{effort_total}-@{effort_spent})">
+								<input type="number" name="system.coreStats.effort.free"
+								value="{{system.coreStats.effort.free}}" disabled="true" data-dtype="Number">
 							</div>
 							<div
 								class="sheet-col-1-4 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-md">
@@ -1774,19 +1798,6 @@
 						<div class="repcontrol flexrow flex-between" data-groupname="repeating_treasures"><button
 								class="btn repcontrol_edit flex0">Modify</button><button
 								class="btn repcontrol_add flex0">+Add</button>
-						</div>
-
-						<div class="sheet-rowd sheet-pad-b-sm">
-							<div
-								class="sheet-col-1 sheet-title-banner-subheading sheet-pad-t-md sheet-pad-b-sm sheet-mar-t-md">
-								<h3>Notes</h3>
-							</div>
-						</div>
-						<div class="sheet-row sheet-pad-b-sm">
-							<div class="sheet-col-1 sheet-pad-t-sm sheet-pad-r-sm">
-								<textarea class="sheet-medium-textarea sheet-resize-vertical"
-									name="attr_notes"></textarea>
-							</div>
 						</div>
 					</div>
 				</div>
