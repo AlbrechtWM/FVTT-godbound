@@ -93,7 +93,10 @@
       },
       "possessions": {
         "possessions": {
-          "wealth": 0,
+          "wealth": {
+            "value": 0,
+            "description": ""
+          },
           "artifacts": null,
           "treasures": null,
           "minorMagicItems": null,
