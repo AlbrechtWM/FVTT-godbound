@@ -89,15 +89,15 @@
 									</div>
 									<div
 										class="sheet-col-1-10 sheet-attr sheet-vert-middle sheet-center sheet-pad-r-md">
-										<input type="number" name="system.abilityPoints.free" value="{{system.abilityPoints.free}}" data-dtype="Number"
-											disabled="true">
+										<input type="number" name="system.abilityPoints.free"
+											value="{{system.abilityPoints.free}}" data-dtype="Number" disabled="true">
 									</div>
 									<div
 										class="sheet-col-1-20 sheet-attr sheet-vert-middle sheet-center sheet-pad-r-sm">
 										<br>
 									</div>
 								</div>
-								<br/>
+								<br />
 								<div class="sheet-row sheet-pad-b-sm">
 									<div
 										class="sheet-col-4-15 sheet-attr sheet-vert-top sheet-right sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-md">
@@ -270,7 +270,8 @@
 									</div>
 									<div
 										class="sheet-col-1-10 sheet-attr sheet-vert-middle sheet-center sheet-pad-r-sm">
-										<button data-type="attr" data-stat="str" type="roll" class="sheet-button ui-draggable" name="roll_strength_check"></button>
+										<button data-type="attr" data-stat="str" type="roll"
+											class="sheet-button ui-draggable" name="roll_strength_check"></button>
 									</div>
 								</div>
 								<div class="sheet-row sheet-pad-b-sm">
@@ -295,8 +296,9 @@
 									</div>
 									<div
 										class="sheet-col-1-10 sheet-attr sheet-vert-middle sheet-center sheet-pad-r-sm">
-										<button type="roll" class="sheet-button ui-draggable"
-											name="roll_dexterity_check" value=""></button>
+										<button type="roll" data-type="attr" data-stat="dex"
+											class="sheet-button ui-draggable" name="roll_dexterity_check"
+											value=""></button>
 									</div>
 								</div>
 								<div class="sheet-row sheet-pad-b-sm">
@@ -321,8 +323,9 @@
 									</div>
 									<div
 										class="sheet-col-1-10 sheet-attr sheet-vert-middle sheet-center sheet-pad-r-sm">
-										<button type="roll" class="sheet-button ui-draggable"
-											name="roll_constitution_check" value=""></button>
+										<button type="roll" data-type="attr" data-stat="con"
+											class="sheet-button ui-draggable" name="roll_constitution_check"
+											value=""></button>
 									</div>
 								</div>
 								<div class="sheet-row sheet-pad-b-sm">
@@ -347,8 +350,9 @@
 									</div>
 									<div
 										class="sheet-col-1-10 sheet-attr sheet-vert-middle sheet-center sheet-pad-r-sm">
-										<button type="roll" class="sheet-button ui-draggable"
-											name="roll_intelligence_check" value=""></button>
+										<button type="roll" data-type="attr" data-stat="int"
+											class="sheet-button ui-draggable" name="roll_intelligence_check"
+											value=""></button>
 									</div>
 								</div>
 								<div class="sheet-row sheet-pad-b-sm">
@@ -373,7 +377,8 @@
 									</div>
 									<div
 										class="sheet-col-1-10 sheet-attr sheet-vert-middle sheet-center sheet-pad-r-sm">
-										<button type="roll" class="sheet-button ui-draggable" name="roll_wisdom_check"
+										<button type="roll" data-type="attr" data-stat="wis"
+											class="sheet-button ui-draggable" name="roll_wisdom_check"
 											value=""></button>
 									</div>
 								</div>
@@ -399,7 +404,8 @@
 									</div>
 									<div
 										class="sheet-col-1-10 sheet-attr sheet-vert-middle sheet-center sheet-pad-r-sm">
-										<button type="roll" class="sheet-button ui-draggable" name="roll_charisma_check"
+										<button type="roll" data-type="attr" data-stat="cha"
+											class="sheet-button ui-draggable" name="roll_charisma_check"
 											value=""></button>
 									</div>
 								</div>
@@ -1163,17 +1169,17 @@
 							<div
 								class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-md">
 								<input type="number" name="system.coreStats.effort.max"
-								value="{{system.coreStats.effort.max}}" data-dtype="Number">
+									value="{{system.coreStats.effort.max}}" data-dtype="Number">
 							</div>
 							<div
 								class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-md">
 								<input type="number" name="system.coreStats.effort.committed"
-								value="{{system.coreStats.effort.committed}}" data-dtype="Number">
+									value="{{system.coreStats.effort.committed}}" data-dtype="Number">
 							</div>
 							<div
 								class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-md">
 								<input type="number" name="system.coreStats.effort.free"
-								value="{{system.coreStats.effort.free}}" disabled="true" data-dtype="Number">
+									value="{{system.coreStats.effort.free}}" disabled="true" data-dtype="Number">
 							</div>
 							<div
 								class="sheet-col-1-4 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-md">
@@ -1187,18 +1193,18 @@
 							</div>
 							<div
 								class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-md">
-								<input type="number" name="system.influence.max"
-								value="{{system.influence.max}}" data-dtype="Number">
+								<input type="number" name="system.influence.max" value="{{system.influence.max}}"
+									data-dtype="Number">
 							</div>
 							<div
 								class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-md">
 								<input type="number" name="system.influence.committed"
-								value="{{system.influence.committed}}" data-dtype="Number">
+									value="{{system.influence.committed}}" data-dtype="Number">
 							</div>
 							<div
 								class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-md">
-								<input type="number" name="system.influence.free"
-								value="{{system.influence.free}}" disabled="true" data-dtype="Number">
+								<input type="number" name="system.influence.free" value="{{system.influence.free}}"
+									disabled="true" data-dtype="Number">
 							</div>
 							<div
 								class="sheet-col-1-4 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-md">
@@ -1212,22 +1218,22 @@
 							</div>
 							<div
 								class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-md">
-								<input type="number" name="system.dominion.total"
-								value="{{system.dominion.total}}" data-dtype="Number">
+								<input type="number" name="system.dominion.total" value="{{system.dominion.total}}"
+									data-dtype="Number">
 							</div>
 							<div
 								class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-md">
-								<input type="number" name="system.dominion.spent"
-								value="{{system.dominion.spent}}" data-dtype="Number">
+								<input type="number" name="system.dominion.spent" value="{{system.dominion.spent}}"
+									data-dtype="Number">
 							</div>
 							<div
 								class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-md">
-								<input type="number" name="system.dominion.free"
-								value="{{system.dominion.free}}" disabled="true" data-dtype="Number">
+								<input type="number" name="system.dominion.free" value="{{system.dominion.free}}"
+									disabled="true" data-dtype="Number">
 							</div>
 							<div class="sheet-col-1-4 sheet-attr sheet-center sheet-pad-t-sm sheet-pad-r-md">
 								<input type="number" name="system.dominion.gainPerMonth"
-								value="{{system.dominion.gainPerMonth}}" data-dtype="Number">
+									value="{{system.dominion.gainPerMonth}}" data-dtype="Number">
 							</div>
 						</div>
 						<!-- <hr> TODO good to use elsewhere, this creates that nice line -->
