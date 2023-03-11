@@ -9,11 +9,11 @@ const performRoll = (actor, system, type, stat) => {
     // Making a switch, for adding later cases as necessary
     switch (type) {
         case 'attr': {
-            _performAttributeRoll(actor, system, stat);
+            _performAttributeCheck(actor, system, stat);
             break;
         }
         default: {
-            _performSavingThrowRoll(actor, system, type);
+            _performSavingThrow(actor, system, type);
         }
     }
 }
@@ -22,22 +22,55 @@ const performRoll = (actor, system, type, stat) => {
  * Performs an attribute check
  * @param {Object} actor - The actor performing the roll
  * @param {Object} system - actor system object
- * @param {Object} stat - The stat to roll (str, con, etc)
+ * @param {Object} stat - The stat to roll (str, con, etc.)
  */
-const _performAttributeRoll = (actor, system, stat) => {
+const _performAttributeCheck = (actor, system, stat) => {
     const attributeObject = system.attributes[stat];
-    const content = `${attributeObject.label} Check ( > ${attributeObject.checkDC})`;
-    let roll = new Roll("d20", attributeObject);
-    const speaker = ChatMessage.getSpeaker({ actor });
-    ChatMessage.create({ speaker, content });
-    roll.toMessage({
-        speaker,
-        rollMode: game.settings.get('core', 'rollMode'),
-    }).then(() => {
-        ChatMessage.create({ speaker, content: roll.result > attributeObject.checkDC ? 'Success!' : 'Failure!' });
+    const roll = new Roll("d20", attributeObject);
+    roll.evaluate().then((r) => {
+        const flavor = `<div style="text-align: center"><div>${attributeObject.label} Check ( >= ${attributeObject.checkDC})</div> ${r.result >= attributeObject.checkDC ? '<b style="color:green">Success!</b>' : '<b style="color:red">Failure!</b></div>'}`;
+        const speaker = ChatMessage.getSpeaker({ actor });
+    
+        roll.toMessage({
+            flavor,
+            speaker,
+            rollMode: game.settings.get('core', 'rollMode'),
+        });
     });
 
     return roll;
+}
+
+/**
+ * Performs a saving throw
+ * @param {Object} actor - The actor performing the roll
+ * @param {Object} system - actor system object
+ * @param {Object} type - The type of saving throw (hardiness, evasion, spirit)
+ */
+const _performSavingThrow = (actor, system, type) => {
+    const saveObject = system.coreStats.saves[type];
+    const roll = new Roll("d20", saveObject);
+    roll.evaluate().then((r) => {
+        const flavor = `<div style="text-align: center"><div>${_capitalize(type)} Check ( >= ${saveObject.dc})</div> ${r.result >= saveObject.dc ? '<b style="color:green">Success!</b>' : '<b style="color:red">Failure!</b></div>'}`;
+        const speaker = ChatMessage.getSpeaker({ actor });
+    
+        roll.toMessage({
+            flavor,
+            speaker,
+            rollMode: game.settings.get('core', 'rollMode'),
+        });
+    });
+
+    return roll;
+}
+
+/**
+ * Capitalizes a string
+ * @param {String} string - String to capitalize
+ */
+const _capitalize = (string) => {
+    const firstLetterCap = string.charAt(0).toUpperCase();
+    return `${firstLetterCap}${string.slice(1)}`;
 }
 
 export default { performRoll };

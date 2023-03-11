@@ -60,7 +60,7 @@ const calculateSavingThrowTotals = (system) => {
         // console.log("Attribute Modifier: " + system.coreStats.saves[type].attributeModifier);
         // console.log("Level Modifier: " + system.coreStats.levelOrHD);
 
-        system.coreStats.saves[type].total = 16 - (system.coreStats.saves[type].penaltyModifier)
+        system.coreStats.saves[type].dc = 16 - (system.coreStats.saves[type].penaltyModifier)
             - (system.coreStats.saves[type].attributeModifier) - system.coreStats.levelOrHD;
     });
 }
