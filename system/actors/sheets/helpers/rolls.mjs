@@ -56,7 +56,7 @@ const _performSavingThrow = (actor, system, type, modifier) => {
     const saveObject = system.coreStats.saves[type];
     const roll = new Roll("d20", saveObject);
     const adjustedModifier = modifier ? modifier * -1 : 0;
-    const adjustedCheck = Math.max(attributeObject.checkDC + adjustedModifier, 2);
+    const adjustedCheck = Math.max(saveObject.dc + adjustedModifier, 2);
     roll.evaluate().then(({ result }) => {
         const flavor = `<div style="text-align: center"><div>${_capitalize(type)} Check ( >= ${adjustedCheck})</div> ${_getSuccessDisplay(result, adjustedCheck)}`;
         const speaker = ChatMessage.getSpeaker({ actor });
