@@ -1,9 +1,9 @@
 /**
  * Calculates attribute modifiers based on attribute score
- * @param {Object} context - actor context
+ * @param {Object} system - actor system object
  */
-const calculateDerivedAttributes = (context) => {
-    for (let attr of Object.values(context.system.attributes)) {
+const calculateDerivedAttributes = (system) => {
+    for (let attr of Object.values(system.attributes)) {
         //calc mods
         if (attr.score <= 3) {
             attr.mod = -3;
@@ -30,25 +30,25 @@ const calculateDerivedAttributes = (context) => {
             attr.mod = 4;
         }
 
-        //calc check dc's
+        //calc check dc's 
         attr.checkDC = 21 - attr.score;
     }
 }
 
 /**
  * Calculates remaining ability points
- * @param {Object} context - actor context
+ * @param {Object} system - actor system object
  */
-const calculateAbilityPointsRemaining = (context) => {
-    context.system.abilityPoints.free = context.system.abilityPoints.total - context.system.abilityPoints.spent;
-  }
+const calculateAbilityPointsRemaining = (system) => {
+    system.abilityPoints.free = system.abilityPoints.total - system.abilityPoints.spent;
+}
 
-  /**
- * Calculates remaining influence points
- * @param {Object} context - actor context
- */
-const calculateInfluencePointsRemaining = (context) => {
-    context.system.influence.free = context.system.influence.max - context.system.influence.committed;
-  }
+/**
+* Calculates remaining influence points
+* @param {Object} system - actor system object
+*/
+const calculateInfluencePointsRemaining = (system) => {
+    system.influence.free = system.influence.max - system.influence.committed;
+}
 
-export default { calculateDerivedAttributes, calculateAbilityPointsRemaining, calculateInfluencePointsRemaining};
+export default { calculateDerivedAttributes, calculateAbilityPointsRemaining, calculateInfluencePointsRemaining };

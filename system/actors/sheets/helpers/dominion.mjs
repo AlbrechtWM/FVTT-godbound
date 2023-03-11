@@ -1,9 +1,9 @@
 /**
  * Calculates remaining dominion points
- * @param {Object} context - actor context
+ * @param {Object} system - actor system object
  */
-const calculateDominionPointsRemaining = (context) => {
-    context.system.dominion.free = context.system.dominion.total - context.system.dominion.spent;
-  }
+const calculateDominionPointsRemaining = (system) => {
+  system.dominion.free = system.dominion.total - system.dominion.spent;
+}
 
 export default { calculateDominionPointsRemaining };
