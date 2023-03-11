@@ -1,6 +1,6 @@
 <form class="sheetform" autocomplete="off">
 	<div class="charactersheet tab-pane charsheet lang-undefined" style="display: block;">
-		<div class="sheet-overall-wrapper">
+		<div class="godbound sheet-overall-wrapper">
 			<input type="radio" name="attr_tab" class="sheet-tab-page-character" value="character" checked="checked">
 			<span class="sheet-tab-page-character">Character</span>
 			<input type="radio" name="attr_tab" class="sheet-tab-page-arts" value="arts">
@@ -16,7 +16,7 @@
 							<div class="sheet-col-1-2 sheet-pad-t-md sheet-pad-r-md sheet-pad-b-sm">
 								<div class="sheet-row">
 									<div class="sheet-col-1 sheet-title-banner-heading sheet-pad-t-lg sheet-pad-b-sm">
-										<h2 style="border-bottom: transparent;">Godbound</h2>
+										<h2>Godbound</h2>
 										<hr>
 									</div>
 								</div>
@@ -92,12 +92,8 @@
 										<input type="number" name="system.abilityPoints.free"
 											value="{{system.abilityPoints.free}}" data-dtype="Number" disabled="true">
 									</div>
-									<div
-										class="sheet-col-1-20 sheet-attr sheet-vert-middle sheet-center sheet-pad-r-sm">
-										<br>
-									</div>
 								</div>
-								<br />
+								<hr />
 								<div class="sheet-row sheet-pad-b-sm">
 									<div
 										class="sheet-col-4-15 sheet-attr sheet-vert-top sheet-right sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-md">
@@ -269,9 +265,9 @@
 											value="{{system.attributes.str.checkDC}}" disabled="true">
 									</div>
 									<div
-										class="sheet-col-1-10 sheet-attr sheet-vert-middle sheet-center sheet-pad-r-sm">
-										<button data-type="attr" data-stat="str" type="roll"
-											class="sheet-button ui-draggable" name="roll_strength_check"></button>
+										class="sheet-col-1-10 roll-button-div sheet-attr sheet-vert-middle sheet-center sheet-pad-r-sm">
+										<button type="roll" data-type="attr" data-stat="str" class="sheet-button"
+											name="roll_strength_check"></button>
 									</div>
 								</div>
 								<div class="sheet-row sheet-pad-b-sm">
@@ -296,9 +292,8 @@
 									</div>
 									<div
 										class="sheet-col-1-10 sheet-attr sheet-vert-middle sheet-center sheet-pad-r-sm">
-										<button type="roll" data-type="attr" data-stat="dex"
-											class="sheet-button ui-draggable" name="roll_dexterity_check"
-											value=""></button>
+										<button type="roll" class="sheet-button" data-type="attr" data-stat="dex"
+											name="roll_dexterity_check" value=""></button>
 									</div>
 								</div>
 								<div class="sheet-row sheet-pad-b-sm">
@@ -323,9 +318,8 @@
 									</div>
 									<div
 										class="sheet-col-1-10 sheet-attr sheet-vert-middle sheet-center sheet-pad-r-sm">
-										<button type="roll" data-type="attr" data-stat="con"
-											class="sheet-button ui-draggable" name="roll_constitution_check"
-											value=""></button>
+										<button type="roll" class="sheet-button" data-type="attr" data-stat="con"
+											name="roll_constitution_check" value=""></button>
 									</div>
 								</div>
 								<div class="sheet-row sheet-pad-b-sm">
@@ -350,9 +344,8 @@
 									</div>
 									<div
 										class="sheet-col-1-10 sheet-attr sheet-vert-middle sheet-center sheet-pad-r-sm">
-										<button type="roll" data-type="attr" data-stat="int"
-											class="sheet-button ui-draggable" name="roll_intelligence_check"
-											value=""></button>
+										<button type="roll" class="sheet-button" data-type="attr" data-stat="int"
+											name="roll_intelligence_check" value=""></button>
 									</div>
 								</div>
 								<div class="sheet-row sheet-pad-b-sm">
@@ -377,9 +370,8 @@
 									</div>
 									<div
 										class="sheet-col-1-10 sheet-attr sheet-vert-middle sheet-center sheet-pad-r-sm">
-										<button type="roll" data-type="attr" data-stat="wis"
-											class="sheet-button ui-draggable" name="roll_wisdom_check"
-											value=""></button>
+										<button type="roll" class="sheet-button" data-type="attr" data-stat="wis"
+											name="roll_wisdom_check" value=""></button>
 									</div>
 								</div>
 								<div class="sheet-row sheet-pad-b-sm">
@@ -404,9 +396,8 @@
 									</div>
 									<div
 										class="sheet-col-1-10 sheet-attr sheet-vert-middle sheet-center sheet-pad-r-sm">
-										<button type="roll" data-type="attr" data-stat="cha"
-											class="sheet-button ui-draggable" name="roll_charisma_check"
-											value=""></button>
+										<button type="roll" class="sheet-button" data-type="attr" data-stat="cha"
+											name="roll_charisma_check" value=""></button>
 									</div>
 								</div>
 								<div class="sheet-row">
@@ -444,8 +435,7 @@
 									</div>
 									<div
 										class="sheet-col-1-5 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-md">
-										<input type="number" disabled="true"
-											name="system.coreStats.saves.hardiness.dc"
+										<input type="number" disabled="true" name="system.coreStats.saves.hardiness.dc"
 											value="{{system.coreStats.saves.hardiness.dc}}">
 									</div>
 									<div
@@ -462,7 +452,7 @@
 									</div>
 									<div
 										class="sheet-col-1-10 sheet-attr sheet-vert-middle sheet-center sheet-pad-r-sm">
-										<button type="roll" data-type="hardiness" class="sheet-button ui-draggable"
+										<button type="roll" data-type="hardiness" class="sheet-button"
 											name="roll_hardiness_save" value=""></button>
 									</div>
 								</div>
@@ -490,8 +480,8 @@
 									</div>
 									<div
 										class="sheet-col-1-10 sheet-attr sheet-vert-middle sheet-center sheet-pad-r-sm">
-										<button type="roll" data-type="evasion" class="sheet-button ui-draggable"
-											name="roll_evasion_save" value=""></button>
+										<button type="roll" class="sheet-button ui-draggable" name="roll_evasion_save"
+											value=""></button>
 									</div>
 								</div>
 								<div class="sheet-row sheet-pad-b-sm">
@@ -518,29 +508,29 @@
 									</div>
 									<div
 										class="sheet-col-1-10 sheet-attr sheet-vert-middle sheet-center sheet-pad-r-sm">
-										<button type="roll" data-type="spirit" class="sheet-button ui-draggable"
-											name="roll_spirit_save" value=""></button>
+										<button type="roll" class="sheet-button ui-draggable" name="roll_spirit_save"
+											value=""></button>
 									</div>
 								</div>
-								<div class="sheet-row">
-									<div
-										class="sheet-col-8-23 sheet-attr sheet-vert-middle sheet-right sheet-pad-l-sm sheet-pad-r-md">
+								<div class="flexrow flex-between">
+									<div class="flex0 sheet-attr sheet-vert-middle sheet-right sheet-pad-l-sm sheet-pad-r-md sheet-pad-t-lg"
+										style="white-space: nowrap;">
 										Save Penalties:
 									</div>
 									<div
-										class="sheet-col-5-23 sheet-attr sheet-vert-middle sheet-pad-t-md sheet-pad-r-md sheet-pad-b-sm sheet-mar-t-md">
+										class="flex0 sheet-attr sheet-vert-middle sheet-pad-t-md sheet-pad-r-md sheet-pad-b-sm sheet-mar-t-md">
 										<input type="checkbox" class="sheet-box-check"
 											name="system.coreStats.saves.hardiness.isArmorPenalty" {{checked
 											system.coreStats.saves.hardiness.isArmorPenalty}}><label>Hardiness</label>
 									</div>
 									<div
-										class="sheet-col-5-23 sheet-attr sheet-vert-middle sheet-pad-t-md sheet-pad-r-md sheet-pad-b-sm sheet-mar-t-md">
+										class="flex0 sheet-attr sheet-vert-middle sheet-pad-t-md sheet-pad-r-md sheet-pad-b-sm sheet-mar-t-md">
 										<input type="checkbox" class="sheet-box-check"
 											name="system.coreStats.saves.evasion.isArmorPenalty" {{checked
 											system.coreStats.saves.evasion.isArmorPenalty}}><label>Evasion</label>
 									</div>
 									<div
-										class="sheet-col-5-23 sheet-attr sheet-vert-middle sheet-pad-t-md sheet-pad-r-sm sheet-pad-b-sm sheet-mar-t-md">
+										class="flex0 sheet-attr sheet-vert-middle sheet-pad-t-md sheet-pad-r-sm sheet-pad-b-sm sheet-mar-t-md">
 										<input type="checkbox" class="sheet-box-check"
 											name="system.coreStats.saves.spirit.isArmorPenalty" {{checked
 											system.coreStats.saves.spirit.isArmorPenalty}}><label>Spirit</label>
@@ -571,7 +561,7 @@
 										</select>
 									</div>
 								</div>
-								<div class="sheet-row">
+								<div class="sheet-row sheet-pad-t-md">
 									<div
 										class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-right sheet-pad-l-sm sheet-pad-r-md">
 										AC
@@ -582,7 +572,7 @@
 											value="{{system.coreStats.ac.dc}}" disabled="true">
 									</div>
 									<div
-										class="sheet-col-1-5 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-md sheet-pad-r-md sheet-mar-t-sm">
+										class="sheet-col-1-5 sheet-attr sheet-vert-middle sheet-center sheet-pad-r-md sheet-mar-t-sm">
 										<input type="checkbox" class="sheet-box-check"
 											name="system.coreStats.ac.hasShield" {{checked
 											system.coreStats.ac.hasShield}}><label>Shield</label>
@@ -605,7 +595,7 @@
 											data-formula="((@{armor_ac}) + (@{armor_shield}) - (@{armor_bonus}) - (@{dexterity_mod}))">
 									</div> -->
 								</div>
-								<div class="sheet-row sheet-pad-b-sm">
+								<div class="sheet-row sheet-pad-b-sm sheet-pad-t-md">
 									<div class="sheet-col-1 sheet-attr sheet-pad-r-sm">
 										<textarea class="sheet-small-textarea sheet-resize-vertical"
 											name="system.coreStats.ac.armorDescription"
@@ -615,7 +605,7 @@
 								<div class="sheet-rowd sheet-pad-b-sm">
 									<div
 										class="sheet-col-1 sheet-title-banner-subheading sheet-pad-t-md sheet-pad-b-sm sheet-mar-t-md">
-										<h3>Notes:</h3>
+										<h3>Notes</h3>
 									</div>
 								</div>
 								<div class="sheet-row sheet-pad-b-sm">
@@ -669,7 +659,7 @@
 									</div>
 									<div
 										class="sheet-col-1-10 sheet-attr sheet-vert-middle sheet-center sheet-pad-r-sm">
-										<button type="roll" class="sheet-button ui-draggable" name="roll_fray"
+										<button type="roll" class="sheet-button " name="roll_fray"
 											value=""></button>
 									</div>
 								</div> -->
@@ -698,7 +688,7 @@
 										</div>
 										<div
 											class="sheet-col-1-10 sheet-attr sheet-vert-middle sheet-center sheet-pad-r-sm">
-											<button type="roll" class="sheet-button ui-draggable"
+											<button type="roll" class="sheet-button "
 												name="roll_auto_hit_repeat" value=""></button>
 										</div>
 									</div>
@@ -771,7 +761,7 @@
 										</div>
 										<div
 											class="sheet-col-1-10 sheet-attr sheet-vert-middle sheet-center sheet-pad-r-sm">
-											<button type="roll" class="sheet-button ui-draggable"
+											<button type="roll" class="sheet-button "
 												name="roll_multi_damage_repeat" value=""></button>
 										</div>
 									</div>
@@ -976,8 +966,8 @@
 										</div>
 										<div
 											class="sheet-col-1-20 sheet-attr sheet-vert-middle sheet-center sheet-pad-r-sm">
-											<button type="roll" class="sheet-button btn ui-draggable"
-												name="roll_weapon_repeat" value=""></button>
+											<button type="roll" class="sheet-button btn " name="roll_weapon_repeat"
+												value=""></button>
 										</div>
 									</div>
 								</fieldset>
@@ -1296,8 +1286,8 @@
 										placeholder="Word description"></textarea>
 								</div>
 								<div class="sheet-col-1-10 sheet-attr sheet-chatbutton">
-									<button type="roll" class="sheet-button btn ui-draggable"
-										name="roll_word_broadcast_repeat" value=""></button>
+									<button type="roll" class="sheet-button btn " name="roll_word_broadcast_repeat"
+										value=""></button>
 								</div>
 							</div>
 						</fieldset>
@@ -1352,8 +1342,8 @@
 										placeholder="Gift description"></textarea>
 								</div>
 								<div class="sheet-col-1-10 sheet-attr sheet-chatbutton">
-									<button type="roll" class="sheet-button btn ui-draggable"
-										name="roll_gift_broadcast_repeat" value=""></button>
+									<button type="roll" class="sheet-button btn " name="roll_gift_broadcast_repeat"
+										value=""></button>
 								</div>
 							</div>
 						</fieldset>
@@ -1473,8 +1463,8 @@
 										placeholder="Gift description"></textarea>
 								</div>
 								<div class="sheet-col-1-10 sheet-attr sheet-chatbutton">
-									<button type="roll" class="sheet-button btn ui-draggable"
-										name="roll_miracle_broadcast_repeat" value=""></button>
+									<button type="roll" class="sheet-button btn " name="roll_miracle_broadcast_repeat"
+										value=""></button>
 								</div>
 							</div>
 						</fieldset>
@@ -1596,7 +1586,7 @@
 											placeholder="Power description"></textarea>
 									</div>
 									<div class="sheet-col-1-10 sheet-attr sheet-chatbutton">
-										<button type="roll" class="sheet-button btn ui-draggable"
+										<button type="roll" class="sheet-button btn "
 											name="roll_artifact_power1_broadcast_repeat" value=""></button>
 									</div>
 								</div>
@@ -1627,7 +1617,7 @@
 											placeholder="Power description"></textarea>
 									</div>
 									<div class="sheet-col-1-10 sheet-attr sheet-chatbutton">
-										<button type="roll" class="sheet-button btn ui-draggable"
+										<button type="roll" class="sheet-button btn "
 											name="roll_artifact_power2_broadcast_repeat" value=""></button>
 									</div>
 								</div>
@@ -1658,7 +1648,7 @@
 											placeholder="Power description"></textarea>
 									</div>
 									<div class="sheet-col-1-10 sheet-attr sheet-chatbutton">
-										<button type="roll" class="sheet-button btn ui-draggable"
+										<button type="roll" class="sheet-button btn "
 											name="roll_artifact_power3_broadcast_repeat" value=""></button>
 									</div>
 								</div>
@@ -1689,7 +1679,7 @@
 											placeholder="Power description"></textarea>
 									</div>
 									<div class="sheet-col-1-10 sheet-attr sheet-chatbutton">
-										<button type="roll" class="sheet-button btn ui-draggable"
+										<button type="roll" class="sheet-button btn "
 											name="roll_artifact_power4_broadcast_repeat" value=""></button>
 									</div>
 								</div>
@@ -1720,7 +1710,7 @@
 											placeholder="Power description"></textarea>
 									</div>
 									<div class="sheet-col-1-10 sheet-attr sheet-chatbutton">
-										<button type="roll" class="sheet-button btn ui-draggable"
+										<button type="roll" class="sheet-button btn "
 											name="roll_artifact_power5_broadcast_repeat" value=""></button>
 									</div>
 								</div>
@@ -1860,7 +1850,7 @@
 											Initiate
 											<br>
 											<div class="sheet-col-1-10 sheet-attr sheet-chatbutton">
-												<button type="roll" class="sheet-button btn ui-draggable"
+												<button type="roll" class="sheet-button btn "
 													name="roll_strife_initiate_broadcast_repeat" value=""></button>
 											</div>
 										</div>
@@ -1879,7 +1869,7 @@
 											<br>
 											<div
 												class="sheet-col-1-10 sheet-attr sheet-chatbutton sheet-pad-t-sm sheet-pad-r-sm">
-												<button type="roll" class="sheet-button btn ui-draggable"
+												<button type="roll" class="sheet-button btn "
 													name="roll_strife_disciple_broadcast_repeat" value=""></button>
 											</div>
 										</div>
@@ -1898,7 +1888,7 @@
 											<br>
 											<div
 												class="sheet-col-1-10 sheet-attr sheet-chatbutton sheet-pad-t-sm sheet-pad-r-sm">
-												<button type="roll" class="sheet-button btn ui-draggable"
+												<button type="roll" class="sheet-button btn "
 													name="roll_strife_master_broadcast_repeat" value=""></button>
 											</div>
 										</div>
@@ -1964,8 +1954,8 @@
 										placeholder="Technique description"></textarea>
 								</div>
 								<div class="sheet-col-1-10 sheet-attr sheet-chatbutton">
-									<button type="roll" class="sheet-button btn ui-draggable"
-										name="roll_technique_broadcast_repeat" value=""></button>
+									<button type="roll" class="sheet-button btn " name="roll_technique_broadcast_repeat"
+										value=""></button>
 								</div>
 							</div>
 						</fieldset>
@@ -2017,7 +2007,7 @@
 											Apprentice
 											<br>
 											<div class="sheet-col-1-10 sheet-attr sheet-chatbutton">
-												<button type="roll" class="sheet-button btn ui-draggable"
+												<button type="roll" class="sheet-button btn "
 													name="roll_tradition_apprentice_broadcast_repeat" value=""></button>
 											</div>
 										</div>
@@ -2035,7 +2025,7 @@
 											Adept
 											<br>
 											<div class="sheet-col-1-10 sheet-attr sheet-chatbutton">
-												<button type="roll" class="sheet-button btn ui-draggable"
+												<button type="roll" class="sheet-button btn "
 													name="roll_tradition_adept_broadcast_repeat" value=""></button>
 											</div>
 										</div>
@@ -2053,7 +2043,7 @@
 											Master
 											<br>
 											<div class="sheet-col-1-10 sheet-attr sheet-chatbutton">
-												<button type="roll" class="sheet-button btn ui-draggable"
+												<button type="roll" class="sheet-button btn "
 													name="roll_tradition_master_broadcast_repeat" value=""></button>
 											</div>
 										</div>
@@ -2071,7 +2061,7 @@
 											Archmage
 											<br>
 											<div class="sheet-col-1-10 sheet-attr sheet-chatbutton">
-												<button type="roll" class="sheet-button btn ui-draggable"
+												<button type="roll" class="sheet-button btn "
 													name="roll_tradition_archamage_broadcast_repeat" value=""></button>
 											</div>
 										</div>
@@ -2142,7 +2132,7 @@
 										placeholder="Gift description"></textarea>
 								</div>
 								<div class="sheet-col-1-10 sheet-attr sheet-chatbutton">
-									<button type="roll" class="sheet-button btn ui-draggable"
+									<button type="roll" class="sheet-button btn "
 										name="roll_invocation_gate_broadcast_repeat" value=""></button>
 								</div>
 							</div>
@@ -2200,7 +2190,7 @@
 										placeholder="Gift description"></textarea>
 								</div>
 								<div class="sheet-col-1-10 sheet-attr sheet-chatbutton">
-									<button type="roll" class="sheet-button btn ui-draggable"
+									<button type="roll" class="sheet-button btn "
 										name="roll_invocation_way_broadcast_repeat" value=""></button>
 								</div>
 							</div>
@@ -2258,7 +2248,7 @@
 										placeholder="Gift description"></textarea>
 								</div>
 								<div class="sheet-col-1-10 sheet-attr sheet-chatbutton">
-									<button type="roll" class="sheet-button btn ui-draggable"
+									<button type="roll" class="sheet-button btn "
 										name="roll_invocation_throne_broadcast_repeat" value=""></button>
 								</div>
 							</div>

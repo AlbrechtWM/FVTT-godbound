@@ -393,19 +393,6 @@ label input[type=checkbox] {
 	content: "i";
 }
 
-button[type=roll].ui-draggable-dragging {
-	z-index: 11000;
-	width: auto !important;
-	height: auto !important;
-	padding: 2px 3px;
-	font-size: 1.3em;
-	margin: 0px 3px 0px 3px;
-}
-
-button[type=roll].ui-draggable-dragging:before {
-	font-family: "dicefontd20";
-	content: "t";
-}
 
 .ui-dialog .charsheet .repcontrol_edit {
 	float: right;
@@ -1087,7 +1074,11 @@ body.sheet-darkmode .attributesabilities {
 	margin-bottom: -2px;
 }
 
-.charsheet [data-groupname=repeating_facts]>button.btn.repcontrol_add::after {
+.charsheet .repcontrol_add{
+	background-color: #fae6c8;
+}
+
+/* .charsheet [data-groupname=repeating_facts]>button.btn.repcontrol_add::after {
 	content: "Add Fact";
 	background-color: #fae6c8;
 	margin-left: -28px;
@@ -1095,7 +1086,7 @@ body.sheet-darkmode .attributesabilities {
 
 .charsheet [data-groupname=repeating_autoattacks]>button.btn.repcontrol_add::after {
 	content: "Add Attack";
-	background-color: #fae6c8;
+
 	margin-left: -28px;
 }
 
@@ -1220,7 +1211,7 @@ body.sheet-darkmode .attributesabilities {
 	background-color: #fae6c8;
 	margin-left: -28px;
 	width: 100% !important;
-}
+} */
 
 .charsheet div[class^="repcontrol"] {
 	margin-bottom: 5px;
@@ -2404,8 +2395,7 @@ body.sheet-darkmode .attributesabilities {
 	margin-left: 88.88889%;
 }
 
-.charsheet .sheet-col-1-10,
-.sheet-rolltemplate-godbound .sheet-col-1-10 {
+.charsheet .sheet-col-1-10{
 	width: 10%;
 }
 
@@ -3744,8 +3734,7 @@ body.sheet-darkmode .attributesabilities {
 	margin-left: 17.3913%;
 }
 
-.charsheet .sheet-col-5-23,
-.sheet-rolltemplate-godbound .sheet-col-5-23 {
+.charsheet .sheet-col-5-23 {
 	width: 21.73913%;
 }
 
@@ -4881,4 +4870,8 @@ body.sheet-darkmode .attributesabilities {
 .repcontrol_add,
 .repcontrol_del {
 	width: fit-content;
+}
+
+.charsheet button[type=roll] {
+	line-height: 16px;
 }
