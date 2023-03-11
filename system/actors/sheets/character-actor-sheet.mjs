@@ -2,6 +2,7 @@ import { onManageActiveEffect, prepareActiveEffectCategories } from "../../helpe
 import CoreStats from './helpers/coreStats.mjs';
 import Character from './helpers/character.mjs';
 import Dominion from './helpers/dominion.mjs';
+import Rolls from './helpers/rolls.mjs';
 
 /**
  * Extend the basic ActorSheet with some very simple modifications
@@ -55,30 +56,30 @@ export class godboundCharacterActorSheet extends ActorSheet {
     //context.effects = prepareActiveEffectCategories(this.actor.effects);
 
     //Ability Points
-    Character.calculateAbilityPointsRemaining(context);
+    Character.calculateAbilityPointsRemaining(context.system, this.actor);
 
     // Attributes
-    Character.calculateDerivedAttributes(context);
- 
+    Character.calculateDerivedAttributes(context.system, this.actor);
+
     //Armor Class
-    CoreStats.calculateAC(context);
+    CoreStats.calculateAC(context.system);
 
     // Saving throws
-    CoreStats.calculateSavingThrowBonuses(context);
-    CoreStats.calculateSavingThrowPenalties(context);
-    CoreStats.calculateSavingThrowTotals(context);
+    CoreStats.calculateSavingThrowBonuses(context.system, this.actor);
+    CoreStats.calculateSavingThrowPenalties(context.system, this.actor);
+    CoreStats.calculateSavingThrowTotals(context.system, this.actor);
 
     //HP
-    CoreStats.calculateMaxHP(context);
+    CoreStats.calculateMaxHP(context.system, this.actor);
 
     //Effort
-    CoreStats.calculateEffort(context);
+    CoreStats.calculateEffort(context.system, this.actor);
 
     //Influence
-    Character.calculateInfluencePointsRemaining(context);
+    Character.calculateInfluencePointsRemaining(context.system, this.actor);
 
     //Dominion
-    Dominion.calculateDominionPointsRemaining(context);
+    Dominion.calculateDominionPointsRemaining(context.system, this.actor);
 
     //console.log(context);
     return context;
@@ -87,6 +88,8 @@ export class godboundCharacterActorSheet extends ActorSheet {
   /** @override */
   activateListeners(html) {
     super.activateListeners(html);
+    // Rollable abilities.
+    html.find('button[type=roll]').click(this._onRoll.bind(this));
   }
 
   // /**
@@ -181,9 +184,6 @@ export class godboundCharacterActorSheet extends ActorSheet {
   // // Active Effect management
   // html.find(".effect-control").click(ev => onManageActiveEffect(ev, this.actor));
 
-  // // Rollable abilities.
-  // html.find('.rollable').click(this._onRoll.bind(this));
-
   // // Drag events for macros.
   // if (this.actor.isOwner) {
   //   let handler = ev => this._onDragStart(ev);
@@ -222,36 +222,40 @@ export class godboundCharacterActorSheet extends ActorSheet {
   //   return await Item.create(itemData, {parent: this.actor});
   // }
 
-  // /**
-  //  * Handle clickable rolls.
-  //  * @param {Event} event   The originating click event
-  //  * @private
-  //  */
-  // _onRoll(event) {
-  //   event.preventDefault();
-  //   const element = event.currentTarget;
-  //   const dataset = element.dataset;
+  /**
+   * Handle clickable rolls.
+   * @param {Event} event   The originating click event
+   * @private
+   */
+  _onRoll(event) {
+    event.preventDefault();
 
-  //   // Handle item rolls.
-  //   if (dataset.rollType) {
-  //     if (dataset.rollType == 'item') {
-  //       const itemId = element.closest('.item').dataset.itemId;
-  //       const item = this.actor.items.get(itemId);
-  //       if (item) return item.roll();
-  //     }
-  //   }
+    const element = event.currentTarget;
+    const { type, stat } = element.dataset;
+    
+    Rolls.performRoll(this.actor, this.getData().system, type, stat);
 
-  //   // Handle rolls that supply the formula directly.
-  //   if (dataset.roll) {
-  //     let label = dataset.label ? `[ability] ${dataset.label}` : '';
-  //     let roll = new Roll(dataset.roll, this.actor.getRollData());
-  //     roll.toMessage({
-  //       speaker: ChatMessage.getSpeaker({ actor: this.actor }),
-  //       flavor: label,
-  //       rollMode: game.settings.get('core', 'rollMode'),
-  //     });
-  //     return roll;
-  //   }
-  //}
+
+    // // Handle item rolls.
+    // if (dataset.rollType) {
+    //   if (dataset.rollType == 'item') {
+    //     const itemId = element.closest('.item').dataset.itemId;
+    //     const item = this.actor.items.get(itemId);
+    //     if (item) return item.roll();
+    //   }
+    // }
+
+    // // Handle rolls that supply the formula directly.
+    // if (dataset.roll) {
+    //   let label = dataset.label ? `[ability] ${dataset.label}` : '';
+    //   let roll = new Roll(dataset.roll, this.actor.getRollData());
+    //   roll.toMessage({
+    //     speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+    //     flavor: label,
+    //     rollMode: game.settings.get('core', 'rollMode'),
+    //   });
+    //   return roll;
+    // }
+  }
 
 }
