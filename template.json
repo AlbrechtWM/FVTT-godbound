@@ -120,8 +120,7 @@
               "isArmorPenalty": false,
               "miscModifier": 0,
               "isAutomatic": false,
-              "dc": -1,
-              "total": 0
+              "dc": -1
             },
             "evasion": {
               "base": 16,
@@ -131,8 +130,7 @@
               "isArmorPenalty": false,
               "miscModifier": 0,
               "isAutomatic": false,
-              "dc": -1,
-              "total": 0
+              "dc": -1
             },
             "spirit": {
               "base": 16,
@@ -142,8 +140,7 @@
               "isArmorPenalty": false,
               "miscModifier": 0,
               "isAutomatic": false,
-              "dc": -1,
-              "total": 0
+              "dc": -1
             }
           },
           "ac": {
