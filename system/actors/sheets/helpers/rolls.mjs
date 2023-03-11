@@ -19,7 +19,7 @@ const performRoll = (actor, system, type, stat) => {
 }
 
 /**
- * Calculates attribute modifiers based on attribute score
+ * Performs an attribute check
  * @param {Object} actor - The actor performing the roll
  * @param {Object} system - actor system object
  * @param {Object} stat - The stat to roll (str, con, etc)
