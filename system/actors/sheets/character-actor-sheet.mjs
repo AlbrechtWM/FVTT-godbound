@@ -231,10 +231,32 @@ export class godboundCharacterActorSheet extends ActorSheet {
     event.preventDefault();
 
     const element = event.currentTarget;
-    const { type, stat } = element.dataset;
-    
-    Rolls.performRoll(this.actor, this.getData().system, type, stat);
+    const { type, stat, dialog } = element.dataset;
 
+    if (dialog) {
+      new Dialog({
+        title: "Additional Modifiers",
+        content: `<input id="roll-modifier-dialog" type="number" value="0" />`,
+        default: "button1",
+        buttons: {
+          button1: {
+            label: "Proceed",
+            callback: (html) => {
+              const value = html.find("input#roll-modifier-dialog").val();
+              Rolls.performRoll(this.actor, this.getData().system, type, value, stat);
+            },
+            icon: `<i class="fas fa-check"></i>`
+          },
+          button2: {
+            label: "Cancel",
+            callback: () => {},
+            icon: `<i class="fas fa-cancel"></i>`
+          },
+        }
+      }).render(true);
+    } else {
+      Rolls.performRoll(this.actor, this.getData().system, type, value, stat)
+    }
 
     // // Handle item rolls.
     // if (dataset.rollType) {
