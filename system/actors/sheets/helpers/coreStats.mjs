@@ -65,13 +65,31 @@ const calculateSavingThrowTotals = (system) => {
     });
 }
 
+const calculateMaxHealth = (system) => {
+    if (system.coreStats.useHD) {
+        _calculateMaxHD(system);
+    }
+    else {
+        _calculateMaxHP(system);
+    }
+}
+
+/**
+ * Calculates max HD for a character
+ * @param {Object} system - actor system object
+ */
+const _calculateMaxHD = (system) => {
+    system.coreStats.hp.max = system.coreStats.levelOrHD + system.coreStats.hp.miscBonus; //TODO MOB STUFF
+    system.coreStats.hp.isHD = true;
+}
+
 /**
  * Calculates max HP for a character
  * @param {Object} system - actor system object
  */
-const calculateMaxHP = (system) => {
+const _calculateMaxHP = (system) => {
     system.coreStats.hp.max = (8 + system.attributes.con.mod) + ((system.coreStats.levelOrHD - 1) * (4 + Math.ceil(system.attributes.con.mod / 2)))
-     + system.coreStats.hp.miscBonus;
+        + system.coreStats.hp.miscBonus;
 
     system.coreStats.hp.isHD = false;
 }
@@ -105,11 +123,20 @@ const calculateAC = (system) => {
             break;
     }
 
+    console.log(system);
 
-    system.coreStats.ac.total = base - system.coreStats.ac.miscModifier - system.attributes.dex.mod;
+    system.coreStats.ac.total = base - system.coreStats.ac.miscModifier - (system.coreStats.useHD ? 0 : system.attributes.dex.mod);
     if (system.coreStats.ac.armorType !== "special" && system.coreStats.ac.hasShield) {
         system.coreStats.ac.total--;
     }
+}
+
+/**
+ * Calculates effort for the actor
+ * @param {Object} system - actor system object
+ */
+const setUseHD = (system, useHD) => {
+    system.coreStats.useHD = useHD;
 }
 
 /**
@@ -122,4 +149,4 @@ const calculateEffort = (system) => {
 
 
 
-export default { calculateSavingThrowBonuses, calculateSavingThrowPenalties, calculateSavingThrowTotals, calculateAC, calculateMaxHP, calculateEffort};
+export default { calculateSavingThrowBonuses, calculateSavingThrowPenalties, calculateSavingThrowTotals, calculateAC, calculateMaxHealth, calculateEffort, setUseHD };

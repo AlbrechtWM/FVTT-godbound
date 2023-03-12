@@ -5,10 +5,6 @@
 			<span class="sheet-tab-page-character">Character</span>
 			<input type="radio" name="attr_tab" class="sheet-tab-page-arts" value="arts">
 			<span class="sheet-tab-page-arts">Arts</span>
-			<!-- <input type="radio" name="attr_tab" class="sheet-tab-page-npc" value="npc">
-				<span class="sheet-tab-page-npc">NPC</span>
-				<input type="radio" name="attr_tab" class="sheet-tab-page-faction" value="faction">
-				<span class="sheet-tab-page-faction">Faction</span> -->
 			<div class="sheet-section-character">
 				<div class="sheet-row">
 					<div class="sheet-col-2-3">
@@ -108,7 +104,7 @@
 								<div class="sheet-row sheet-pad-b-sm">
 									<div
 										class="sheet-col-4-15 sheet-attr sheet-vert-top sheet-right sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-md">
-										Language
+										Languages
 									</div>
 									<div class="sheet-col-11-15 sheet-attr sheet-vert-middle sheet-pad-r-sm">
 										<textarea class="sheet-small-textarea sheet-resize-vertical"
@@ -119,7 +115,7 @@
 								<div class="sheet-row sheet-pad-b-md">
 									<div
 										class="sheet-col-4-15 sheet-attr sheet-vert-top sheet-right sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-md">
-										Goal
+										Goals
 									</div>
 									<div class="sheet-col-11-15 sheet-attr sheet-vert-middle sheet-pad-r-sm">
 										<textarea class="sheet-small-textarea sheet-resize-vertical"
@@ -544,7 +540,7 @@
 								</div>
 								<div class="sheet-row sheet-pad-b-sm">
 									<div
-										class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-right sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-md">
+										class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-right sheet-pad-l-sm sheet-pad-r-md">
 										Type
 									</div>
 									<div
@@ -1736,7 +1732,8 @@
 							</div>
 							<div
 								class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-md">
-								<input type="number" name="attr_wealth_total" value="0">
+								<input type="number" name="system.possessions.wealth.total"
+								value="{{system.possessions.wealth.total}}" data-dtype="Number">
 							</div>
 							<div
 								class="sheet-col-11-20 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-sm">
@@ -1746,7 +1743,7 @@
 						<div class="sheet-row sheet-pad-b-sm">
 							<div class="sheet-col-1 sheet-attr sheet-vert-middle sheet-pad-t-sm sheet-pad-r-md">
 								<textarea class="sheet-small-textarea sheet-resize-vertical"
-									name="attr_wealth_description" placeholder="Wealth description"></textarea>
+									name="system.possessions.wealth.description" placeholder="Wealth description">{{system.possessions.wealth.description}}</textarea>
 							</div>
 						</div>
 						<div class="sheet-row sheet-pad-b-md">

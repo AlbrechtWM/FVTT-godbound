@@ -1,4 +1,5 @@
 import {onManageActiveEffect, prepareActiveEffectCategories} from "../../helpers/effects.mjs";
+import CoreStats from './helpers/coreStats.mjs';
 
 /**
  * Extend the basic ActorSheet with some very simple modifications
@@ -11,8 +12,8 @@ export class godboundNPCActorSheet extends ActorSheet {
     return mergeObject(super.defaultOptions, {
       classes: ["godbound", "sheet", "actor"],
       template: "systems/godbound/system/actors/templates/npc-actor-sheet.html",
-      width: 600,
-      height: 600,
+      width: 868,
+      height: 878
       // tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "features" }]
     });
   }
@@ -45,11 +46,21 @@ export class godboundNPCActorSheet extends ActorSheet {
     //   this._prepareCharacterData(context);
     // }
 
-    // Prepare NPC data and items.
-    if (actorData.type == 'npc') {
-      //this._prepareItems(context);
-      this._prepareNPCData(context);
-    }
+    CoreStats.setUseHD(context.system, true);
+
+    //Armor Class
+    CoreStats.calculateAC(context.system);
+
+    // // Saving throws
+    // CoreStats.calculateSavingThrowBonuses(context.system, this.actor);
+    // CoreStats.calculateSavingThrowPenalties(context.system, this.actor);
+    // CoreStats.calculateSavingThrowTotals(context.system, this.actor);
+
+    //HP
+    CoreStats.calculateMaxHealth(context.system, this.actor);
+
+    //Effort
+    CoreStats.calculateEffort(context.system, this.actor);
 
     // Add roll data for TinyMCE editors.
     //context.rollData = context.actor.getRollData();
@@ -60,19 +71,6 @@ export class godboundNPCActorSheet extends ActorSheet {
     return context;
   }
 
-  /**
-   * Organize and classify Items for Character sheets.
-   *
-   * @param {Object} actorData The actor to prepare.
-   *
-   * @return {undefined}
-   */
-  _prepareNPCData(context) {
-    // Handle ability scores.
-    // for (let [k, v] of Object.entries(context.system.abilities)) {
-    //   v.label = game.i18n.localize(CONFIG.godbound.abilities[k]) ?? k;
-    // }
-  }
 
   // /**
   //  * Organize and classify Items for Character sheets.

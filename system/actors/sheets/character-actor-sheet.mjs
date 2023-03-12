@@ -55,6 +55,9 @@ export class godboundCharacterActorSheet extends ActorSheet {
     // Prepare active effects
     //context.effects = prepareActiveEffectCategories(this.actor.effects);
 
+    //Important for later CoreStat functions knowing whether this is an NPC or PC
+    CoreStats.setUseHD(context.system, false);
+
     //Ability Points
     Character.calculateAbilityPointsRemaining(context.system, this.actor);
 
@@ -70,7 +73,7 @@ export class godboundCharacterActorSheet extends ActorSheet {
     CoreStats.calculateSavingThrowTotals(context.system, this.actor);
 
     //HP
-    CoreStats.calculateMaxHP(context.system, this.actor);
+    CoreStats.calculateMaxHealth(context.system, this.actor);
 
     //Effort
     CoreStats.calculateEffort(context.system, this.actor);
