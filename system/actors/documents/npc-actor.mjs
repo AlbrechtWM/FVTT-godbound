@@ -1,6 +1,6 @@
 import { godboundActor } from "./godbound-actor.mjs";
 
-export class godboundNPCActor extends godboundActor {
+export class npcActor extends godboundActor {
 
   /** @override */
   prepareData() {

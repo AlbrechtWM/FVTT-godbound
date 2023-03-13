@@ -1,17 +1,20 @@
 // Import document classes.
-import { godboundActorProxy } from "./actors/documents/actor-proxy.mjs";
-import { godboundCharacterActor } from "./actors/documents/character-actor.mjs";
-import { godboundNPCActor } from "./actors/documents/npc-actor.mjs";
-import { godboundFactionActor } from "./actors/documents/faction-actor.mjs";
-import { godboundItem } from "./items/documents/item.mjs";
+import { actorProxy } from "./actors/documents/actor-proxy.mjs";
+import { characterActor } from "./actors/documents/character-actor.mjs";
+import { npcActor } from "./actors/documents/npc-actor.mjs";
+import { factionActor } from "./actors/documents/faction-actor.mjs";
+import { godboundItem } from "./items/documents/godbound-item.mjs";
+import { itemProxy } from "./items/documents/item-proxy.mjs";
+import { attackItem } from "./items/documents/attack-item.mjs";
 // Import sheet classes.
-import { godboundCharacterActorSheet } from "./actors/sheets/character-actor-sheet.mjs";
-import { godboundNPCActorSheet } from "./actors/sheets/npc-actor-sheet.mjs";
-import { godboundFactionActorSheet } from "./actors/sheets/faction-actor-sheet.mjs";
+import { characterActorSheet } from "./actors/sheets/character-actor-sheet.mjs";
+import { npcActorSheet } from "./actors/sheets/npc-actor-sheet.mjs";
+import { factionActorSheet } from "./actors/sheets/faction-actor-sheet.mjs";
 import { godboundItemSheet } from "./items/sheets/item-sheet.mjs";
+import { attackItemSheet } from "./items/sheets/attack-item-sheet.mjs";
 // Import helper/utility classes and constants.
 import { preloadHandlebarsTemplates } from "./helpers/templates.mjs";
-import { godbound_constants } from "./helpers/config.mjs";
+import { godbound_constants } from "./helpers/godbound_constants.mjs";
 
 /* -------------------------------------------- */
 /*  Init Hook                                   */
@@ -21,10 +24,11 @@ Hooks.once('init', async function() {
   // Add utility classes to the global game object so that they're more easily
   // accessible in global contexts.
   game.godbound = {
-    godboundCharacterActor,
-    godboundNPCActor,
-    godboundFactionActor,
+    characterActor,
+    npcActor,
+    factionActor,
     godboundItem,
+    attackItem,
     rollItemMacro
   };
 
@@ -41,16 +45,23 @@ Hooks.once('init', async function() {
   };
 
   // Define custom Document classes
-  CONFIG.Actor.documentClass = godboundActorProxy;
-  CONFIG.Item.documentClass = godboundItem;
+  CONFIG.Actor.documentClass = actorProxy;
+  CONFIG.Item.documentClass = itemProxy;
 
-  // Register sheet application classes
+  // Unregister Core Foundry Sheets
   Actors.unregisterSheet("core", ActorSheet);
   Items.unregisterSheet("core", ItemSheet);
-  Items.registerSheet("godbound", godboundItemSheet, { makeDefault: true });
-  Actors.registerSheet("godbound", godboundNPCActorSheet, { types: ["npc"],makeDefault: false });
-  Actors.registerSheet("godbound", godboundCharacterActorSheet, { types: ["character"],makeDefault: false });
-  Actors.registerSheet("godbound", godboundFactionActorSheet, { types: ["faction"],makeDefault: false });
+
+  // Register Godbound Actor Sheets
+
+
+  Actors.registerSheet("godbound", npcActorSheet, { types: ["npc"],makeDefault: false });
+  Actors.registerSheet("godbound", characterActorSheet, { types: ["character"],makeDefault: false });
+  Actors.registerSheet("godbound", factionActorSheet, { types: ["faction"],makeDefault: false });
+
+  // Register Godbound Item Sheets
+  Items.registerSheet("godbound", godboundItemSheet, { makeDefault: false });
+  Items.registerSheet("godbound", attackItemSheet, { types: ["attack"], makeDefault: false });
 
   // Preload Handlebars templates.
   //return preloadHandlebarsTemplates();

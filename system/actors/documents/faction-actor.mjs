@@ -1,6 +1,6 @@
 import { godboundActor } from "./godbound-actor.mjs";
 
-export class godboundFactionActor extends godboundActor {
+export class factionActor extends godboundActor {
 
   /** @override */
   prepareData() {

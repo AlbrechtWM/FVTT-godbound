@@ -4,7 +4,7 @@ import {onManageActiveEffect, prepareActiveEffectCategories} from "../../helpers
  * Extend the basic ActorSheet with some very simple modifications
  * @extends {ActorSheet}
  */
-export class godboundFactionActorSheet extends ActorSheet {
+export class factionActorSheet extends ActorSheet {
 
   /** @override */
   static get defaultOptions() {

@@ -5,7 +5,7 @@ import CoreStats from './helpers/coreStats.mjs';
  * Extend the basic ActorSheet with some very simple modifications
  * @extends {ActorSheet}
  */
-export class godboundNPCActorSheet extends ActorSheet {
+export class npcActorSheet extends ActorSheet {
 
   /** @override */
   static get defaultOptions() {
