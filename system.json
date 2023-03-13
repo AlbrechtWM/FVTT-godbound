@@ -1,7 +1,7 @@
 {
   "id": "godbound",
   "title": "godbound",
-  "description": "The godbound system for FoundryVTT!",
+  "description": "The Godbound System for FoundryVTT",
   "version": "1.2.0",
   "compatibility": {
     "minimum": 10,

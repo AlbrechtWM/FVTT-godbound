@@ -68,27 +68,21 @@
         "immunities": {
           "damageTypes": null,
           "conditions": null,
-          "effects": null,
-          "lowMagic": false,
-          "highMagic": false
+          "effectTypes": null
         }
       },
       "resistances": {
         "resistances": {
           "damageTypes": null,
           "conditions": null,
-          "effects": null,
-          "lowMagic": false,
-          "highMagic": false
+          "effectTypes": null
         }
       },
       "vulnerabilities": {
         "vulnerabilities": {
           "damageTypes": null,
           "conditions": null,
-          "effects": null,
-          "lowMagic": false,
-          "highMagic": false
+          "effectTypes": null
         }
       },
       "possessions": {
@@ -103,6 +97,21 @@
           "equipment": null
         }
       },
+      "abilities": {
+        "abilities": {
+          "divineEffortCostModifier": 0,
+          "words": null,
+          "gifts": null,
+          "lowMagicPaths": null,
+          "highMagicRanks": 0,
+          "highMagicSpells": null,
+          "specialAbilities": null,
+          "specialTraits": null,
+          "lesserStrifes": null,
+          "trueStrifes": null,
+          "talents": null
+        }
+      },
       "coreStats": {
         "coreStats": {
           "levelOrHD": 1,
@@ -110,7 +119,6 @@
           "isImmuneVsNonMagicalAttack": false,
           "actionsPerRound": 1,
           "attacksPerAction": 1,
-          "attacks": null,
           "saves": {
             "hardiness": {
               "base": 16,
@@ -167,21 +175,7 @@
             "movementUnits": "",
             "movementType": "",
             "isLOSMove": false
-          },
-          "abilities": {
-            "divineEffortCostModifier": 0,
-            "words": null,
-            "gifts": null,
-            "lowMagicPaths": null,
-            "highMagicRanks": 0,
-            "highMagicSpells": null,
-            "specialAbilities": null,
-            "specialTraits": null,
-            "lesserStrifes": null,
-            "trueStrifes": null,
-            "talents": null
-          },
-          "conditions": null
+          }
         }
       }
     },
@@ -193,8 +187,11 @@
         "possessions",
         "immunities",
         "resistances",
-        "vulnerabilities"
+        "vulnerabilities",
+        "abilities"
       ],
+      "attacks": null,
+      "conditions": null,
       "attributes": {
         "str": {
           "baseScore": 0,
@@ -258,8 +255,7 @@
         }
       },
       "xp": 0,
-      "frayDie": "1d8",
-      "useFrayVsWorthyFoes": false,
+      "divineFuryUsed": false,
       "influence": {
         "max": 0,
         "committed": 0,
@@ -270,8 +266,7 @@
         "spent": 0,
         "free": 0
       },
-      "facts":
-      [
+      "facts": [
         "",
         "",
         ""
@@ -284,8 +279,11 @@
         "possessions",
         "immunities",
         "resistances",
-        "vulnerabilities"
+        "vulnerabilities",
+        "abilities"
       ],
+      "attacks": null,
+      "conditions": null,
       "morale": 0,
       "isMob": false,
       "mobSize": "",
@@ -313,7 +311,7 @@
       "problems": null,
       "interests": null
     }
-  }, 
+  },
   "Item": {
     "types": [
       "lowMagicPath",
@@ -330,7 +328,9 @@
       "artifact",
       "minorMagicItem",
       "treasure",
-      "equipment"
+      "equipment",
+      "attack",
+      "condition"
     ],
     "templates": {
       "base": {
@@ -351,52 +351,35 @@
           "isPermanent": false
         }
       },
-      "attack": {
-        "attack": {
-          "name": "",
-          "description": "",
-          "targetActors": null,
-          "range": {
-            "rangeSize": 0,
-            "rangeUnits": "",
-            "isRangeLOS": false
-          },
-          "area": {
-            "isArea": false,
-            "areaShape": "",
-            "areaSize": 0,
-            "areaUnits": "",
-            "isAreaLOS": false
-          },
-          "isSmite": false,
-          "effortCommitment": "",
-          "toHit": {
-            "totalBonus": 0,
-            "levelBonus": 0,
-            "isAutomatic": false,
-            "miscBonus": 0,
-            "relevantAttribute": "",
-            "attributeBonus": 0
-          },
-          "isAdvantaged": false,
-          "isDisadvantaged": false,
-          "damage": null,
-          "effects": null
-        }
-      },
       "damage": {
         "damage": {
           "numDie": 0,
+          "bonusDiePerLevel": 0,
           "dieType": "",
           "isStraight": false,
-          "isMagicalAttack": false,
           "relevantAttribute": "",
           "attributeBonus": 0,
           "damageDescriptor": "",
           "damageType": null,
           "miscBonus": 0,
+          "worthiness": {
+            "vsLesser": {
+              "savingThrowType": "none",
+              "savingThrowModifier": 0,
+              "saveNegates": false,
+              "saveHalves": false
+            },
+            "vsWorthy": {
+              "savingThrowType": "none",
+              "savingThrowModifier": 0,
+              "saveNegates": false,
+              "saveHalves": false
+            }
+          },
+          "canOverflow": false,
           "isAdvantaged": false,
-          "isDisadvantaged": false
+          "isDisadvantaged": false,
+          "isEnvironmental": false
         }
       },
       "effect": {
@@ -404,25 +387,22 @@
           "name": "",
           "description": "",
           "targetActors": null,
-          "conditions": null
-        }
-      },
-      "condition": {
-        "condition": {
-          "name": "",
-          "description": "",
-          "duration": null,
-          "enhancements": null,
-          "impairments": null,
-          "icon": null
-        }
-      },
-      "status": {
-        "status": {
-          "targetElement": "",
-          "modifierNumber": 0,
-          "action": "",
-          "change": null
+          "effectType": "",
+          "conditions": null,
+          "worthiness": {
+            "vsLesser": {
+              "savingThrowType": "none",
+              "savingThrowModifier": 0,
+              "saveNegates": false,
+              "saveHalves": false
+            },
+            "vsWorthy": {
+              "savingThrowType": "none",
+              "savingThrowModifier": 0,
+              "saveNegates": false,
+              "saveHalves": false
+            }
+          }
         }
       },
       "damageType": {
@@ -434,6 +414,50 @@
           "tertiaryCategory": ""
         }
       }
+    },
+    "condition": {
+      "templates": [
+        "base",
+        "duration"
+      ],
+      "status": {
+        "targetElement": "",
+        "modifierNumber": 0,
+        "action": "",
+        "change": null
+      }
+    },
+    "attack": {
+      "templates": [
+        "base",
+        "damage",
+        "effect"
+      ],
+      "targetActors": null,
+      "range": {
+        "rangeSize": 0,
+        "rangeUnits": ""
+      },
+      "area": {
+        "isArea": false,
+        "areaShape": "",
+        "areaSize": 0,
+        "areaUnits": ""
+      },
+      "toHit": {
+        "totalBonus": 0,
+        "levelBonus": false,
+        "isAutomatic": false,
+        "miscBonus": 0,
+        "relevantAttribute": "",
+        "attributeBonus": false
+      },
+      "isSmite": false,
+      "effortCommitment": "",
+      "canTargetWorthyFoes": false,
+      "isAdvantaged": false,
+      "isDisadvantaged": false,
+      "isMagicalAttack": false
     },
     "word": {
       "templates": [
@@ -448,33 +472,28 @@
     "gift": {
       "templates": [
         "base",
-        "attack",
-        "damage",
-        "effect",
         "duration"
       ],
       "specialTraits": null,
       "specialAbilities": null,
       "speed": "",
-      "effortCommitment": ""
+      "effortCommitment": "",
+      "attack": null
     },
     "specialAbility": {
       "templates": [
         "base",
-        "attack",
-        "damage",
-        "effect",
         "duration"
       ],
       "speed": "",
-      "effortCommitment": ""
+      "effortCommitment": "",
+      "attack": null
     },
     "specialTrait": {
       "templates": [
-        "base",
-        "effect",
-        "duration"
-      ]
+        "base"
+      ],
+      "selfConditions": null
     },
     "lowMagicPath": {
       "templates": [
@@ -492,13 +511,11 @@
     "lowMagicSpell": {
       "templates": [
         "base",
-        "attack",
-        "damage",
-        "effect",
         "duration"
       ],
-      "selfCondition": null,
-      "selfDamage": null
+      "selfConditions": null,
+      "selfDamage": null,
+      "attack": null
     },
     "highMagicRank": {
       "templates": [
@@ -513,17 +530,15 @@
     "highMagicSpell": {
       "templates": [
         "base",
-        "attack",
-        "damage",
-        "effect",
         "duration"
       ],
       "castingSpeed": "",
       "effortCommitment": "",
       "isExcellentPaused": false,
-      "selfCondition": null,
+      "selfConditions": null,
       "selfDamage": null,
-      "arcaneConnectionRequired": false
+      "arcaneConnectionRequired": false,
+      "attack": null
     },
     "lesserStrife": {},
     "trueStrife": {},
@@ -539,20 +554,17 @@
     },
     "equipment": {
       "templates": [
-        "base",
-        "attack",
-        "damage"
+        "base"
       ],
       "weight": "",
       "value": "",
       "quantity": 0,
-      "isEquipped": false
+      "isEquipped": false,
+      "attack": null
     },
     "artifact": {
       "templates": [
-        "base",
-        "attack",
-        "damage"
+        "base"
       ],
       "specialTraits": null,
       "specialAbilities": null,
@@ -565,16 +577,14 @@
         "free": 0,
         "baseCostModifier": 0
       },
-      "selfCondition": null,
+      "selfConditions": null,
       "selfDamage": null,
-      "isEquipped": false
+      "isEquipped": false,
+      "attack": null
     },
     "minorMagicItem": {
       "templates": [
         "base",
-        "attack",
-        "damage",
-        "effect",
         "duration"
       ],
       "creationCost": 0,
@@ -582,7 +592,10 @@
       "quantity": 0,
       "isEquipped": false,
       "specialTraits": null,
-      "specialAbilities": null
+      "specialAbilities": null,
+      "selfConditions": null,
+      "selfDamage": null,
+      "attack": null
     }
   }
 }
