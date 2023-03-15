@@ -1,0 +1,134 @@
+@font-face {
+    font-family: 'Godbound';
+    src: url('../fonts/godbound.woff2') format('woff2'),
+        url('../fonts/godbound.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Fable';
+    src: url('../fonts/fable.woff2') format('woff2'),
+        url('../fonts/fable.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.body {
+    height: 100%;
+}
+
+.no-left-border {
+    border-left: none;
+}
+
+.no-bottom-border {
+    border-bottom: none;
+}
+
+.no-right-border {
+    border-right: none;
+}
+
+.no-top-border {
+    border-top: none;
+}
+
+.bold {
+    font-weight: 600;
+}
+
+.padding-1em {
+    padding: 1em;
+}
+
+/* Gives all divs serving as button a pointer */
+div [type=roll] {
+    cursor: pointer;
+}
+
+.small-font {
+    font-size: 0.8rem;
+}
+
+.padding-bottom-1em {
+    padding-bottom: 1em;
+}
+
+.margin-bottom-1em {
+    margin-bottom: 1em;
+}
+
+.margin-right-1em {
+    margin-right: 1em;
+}
+
+.margin-top-halfem {
+    margin-top: 0.5em;
+}
+
+.margin-bottom-halfem {
+    margin-bottom: 0.5em;
+}
+
+.margin-right-halfem {
+    margin-right: 0.5em;
+}
+
+.godbound-font {
+    font-family: "Godbound", Garamond, "Times New Roman", Georgia, serif;
+}
+
+.fable-font {
+    font-family: "Fable", Garamond, "Times New Roman", Georgia, serif;
+    color: rgb(0, 89, 64);
+}
+
+.flex {
+    display: flex;
+}
+
+.center {
+    justify-content: center;
+}
+
+.column {
+    flex-direction: column;
+}
+
+.center-column {
+    align-items: center;
+}
+
+.space-between {
+    justify-content: space-between;
+}
+
+.w50 {
+    width: 50%;
+}
+
+.w100 {
+    width: 100%;
+}
+
+.h100 {
+    height: 100%;
+}
+
+.godbound-button {
+    font-family: "Godbound", Garamond, "Times New Roman", Georgia, serif;
+    padding: 0.5em;
+    border: 2px solid #725816;
+    border-radius: 4px;
+    text-align: center;
+    font-weight: 600;
+    min-width: 72px;
+    background: rgb(255 225 187);
+    cursor: pointer;
+}
+
+.godbound-button.active {
+    background-color: rgb(0, 89, 64);
+    color: white;
+}

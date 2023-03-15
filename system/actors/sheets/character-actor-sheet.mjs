@@ -15,8 +15,8 @@ export class characterActorSheet extends ActorSheet {
     return mergeObject(super.defaultOptions, {
       classes: ["godbound", "sheet", "actor"],
       template: "systems/godbound/system/actors/templates/character-actor-sheet.html",
-      width: 868,
-      height: 878
+      width: 665,
+      height: 825
       //tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "features" }]
     });
   }
@@ -37,12 +37,11 @@ export class characterActorSheet extends ActorSheet {
     const context = super.getData();
 
     // Use a safe clone of the actor data for further operations.
-    const actorData = this.actor.toObject(false);
+    const actorData = this.actor;
 
     // Add the actor's data to context.data for easier access, as well as flags.
     context.system = actorData.system;
     context.flags = actorData.flags;
-
     // // Prepare character data and items.
     // if (actorData.type == 'character') {
     //   //this._prepareItems(context);
@@ -58,31 +57,28 @@ export class characterActorSheet extends ActorSheet {
     //Important for later CoreStat functions knowing whether this is an NPC or PC
     CoreStats.setUseHD(context.system, false);
 
-    //Ability Points
-    Character.calculateAbilityPointsRemaining(context.system, this.actor);
-
     // Attributes
-    Character.calculateDerivedAttributes(context.system, this.actor);
+    Character.calculateDerivedAttributes(context.system);
 
-    //Armor Class
+    //Armor Classs
     CoreStats.calculateAC(context.system);
 
     // Saving throws
-    CoreStats.calculateSavingThrowBonuses(context.system, this.actor);
-    CoreStats.calculateSavingThrowPenalties(context.system, this.actor);
-    CoreStats.calculateSavingThrowTotals(context.system, this.actor);
+    CoreStats.calculateSavingThrowBonuses(context.system);
+    CoreStats.calculateSavingThrowPenalties(context.system);
+    CoreStats.calculateSavingThrowTotals(context.system);
 
     //HP
-    CoreStats.calculateMaxHealth(context.system, this.actor);
+    CoreStats.calculateMaxHealth(context.system);
 
     //Effort
-    CoreStats.calculateEffort(context.system, this.actor);
+    CoreStats.calculateEffort(context.system);
 
     //Influence
-    Character.calculateInfluencePointsRemaining(context.system, this.actor);
+    Character.calculateInfluencePointsRemaining(context.system);
 
     //Dominion
-    Dominion.calculateDominionPointsRemaining(context.system, this.actor);
+    Dominion.calculateDominionPointsRemaining(context.system);
 
     //console.log(context);
     return context;
@@ -92,7 +88,14 @@ export class characterActorSheet extends ActorSheet {
   activateListeners(html) {
     super.activateListeners(html);
     // Rollable abilities.
-    html.find('button[type=roll]').click(this._onRoll.bind(this));
+    html.find('div[type=roll]').click(this._onRoll.bind(this));
+
+    html.find('div[type=addto]').click(this._onClickAdd.bind(this));
+
+    // Charsheet tabs
+    const tabs = new Tabs({ callback: () => { }, navSelector: ".charsheet-tabs", contentSelector: ".charsheet-content", initial: "char" });
+    const theTabs = document.querySelector(".sheetform");
+    tabs.bind(theTabs);
   }
 
   // /**
@@ -226,6 +229,20 @@ export class characterActorSheet extends ActorSheet {
   // }
 
   /**
+   * Handles adding of values
+   * @param {Event} event   The originating click event
+   * @private
+   */
+  _onClickAdd(event) {
+    event.preventDefault();
+
+    const element = event.currentTarget;
+    const { typetoadd } = element.dataset;
+    console.log(this, event);
+    Character.add(this.actor, typetoadd, this.getData)
+  }
+
+  /**
    * Handle clickable rolls.
    * @param {Event} event   The originating click event
    * @private
@@ -252,7 +269,7 @@ export class characterActorSheet extends ActorSheet {
           },
           button2: {
             label: "Cancel",
-            callback: () => {},
+            callback: () => { },
             icon: `<i class="fas fa-cancel"></i>`
           },
         }

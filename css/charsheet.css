@@ -1,3 +1,91 @@
+.stat-col {
+	min-width: 65px;
+}
+
+.stat-info {
+	border: 2px solid #725816;
+	width: 100%;
+	padding: 0.5em 0.75em;
+	text-align: center;
+}
+
+.text-area-large {
+	min-height: 90px;
+}
+
+.save-info {
+	width: 100%;
+	text-align: center;
+}
+
+.sheet-text-header {
+	min-width: 45px;
+}
+
+.sheet-facts {
+	height: 90%;
+	overflow-y:scroll;
+	overflow-x: hidden;
+}
+
+.sheet-column {
+	height: 385px;
+	max-height: 385px;
+    overflow-y: scroll;
+	overflow-x: hidden;
+}
+
+.charsheet-tabs {
+	background-image: url('../images/fancyborder.png');
+	background-repeat: no-repeat!important;
+	background-position: center;
+	background-size: 100% 1px !important;
+}
+
+.stat-container {
+	font-size: 13px;
+	width: 410px;
+}
+
+.button-bar::after {
+	content: '';
+	background: #725816;
+}
+
+.stat-info-saves {
+	border-right: 1px solid black;
+	width: 100%;
+	padding: 0.5em;
+	font-family: "Godbound", Garamond, "Times New Roman", Georgia, serif;
+	font-weight: 600;
+}
+
+.stat-info-sub-item {
+	border-radius: 1px;
+	border: 1px solid black;
+	height: 34px;
+}
+
+.portrait {
+	background-repeat: no-repeat !important;
+	background-size: contain !important;
+	background: url('../images/portraitborder.png');
+	padding: 0.8em;
+	width: 152px;
+}
+
+.profile-img {
+	-webkit-box-flex: 0;
+	-ms-flex: 0 0 100px;
+	flex: 0 0 100px;
+	height: 125px;
+	margin-right: 10px;
+}
+
+.charsheet-header {
+	font-size: 12px;
+}
+
 :root {
 	--dark-surface1: #1F1F1F;
 	--dark-primarytext: #E6E6E6;
@@ -802,21 +890,24 @@ body.sheet-darkmode .attributesabilities {
 	box-sizing: border-box;
 }
 
-.charsheet .sheet-overall-wrapper {
-	font-family: "Book Antiqua", Garamond, "Times New Roman", Georgia, serif;
+.charsheet-overall-wrapper {
+	padding: 3em;
+    width: 645px;
 }
 
 .charsheet {
-	min-width: 840px;
-	max-width: 840px;
-	width: 840px;
-	min-height: 840px;
+	min-width: 670px;
+	max-width: 670px;
+	width: 670px;
+	min-height: 780px;
+	max-height: 780px;
+	height: 780px;
 	padding: 5px 3px 3px 3px !important;
 	-moz-background-size: 100% !important;
 	-webkit-background-size: 100% !important;
-	background-size: 100% !important;
-	background-repeat: repeat-y !important;
-	background: url('https://imgsrv.roll20.net//?src=https%3A%2F%2Fi.imgur.com%2FeK7WDTl.jpg');
+	background-repeat: no-repeat !important;
+	background-size: contain !important;
+	background: url('../images/gbsheet.png');
 }
 
 .charsheet button,
@@ -837,13 +928,6 @@ body.sheet-darkmode .attributesabilities {
 	display: none !important;
 }
 
-.charsheet input.sheet-tab-page-character:checked~div.sheet-section-character,
-.charsheet input.sheet-tab-page-arts:checked~div.sheet-section-arts,
-.charsheet input.sheet-tab-page-npc:checked~div.sheet-section-npc,
-.charsheet input.sheet-tab-page-faction:checked~div.sheet-section-faction {
-	display: block !important;
-}
-
 .charsheet input[class*="sheet-tab"] {
 	cursor: pointer;
 	position: relative;
@@ -857,18 +941,10 @@ body.sheet-darkmode .attributesabilities {
 	font-size: 13px;
 	color: #204060;
 	cursor: pointer;
-	font-weight: bold;
-	text-align: center;
+              
 	border: 1px solid black;
 	border-color: #204060 !important;
 	border-radius: 4px;
-}
-
-.charsheet input[class*="sheet-tab-page"],
-.charsheet span[class*="sheet-tab-page"] {
-	width: 100px;
-	height: 18px;
-	vertical-align: top;
 }
 
 .charsheet span[class*="sheet-tab-page"] {
@@ -881,6 +957,15 @@ body.sheet-darkmode .attributesabilities {
 }
 
 .charsheet span.sheet-tab-page-character {
+	margin-left: -100px;
+}
+
+.charsheet input.sheet-tab-page-combat,
+.charsheet span.sheet-tab-page-combat {
+	width: 100px;
+}
+
+.charsheet span.sheet-tab-page-combat {
 	margin-left: -100px;
 }
 
@@ -915,7 +1000,7 @@ body.sheet-darkmode .attributesabilities {
 .charsheet input.sheet-tab-page-arts:checked+span.sheet-tab-page-arts,
 .charsheet input.sheet-tab-page-npc:checked+span.sheet-tab-page-npc,
 .charsheet input.sheet-tab-page-faction:checked+span.sheet-tab-page-faction {
-	background-color: #204060;
+	background-color: rgb(0, 89, 64);
 	color: white;
 }
 
@@ -996,7 +1081,6 @@ body.sheet-darkmode .attributesabilities {
 
 }
 
-
 .charsheet button[type=roll]:before,
 .charsheet button[type=roll] span {
 	vertical-align: middle;
@@ -1074,7 +1158,7 @@ body.sheet-darkmode .attributesabilities {
 	margin-bottom: -2px;
 }
 
-.charsheet .repcontrol_add{
+.charsheet .repcontrol_add {
 	background-color: #fae6c8;
 }
 
@@ -1293,9 +1377,33 @@ body.sheet-darkmode .attributesabilities {
 	margin: 0;
 }
 
+.charsheet input {
+	font-family: 'Godbound';
+	font-weight: bold;
+	font-size: 15px;
+	-moz-appearance: textfield;
+}
+
+.add-fact-button {
+	margin-top: auto;
+}
+
+.charsheet-col-sub-area {
+	border: 1px solid black;
+	padding: 0.5em;
+	border-top: none;
+	display: flex;
+    flex-direction: column;
+}
+
+.charsheet textarea {
+	font-family: 'Godbound';
+	font-weight: bold;
+	font-size: 15px;
+}
+
 .charsheet input[type="number"] {
 	text-align: center;
-	-moz-appearance: textfield;
 }
 
 .charsheet input[type=number]:focus,
@@ -1303,14 +1411,23 @@ body.sheet-darkmode .attributesabilities {
 	outline: none;
 }
 
-.charsheet input[type=number],
+.charsheet input[type=number] {
+	margin-bottom: 0px !important;
+	border: none;
+	box-shadow: none;
+	background-color: transparent;
+	padding: 2px;
+	line-height: 100%;
+	height: 19px;
+}
+
 .charsheet input[type=text] {
-	width: 100% !important;
 	margin-bottom: 0px !important;
 	border-top-width: 0px;
 	border-left-width: 0px;
 	border-right-width: 0px;
 	border-radius: 0px;
+	border-color: rgba(100, 100, 100, 0.2);
 	box-shadow: none;
 	background-color: transparent;
 	padding: 2px;
@@ -1337,14 +1454,13 @@ body.sheet-darkmode .attributesabilities {
 }
 
 .charsheet input[disabled] {
-	background-color: #faebd2 !important;
 	font-weight: bold;
 	cursor: default;
 	-moz-appearance: textfield;
 }
 
 .charsheet input:read-only {
-	cursor: pointer;
+	cursor: default;
 }
 
 .charsheet .sheet-attr {
@@ -1394,9 +1510,8 @@ body.sheet-darkmode .attributesabilities {
 	border-radius: 0px;
 	box-shadow: none;
 	background-color: transparent;
-	padding: 2px;
+	padding: 5px;
 	line-height: 100%;
-	height: 150px;
 }
 
 .charsheet .sheet-fluid-textarea {
@@ -2395,7 +2510,7 @@ body.sheet-darkmode .attributesabilities {
 	margin-left: 88.88889%;
 }
 
-.charsheet .sheet-col-1-10{
+.charsheet .sheet-col-1-10 {
 	width: 10%;
 }
 

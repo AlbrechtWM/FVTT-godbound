@@ -123,8 +123,6 @@ const calculateAC = (system) => {
             break;
     }
 
-    console.log(system);
-
     system.coreStats.ac.total = base - system.coreStats.ac.miscModifier - (system.coreStats.useHD ? 0 : system.attributes.dex.mod);
     if (system.coreStats.ac.armorType !== "special" && system.coreStats.ac.hasShield) {
         system.coreStats.ac.total--;

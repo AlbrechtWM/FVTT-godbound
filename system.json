@@ -22,7 +22,8 @@
   "styles": [
     "css/godbound.css",
     "css/css.css",
-    "css/charsheet.css"
+    "css/charsheet.css",
+    "css/core.css"
   ],
   "scripts": [],
   "packs": [],

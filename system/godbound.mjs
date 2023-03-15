@@ -20,7 +20,7 @@ import { godbound_constants } from "./helpers/godbound_constants.mjs";
 /*  Init Hook                                   */
 /* -------------------------------------------- */
 
-Hooks.once('init', async function() {
+Hooks.once('init', async function () {
   // Add utility classes to the global game object so that they're more easily
   // accessible in global contexts.
   game.godbound = {
@@ -55,9 +55,9 @@ Hooks.once('init', async function() {
   // Register Godbound Actor Sheets
 
 
-  Actors.registerSheet("godbound", npcActorSheet, { types: ["npc"],makeDefault: false });
-  Actors.registerSheet("godbound", characterActorSheet, { types: ["character"],makeDefault: false });
-  Actors.registerSheet("godbound", factionActorSheet, { types: ["faction"],makeDefault: false });
+  Actors.registerSheet("godbound", npcActorSheet, { types: ["npc"], makeDefault: false });
+  Actors.registerSheet("godbound", characterActorSheet, { types: ["character"], makeDefault: false });
+  Actors.registerSheet("godbound", factionActorSheet, { types: ["faction"], makeDefault: false });
 
   // Register Godbound Item Sheets
   Items.registerSheet("godbound", godboundItemSheet, { makeDefault: false });
@@ -72,7 +72,7 @@ Hooks.once('init', async function() {
 /* -------------------------------------------- */
 
 // If you need to add Handlebars helpers, here are a few useful examples:
-Handlebars.registerHelper('concat', function() {
+Handlebars.registerHelper('concat', function () {
   var outStr = '';
   for (var arg in arguments) {
     if (typeof arguments[arg] != 'object') {
@@ -82,11 +82,11 @@ Handlebars.registerHelper('concat', function() {
   return outStr;
 });
 
-Handlebars.registerHelper('toLowerCase', function(str) {
+Handlebars.registerHelper('toLowerCase', function (str) {
   return str.toLowerCase();
 });
 
-Handlebars.registerHelper('getStringArrayValue', function(strArray, index) {
+Handlebars.registerHelper('getStringArrayValue', function (strArray, index) {
   return strArray[index];
 });
 
@@ -94,7 +94,7 @@ Handlebars.registerHelper('getStringArrayValue', function(strArray, index) {
 /*  Ready Hook                                  */
 /* -------------------------------------------- */
 
-Hooks.once("ready", async function() {
+Hooks.once("ready", async function () {
   // Wait to register hotbar drop hook on ready so that modules could register earlier if they want to
   Hooks.on("hotbarDrop", (bar, data, slot) => createItemMacro(data, slot));
 });

@@ -36,14 +36,6 @@ const calculateDerivedAttributes = (system) => {
 }
 
 /**
- * Calculates remaining ability points
- * @param {Object} system - actor system object
- */
-const calculateAbilityPointsRemaining = (system) => {
-    system.abilityPoints.free = system.abilityPoints.total - system.abilityPoints.spent;
-}
-
-/**
 * Calculates remaining influence points
 * @param {Object} system - actor system object
 */
@@ -51,4 +43,62 @@ const calculateInfluencePointsRemaining = (system) => {
     system.influence.free = system.influence.max - system.influence.committed;
 }
 
-export default { calculateDerivedAttributes, calculateAbilityPointsRemaining, calculateInfluencePointsRemaining };
+/**
+ * Adds an item of the type passed
+ * @param {Object} system - actor system object
+ * @param {string} type - the type of item to add
+ * @param {function} postAddCallback - Callback to fire when add operation is finished
+ */
+const add = (actor, type, ss) => {
+    // Making a switch, for adding later cases as necessary
+    switch (type) {
+        case 'fact': {
+            _addFact(actor.system, ss);
+            break;
+        }
+        default: {
+            console.log('default');
+        }
+    }
+}
+
+/**
+* Adds a fact
+* @param {Object} system - actor system object
+* @param {function} postAddCallback - Callback to fire when add operation is finished
+*/
+const _addFact = (system) => {
+    console.log(system.facts);
+    system.facts = [...system.facts, ''];
+}
+
+/**
+ * Removes an item at the passed index
+ * @param {Object} system - actor system object
+ * @param {string} type - the type of item to add
+ * @param {string} type - the type of item to add
+ */
+const remove = (system, type, index) => {
+    // Making a switch, for adding later cases as necessary
+    switch (type) {
+        case 'fact': {
+            _addFact(system);
+            break;
+        }
+        default: {
+            console.log('default');
+        }
+    }
+}
+
+/**
+* Adds a fact
+* @param {Object} system - actor system object
+*/
+const _removeFact = (system, index, postAddCallback) => {
+    console.log(system);
+    system.facts = system.facts.slice(index);
+}
+
+
+export default { calculateDerivedAttributes, add, calculateInfluencePointsRemaining };
