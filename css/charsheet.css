@@ -7,10 +7,12 @@
 	width: 100%;
 	padding: 0.5em 0.75em;
 	text-align: center;
+	font-size: 14px;
+	height: 35px;
 }
 
 .text-area-large {
-	min-height: 90px;
+	min-height: 60px;
 }
 
 .save-info {
@@ -20,6 +22,11 @@
 
 .sheet-text-header {
 	min-width: 45px;
+	font-size: 16px;
+}
+
+.ability-points {
+	font-size: 13px;
 }
 
 .sheet-facts {
@@ -29,8 +36,8 @@
 }
 
 .sheet-column {
-	height: 385px;
-	max-height: 385px;
+    height: 410px;
+    max-height: 410px;
     overflow-y: scroll;
 	overflow-x: hidden;
 }
@@ -891,7 +898,7 @@ body.sheet-darkmode .attributesabilities {
 }
 
 .charsheet-overall-wrapper {
-	padding: 3em;
+    padding: 1.8em;
     width: 645px;
 }
 
@@ -1402,10 +1409,6 @@ body.sheet-darkmode .attributesabilities {
 	font-size: 15px;
 }
 
-.charsheet input[type="number"] {
-	text-align: center;
-}
-
 .charsheet input[type=number]:focus,
 .charsheet input[type=text]:focus {
 	outline: none;
@@ -1415,7 +1418,6 @@ body.sheet-darkmode .attributesabilities {
 	margin-bottom: 0px !important;
 	border: none;
 	box-shadow: none;
-	background-color: transparent;
 	padding: 2px;
 	line-height: 100%;
 	height: 19px;
@@ -1433,6 +1435,7 @@ body.sheet-darkmode .attributesabilities {
 	padding: 2px;
 	line-height: 100%;
 	height: 19px;
+	font-size: 18px;
 }
 
 .charsheet input[type=text].sheet-input-center {

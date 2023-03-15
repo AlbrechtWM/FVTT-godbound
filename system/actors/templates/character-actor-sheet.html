@@ -103,7 +103,7 @@
 													<input type="number" name="system.abilityPoints.total"
 														value="{{system.abilityPoints.total}}" data-type="Number">
 												</div>
-												<div class="fable-font bold stat-info">
+												<div class="fable-font bold stat-info ability-points">
 													ABILITY POINTS
 												</div>
 											</div>
@@ -170,13 +170,14 @@
 										<div class="fable-font margin-right-1em bold sheet-text-header stat-info">
 											GENERAL
 										</div>
-										<div class="charsheet-col-sub-area sheet-column">
+										<div class="charsheet-col-sub-area sheet-column space-around">
 											<div class="flex space-between">
 												<div
 													class="fable-font margin-bottom-1em margin-right-1em bold sheet-text-header">
 													LEVEL
 												</div>
-												<input type="number" name="system.coreStats.levelOrHD"
+												<input class="text-center" type="number"
+													name="system.coreStats.levelOrHD"
 													value="{{system.coreStats.levelOrHD}}" data-type="Number">
 											</div>
 											<div class="flex space-between">
@@ -184,8 +185,8 @@
 													class="fable-font margin-bottom-1em margin-right-1em bold sheet-text-header">
 													EXP
 												</div>
-												<input type="number" name="system.xp" value="{{system.xp}}"
-													data-type="Number">
+												<input class="text-center" type="number" name="system.xp"
+													value="{{system.xp}}" data-type="Number">
 											</div>
 											<div class="flex space-between">
 												<div
@@ -213,6 +214,13 @@
 													name="system.base.goals" data-type="String"
 													placeholder="Goals">{{system.base.goals}}</textarea>
 											</div>
+											<div class="flex space-between">
+												<div class="fable-font margin-right-1em bold sheet-text-header">
+													Notes
+												</div>
+												<textarea class="w100 sheet-resize-vertical text-area-large"
+													name="system.base.notes">{{system.base.notes}}</textarea>
+											</div>
 										</div>
 									</div>
 									<div class="flex column w50">
@@ -222,38 +230,20 @@
 										<div class="charsheet-col-sub-area sheet-column h100">
 											<div class="sheet-facts">
 												{{#each system.facts as |fact i|}}
-												<textarea class="w100 sheet-resize-vertical" value="{{fact}}"
-													name="{{fact}}" placeholder="New Fact"></textarea>
+												<div class="flex center-column">
+													<textarea class="w100 sheet-resize-vertical margin-right-halfem"
+														value="{{fact}}" name="{{fact}}"
+														placeholder="New Fact"></textarea>
+													<div class="trash-button margin-right-halfem fa-solid fa-trash-can"
+														data-index="{{i}}" type="deletefact" data-fact="{{fact}}">
+													</div>
+												</div>
 												{{/each}}
 											</div>
 											<div type="addto" data-typetoadd="fact"
 												class="add-fact-button godbound-button margin-top-halfem">
 												Add</div>
 										</div>
-									</div>
-								</div>
-								<div class="flexrow flex-between">
-									<div class="flex0 sheet-attr sheet-vert-middle sheet-right sheet-pad-l-sm sheet-pad-r-md sheet-pad-t-lg"
-										style="white-space: nowrap;">
-										Save Penalties:
-									</div>
-									<div
-										class="flex0 sheet-attr sheet-vert-middle sheet-pad-t-md sheet-pad-r-md sheet-pad-b-sm sheet-mar-t-md">
-										<input type="checkbox" class="sheet-box-check"
-											name="system.coreStats.saves.hardiness.isArmorPenalty" {{checked
-											system.coreStats.saves.hardiness.isArmorPenalty}}><label>Hardiness</label>
-									</div>
-									<div
-										class="flex0 sheet-attr sheet-vert-middle sheet-pad-t-md sheet-pad-r-md sheet-pad-b-sm sheet-mar-t-md">
-										<input type="checkbox" class="sheet-box-check"
-											name="system.coreStats.saves.evasion.isArmorPenalty" {{checked
-											system.coreStats.saves.evasion.isArmorPenalty}}><label>Evasion</label>
-									</div>
-									<div
-										class="flex0 sheet-attr sheet-vert-middle sheet-pad-t-md sheet-pad-r-sm sheet-pad-b-sm sheet-mar-t-md">
-										<input type="checkbox" class="sheet-box-check"
-											name="system.coreStats.saves.spirit.isArmorPenalty" {{checked
-											system.coreStats.saves.spirit.isArmorPenalty}}><label>Spirit</label>
 									</div>
 								</div>
 							</div>
@@ -324,16 +314,28 @@
 											placeholder="Armor description">{{system.coreStats.ac.armorDescription}}</textarea>
 									</div>
 								</div>
-								<div class="sheet-rowd sheet-pad-b-sm">
-									<div
-										class="sheet-col-1 sheet-title-banner-subheading sheet-pad-t-md sheet-pad-b-sm sheet-mar-t-md">
-										<h3>Notes</h3>
+								<div class="flexrow flex-between">
+									<div class="flex0 sheet-attr sheet-vert-middle sheet-right sheet-pad-l-sm sheet-pad-r-md sheet-pad-t-lg"
+										style="white-space: nowrap;">
+										Save Penalties:
 									</div>
-								</div>
-								<div class="sheet-row sheet-pad-b-sm">
-									<div class="sheet-col-1 sheet-pad-t-sm sheet-pad-r-sm">
-										<textarea class="sheet-medium-textarea sheet-resize-vertical"
-											name="system.base.notes">{{system.base.notes}}</textarea>
+									<div
+										class="flex0 sheet-attr sheet-vert-middle sheet-pad-t-md sheet-pad-r-md sheet-pad-b-sm sheet-mar-t-md">
+										<input type="checkbox" class="sheet-box-check"
+											name="system.coreStats.saves.hardiness.isArmorPenalty" {{checked
+											system.coreStats.saves.hardiness.isArmorPenalty}}><label>Hardiness</label>
+									</div>
+									<div
+										class="flex0 sheet-attr sheet-vert-middle sheet-pad-t-md sheet-pad-r-md sheet-pad-b-sm sheet-mar-t-md">
+										<input type="checkbox" class="sheet-box-check"
+											name="system.coreStats.saves.evasion.isArmorPenalty" {{checked
+											system.coreStats.saves.evasion.isArmorPenalty}}><label>Evasion</label>
+									</div>
+									<div
+										class="flex0 sheet-attr sheet-vert-middle sheet-pad-t-md sheet-pad-r-sm sheet-pad-b-sm sheet-mar-t-md">
+										<input type="checkbox" class="sheet-box-check"
+											name="system.coreStats.saves.spirit.isArmorPenalty" {{checked
+											system.coreStats.saves.spirit.isArmorPenalty}}><label>Spirit</label>
 									</div>
 								</div>
 							</div>
