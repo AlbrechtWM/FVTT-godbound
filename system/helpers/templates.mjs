@@ -6,10 +6,10 @@
  export const preloadHandlebarsTemplates = async function() {
   return loadTemplates([
 
-    // Actor partials.
-    "systems/godbound/system/actors/templates/parts/actor-features.html",
-    "systems/godbound/system/actors/templates/parts/actor-items.html",
-    "systems/godbound/system/actors/templates/parts/actor-spells.html",
-    "systems/godbound/system/actors/templates/parts/actor-effects.html",
+    // Item partials.
+    "systems/godbound/system/items/templates/parts/damage.html",
+    // "systems/godbound/system/actors/templates/parts/actor-items.html",
+    // "systems/godbound/system/actors/templates/parts/actor-spells.html",
+    // "systems/godbound/system/actors/templates/parts/actor-effects.html",
   ]);
 };

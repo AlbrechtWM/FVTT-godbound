@@ -905,6 +905,18 @@ body.sheet-darkmode .attributesabilities {
 	width: 645px;
 }
 
+.charsheet-form {
+	min-width: 840px;
+	max-width: 840px;
+	width: 840px;
+	min-height: 840px;
+	padding: 5px 3px 3px 3px !important;
+	-moz-background-size: 100% !important;
+	-webkit-background-size: 100% !important;
+	background-repeat: no-repeat !important;
+	background-size: contain !important;
+	background: url('../images/gbsheet.png');
+}
 .charsheet {
 	min-width: 670px;
 	max-width: 670px;
@@ -919,6 +931,7 @@ body.sheet-darkmode .attributesabilities {
 	background-size: contain !important;
 	background: url('../images/gbsheet.png');
 }
+
 
 .charsheet button,
 .charsheet input,
