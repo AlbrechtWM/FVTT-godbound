@@ -87,7 +87,6 @@ const remove = (actor, type, index) => {
 * @param {function} postAddCallback - Callback to fire when add operation is finished
 */
 const _addFact = (actor) => {
-    console.log(actor);
     const system = actor.system;
     const keys = Object.keys(system.facts);
     const newKey = keys.length > 0 ? Math.max(...Object.keys(system.facts)) + 1 : 0;
