@@ -905,7 +905,7 @@ body.sheet-darkmode .attributesabilities {
 	width: 645px;
 }
 
-.charsheet-form {
+.charsheet-form-player {
 	min-width: 840px;
 	max-width: 840px;
 	width: 840px;
@@ -914,9 +914,8 @@ body.sheet-darkmode .attributesabilities {
 	-moz-background-size: 100% !important;
 	-webkit-background-size: 100% !important;
 	background-repeat: no-repeat !important;
-	background-size: contain !important;
-	background: url('../images/gbsheet.png');
 }
+
 .charsheet {
 	min-width: 670px;
 	max-width: 670px;
@@ -932,6 +931,15 @@ body.sheet-darkmode .attributesabilities {
 	background: url('../images/gbsheet.png');
 }
 
+.charsheet-npc {
+	min-width: 670px;
+	max-width: 670px;
+	width: 670px;
+	min-height: 780px;
+	max-height: 780px;
+	height: 780px;
+	padding: 5px 3px 3px 3px !important;
+}
 
 .charsheet button,
 .charsheet input,

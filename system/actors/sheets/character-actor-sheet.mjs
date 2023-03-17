@@ -105,8 +105,8 @@ export class characterActorSheet extends ActorSheet {
 
     // Charsheet tabs
     const tabs = new Tabs({ callback: () => { }, navSelector: ".charsheet-tabs", contentSelector: ".charsheet-content", initial: "char" });
-    const theTabs = document.querySelector(".sheetform");
-    tabs.bind(theTabs);
+    const form = document.querySelector(".sheetform-character");
+    tabs.bind(form);
   }
 
   // /**

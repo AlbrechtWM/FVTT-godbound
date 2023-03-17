@@ -122,10 +122,14 @@ export class npcActorSheet extends ActorSheet {
   // }
 
   // /* -------------------------------------------- */
-
   /** @override */
   activateListeners(html) {
     super.activateListeners(html);
+    // Charsheet tabs
+    const tabs = new Tabs({ callback: () => { }, navSelector: ".npcsheet-tabs", contentSelector: ".npcsheet-content", initial: "npc" });
+    const form = document.querySelector(".sheetform-npc");
+    console.log('form', form);
+    tabs.bind(form);
   }
 
   //   // Render the item sheet for viewing/editing prior to the editable check.
