@@ -64,7 +64,7 @@ Hooks.once('init', async function() {
   Items.registerSheet("godbound", attackItemSheet, { types: ["attack"], makeDefault: false });
 
   // Preload Handlebars templates.
-  //return preloadHandlebarsTemplates();
+  return preloadHandlebarsTemplates();
 });
 
 /* -------------------------------------------- */

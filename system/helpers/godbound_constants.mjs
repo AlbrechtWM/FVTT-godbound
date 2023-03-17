@@ -8,7 +8,7 @@ godbound_constants.damageTypes = {
   "physical": {
     "force": ["blunt", "cutting", "piercing"],
     "elemental": ["fire", "electrical", "cold", "corrosive"],
-    "biological": ["poison", "disease", "radiation", "asphyxiation", "starvation", "dehydration", "vacuum", "pressure"]
+    "somatic": ["poison", "disease", "radiation", "asphyxiation", "starvation", "dehydration", "vacuum", "pressure"]
   },
   "nonPhysical": {
     "spiritual": ["holy", "unholy"],
@@ -45,6 +45,12 @@ godbound_constants.effectTypes = {
 godbound_constants.saveTypes =
   ["none", "hardiness", "evasion", "spirit", "automatic"];
 
+godbound_constants.saveSuccessTypes =
+  ["none", "halves", "negates", "special"];
+
+godbound_constants.areaShapes =
+  ["none", "circle", "cone", "line", "aura"];
+
 godbound_constants.distanceUnits =
   ["feet", "miles", "line-of-sight", "region", "realm", "unlimited"];
 
@@ -52,9 +58,9 @@ godbound_constants.effortCommittment = ["none", "on-turn", "sustained", "scene",
 
 godbound_constants.durationUnits = ["instant", "on-turn", "sustained", "scene", "day", "next-turn", "round", "minute", "hour", "week", "month", "year", "permanent"];
 
-godbound_constants.attributeTypes = ["none","str","dex","con","int","wis","cha","all"];
+godbound_constants.attributeTypes = ["none", "str", "dex", "con", "int", "wis", "cha", "all"];
 
-godbound_constants.dieTypes = ["none","1d2","1d4","1d6","1d8","1d12","1d20"];
+godbound_constants.dieTypes = ["none", "1d2", "1d4", "1d6", "1d8", "1d10", "1d12", "1d20"];
 
-godbound_constants.saveFrequencies = ["once","duration-tick","special"];
+godbound_constants.saveFrequencies = ["once", "duration-tick", "special"];
 

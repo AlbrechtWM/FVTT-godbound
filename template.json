@@ -354,32 +354,32 @@
       "damage": {
         "damage": {
           "numDie": 0,
-          "bonusDiePerLevel": 0,
           "dieType": "",
-          "isStraight": false,
+          "bonusDieForExtraLevels": false,
           "relevantAttribute": "",
-          "attributeBonus": 0,
+          "useAttrBonus": false,
+          "useLevelBonus": false,
+          "miscBonus": 0,
+          "isStraight": false,
           "damageFlavorText": "",
           "damageType": null,
-          "miscBonus": 0,
           "worthiness": {
             "vsLesser": {
-              "savingThrowType": "none",
-              "savingThrowModifier": 0,
-              "saveNegates": false,
-              "saveHalves": false
+              "saveType": "none",
+              "saveModifier": 0,
+              "saveSuccess": "none"
             },
             "vsWorthy": {
-              "savingThrowType": "none",
-              "savingThrowModifier": 0,
-              "saveNegates": false,
-              "saveHalves": false
+              "saveType": "none",
+              "saveModifier": 0,
+              "saveSuccess": "none"
             }
           },
           "canOverflow": false,
           "isAdvantaged": false,
           "isDisadvantaged": false,
-          "isEnvironmental": false
+          "isEnvironmental": false,
+          "enableDamage": false
         }
       },
       "damageType": {
@@ -403,16 +403,14 @@
       "saveFrequency": "",
       "worthiness": {
         "vsLesser": {
-          "savingThrowType": "none",
-          "savingThrowModifier": 0,
-          "saveNegates": false,
-          "saveHalves": false
+          "saveType": "none",
+          "saveModifier": 0,
+          "saveSuccess": "none"
         },
         "vsWorthy": {
-          "savingThrowType": "none",
-          "savingThrowModifier": 0,
-          "saveNegates": false,
-          "saveHalves": false
+          "saveType": "none",
+          "saveModifier": 0,
+          "saveSuccess": "none"
         }
       }
     },
@@ -449,17 +447,18 @@
       },
       "toHit": {
         "totalBonus": 0,
-        "levelBonus": false,
+        "useLevelBonus": false,
         "isAutomatic": false,
         "miscBonus": 0,
         "relevantAttribute": "",
-        "attributeBonus": false
+        "useAttrBonus": false,
+        "isAdvantaged": false,
+        "isDisadvantaged": false
       },
       "isSmite": false,
+      "isMelee": false,
       "effortCommitment": "",
       "canTargetWorthyFoes": false,
-      "isAdvantaged": false,
-      "isDisadvantaged": false,
       "isMagicalAttack": false
     },
     "word": {

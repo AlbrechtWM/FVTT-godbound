@@ -1,0 +1,125 @@
+<div class="flexrow" style="justify-content: center; margin-bottom: -10px;"> <!--  -->
+  <h1 class="flex0" style="white-space: nowrap; text-decoration: underline; margin-right: 11px;">
+    Damage Profile</h1>
+</div>
+<div class="flexcol" style="padding-left: 5px; padding-right: 5px;">
+  <hr />
+  <div class="flexrow flex-start"
+    style="margin-bottom: 0px; align-items: center; white-space: nowrap; margin-left: 0px;">
+    <label class="flex0" style="font-weight: bold; margin-right: 5px;">Number of Die: </label>
+    <input class="flex0" style="line-height: 20px; min-width: 25px; margin-right: 11px; text-align: center;"
+      name="system.damage.numDie" value="{{system.damage.numDie}}" type="number" />
+    <label class="flex0" style="font-weight: bold; margin-right: 5px;">Die Type: </label>
+    <select class="flex0 sheet-select" name="system.damage.dieType"
+      style="line-height: 20px; width: max-content; margin-right: 11px;">
+      {{selectOptions dieTypeChoices selected=system.damage.dieType}}
+    </select>
+    <label class="flex0" style="font-weight: bold; margin-right: 5px">Bonus Die For Extra Levels: </label>
+    <input class="flex0" style="line-height: 20px; margin-right: 8px; margin-left: -5px; min-width: 30px;"
+      name="system.damage.bonusDieForExtraLevels" {{checked system.damage.bonusDieForExtraLevels}} type="checkbox" />
+    <label class="flex0" style="font-weight: bold; margin-right: 5px;">Attribute: </label>
+    <select class="flex0 sheet-select" name="system.damage.relevantAttribute"
+      style="line-height: 20px; width: max-content; margin-right: 11px;">
+      {{selectOptions attributeChoices selected=system.damage.relevantAttribute}}
+    </select>
+    <label class="flex0" style="font-weight: bold; margin-right: 5px">Apply Attr: </label>
+    <input class="flex0" style="line-height: 20px; margin-right: 8px; margin-left: -5px; min-width: 30px;"
+      name="system.damage.useAttrBonus" {{checked system.damage.useAttrBonus}} type="checkbox" />
+    <label class="flex0" style="font-weight: bold; margin-right: 5px">Apply Level: </label>
+    <input class="flex0" style="line-height: 20px; margin-right: 8px; margin-left: -5px; min-width: 30px;"
+      name="system.damage.useLevelBonus" {{checked system.damage.useLevelBonus}} type="checkbox" />
+    <label class="flex0" style="font-weight: bold; margin-right: 5px;">Misc Bonus: </label>
+    <input class="flex0" style="line-height: 20px; min-width: 25px; margin-right: 11px; text-align: center;"
+      name="system.damage.miscBonus" value="{{system.damage.miscBonus}}" type="number" />
+  </div>
+  <hr />
+  <div class="flexrow flex-start"
+    style="margin-bottom: 0px; align-items: center; white-space: nowrap; margin-left: 0px;">
+    <label class="flex0" style="font-weight: bold; margin-right: 5px;">Damage Type: </label>
+    <select class="flex0 sheet-select" name="system.damage.damageType"
+      style="line-height: 20px; width: max-content; margin-right: 11px;">
+      {{selectOptions damageTypeChoices selected=system.damage.damageType}}
+    </select>
+    <label class="flex0" style="font-weight: bold; margin-right: 5px;">Damage Flavor Text: </label>
+    <input class="flex1" style="line-height: 20px; min-width: 100px; margin-right: 5px;"
+      name="system.damage.damageFlavorText" value="{{system.damage.damageFlavorText}}" type="text" />
+  </div>
+  <hr />
+  <div class="flexrow flex-start"
+    style="margin-bottom: 0px; align-items: center; white-space: nowrap; margin-left: 0px;">
+    <label class="flex0" style="font-weight: bold; margin-right: 5px">Is Straight: </label>
+    <input class="flex0" style="line-height: 20px; margin-right: 8px; margin-left: -5px; min-width: 30px;"
+      name="system.damage.isStraight" {{checked system.damage.isStraight}} type="checkbox" />
+    <label class="flex0" style="font-weight: bold; margin-right: 5px">Can Overflow: </label>
+    <input class="flex0" style="line-height: 20px; margin-right: 8px; margin-left: -5px; min-width: 30px;"
+      name="system.damage.canOverflow" {{checked system.damage.canOverflow}} type="checkbox" />
+    <label class="flex0" style="font-weight: bold; margin-right: 5px">Apply Advantage: </label>
+    <input class="flex0" style="line-height: 20px; margin-right: 8px; margin-left: -5px; min-width: 30px;"
+      name="system.damage.isAdvantaged" {{checked system.damage.isAdvantaged}} type="checkbox" />
+    <label class="flex0" style="font-weight: bold; margin-right: 5px">Apply Disadvantage: </label>
+    <input class="flex0" style="line-height: 20px; margin-right: 8px; margin-left: -5px; min-width: 30px;"
+      name="system.damage.isDisadvantaged" {{checked system.damage.isDisadvantaged}} type="checkbox" />
+    <label class="flex0" style="font-weight: bold; margin-right: 5px">Is Environmental: </label>
+    <input class="flex0" style="line-height: 20px; margin-right: 8px; margin-left: -5px; min-width: 30px;"
+      name="system.damage.isEnvironmental" {{checked system.damage.isEnvironmental}} type="checkbox" />
+  </div>
+  <hr />
+  <div class="flexrow" style="margin-bottom: 0px; align-items: center; white-space: nowrap; margin-left: 0px;">
+    <h3 class="flex1" style="white-space: nowrap; text-decoration: underline; margin-right: 11px;">
+      VS Lesser Foes</h3>
+    <h3 class="flex1" style="white-space: nowrap; text-decoration: underline; margin-right: 11px;">
+      VS Worthy Foes</h3>
+  </div>
+  <hr />
+  <div class="flexrow flex-start"
+    style="margin-bottom: 0px; align-items: center; white-space: nowrap; margin-left: 0px;">
+    <label class="flex0" style="font-weight: bold; margin-right: 5px;">Save Type: </label>
+    <select class="flex0 sheet-select" name="system.damage.worthiness.vsLesser.saveType"
+      style="line-height: 20px; width: max-content; margin-right: 11px;">
+      {{selectOptions savingThrowChoices selected=system.damage.worthiness.vsLesser.saveType}}
+    </select>
+    <label class="flex0" style="font-weight: bold; margin-right: 5px;">Mod: </label>
+    <input class="flex0" style="line-height: 20px; min-width: 25px; margin-right: 11px; text-align: center;"
+      name="system.damage.worthiness.vsLesser.saveModifier" value="{{system.damage.worthiness.vsLesser.saveModifier}}"
+      type="number" />
+      <label class="flex0" style="font-weight: bold; margin-right: 5px;">Save Success: </label>
+      <select class="flex0 sheet-select" name="system.damage.worthiness.vsLesser.saveSuccess"
+        style="line-height: 20px; width: max-content; margin-right: 11px;">
+        {{selectOptions savingThrowSuccessChoices selected=system.damage.worthiness.vsLesser.saveSuccess}}
+      </select>
+    <label class="flex0" style="font-weight: bold; margin-left: auto; margin-right: 5px;">Save Type: </label>
+    <select class="flex0 sheet-select" name="system.damage.worthiness.vsWorthy.saveType"
+      style="line-height: 20px; width: max-content; margin-right: 11px;">
+      {{selectOptions savingThrowChoices selected=system.damage.worthiness.vsWorthy.saveType}}
+    </select>
+    <label class="flex0" style="font-weight: bold; margin-right: 5px;">Mod: </label>
+    <input class="flex0" style="line-height: 20px; min-width: 25px; margin-right: 11px; text-align: center;"
+      name="system.damage.worthiness.vsWorthy.saveModifier" value="{{system.damage.worthiness.vsWorthy.saveModifier}}"
+      type="number" />
+      <label class="flex0" style="font-weight: bold; margin-right: 5px;">Save Success: </label>
+      <select class="flex0 sheet-select" name="system.damage.worthiness.vsWorthy.saveSuccess"
+        style="line-height: 20px; width: max-content; margin-right: 11px;">
+        {{selectOptions savingThrowSuccessChoices selected=system.damage.worthiness.vsWorthy.saveSuccess}}
+      </select>
+  </div>
+</div>
+
+
+<!-- 
+<label class="flex0" style="font-weight: bold; margin-right: 5px">Save Halves: </label>
+<input class="flex0" style="line-height: 20px; margin-right: 8px; margin-left: -5px; min-width: 30px;"
+  name="system.damage.worthiness.vsLesser.saveHalves" {{checked system.damage.worthiness.vsLesser.saveHalves}}
+  type="checkbox" />
+<label class="flex0" style="font-weight: bold; margin-right: 5px">Save Negates: </label>
+<input class="flex0" style="line-height: 20px; margin-right: 8px; margin-left: -5px; min-width: 30px;"
+  name="system.damage.worthiness.vsLesser.saveNegates" {{checked system.damage.worthiness.vsLesser.saveNegates}}
+  type="checkbox" />
+
+<label class="flex0" style="font-weight: bold; margin-right: 5px">Save Halves: </label>
+<input class="flex0" style="line-height: 20px; margin-right: 8px; margin-left: -5px; min-width: 30px;"
+  name="system.damage.worthiness.vsWorthy.saveHalves" {{checked system.damage.worthiness.vsWorthy.saveHalves}}
+  type="checkbox" />
+<label class="flex0" style="font-weight: bold; margin-right: 5px">Save Negates: </label>
+<input class="flex0" style="line-height: 20px; margin-right: 8px; margin-left: -5px; min-width: 30px;"
+  name="system.damage.worthiness.vsWorthy.saveNegates" {{checked system.damage.worthiness.vsWorthy.saveNegates}}
+  type="checkbox" /> -->
