@@ -1,9 +1,10 @@
 import SelectChoices from './helpers/selectChoices.mjs';
+
 /**
  * Extend the basic ItemSheet with some very simple modifications
  * @extends {ItemSheet}
  */
-export class attackItemSheet extends ItemSheet {
+export class giftItemSheet extends ItemSheet {
 
   /** @override */
   static get defaultOptions() {
@@ -23,7 +24,7 @@ export class attackItemSheet extends ItemSheet {
 
     // Alternatively, you could use the following return statement to do a
     // unique item sheet by type, like `weapon-sheet.html`.
-    return `systems/godbound/system/items/templates/attack-item-sheet.html`;
+    return `systems/godbound/system/items/templates/gift-item-sheet.html`;
   }
 
   /* -------------------------------------------- */
@@ -47,6 +48,10 @@ export class attackItemSheet extends ItemSheet {
     context.system = itemData.system;
     context.flags = itemData.flags;
     // context.GODBOUND_CONSTANTS = CONFIG.GODBOUND_CONSTANTS;
+
+    context.abilitySpeedChoices = SelectChoices.getAbilitySpeedChoices();
+
+    context.durationUnitChoices = SelectChoices.getDurationUnitChoices();
 
     context.rangeUnitChoices = SelectChoices.getRangeUnitChoices();
 

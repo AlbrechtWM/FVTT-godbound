@@ -1,0 +1,60 @@
+<div class="flexrow" style="justify-content: center; margin-bottom: -10px;"> <!--  -->
+  <h1 class="flex0" style="white-space: nowrap; text-decoration: underline; margin-right: 11px;">
+    Gift Profile</h1>
+</div>
+<div class="flexcol" style="padding-left: 5px; padding-right: 5px;">
+  <hr />
+  <div class="flexrow flex-start"
+    style="margin-bottom: 0px; align-items: center; white-space: nowrap; margin-left: 0px;">
+    <img class="flex0" src="{{item.img}}" style="height: 50px; width: 50px; margin-right: 11px;" data-edit="img"
+      title="{{item.name}}" />
+    <!-- <label class="flex0" style="font-weight: bold; margin-right: 5px;">Description: </label> -->
+    <textarea class="flex1" name="system.base.description" placeholder="Enter Description"
+      style="height: 50;max-height: 50px; min-width: 200px; margin-right: 5px;">{{system.base.description}}</textarea>
+  </div>
+  <hr />
+  <div class="flexrow flex-start"
+    style="margin-bottom: 0px; align-items: center; white-space: nowrap; margin-left: 0px;">
+    <label class="flex0" style="font-weight: bold; margin-right: 5px;">Name: </label>
+    <input class="flex0" style="line-height: 20px; min-width: 195px; margin-right: 11px;" name="system.base.name"
+      value="{{system.base.name}}" type="text" />
+    <label class="flex0" style="font-weight: bold; margin-right: 5px;">Speed: </label>
+    <select class="flex0 sheet-select" name="system.speed"
+      style="line-height: 20px; width: max-content; margin-right: 11px;">
+      {{selectOptions abilitySpeedChoices selected=system.speed}}
+    </select>
+    <label class="flex0" style="font-weight: bold; margin-right: 5px;">Effort: </label>
+    <select class="flex0 sheet-select" name="system.effortCommitment"
+      style="line-height: 20px; width: max-content; margin-right: 11px;">
+      {{selectOptions effortChoices selected=system.effortCommitment}}
+    </select>
+    <label class="flex0" style="font-weight: bold; margin-right: 5px;">Duration: </label>
+    <input class="flex0" style="line-height: 20px; min-width: 40px; margin-right: 11px; text-align: center;"
+      name="system.duration.durationNum" value="{{system.duration.durationNum}}" type="number" />
+    <label class="flex0" style="font-weight: bold; margin-right: 5px;">Duration Units: </label>
+    <select class="flex0 sheet-select" name="system.duration.durationUnits"
+      style="line-height: 20px; width: max-content; margin-right: 11px;">
+      {{selectOptions durationUnitChoices selected=system.duration.durationUnits}}
+    </select>
+    <label class="flex0" style="font-weight: bold; margin-right: 5px">Greater Gift: </label>
+    <input class="flex0" style="line-height: 20px; margin-right: 8px; margin-left: -5px; min-width: 30px;"
+      name="system.isGreaterGift" {{checked system.isGreaterGift}} type="checkbox" />
+  </div>
+  <hr />
+</div>
+<!-- <div class="flexrow flex-start" style="margin-bottom: 0px; margin-left: 5px; align-items: center; white-space: nowrap;">
+  <label class="flex0" style="font-style: italic; margin-right: 5px">Has Attack: </label>
+  <input class="flex0" style="line-height: 20px; margin-right: 8px; margin-left: -5px; min-width: 30px;"
+    name="system.enableAttack" {{checked system.enableAttack}} type="checkbox" />
+  <label class="flex0" style="font-style: italic; margin-right: 5px">Has Special Traits: </label>
+  <input class="flex0" style="line-height: 20px; margin-right: 8px; margin-left: -5px; min-width: 30px;"
+    name="system.enableSpecialTraits" {{checked system.enableSpecialTraits}} type="checkbox" />
+  <label class="flex0" style="font-style: italic; margin-right: 5px">Has Special Abilities: </label>
+  <input class="flex0" style="line-height: 20px; margin-right: 8px; margin-left: -5px; min-width: 30px;"
+    name="system.enableSpecialAbilities" {{checked system.enableSpecialAbilities}} type="checkbox" />
+</div>
+{{!-- This is a Handlebars partial. They're stored in the `/parts` folder next to this sheet, and defined in
+module/helpers/templates.mjs --}}
+{{#if system.enableAttack}}
+{{> "systems/godbound/system/items/templates/parts/attack.html"}}
+{{/if}} -->

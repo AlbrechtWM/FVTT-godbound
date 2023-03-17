@@ -8,6 +8,7 @@
 
     // Item partials.
     "systems/godbound/system/items/templates/parts/damage.html",
+    "systems/godbound/system/items/templates/parts/gift.html"
     // "systems/godbound/system/actors/templates/parts/actor-items.html",
     // "systems/godbound/system/actors/templates/parts/actor-spells.html",
     // "systems/godbound/system/actors/templates/parts/actor-effects.html",

@@ -56,6 +56,8 @@ godbound_constants.distanceUnits =
 
 godbound_constants.effortCommittment = ["none", "on-turn", "sustained", "scene", "day"];
 
+godbound_constants.abilitySpeeds = ["instant", "on-turn", "action", "constant"];
+
 godbound_constants.durationUnits = ["instant", "on-turn", "sustained", "scene", "day", "next-turn", "round", "minute", "hour", "week", "month", "year", "permanent"];
 
 godbound_constants.attributeTypes = ["none", "str", "dex", "con", "int", "wis", "cha", "all"];

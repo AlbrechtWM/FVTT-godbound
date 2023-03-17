@@ -476,10 +476,14 @@
         "base",
         "duration"
       ],
+      "enableSpecialTraits": false,
+      "enableSpecialAbilities": false,
+      "enableAttack": false,
       "specialTraits": null,
       "specialAbilities": null,
       "speed": "",
       "effortCommitment": "",
+      "isGreaterGift": false,
       "attack": null
     },
     "specialAbility": {
