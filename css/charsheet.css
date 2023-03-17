@@ -3,12 +3,11 @@
 }
 
 .stat-info {
-	border: 2px solid #725816;
 	width: 100%;
 	padding: 0.5em 0.75em;
 	text-align: center;
 	font-size: 14px;
-	height: 35px;
+	height: 30px;
 }
 
 .text-area-large {
@@ -31,22 +30,24 @@
 
 .sheet-facts {
 	height: 90%;
-	overflow-y:scroll;
+	overflow-y: scroll;
 	overflow-x: hidden;
 }
 
 .sheet-column {
-    height: 410px;
-    max-height: 410px;
-    overflow-y: scroll;
+	height: 410px;
+	max-height: 410px;
+	overflow-y: scroll;
 	overflow-x: hidden;
 }
 
 .charsheet-tabs {
 	background-image: url('../images/fancyborder.png');
-	background-repeat: no-repeat!important;
+	background-repeat: no-repeat !important;
 	background-position: center;
 	background-size: 100% 1px !important;
+	margin-bottom: 17px;
+    margin-top: 21px;
 }
 
 .stat-container {
@@ -60,25 +61,25 @@
 }
 
 .stat-info-saves {
-	border-right: 1px solid black;
-	width: 100%;
-	padding: 0.5em;
+	width: 40px;
+	align-items: center;
+	display: flex;
+	justify-content: center;
 	font-family: "Godbound", Garamond, "Times New Roman", Georgia, serif;
 	font-weight: 600;
 }
 
 .stat-info-sub-item {
 	border-radius: 1px;
-	border: 1px solid black;
 	height: 34px;
 }
 
 .portrait {
 	background-repeat: no-repeat !important;
 	background-size: contain !important;
-	background: url('../images/portraitborder.png');
-	padding: 0.8em;
-	width: 152px;
+	background: url('../images/newportrait.png');
+	padding: 1em;
+	width: 170px;
 }
 
 .profile-img {
@@ -87,6 +88,8 @@
 	flex: 0 0 100px;
 	height: 125px;
 	margin-right: 10px;
+	border-radius: 50%;
+	border: 2px solid rgb(116 95 43);
 }
 
 .charsheet-header {
@@ -898,8 +901,8 @@ body.sheet-darkmode .attributesabilities {
 }
 
 .charsheet-overall-wrapper {
-    padding: 1.8em;
-    width: 645px;
+	padding: 1.8em;
+	width: 645px;
 }
 
 .charsheet {
@@ -948,7 +951,7 @@ body.sheet-darkmode .attributesabilities {
 	font-size: 13px;
 	color: #204060;
 	cursor: pointer;
-              
+
 	border: 1px solid black;
 	border-color: #204060 !important;
 	border-radius: 4px;
@@ -1396,11 +1399,17 @@ body.sheet-darkmode .attributesabilities {
 }
 
 .charsheet-col-sub-area {
-	border: 1px solid black;
 	padding: 0.5em;
-	border-top: none;
 	display: flex;
-    flex-direction: column;
+	flex-direction: column;
+}
+
+.left-col {
+	padding-right: 20px;
+}
+
+.right-col {
+	padding-left: 20px;
 }
 
 .charsheet textarea {
@@ -1416,7 +1425,7 @@ body.sheet-darkmode .attributesabilities {
 
 .charsheet input[type=number] {
 	margin-bottom: 0px !important;
-	border: none;
+	border: 1px solid rgba(0, 0, 0, 0.2);
 	box-shadow: none;
 	padding: 2px;
 	line-height: 100%;

@@ -45,15 +45,15 @@ const calculateInfluencePointsRemaining = (system) => {
 
 /**
  * Adds an item of the type passed
- * @param {Object} system - actor system object
+ * @param {Object} actor - actor object
  * @param {string} type - the type of item to add
  * @param {function} postAddCallback - Callback to fire when add operation is finished
  */
-const add = (actor, type, ss) => {
+const add = (actor, type) => {
     // Making a switch, for adding later cases as necessary
     switch (type) {
         case 'fact': {
-            _addFact(actor.system, ss);
+            _addFact(actor);
             break;
         }
         default: {
@@ -63,26 +63,16 @@ const add = (actor, type, ss) => {
 }
 
 /**
-* Adds a fact
-* @param {Object} system - actor system object
-* @param {function} postAddCallback - Callback to fire when add operation is finished
-*/
-const _addFact = (system) => {
-    console.log(system.facts);
-    system.facts = [...system.facts, ''];
-}
-
-/**
- * Removes an item at the passed index
- * @param {Object} system - actor system object
+ * Removes an item at the passed index1
+ * @param {Object} actor - actor object
  * @param {string} type - the type of item to add
  * @param {string} type - the type of item to add
  */
-const remove = (system, type, index) => {
+const remove = (actor, type, index) => {
     // Making a switch, for adding later cases as necessary
     switch (type) {
         case 'fact': {
-            _addFact(system);
+            _removeFact(actor, index);
             break;
         }
         default: {
@@ -92,13 +82,27 @@ const remove = (system, type, index) => {
 }
 
 /**
-* Adds a fact
-* @param {Object} system - actor system object
+* Adds an empty fact
+* @param {Object} actor - actor system object
+* @param {function} postAddCallback - Callback to fire when add operation is finished
 */
-const _removeFact = (system, index, postAddCallback) => {
-    console.log(system);
-    system.facts = system.facts.slice(index);
+const _addFact = (actor) => {
+    console.log(actor);
+    const system = actor.system;
+    const keys = Object.keys(system.facts);
+    const newKey = keys.length > 0 ? Math.max(...Object.keys(system.facts)) + 1 : 0;
+    const newFacts = { ...system.facts };
+    newFacts[newKey] = '';
+    actor.update({ 'system.facts': newFacts });
+}
+
+/**
+* Removes a fact
+* @param {Object} actor - actor object
+*/
+const _removeFact = (actor, index) => {
+    actor.update({ [`system.facts.-=${index}`]: null });
 }
 
 
-export default { calculateDerivedAttributes, add, calculateInfluencePointsRemaining };
+export default { calculateDerivedAttributes, add, remove, calculateInfluencePointsRemaining };

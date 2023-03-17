@@ -267,11 +267,11 @@
         "spent": 0,
         "free": 0
       },
-      "facts": [
-        "asdfasdf",
-        "",
-        ""
-      ]
+      "facts": {
+        "0": "",
+        "1": "",
+        "2": ""
+      }
     },
     "npc": {
       "templates": [

@@ -4,10 +4,10 @@
 			<div class="">
 				<div class="">
 					<div class="">
-						<div class="margin-bottom-1em">
+						<div>
 							<div class="flex">
 								<div class="fable-font margin-bottom-1em margin-right-1em bold">
-									NAME
+									Name
 								</div>
 								<input type="text" name="system.base.name" value="{{system.base.name}}"
 									data-type="String">
@@ -17,7 +17,7 @@
 									<img class="profile-img godbound-border" src="{{actor.img}}" data-edit="img"
 										title="{{actor.name}}" />
 								</div>
-								<div class="flex column stat-container">
+								<div class="flex column stat-container center">
 									<div class="flex margin-bottom-halfem">
 										<div class="flex column center-column stat-col" data-tooltip="<div class=&quot;&quot;>MOD: {{system.attributes.str.mod}}</div>
 										<div>DC: {{system.attributes.str.checkDC}}</div>" data-tooltip-direction="UP">
@@ -104,7 +104,7 @@
 														value="{{system.abilityPoints.total}}" data-type="Number">
 												</div>
 												<div class="fable-font bold stat-info ability-points">
-													ABILITY POINTS
+													Ability Points
 												</div>
 											</div>
 										</div>
@@ -120,7 +120,7 @@
 												</div>
 												<div data-tooltip="<div class=&quot;&quot;>BONUS: {{system.coreStats.hp.miscBonus}}</div>"
 													data-tooltip-direction="DOWN" class="fable-font bold stat-info">
-													HITPOINTS
+													Hit Points
 												</div>
 											</div>
 										</div>
@@ -128,19 +128,19 @@
 											<div class="flex column center-column stat-col">
 												<div class="save-info stat-info-sub-item no-bottom-border flex">
 													<div type="roll" data-dialog="true" data-type="hardiness"
-														class="stat-info-saves" name="roll_hardiness_save" data-tooltip="<div>MOD: {{system.coreStats.saves.hardiness.attributeModifier}}</div>
+														class="stat-info-saves no-bottom-border no-right-border" name="roll_hardiness_save" data-tooltip="<div>MOD: {{system.coreStats.saves.hardiness.attributeModifier}}</div>
 													PENALTY: {{system.coreStats.saves.hardiness.penaltyModifier}}</div>
 													<div>DC: {{system.coreStats.saves.hardiness.dc}}</div>" data-tooltip-direction="DOWN"">
 														HAR
 													</div>
-													<div type=" roll" data-dialog="true" data-type="evasion" class="stat-info-saves"
+													<div type=" roll" data-dialog="true" data-type="evasion" class="stat-info-saves no-bottom-border no-right-border"
 														name="roll_hardiness_save" data-tooltip="<div>MOD: {{system.coreStats.saves.evasion.attributeModifier}}</div>
 														PENALTY: {{system.coreStats.saves.evasion.penaltyModifier}}</div>
 														<div>DC: {{system.coreStats.saves.evasion.dc}}</div>" data-tooltip-direction="DOWN">
 														EVA
 													</div>
 													<div type="roll" data-dialog="true" data-type="spirit"
-														class="stat-info-saves no-right-border"
+														class="stat-info-saves no-bottom-border"
 														name="roll_hardiness_save" data-tooltip="<div>MOD: {{system.coreStats.saves.spirit.attributeModifier}}</div>
 													PENALTY: {{system.coreStats.saves.spirit.penaltyModifier}}</div>
 													<div>DC: {{system.coreStats.saves.spirit.dc}}</div>" data-tooltip-direction="DOWN">
@@ -148,7 +148,7 @@
 													</div>
 												</div>
 												<div class="fable-font bold stat-info">
-													SAVES
+													Saves
 												</div>
 											</div>
 										</div>
@@ -156,7 +156,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="charsheet-tabs flex center margin-bottom-1em" data-group="charsheet">
+						<div class="charsheet-tabs flex center" data-group="charsheet">
 							<div class="margin-right-1em item godbound-button" data-tab="char" data-group="charsheet">
 								Character</div>
 							<div class="margin-right-1em item godbound-button" data-tab="combat" data-group="charsheet">
@@ -166,15 +166,15 @@
 						<section class="charsheet-content">
 							<div data-group="charsheet" data-tab="char" class="tab">
 								<div class="flex h100">
-									<div class="flex column w50 margin-right-halfem">
-										<div class="fable-font margin-right-1em bold sheet-text-header stat-info">
+									<div class="flex column w50 margin-right-halfem left-col">
+										<div class="fable-font margin-right-1em bold sheet-text-header stat-info margin-bottom-halfem">
 											GENERAL
 										</div>
-										<div class="charsheet-col-sub-area sheet-column space-around">
+										<div class="charsheet-col-sub-area sheet-column">
 											<div class="flex space-between">
 												<div
 													class="fable-font margin-bottom-1em margin-right-1em bold sheet-text-header">
-													LEVEL
+													Level
 												</div>
 												<input class="text-center" type="number"
 													name="system.coreStats.levelOrHD"
@@ -183,7 +183,7 @@
 											<div class="flex space-between">
 												<div
 													class="fable-font margin-bottom-1em margin-right-1em bold sheet-text-header">
-													EXP
+													Exp
 												</div>
 												<input class="text-center" type="number" name="system.xp"
 													value="{{system.xp}}" data-type="Number">
@@ -191,7 +191,7 @@
 											<div class="flex space-between">
 												<div
 													class="fable-font margin-bottom-1em margin-right-1em bold sheet-text-header">
-													DESC
+													Desc
 												</div>
 												<textarea class="w100 sheet-resize-vertical text-area-large"
 													name="system.base.description"
@@ -200,7 +200,7 @@
 											<div class="flex space-between">
 												<div
 													class="fable-font margin-bottom-1em margin-right-1em bold sheet-text-header">
-													LANG
+													Lang
 												</div>
 												<textarea class="w100 sheet-resize-vertical text-area-large"
 													name="system.base.languages"
@@ -208,7 +208,7 @@
 											</div>
 											<div class="flex space-between">
 												<div class="fable-font margin-right-1em bold sheet-text-header">
-													GOALS
+													Goal
 												</div>
 												<textarea class="w100 sheet-resize-vertical text-area-large"
 													name="system.base.goals" data-type="String"
@@ -223,19 +223,19 @@
 											</div>
 										</div>
 									</div>
-									<div class="flex column w50">
-										<div class="fable-font margin-right-1em bold sheet-text-header stat-info">
+									<div class="flex column w50 right-col">
+										<div class="fable-font margin-right-1em bold sheet-text-header stat-info margin-bottom-halfem">
 											FACTS
 										</div>
-										<div class="charsheet-col-sub-area sheet-column h100">
+										<div class="charsheet-col-sub-area sheet-column h100 overflow-hidden">
 											<div class="sheet-facts">
-												{{#each system.facts as |fact i|}}
+												{{#each system.facts}}
 												<div class="flex center-column">
 													<textarea class="w100 sheet-resize-vertical margin-right-halfem"
-														value="{{fact}}" name="{{fact}}"
-														placeholder="New Fact"></textarea>
+														name="system.facts.{{@key}}"
+														placeholder="New Fact">{{this}}</textarea>
 													<div class="trash-button margin-right-halfem fa-solid fa-trash-can"
-														data-index="{{i}}" type="deletefact" data-fact="{{fact}}">
+														data-index="{{@key}}" type="remove" data-typetoremove="fact">
 													</div>
 												</div>
 												{{/each}}

@@ -90,6 +90,7 @@ div [type=roll] {
 .fable-font {
     font-family: "Godbound", Garamond, "Times New Roman", Georgia, serif;
     color: rgb(0, 89, 64);
+    font-size: 15px;
 }
 
 .flex {
@@ -141,19 +142,24 @@ div [type=roll] {
     height: 100%;
 }
 
+.overflow-hidden {
+    overflow: hidden;
+}
+
 .godbound-button {
     font-family: "Godbound", Garamond, "Times New Roman", Georgia, serif;
-    padding: 0.5em;
-    border: 2px solid #725816;
+	border: 2px solid #b7913075;
     border-radius: 4px;
     text-align: center;
     min-width: 72px;
-    background: rgb(255 225 187);
     cursor: pointer;
     font-size: 16px;
+    font-weight: 600;
+    background-image: url('../images/charsheet-button-background.png');
+	background-position: center;
+    padding: 3px;
 }
 
 .godbound-button.active {
-    background-color: rgb(0, 89, 64);
-    color: white;
+    color: rgb(221 72 72);
 }

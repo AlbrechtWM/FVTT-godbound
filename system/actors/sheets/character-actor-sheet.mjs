@@ -48,6 +48,15 @@ export class characterActorSheet extends ActorSheet {
     //   this._prepareCharacterData(context);
     // }
 
+    // convert - can remove once people load this once
+    if (context.system.facts instanceof Array) {
+      const convertedFacts = {};
+      context.system.facts.forEach((fact, i) => {
+        convertedFacts[i] = fact;
+      });
+      context.system.facts = convertedFacts;
+    }
+
     // Add roll data for TinyMCE editors.
     //context.rollData = context.actor.getRollData();
 
@@ -91,6 +100,8 @@ export class characterActorSheet extends ActorSheet {
     html.find('div[type=roll]').click(this._onRoll.bind(this));
 
     html.find('div[type=addto]').click(this._onClickAdd.bind(this));
+
+    html.find('div[type=remove]').click(this._onClickRemove.bind(this));
 
     // Charsheet tabs
     const tabs = new Tabs({ callback: () => { }, navSelector: ".charsheet-tabs", contentSelector: ".charsheet-content", initial: "char" });
@@ -230,7 +241,7 @@ export class characterActorSheet extends ActorSheet {
 
   /**
    * Handles adding of values
-   * @param {Event} event   The originating click event
+   * @param {Event} event The originating click event
    * @private
    */
   _onClickAdd(event) {
@@ -238,8 +249,22 @@ export class characterActorSheet extends ActorSheet {
 
     const element = event.currentTarget;
     const { typetoadd } = element.dataset;
-    console.log(this, event);
-    Character.add(this.actor, typetoadd, this.getData)
+
+    Character.add(this.actor, typetoadd)
+  }
+
+  /**
+ * Handles removal of values
+ * @param {Event} event   The originating click event
+ * @private
+ */
+  _onClickRemove(event) {
+    event.preventDefault();
+
+    const element = event.currentTarget;
+    const { typetoremove, index } = element.dataset;
+    console.log(typetoremove, index);
+    Character.remove(this.actor, typetoremove, index)
   }
 
   /**
