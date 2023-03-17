@@ -128,12 +128,14 @@
 											<div class="flex column center-column stat-col">
 												<div class="save-info stat-info-sub-item no-bottom-border flex">
 													<div type="roll" data-dialog="true" data-type="hardiness"
-														class="stat-info-saves no-bottom-border no-right-border" name="roll_hardiness_save" data-tooltip="<div>MOD: {{system.coreStats.saves.hardiness.attributeModifier}}</div>
+														class="stat-info-saves no-bottom-border no-right-border"
+														name="roll_hardiness_save" data-tooltip="<div>MOD: {{system.coreStats.saves.hardiness.attributeModifier}}</div>
 													PENALTY: {{system.coreStats.saves.hardiness.penaltyModifier}}</div>
 													<div>DC: {{system.coreStats.saves.hardiness.dc}}</div>" data-tooltip-direction="DOWN"">
 														HAR
 													</div>
-													<div type=" roll" data-dialog="true" data-type="evasion" class="stat-info-saves no-bottom-border no-right-border"
+													<div type=" roll" data-dialog="true" data-type="evasion"
+														class="stat-info-saves no-bottom-border no-right-border"
 														name="roll_hardiness_save" data-tooltip="<div>MOD: {{system.coreStats.saves.evasion.attributeModifier}}</div>
 														PENALTY: {{system.coreStats.saves.evasion.penaltyModifier}}</div>
 														<div>DC: {{system.coreStats.saves.evasion.dc}}</div>" data-tooltip-direction="DOWN">
@@ -159,6 +161,7 @@
 						<div class="charsheet-tabs flex center" data-group="charsheet">
 							<div class="margin-right-1em item godbound-button" data-tab="char" data-group="charsheet">
 								Character</div>
+							<div class="margin-right-1em item godbound-button" data-tab="divine" data-group="charsheet">Divine</div>
 							<div class="margin-right-1em item godbound-button" data-tab="combat" data-group="charsheet">
 								Combat</div>
 							<div class="item godbound-button" data-tab="arts" data-group="charsheet">Arts</div>
@@ -167,7 +170,8 @@
 							<div data-group="charsheet" data-tab="char" class="tab">
 								<div class="flex h100">
 									<div class="flex column w50 margin-right-halfem left-col">
-										<div class="fable-font margin-right-1em bold sheet-text-header stat-info margin-bottom-halfem">
+										<div
+											class="fable-font margin-right-1em bold sheet-text-header stat-info margin-bottom-halfem">
 											GENERAL
 										</div>
 										<div class="charsheet-col-sub-area sheet-column">
@@ -224,7 +228,8 @@
 										</div>
 									</div>
 									<div class="flex column w50 right-col">
-										<div class="fable-font margin-right-1em bold sheet-text-header stat-info margin-bottom-halfem">
+										<div
+											class="fable-font margin-right-1em bold sheet-text-header stat-info margin-bottom-halfem">
 											FACTS
 										</div>
 										<div class="charsheet-col-sub-area sheet-column h100 overflow-hidden">
@@ -342,6 +347,9 @@
 							<div data-group="charsheet" data-tab="arts" class="tab">
 							</div>
 						</section>
+						<section class="charsheet-content">
+							<div data-group="charsheet" data-tab="divine" class="tab">
+							</div>
 					</div>
 					<!-- <div class="sheet-row">
 						<div class="sheet-col-1 sheet-pad-t-md sheet-pad-r-md sheet-pad-b-sm">
