@@ -13,129 +13,127 @@
 						<img class="profile-img godbound-border" src="{{actor.img}}" data-edit="img"
 							title="{{system.base.name}}" />
 					</div>
-					<div class="flex column stat-container center">
-						<div class="flex margin-bottom-halfem">
-							<div class="flex column center-column stat-col">
-								<div class="fable-font bold stat-info" class="sheet-button">
-									Hit Dice
+					<div class="flex column">
+						<div class="flex column stat-container center">
+							<div class="flex margin-bottom-halfem">
+								<div class="flex column center-column stat-col margin-right-halfem">
+									<div class="fable-font bold stat-info" class="sheet-button">
+										Hit Dice
+									</div>
+									<div class="flex column">
+										<div class="flex">
+											<div class="stat-info-npc stat-info-sub-item-npc">
+												Level
+											</div>
+											<div class="stat-info-npc stat-info-sub-item-npc">
+												<input type="number" name="actor.coreStats.levelOrHD"
+													value="{{system.coreStats.levelOrHD}}" data-type="Number">
+											</div>
+										</div>
+										<div class="flex">
+											<div class="stat-info-npc stat-info-sub-item-npc">
+												Bonus
+											</div>
+											<div class="stat-info-npc stat-info-sub-item-npc">
+												<input type="number" name="system.coreStats.hp.miscBonus"
+													value="{{system.coreStats.hp.miscBonus}}" data-dtype="Number">
+											</div>
+										</div>
+										<div class="stat-info-npc stat-info-sub-item-npc flex">
+											<input min="0" max="{{system.coreStats.hp.max}}" type="number"
+												name="system.coreStats.hp.current"
+												value="{{system.coreStats.hp.current}}" data-type="Number">
+											/
+											<input disabled="true" type="number" name="system.coreStats.hp.max"
+												value="{{system.coreStats.hp.max}}" data-type="Number">
+										</div>
+									</div>
 								</div>
-								<div class="flex column">
-									<div class="flex">
-										<div class="stat-info-npc stat-info-sub-item-npc">
-											Level
-										</div>
-										<div class="stat-info-npc stat-info-sub-item-npc">
-											<input type="number" name="actor.coreStats.levelOrHD"
-												value="{{system.coreStats.levelOrHD}}" data-type="Number">
-										</div>
+								<div class="flex column center-column stat-col">
+									<div class="fable-font bold stat-info" class="sheet-button">
+										Saves
 									</div>
 									<div class="flex">
-										<div class="stat-info-npc stat-info-sub-item-npc">
-											Bonus
-										</div>
-										<div class="stat-info-npc stat-info-sub-item-npc">
-											<input type="number" name="system.coreStats.hp.miscBonus"
-												value="{{system.coreStats.hp.miscBonus}}" data-dtype="Number">
-										</div>
+										<div type="roll" data-dialog="true" data-type="hardiness"
+											class="stat-info-npc stat-info-sub-item-npc margin-right-halfem"
+											name="roll_hardiness_save" data-tooltip="<div>MOD: {{system.coreStats.saves.hardiness.attributeModifier}}</div>
+									PENALTY: {{system.coreStats.saves.hardiness.penaltyModifier}}</div>
+									<div>DC: {{system.coreStats.saves.hardiness.dc}}</div>" data-tooltip-direction="DOWN"">
+										Hardiness
 									</div>
-									<div class="stat-info-npc stat-info-sub-item-npc  no-bottom-border flex">
-										<input min="0" max="{{system.coreStats.hp.max}}" type="number"
-											name="system.coreStats.hp.current" value="{{system.coreStats.hp.current}}"
-											data-type="Number">
-										/
-										<input disabled="true" type="number" name="system.coreStats.hp.max"
-											value="{{system.coreStats.hp.max}}" data-type="Number">
-									</div>
-								</div>
-							</div>
-							<div class="flex column center-column stat-col">
-								<div class="fable-font bold stat-info" class="sheet-button">
-									Hit Dice
-								</div>
-								<div class="flex column">
-									<div class="flex">
-										<div class="stat-info-npc stat-info-sub-item-npc">
-											Level
-										</div>
-										<div class="stat-info-npc stat-info-sub-item-npc">
-											<input type="number" name="actor.coreStats.levelOrHD"
-												value="{{system.coreStats.levelOrHD}}" data-type="Number">
+									<div class=" stat-info-npc stat-info-sub-item-npc flex">
+											<input type="number" name="system.coreStats.saves.hardiness.dc"
+												value="{{system.coreStats.saves.hardiness.dc}}" data-type="Number">
 										</div>
 									</div>
 									<div class="flex">
-										<div class="stat-info-npc stat-info-sub-item-npc">
-											Bonus
-										</div>
-										<div class="stat-info-npc stat-info-sub-item-npc">
-											<input type="number" name="system.coreStats.hp.miscBonus"
-												value="{{system.coreStats.hp.miscBonus}}" data-dtype="Number">
+										<div type="roll" data-dialog="true" data-type="evasion"
+											class="stat-info-npc stat-info-sub-item-npc margin-right-halfem"
+											name="roll_evasion_save" data-tooltip="<div>MOD: {{system.coreStats.saves.evasion.attributeModifier}}</div>
+									PENALTY: {{system.coreStats.saves.evasion.penaltyModifier}}</div>
+									<div>DC: {{system.coreStats.saves.evasion.dc}}</div>" data-tooltip-direction="DOWN"">
+										Evasion
+									</div>
+									<div class=" stat-info-npc stat-info-sub-item-npc flex">
+											<input type="number" name="system.coreStats.saves.evasion.dc"
+												value="{{system.coreStats.saves.evasion.dc}}" data-type="Number">
 										</div>
 									</div>
-									<div class="stat-info-npc stat-info-sub-item-npc  no-bottom-border flex">
-										<input min="0" max="{{system.coreStats.hp.max}}" type="number"
-											name="system.coreStats.hp.current" value="{{system.coreStats.hp.current}}"
-											data-type="Number">
-										/
-										<input disabled="true" type="number" name="system.coreStats.hp.max"
-											value="{{system.coreStats.hp.max}}" data-type="Number">
+									<div class="flex">
+										<div type="roll" data-dialog="true" data-type="sprit"
+											class="stat-info-npc stat-info-sub-item-npc margin-right-halfem"
+											name="roll_sprit_save" data-tooltip="<div>MOD: {{system.coreStats.saves.sprit.attributeModifier}}</div>
+									PENALTY: {{system.coreStats.saves.sprit.penaltyModifier}}</div>
+									<div>DC: {{system.coreStats.saves.sprit.dc}}</div>" data-tooltip-direction="DOWN"">
+										Spirit
 									</div>
-								</div>
-							</div>
-							<div class="flex column center-column stat-col">
-								<div class="fable-font bold stat-info" class="sheet-button">
-									Actions
-								</div>
-								<div class="stat-info stat-info-sub-item no-top-border">
-									<input type="number" name="system.coreStats.actions"
-										value="{{system.coreStats.actions}}" data-type="Number">
-								</div>
-							</div>
-							<div class="flex column center-column stat-col">
-								<div class="fable-font bold stat-info" class="sheet-button">
-									Attacks
-								</div>
-								<div class="stat-info stat-info-sub-item no-top-border">
-									<input type="number" name="system.coreStats.attacks"
-										value="{{system.coreStats.attacks}}" data-type="Number">
-								</div>
-							</div>
-							<div class="flex column center-column stat-col">
-								<div class="fable-font bold stat-info" class="sheet-button">
-									Morale
-								</div>
-								<div class="stat-info stat-info-sub-item no-top-border">
-									<input type="number" name="system.coreStats.morale"
-										value="{{system.coreStats.morale}}" data-type="Number">
+									<div class=" stat-info-npc stat-info-sub-item-npc flex">
+											<input type="number" name="system.coreStats.saves.sprit.dc"
+												value="{{system.coreStats.saves.sprit.dc}}" data-type="Number">
+										</div>
+									</div>
+									<div class="flex">
+										<div type="roll" data-dialog="true" data-type="hardiness"
+											class="stat-info-npc stat-info-sub-item-npc margin-right-halfem"
+											name="roll_hardiness_save" data-tooltip="<div>MOD: {{system.coreStats.saves.hardiness.attributeModifier}}</div>
+									PENALTY: {{system.coreStats.saves.hardiness.penaltyModifier}}</div>
+									<div>DC: {{system.coreStats.saves.hardiness.dc}}</div>" data-tooltip-direction="DOWN"">
+										Hardiness
+									</div>
+									<div class=" stat-info-npc stat-info-sub-item-npc flex">
+											<input type="number" name="system.coreStats.saves.hardiness.dc"
+												value="{{system.coreStats.saves.hardiness.dc}}" data-type="Number">
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
-						<div class="flex">
+						<div class="flex stat-container center">
 							<div class="flex column center-column stat-col">
-								<div class="save-info stat-info-sub-item no-bottom-border flex">
-									<div type="roll" data-dialog="true" data-type="hardiness"
-										class="stat-info-saves no-bottom-border no-right-border"
-										name="roll_hardiness_save" data-tooltip="<div>MOD: {{system.coreStats.saves.hardiness.attributeModifier}}</div>
-										PENALTY: {{system.coreStats.saves.hardiness.penaltyModifier}}</div>
-										<div>DC: {{system.coreStats.saves.hardiness.dc}}</div>" data-tooltip-direction="DOWN"">
-											HAR
-										</div>
-										<div type=" roll" data-dialog="true" data-type="evasion"
-										class="stat-info-saves no-bottom-border no-right-border"
-										name="roll_hardiness_save" data-tooltip="<div>MOD: {{system.coreStats.saves.evasion.attributeModifier}}</div>
-											PENALTY: {{system.coreStats.saves.evasion.penaltyModifier}}</div>
-											<div>DC: {{system.coreStats.saves.evasion.dc}}</div>" data-tooltip-direction="DOWN">
-										EVA
-									</div>
-									<div type="roll" data-dialog="true" data-type="spirit"
-										class="stat-info-saves no-bottom-border" name="roll_hardiness_save"
-										data-tooltip="<div>MOD: {{system.coreStats.saves.spirit.attributeModifier}}</div>
-										PENALTY: {{system.coreStats.saves.spirit.penaltyModifier}}</div>
-										<div>DC: {{system.coreStats.saves.spirit.dc}}</div>" data-tooltip-direction="DOWN">
-										SPI
-									</div>
+								<div class="stat-info-npc stat-info-sub-item-npc flex">
+									<input type="number" name="system.coreStats.actions"
+										value="{{system.coreStats.actions}}" data-type="Number">
 								</div>
-								<div class="fable-font bold stat-info">
-									Saves
+								<div class="fable-font bold stat-info-npc" class="sheet-button">
+									Actions
+								</div>
+							</div>
+							<div class="flex column center-column stat-col">
+								<div class="stat-info-npc stat-info-sub-item-npc flex">
+									<input type="number" name="system.coreStats.attacks"
+										value="{{system.coreStats.attacks}}" data-type="Number">
+								</div>
+								<div class="fable-font bold stat-info-npc" class="sheet-button">
+									Attacks
+								</div>
+							</div>
+							<div class="flex column center-column stat-col">
+								<div class="stat-info-npc stat-info-sub-item-npc flex">
+									<input type="number" name="system.coreStats.morale"
+										value="{{system.coreStats.morale}}" data-type="Number">
+								</div>
+								<div class="fable-font bold stat-info-npc" class="sheet-button">
+									Morale
 								</div>
 							</div>
 						</div>
@@ -182,174 +180,6 @@
 						</div>
 					</div>
 				</div>
-				<div class="sheet-col-1-3 sheet-pad-t-md sheet-pad-r-md sheet-pad-b-sm">
-					<div class="sheet-row">
-						<div
-							class="sheet-col-1 sheet-title-banner-subheading sheet-pad-t-md sheet-pad-b-sm sheet-mar-t-md sheet-mar-b-sm">
-							<h3>Hit Dice</h3>
-						</div>
-					</div>
-					<div class="sheet-row">
-						<div
-							class="sheet-col-1 sheet-title-banner-subheading sheet-pad-t-md sheet-pad-b-sm sheet-mar-t-md sheet-mar-b-sm">
-							<h3>Stats</h3>
-						</div>
-					</div>
-					<div class="sheet-row flexrow">
-						<div
-							class="sheet-col-1-5 sheet-attr sheet-vert-middle sheet-right sheet-pad-t-md sheet-pad-l-sm sheet-pad-r-md">
-							Actions
-						</div>
-						<div class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-pad-r-md">
-							<input type="number" name="attr_npc_action_number" value="1">
-						</div>
-						<div
-							class="sheet-col-1-4 sheet-attr sheet-vert-middle sheet-right sheet-pad-t-md sheet-pad-l-sm sheet-pad-r-md">
-							Attacks
-						</div>
-						<div class="sheet-col-1-10 sheet-attr sheet-vert-middle sheet-pad-r-md">
-							<input type="number" name="attr_npc_attack_number" value="1">
-						</div>
-						<div
-							class="sheet-col-1-5 sheet-attr sheet-vert-middle sheet-right sheet-pad-t-md sheet-pad-r-md">
-							Morale
-						</div>
-						<div class="sheet-col-1-10 sheet-attr sheet-vert-middle sheet-pad-r-sm">
-							<input type="number" name="attr_npc_morale" value="10">
-						</div>
-						<div class="sheet-col-1-10 sheet-attr sheet-vert-middle sheet-pad-r-sm">
-							<button type="roll" class="sheet-button btn ui-draggable" name="roll_npc_morale"
-								value=""></button>
-						</div>
-					</div>
-					<div class="sheet-row">
-						<div
-							class="sheet-col-1 sheet-title-banner-subheading sheet-pad-t-md sheet-pad-b-sm sheet-mar-t-md sheet-mar-b-sm">
-							<h3>Saving Throws</h3>
-						</div>
-					</div>
-					<div class="sheet-row sheet-pad-b-sm">
-						<div
-							class="sheet-col-3-10 sheet-attr sheet-vert-middle sheet-center sheet-underline sheet-pad-l-sm sheet-pad-r-md">
-							<br>
-						</div>
-						<div
-							class="sheet-col-1-5 sheet-attr sheet-vert-middle sheet-center sheet-underline sheet-pad-r-md">
-							DC
-						</div>
-						<div
-							class="sheet-col-1-5 sheet-attr sheet-vert-middle sheet-center sheet-underline sheet-pad-r-md">
-							Bonus
-						</div>
-						<div
-							class="sheet-col-1-5 sheet-attr sheet-vert-middle sheet-center sheet-underline sheet-pad-r-md">
-							Penalty
-						</div>
-						<div
-							class="sheet-col-1-10 sheet-attr sheet-vert-middle sheet-center sheet-underline sheet-pad-r-sm">
-							Roll
-						</div>
-					</div>
-					<div class="sheet-row sheet-pad-b-sm">
-						<div
-							class="sheet-col-3-10 sheet-attr sheet-vert-middle sheet-right sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-md">
-							Hardiness
-						</div>
-						<div
-							class="sheet-col-1-5 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-md">
-							<input type="number" name="system.coreStats.saves.hardiness.dc"
-								value="{{system.coreStats.saves.hardiness.dc}}">
-						</div>
-						<div
-							class="sheet-col-1-5 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-md">
-							<input type="number" disabled="true"
-								name="system.coreStats.saves.hardiness.attributeModifier"
-								value="{{system.coreStats.saves.hardiness.attributeModifier}}">
-						</div>
-						<div
-							class="sheet-col-1-5 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-md">
-							<input type="number" disabled="true" name="system.coreStats.saves.hardiness.penaltyModifier"
-								value="{{system.coreStats.saves.hardiness.penaltyModifier}}">
-						</div>
-						<div class="sheet-col-1-10 sheet-attr sheet-vert-middle sheet-center sheet-pad-r-sm">
-							<button type="roll" data-dialog="true" data-type="hardiness" class="sheet-button"
-								name="roll_hardiness_save" value=""></button>
-						</div>
-					</div>
-					<div class="sheet-row sheet-pad-b-sm">
-						<div
-							class="sheet-col-3-10 sheet-attr sheet-vert-middle sheet-right sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-md">
-							Evasion
-						</div>
-						<div
-							class="sheet-col-1-5 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-md">
-							<input type="number" name="system.coreStats.saves.evasion.dc"
-								value="{{system.coreStats.saves.evasion.dc}}">
-						</div>
-						<div
-							class="sheet-col-1-5 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-md">
-							<input type="number" disabled="true" name="system.coreStats.saves.evasion.attributeModifier"
-								value="{{system.coreStats.saves.evasion.attributeModifier}}">
-						</div>
-						<div
-							class="sheet-col-1-5 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-md">
-							<input type="number" disabled="true" name="system.coreStats.saves.evasion.penaltyModifier"
-								value="{{system.coreStats.saves.evasion.penaltyModifier}}">
-						</div>
-						<div class="sheet-col-1-10 sheet-attr sheet-vert-middle sheet-center sheet-pad-r-sm">
-							<button type="roll" data-dialog="true" data-type="evasion" class="sheet-button"
-								name="roll_evasion_save" value=""></button>
-						</div>
-					</div>
-					<div class="sheet-row sheet-pad-b-sm">
-						<div
-							class="sheet-col-3-10 sheet-attr sheet-vert-middle sheet-right sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-md">
-							Spirit
-						</div>
-						<div
-							class="sheet-col-1-5 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-md">
-							<input type="number" name="system.coreStats.saves.spirit.dc"
-								value="{{system.coreStats.saves.spirit.dc}}">
-						</div>
-						<div
-							class="sheet-col-1-5 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-md">
-							<input type="number" disabled="true" name="system.coreStats.saves.spirit.attributeModifier"
-								value="{{system.coreStats.saves.spirit.attributeModifier}}">
-						</div>
-						<div
-							class="sheet-col-1-5 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-md">
-							<input type="number" disabled="true" name="system.coreStats.saves.spirit.penaltyModifier"
-								value="{{system.coreStats.saves.spirit.penaltyModifier}}">
-						</div>
-						<div class="sheet-col-1-10 sheet-attr sheet-vert-middle sheet-center sheet-pad-r-sm">
-							<button type="roll" data-dialog="true" s data-type="spirit" class="sheet-button"
-								name="roll_spirit_save" value=""></button>
-						</div>
-					</div>
-					<div class="flexrow flex-between">
-						<div class="flex0 sheet-attr sheet-vert-middle sheet-right sheet-pad-l-sm sheet-pad-r-md sheet-pad-t-lg"
-							style="white-space: nowrap;">
-							Save Penalties:
-						</div>
-						<div
-							class="flex0 sheet-attr sheet-vert-middle sheet-pad-t-md sheet-pad-r-md sheet-pad-b-sm sheet-mar-t-md">
-							<input type="checkbox" class="sheet-box-check"
-								name="system.coreStats.saves.hardiness.isArmorPenalty" {{checked
-								system.coreStats.saves.hardiness.isArmorPenalty}}><label>Hardiness</label>
-						</div>
-						<div
-							class="flex0 sheet-attr sheet-vert-middle sheet-pad-t-md sheet-pad-r-md sheet-pad-b-sm sheet-mar-t-md">
-							<input type="checkbox" class="sheet-box-check"
-								name="system.coreStats.saves.evasion.isArmorPenalty" {{checked
-								system.coreStats.saves.evasion.isArmorPenalty}}><label>Evasion</label>
-						</div>
-						<div
-							class="flex0 sheet-attr sheet-vert-middle sheet-pad-t-md sheet-pad-r-sm sheet-pad-b-sm sheet-mar-t-md">
-							<input type="checkbox" class="sheet-box-check"
-								name="system.coreStats.saves.spirit.isArmorPenalty" {{checked
-								system.coreStats.saves.spirit.isArmorPenalty}}><label>Spirit</label>
-						</div>
-					</div>
 					<div class="sheet-row">
 						<div
 							class="sheet-col-1 sheet-title-banner-subheading sheet-pad-t-md sheet-pad-b-sm sheet-mar-t-md sheet-mar-b-sm">

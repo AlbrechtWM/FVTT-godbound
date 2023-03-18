@@ -88,10 +88,6 @@
 }
 
 .portrait {
-	background-repeat: no-repeat !important;
-	background-size: contain !important;
-	background: url('../images/newportrait.png');
-	padding: 1em;
 	width: 170px;
 }
 
@@ -934,7 +930,7 @@ body.sheet-darkmode .attributesabilities {
 .charsheet-char {
 	-moz-background-size: 100% !important;
 	-webkit-background-size: 100% !important;
-	background-repeat: no-repeat !important;s
+	background-repeat: no-repeat !important;
 	background-size: contain !important;
 	background: url('../images/gbsheet.png');
 }
