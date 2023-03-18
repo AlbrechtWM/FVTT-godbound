@@ -10,6 +10,10 @@
 	height: 30px;
 }
 
+.fancy-break {
+	border-bottom: 2px solid #e5bb6175;
+}
+
 .text-area-large {
 	min-height: 60px;
 }
@@ -906,10 +910,12 @@ body.sheet-darkmode .attributesabilities {
 }
 
 .charsheet-form-player {
-	min-width: 840px;
-	max-width: 840px;
-	width: 840px;
-	min-height: 840px;
+	min-width: 670px;
+	max-width: 670px;
+	width: 670px;
+	min-height: 780px;
+	max-height: 780px;
+	height: 780px;
 	padding: 5px 3px 3px 3px !important;
 	-moz-background-size: 100% !important;
 	-webkit-background-size: 100% !important;
@@ -1426,11 +1432,11 @@ body.sheet-darkmode .attributesabilities {
 }
 
 .left-col {
-	padding-right: 20px;
+	margin-right: 10px;
 }
 
 .right-col {
-	padding-left: 20px;
+	margin-left: 10px;
 }
 
 .charsheet textarea {
