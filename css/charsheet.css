@@ -10,6 +10,12 @@
 	height: 30px;
 }
 
+.stat-info-npc {
+	width: 100%;
+	text-align: center;
+	font-size: 14px;
+}
+
 .fancy-break {
 	border-bottom: 2px solid #e5bb6175;
 }
@@ -74,6 +80,11 @@
 .stat-info-sub-item {
 	border-radius: 1px;
 	height: 34px;
+}
+
+.stat-info-sub-item-npc {
+	border-radius: 1px;
+	height: 26px;
 }
 
 .portrait {
@@ -920,6 +931,22 @@ body.sheet-darkmode .attributesabilities {
 	background-repeat: no-repeat !important;
 }
 
+.charsheet-char {
+	-moz-background-size: 100% !important;
+	-webkit-background-size: 100% !important;
+	background-repeat: no-repeat !important;s
+	background-size: contain !important;
+	background: url('../images/gbsheet.png');
+}
+
+.charsheet-npc {
+	-moz-background-size: 100% !important;
+	-webkit-background-size: 100% !important;
+	background-repeat: no-repeat !important;
+	background-size: contain !important;
+	background: url('../images/gbsheet-no-top.png');
+}
+
 .charsheet {
 	min-width: 670px;
 	max-width: 670px;
@@ -928,11 +955,6 @@ body.sheet-darkmode .attributesabilities {
 	max-height: 780px;
 	height: 780px;
 	padding: 5px 3px 3px 3px !important;
-	-moz-background-size: 100% !important;
-	-webkit-background-size: 100% !important;
-	background-repeat: no-repeat !important;
-	background-size: contain !important;
-	background: url('../images/gbsheet.png');
 }
 
 .charsheet-npc {
