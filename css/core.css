@@ -148,7 +148,7 @@ div [type=roll] {
 
 .godbound-button {
     font-family: "Godbound", Garamond, "Times New Roman", Georgia, serif;
-	border: 2px solid #b7913075;
+    border: 2px solid #b7913075;
     border-radius: 4px;
     text-align: center;
     min-width: 72px;
@@ -156,7 +156,7 @@ div [type=roll] {
     font-size: 16px;
     font-weight: 600;
     background-image: url('../images/charsheet-button-background.png');
-	background-position: center;
+    background-position: center;
     padding: 3px;
 }
 
