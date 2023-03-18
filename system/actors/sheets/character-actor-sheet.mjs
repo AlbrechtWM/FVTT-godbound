@@ -42,11 +42,6 @@ export class characterActorSheet extends ActorSheet {
     // Add the actor's data to context.data for easier access, as well as flags.
     context.system = actorData.system;
     context.flags = actorData.flags;
-    // // Prepare character data and items.
-    // if (actorData.type == 'character') {
-    //   //this._prepareItems(context);
-    //   this._prepareCharacterData(context);
-    // }
 
     // convert - can remove once people load this once
     if (context.system.facts instanceof Array) {
@@ -89,6 +84,9 @@ export class characterActorSheet extends ActorSheet {
     //Dominion
     Dominion.calculateDominionPointsRemaining(context.system);
 
+    // // Prepare item data.
+    this._prepareItems(context);
+
     //console.log(context);
     return context;
   }
@@ -96,6 +94,33 @@ export class characterActorSheet extends ActorSheet {
   /** @override */
   activateListeners(html) {
     super.activateListeners(html);
+
+    // Render the item sheet for viewing/editing prior to the editable check.
+    html.find('.item-edit').click(ev => {
+      const li = $(ev.currentTarget).parents(".item");
+      const item = this.actor.items.get(li.data("itemId"));
+      item.sheet.render(true);
+    });
+
+    // -------------------------------------------------------------
+    // Everything below here is only needed if the sheet is editable
+    if (!this.isEditable) return;
+
+    // Add Inventory Item
+    html.find('.item-create').click(this._onItemCreate.bind(this));
+
+    // Delete Inventory Item
+    html.find('.item-delete').click(ev => {
+      const li = $(ev.currentTarget).parents(".item");
+      const item = this.actor.items.get(li.data("itemId"));
+      item.delete();
+      li.slideUp(200, () => this.render(false));
+    });
+
+    // Active Effect management
+    html.find(".effect-control").click(ev => onManageActiveEffect(ev, this.actor));
+
+
     // Rollable abilities.
     html.find('div[type=roll]').click(this._onRoll.bind(this));
 
@@ -109,72 +134,215 @@ export class characterActorSheet extends ActorSheet {
     tabs.bind(form);
   }
 
-  // /**
-  //  * Organize and classify Items for Character sheets.
-  //  *
-  //  * @param {Object} actorData The actor to prepare.
-  //  *
-  //  * @return {undefined}
-  //  */
-  // _prepareCharacterData(context) {
-  //   // Handle ability scores.
-  //   // for (let [k, v] of Object.entries(context.system.abilities)) {
-  //   //   v.label = game.i18n.localize(CONFIG.godbound.abilities[k]) ?? k;
-  //   // }
-  //   //console.log(game);
-  // }
+  /**
+   * Organize and classify Items for Character sheets.
+   *
+   * @param {Object} actorData The actor to prepare.
+   *
+   * @return {undefined}
+   */
+  _prepareCharacterData(context) {
+    // Handle ability scores.
+    // for (let [k, v] of Object.entries(context.system.abilities)) {
+    //   v.label = game.i18n.localize(CONFIG.godbound.abilities[k]) ?? k;
+    // }
+    //console.log(game);
+  }
 
-  // /**
-  //  * Organize and classify Items for Character sheets.
-  //  *
-  //  * @param {Object} actorData The actor to prepare.
-  //  *
-  //  * @return {undefined}
-  //  */
-  // _prepareItems(context) {
-  //   // Initialize containers.
-  //   const gear = [];
-  //   const features = [];
-  //   const spells = {
-  //     0: [],
-  //     1: [],
-  //     2: [],
-  //     3: [],
-  //     4: [],
-  //     5: [],
-  //     6: [],
-  //     7: [],
-  //     8: [],
-  //     9: []
-  //   };
+  /**
+   * Organize and classify Items for Character sheets.
+   *
+   * @param {Object} actorData The actor to prepare.
+   *
+   * @return {undefined}
+   */
+  _prepareItems(context) {
+    // Initialize containers.
+    const gifts = [];
+    const words = [];
+    const attacks = [];
 
-  //   // Iterate through items, allocating to containers
-  //   for (let i of context.items) {
-  //     i.img = i.img || DEFAULT_TOKEN;
-  //     // Append to gear.
-  //     if (i.type === 'item') {
-  //       gear.push(i);
-  //     }
-  //     // Append to features.
-  //     else if (i.type === 'feature') {
-  //       features.push(i);
-  //     }
-  //     // Append to spells.
-  //     else if (i.type === 'spell') {
-  //       if (i.system.spellLevel != undefined) {
-  //         spells[i.system.spellLevel].push(i);
-  //       }
-  //     }
-  //   }
+    // const spells = {
+    //   0: [],
+    //   1: [],
+    //   2: [],
+    //   3: [],
+    //   4: [],
+    //   5: [],
+    //   6: [],
+    //   7: [],
+    //   8: [],
+    //   9: []
+    // };
 
-  //   // Assign and return
-  //   context.gear = gear;
-  //   context.features = features;
-  //   context.spells = spells;
-  // }
+    // Iterate through items, allocating to containers
+    for (let i of context.items) {
+      i.img = i.img || DEFAULT_TOKEN;
+      // Append to gear.
+      if (i.type === 'gift') {
+        gifts.push(i);
+      }
+      // Append to features.
+      else if (i.type === 'attack') {
+        this.prepareAttackSummaries(i, context);
+        attacks.push(i);
+      }
+      // Append to features.
+      else if (i.type === 'word') {
+        words.push(i);
+      }
+
+
+      // // Append to spells.
+      // else if (i.type === 'spell') {
+      //   if (i.system.spellLevel != undefined) {
+      //     spells[i.system.spellLevel].push(i);
+      //   }
+      // }
+    }
+
+    // Assign and return
+    context.gifts = gifts;
+    context.words = words;
+    context.attacks = attacks;
+  }
 
   /* -------------------------------------------- */
+  prepareAttackSummaries(item, actor) {
+    item.summaries = {};
 
+    this.prepareToHitSummary(item, actor);
+    this.prepareDamageSummary(item, actor);
+
+  }
+
+  prepareToHitSummary(item, actor) {
+    //To Hit
+    if (item.system.targeting.toHit.isAutomatic)
+      item.summaries.toHit = "Auto";
+    else {
+      item.summaries.toHit = "1d20";
+
+      //Check advantage/disadvantage first
+      if (item.system.targeting.toHit.isAdvantaged && item.system.targeting.toHit.isDisadvantaged) {
+        item.summaries.toHit = "1d20"; //if both advantage and disadvantage apply, they cancel out
+      }
+      else if (item.system.targeting.toHit.isAdvantaged) {
+        item.summaries.toHit = "2d20kh1";
+      }
+      else if (item.system.targeting.toHit.isDisadvantaged) {
+        item.summaries.toHit = "2d20kl1";
+      }
+      //now calc modifiers
+      let modifier = 0;
+      let targetAC = 0;
+      let flavor = "#[";
+
+      //attribute bonus
+      if (item.system.targeting.toHit.relevantAttribute != "none" && item.system.targeting.toHit.useAttrBonus)
+        modifier += actor.system.attributes[item.system.targeting.toHit.relevantAttribute].mod;
+
+      //level bonus
+      if (item.system.targeting.toHit.useLevelBonus)
+        modifier += actor.system.coreStats.levelOrHD;
+
+      //misc mod
+      modifier += item.system.targeting.toHit.miscBonus;
+
+      let tempArr = Array.from(game.user.targets);
+      //get current AC
+      if (tempArr.length > 0)
+        targetAC = tempArr[0].actor.system.coreStats.ac.total;
+      else
+        targetAC = null;
+
+
+      //flavor
+      if (item.system.targeting.isMagical)
+        flavor += "Magical,";
+      else
+        flavor += "Mundane,";
+
+      if (item.system.act.isSmite)
+        flavor += "Smite,";
+
+      if (item.system.targeting.isMelee)
+        flavor += "Melee]";
+      else
+        flavor += "Ranged]";
+
+      item.summaries.toHit += "+" + modifier + (targetAC != null ? "+" + targetAC : "") + " " + flavor
+    }// End To Hit
+  }
+
+  prepareDamageSummary(item, actor) {
+    //console.log(item.system.damage);
+
+    if (!item.system.damage.enableDamage) {
+      item.summaries.damage = "None";
+      return;
+    }
+
+    let dieQuantity = item.system.damage.numDie + (item.system.damage.bonusDieForExtraLevels ? (actor.system.coreStats.levelOrHD - 1) : 0);
+    let dieType = item.system.damage.dieType;
+
+    let fixedDamage = (dieType === "none"); //if dieType is "none", we're doing some fixed damage CONFIG.GODBOUND_CONSTANTS.dieTypes[0]
+
+    if (!fixedDamage)
+      dieType = dieType.slice(1);
+
+    let modifier = 0;
+
+    //attribute bonus
+    if (item.system.damage.relevantAttribute != "none" && item.system.damage.useAttrBonus)
+      modifier += actor.system.attributes[item.system.damage.relevantAttribute].mod;
+
+    //level bonus
+    if (item.system.damage.useLevelBonus)
+      modifier += actor.system.coreStats.levelOrHD;
+
+    //misc mod
+    modifier += item.system.damage.miscBonus;
+
+    //get the damage type inline text
+    let damageType = "[" + item.system.damage.damageType + "]";
+    let advantageDisadvantageSuffix = "";
+
+    //get potential advantage / disadvantage stuff ready
+    if (item.system.damage.isAdvantaged && item.system.damage.isDisadvantaged) {
+      //do nothing
+    }
+    else if (item.system.damage.isAdvantaged) {
+      advantageDisadvantageSuffix = "kh" + dieQuantity; //keep highest of original number
+      dieQuantity = dieQuantity * 2; //double the number of dice
+    }
+    else if (item.system.damage.isDisadvantaged) {
+      advantageDisadvantageSuffix = "kl" + dieQuantity; //keep lowest of original number
+      dieQuantity = dieQuantity * 2; //double the number of dice
+    }
+
+    let flavor = "#[";
+
+    //flavor
+    if (item.system.damage.isStraight)
+      flavor += "Straight";
+    else
+      flavor += "Regular";
+
+    if (item.system.damage.canOverflow)
+      flavor += ",Overflows";
+
+    if (item.system.damage.isEnvironmental)
+      flavor += ",Environmental]";
+
+    flavor += "]";
+
+    //put it all together
+    if (fixedDamage)
+      item.summaries.damage = modifier + damageType + " " + flavor
+    else
+      item.summaries.damage = dieQuantity + dieType + advantageDisadvantageSuffix + damageType + " + " + modifier + " " + flavor;
+  }
 
   // Render the item sheet for viewing/editing prior to the editable check.
   // html.find('.item-edit').click(ev => {
@@ -212,32 +380,32 @@ export class characterActorSheet extends ActorSheet {
   // }
   // }
 
-  // /**
-  //  * Handle creating a new Owned Item for the actor using initial data defined in the HTML dataset
-  //  * @param {Event} event   The originating click event
-  //  * @private
-  //  */
-  // async _onItemCreate(event) {
-  //   event.preventDefault();
-  //   const header = event.currentTarget;
-  //   // Get the type of item to create.
-  //   const type = header.dataset.type;
-  //   // Grab any data associated with this control.
-  //   const data = duplicate(header.dataset);
-  //   // Initialize a default name.
-  //   const name = `New ${type.capitalize()}`;
-  //   // Prepare the item object.
-  //   const itemData = {
-  //     name: name,
-  //     type: type,
-  //     system: data
-  //   };
-  //   // Remove the type from the dataset since it's in the itemData.type prop.
-  //   delete itemData.system["type"];
+  /**
+   * Handle creating a new Owned Item for the actor using initial data defined in the HTML dataset
+   * @param {Event} event   The originating click event
+   * @private
+   */
+  async _onItemCreate(event) {
+    event.preventDefault();
+    const header = event.currentTarget;
+    // Get the type of item to create.
+    const type = header.dataset.type;
+    // Grab any data associated with this control.
+    const data = duplicate(header.dataset);
+    // Initialize a default name.
+    const name = `New ${type.capitalize()}`;
+    // Prepare the item object.
+    const itemData = {
+      name: name,
+      type: type,
+      system: data
+    };
+    // Remove the type from the dataset since it's in the itemData.type prop.
+    delete itemData.system["type"];
 
-  //   // Finally, create the item!
-  //   return await Item.create(itemData, {parent: this.actor});
-  // }
+    // Finally, create the item!
+    return await Item.create(itemData, { parent: this.actor });
+  }
 
   /**
    * Handles adding of values
