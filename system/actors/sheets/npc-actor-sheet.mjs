@@ -12,9 +12,9 @@ export class npcActorSheet extends ActorSheet {
     return mergeObject(super.defaultOptions, {
       classes: ["godbound", "sheet", "actor"],
       template: "systems/godbound/system/actors/templates/npc-actor-sheet.html",
-      width: 868,
-      height: 878
-      // tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "features" }]
+      width: 665,
+      height: 825,
+      tabs: [{ navSelector: ".npcsheet-tabs", contentSelector: ".npcsheet-content", initial: "npc" }]
     });
   }
 
@@ -125,11 +125,6 @@ export class npcActorSheet extends ActorSheet {
   /** @override */
   activateListeners(html) {
     super.activateListeners(html);
-    // Charsheet tabs
-    const tabs = new Tabs({ callback: () => { }, navSelector: ".npcsheet-tabs", contentSelector: ".npcsheet-content", initial: "npc" });
-    const form = document.querySelector(".sheetform-npc");
-    console.log('form', form);
-    tabs.bind(form);
   }
 
   //   // Render the item sheet for viewing/editing prior to the editable check.

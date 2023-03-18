@@ -16,8 +16,8 @@ export class characterActorSheet extends ActorSheet {
       classes: ["godbound", "sheet", "actor"],
       template: "systems/godbound/system/actors/templates/character-actor-sheet.html",
       width: 665,
-      height: 825
-      //tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "features" }]
+      height: 825,
+      tabs: [{ navSelector: ".charsheet-tabs", contentSelector: ".charsheet-content", initial: "char" }]
     });
   }
 
@@ -127,11 +127,6 @@ export class characterActorSheet extends ActorSheet {
     html.find('div[type=addto]').click(this._onClickAdd.bind(this));
 
     html.find('div[type=remove]').click(this._onClickRemove.bind(this));
-
-    // Charsheet tabs
-    const tabs = new Tabs({ callback: () => { }, navSelector: ".charsheet-tabs", contentSelector: ".charsheet-content", initial: "char" });
-    const form = document.querySelector(".sheetform-character");
-    tabs.bind(form);
   }
 
   /**

@@ -11,9 +11,9 @@ export class factionActorSheet extends ActorSheet {
     return mergeObject(super.defaultOptions, {
       classes: ["godbound", "sheet", "actor"],
       template: "systems/godbound/system/actors/templates/faction-actor-sheet.html",
-      width: 600,
-      height: 600,
-      // tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "features" }]
+      width: 665,
+      height: 825,
+      tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "features" }]
     });
   }
 

@@ -2,24 +2,28 @@
 	min-width: 65px;
 }
 
+.stat-col-npc {
+	width: 50%;
+}
+
 .stat-info {
 	width: 100%;
-	padding: 0.5em 0.75em;
+	padding: 5px 5px;
 	text-align: center;
 	font-size: 14px;
 	height: 30px;
+    border: 2px solid #ad7c275c;
+	border-radius: 1px;
 }
 
 .stat-info-npc {
 	width: 100%;
-	text-align: center;
 	font-size: 14px;
 }
 
 .fancy-break {
 	border-bottom: 2px solid #e5bb6175;
 }
-
 
 .text-area-large {
 	min-height: 60px;
@@ -80,11 +84,24 @@
 .stat-info-sub-item {
 	border-radius: 1px;
 	height: 34px;
+	border: 1px solid #ad7c275c;
+	font-family: "Godbound", Garamond, "Times New Roman", Georgia, serif;
+	font-weight: 600;
 }
 
 .stat-info-sub-item-npc {
 	border-radius: 1px;
 	height: 26px;
+	font-family: "Godbound", Garamond, "Times New Roman", Georgia, serif;
+	font-weight: 600;
+}
+
+.stat-info-npc-border {
+	border: 1px solid #ad7c275c;
+}
+
+.stat-info-sub-item-npc input {
+	width: 55px;
 }
 
 .portrait {
@@ -932,7 +949,7 @@ body.sheet-darkmode .attributesabilities {
 	-webkit-background-size: 100% !important;
 	background-repeat: no-repeat !important;
 	background-size: contain !important;
-	background: url('../images/gbsheet.png');
+	background: url('../images/gbsheet-no-top.png');
 }
 
 .charsheet-npc {
@@ -1473,6 +1490,7 @@ body.sheet-darkmode .attributesabilities {
 	padding: 2px;
 	line-height: 100%;
 	height: 19px;
+	text-align: center;
 }
 
 .charsheet input[type=text] {

@@ -38,8 +38,24 @@
     font-weight: 600;
 }
 
+.margin-bottom-7px {
+    margin-bottom: 7px;
+}
+
 .padding-1em {
     padding: 1em;
+}
+
+.padding-2px {
+    padding: 2px;
+}
+
+.padding-left-14px {
+    padding-left: 14px;
+}
+
+.padding-halfem {
+    padding: 0.5em;
 }
 
 /* Gives all divs serving as button a pointer */
@@ -63,6 +79,10 @@ div [type=roll] {
     padding-left: 0.5em;
 }
 
+.padding-top-halfem {
+    padding-top: 0.5em;
+}
+
 .margin-bottom-1em {
     margin-bottom: 1em;
 }
@@ -81,6 +101,10 @@ div [type=roll] {
 
 .margin-right-halfem {
     margin-right: 0.5em;
+}
+
+.margin-left-halfem {
+    margin-left: 0.5em;
 }
 
 .godbound-font {
