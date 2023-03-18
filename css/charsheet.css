@@ -47,9 +47,6 @@
 }
 
 .charsheet-tabs {
-	background-image: url('../images/fancyborder.png');
-	background-repeat: no-repeat !important;
-	background-position: center;
 	background-size: 100% 1px !important;
 	margin-bottom: 17px;
     margin-top: 21px;
