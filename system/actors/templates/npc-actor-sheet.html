@@ -1,321 +1,401 @@
 <form class="sheetform-npc" autocomplete="off">
-	<div class="charactersheet tab-pane charsheet-npc lang-undefined" style="display: block;">
-		<div class="godbound sheet-overall-wrapper">
-			<div class="npcsheet-tabs flex center" data-group="npcsheet">
-				<div class="margin-right-1em item godbound-button" data-tab="npc" data-group="npcsheet">
-					Character</div>
-				<div class="margin-right-1em item godbound-button" data-tab="arts" data-group="npcsheet">Arts</div>
-			</div>
-			<section class="npcsheet-content">
-				<div data-group="npcsheet" data-tab="npc" class="tab">
-					<div class="sheet-col-1-3 sheet-pad-t-md sheet-pad-r-md sheet-pad-b-sm">
-						<div class="sheet-row">
-							<div class="sheet-col-1 sheet-title-banner-heading sheet-pad-t-lg sheet-pad-b-sm">
-								<h2>NPC</h2>
-								<hr>
+	<div class="charactersheet tab-pane charsheet charsheet-npc lang-undefined" style="display: block;">
+		<div class="charsheet-overall-wrapper">
+			<div>
+				<div class="flex">
+					<div class="fable-font margin-bottom-1em margin-right-1em bold">
+						Name
+					</div>
+					<input type="text" name="system.base.name" value="{{system.base.name}}" data-type="String">
+				</div>
+				<div class="flex">
+					<div class="margin-right-1em portrait">
+						<img class="profile-img godbound-border" src="{{actor.img}}" data-edit="img"
+							title="{{system.base.name}}" />
+					</div>
+					<div class="flex column stat-container center">
+						<div class="flex margin-bottom-halfem">
+							<div class="flex column center-column stat-col">
+								<div class="fable-font bold stat-info" class="sheet-button">
+									Hit Dice
+								</div>
+								<div class="flex column">
+									<div class="flex">
+										<div class="stat-info-npc stat-info-sub-item-npc">
+											Level
+										</div>
+										<div class="stat-info-npc stat-info-sub-item-npc">
+											<input type="number" name="actor.coreStats.levelOrHD"
+												value="{{system.coreStats.levelOrHD}}" data-type="Number">
+										</div>
+									</div>
+									<div class="flex">
+										<div class="stat-info-npc stat-info-sub-item-npc">
+											Bonus
+										</div>
+										<div class="stat-info-npc stat-info-sub-item-npc">
+											<input type="number" name="system.coreStats.hp.miscBonus"
+												value="{{system.coreStats.hp.miscBonus}}" data-dtype="Number">
+										</div>
+									</div>
+									<div class="stat-info-npc stat-info-sub-item-npc  no-bottom-border flex">
+										<input min="0" max="{{system.coreStats.hp.max}}" type="number"
+											name="system.coreStats.hp.current" value="{{system.coreStats.hp.current}}"
+											data-type="Number">
+										/
+										<input disabled="true" type="number" name="system.coreStats.hp.max"
+											value="{{system.coreStats.hp.max}}" data-type="Number">
+									</div>
+								</div>
+							</div>
+							<div class="flex column center-column stat-col">
+								<div class="fable-font bold stat-info" class="sheet-button">
+									Hit Dice
+								</div>
+								<div class="flex column">
+									<div class="flex">
+										<div class="stat-info-npc stat-info-sub-item-npc">
+											Level
+										</div>
+										<div class="stat-info-npc stat-info-sub-item-npc">
+											<input type="number" name="actor.coreStats.levelOrHD"
+												value="{{system.coreStats.levelOrHD}}" data-type="Number">
+										</div>
+									</div>
+									<div class="flex">
+										<div class="stat-info-npc stat-info-sub-item-npc">
+											Bonus
+										</div>
+										<div class="stat-info-npc stat-info-sub-item-npc">
+											<input type="number" name="system.coreStats.hp.miscBonus"
+												value="{{system.coreStats.hp.miscBonus}}" data-dtype="Number">
+										</div>
+									</div>
+									<div class="stat-info-npc stat-info-sub-item-npc  no-bottom-border flex">
+										<input min="0" max="{{system.coreStats.hp.max}}" type="number"
+											name="system.coreStats.hp.current" value="{{system.coreStats.hp.current}}"
+											data-type="Number">
+										/
+										<input disabled="true" type="number" name="system.coreStats.hp.max"
+											value="{{system.coreStats.hp.max}}" data-type="Number">
+									</div>
+								</div>
+							</div>
+							<div class="flex column center-column stat-col">
+								<div class="fable-font bold stat-info" class="sheet-button">
+									Actions
+								</div>
+								<div class="stat-info stat-info-sub-item no-top-border">
+									<input type="number" name="system.coreStats.actions"
+										value="{{system.coreStats.actions}}" data-type="Number">
+								</div>
+							</div>
+							<div class="flex column center-column stat-col">
+								<div class="fable-font bold stat-info" class="sheet-button">
+									Attacks
+								</div>
+								<div class="stat-info stat-info-sub-item no-top-border">
+									<input type="number" name="system.coreStats.attacks"
+										value="{{system.coreStats.attacks}}" data-type="Number">
+								</div>
+							</div>
+							<div class="flex column center-column stat-col">
+								<div class="fable-font bold stat-info" class="sheet-button">
+									Morale
+								</div>
+								<div class="stat-info stat-info-sub-item no-top-border">
+									<input type="number" name="system.coreStats.morale"
+										value="{{system.coreStats.morale}}" data-type="Number">
+								</div>
 							</div>
 						</div>
-						<div class="sheet-row sheet-pad-b-md sheet-pad-t-md sheet-pad-r-md sheet-pad-l-md flexrow">
-							<img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}"
-								height="150" width="150" />
-						</div>
-						<div class="sheet-row">
-							<div
-								class="sheet-col-4-15 sheet-attr sheet-vert-middle sheet-right sheet-pad-l-sm sheet-pad-r-md">
-								Name
-							</div>
-							<div class="sheet-col-11-15 sheet-attr sheet-vert-middle sheet-pad-t-sm sheet-pad-r-sm">
-								<input type="text" name="system.base.name" value="{{system.base.name}}"
-									data-dtype="String">
-							</div>
-						</div>
-						<div class="sheet-row sheet-pad-t-md">
-							<div
-								class="sheet-col-4-15 sheet-attr sheet-vert-top sheet-right sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-md">
-								HD Level
-							</div>
-							<div class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-center sheet-pad-r-md">
-								<input type="number" name="system.coreStats.levelOrHD"
-									value="{{system.coreStats.levelOrHD}}" data-dtype="Number">
-							</div>
-						</div>
-						<div class="sheet-row sheet-pad-t-md">
-							<div
-								class="sheet-col-4-15 sheet-attr sheet-vert-top sheet-right sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-md">
-								Description
-							</div>
-							<div class="sheet-col-11-15 sheet-attr sheet-vert-middle sheet-pad-r-sm">
-								<textarea class="sheet-small-textarea sheet-resize-vertical"
-									name="system.base.description"
-									placeholder="Character description">{{system.base.description}}</textarea>
-							</div>
-						</div>
-						<div class="sheet-row sheet-pad-t-md">
-							<div
-								class="sheet-col-4-15 sheet-attr sheet-vert-top sheet-right sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-md">
-								Languages
-							</div>
-							<div class="sheet-col-11-15 sheet-attr sheet-vert-middle sheet-pad-r-sm">
-								<textarea class="sheet-small-textarea sheet-resize-vertical"
-									name="system.base.languages"
-									placeholder="Languages known">{{system.base.languages}}</textarea>
-							</div>
-						</div>
-						<div class="sheet-row sheet-pad-t-md">
-							<div
-								class="sheet-col-4-15 sheet-attr sheet-vert-top sheet-right sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-md">
-								Goals
-							</div>
-							<div class="sheet-col-11-15 sheet-attr sheet-vert-middle sheet-pad-r-sm">
-								<textarea class="sheet-small-textarea sheet-resize-vertical" name="system.base.goals"
-									data-dtype="String" placeholder="Goals">{{system.base.goals}}</textarea>
+						<div class="flex">
+							<div class="flex column center-column stat-col">
+								<div class="save-info stat-info-sub-item no-bottom-border flex">
+									<div type="roll" data-dialog="true" data-type="hardiness"
+										class="stat-info-saves no-bottom-border no-right-border"
+										name="roll_hardiness_save" data-tooltip="<div>MOD: {{system.coreStats.saves.hardiness.attributeModifier}}</div>
+										PENALTY: {{system.coreStats.saves.hardiness.penaltyModifier}}</div>
+										<div>DC: {{system.coreStats.saves.hardiness.dc}}</div>" data-tooltip-direction="DOWN"">
+											HAR
+										</div>
+										<div type=" roll" data-dialog="true" data-type="evasion"
+										class="stat-info-saves no-bottom-border no-right-border"
+										name="roll_hardiness_save" data-tooltip="<div>MOD: {{system.coreStats.saves.evasion.attributeModifier}}</div>
+											PENALTY: {{system.coreStats.saves.evasion.penaltyModifier}}</div>
+											<div>DC: {{system.coreStats.saves.evasion.dc}}</div>" data-tooltip-direction="DOWN">
+										EVA
+									</div>
+									<div type="roll" data-dialog="true" data-type="spirit"
+										class="stat-info-saves no-bottom-border" name="roll_hardiness_save"
+										data-tooltip="<div>MOD: {{system.coreStats.saves.spirit.attributeModifier}}</div>
+										PENALTY: {{system.coreStats.saves.spirit.penaltyModifier}}</div>
+										<div>DC: {{system.coreStats.saves.spirit.dc}}</div>" data-tooltip-direction="DOWN">
+										SPI
+									</div>
+								</div>
+								<div class="fable-font bold stat-info">
+									Saves
+								</div>
 							</div>
 						</div>
 					</div>
-					<div class="sheet-col-1-3 sheet-pad-t-md sheet-pad-r-md sheet-pad-b-sm">
-						<div class="sheet-row">
-							<div
-								class="sheet-col-1 sheet-title-banner-subheading sheet-pad-t-md sheet-pad-b-sm sheet-mar-t-md sheet-mar-b-sm">
-								<h3>Hit Dice</h3>
-							</div>
+				</div>
+			</div>
+		</div>
+		<div class="npcsheet-tabs flex center" data-group="npcsheet">
+			<div class="margin-right-1em item godbound-button" data-tab="npc" data-group="npcsheet">
+				Character</div>
+			<div class="margin-right-1em item godbound-button" data-tab="arts" data-group="npcsheet">Arts</div>
+		</div>
+		<section class="npcsheet-content">
+			<div data-group="npcsheet" data-tab="npc" class="tab">
+				<div class="sheet-col-1-3 sheet-pad-t-md sheet-pad-r-md sheet-pad-b-sm">
+					<div class="sheet-row sheet-pad-t-md">
+						<div
+							class="sheet-col-4-15 sheet-attr sheet-vert-top sheet-right sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-md">
+							Description
 						</div>
-						<div class="sheet-row sheet-pad-b-sm">
-							<div
-								class="sheet-col-1-5 sheet-attr sheet-vert-middle sheet-right sheet-pad-l-sm sheet-pad-r-md">
-								Current
-							</div>
-							<div class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-pad-r-md">
-								<input type="number" name="system.coreStats.hp.current"
-									value="{{system.coreStats.hp.current}}" data-dtype="Number">
-							</div>
-							<div
-								class="sheet-col-1-4 sheet-attr sheet-vert-middle sheet-right sheet-pad-l-sm sheet-pad-r-md">
-								Bonus HD
-							</div>
-							<div class="sheet-col-1-10 sheet-attr sheet-vert-middle sheet-pad-r-md">
-								<input type="number" name="system.coreStats.hp.miscBonus"
-									value="{{system.coreStats.hp.miscBonus}}" data-dtype="Number">
-							</div>
-							<div class="sheet-col-1-5 sheet-attr sheet-vert-middle sheet-right sheet-pad-r-md">
-								Max HD
-							</div>
-							<div class="sheet-col-1-10 sheet-attr sheet-vert-middle sheet-pad-r-sm">
-								<input type="number" disabled="true" name="system.coreStats.hp.max"
-									value="{{system.coreStats.hp.max}}" data-dtype="Number">
-							</div>
+						<div class="sheet-col-11-15 sheet-attr sheet-vert-middle sheet-pad-r-sm">
+							<textarea class="sheet-small-textarea sheet-resize-vertical" name="system.base.description"
+								placeholder="Character description">{{system.base.description}}</textarea>
 						</div>
-						<div class="sheet-row">
-							<div
-								class="sheet-col-1 sheet-title-banner-subheading sheet-pad-t-md sheet-pad-b-sm sheet-mar-t-md sheet-mar-b-sm">
-								<h3>Stats</h3>
-							</div>
+					</div>
+					<div class="sheet-row sheet-pad-t-md">
+						<div
+							class="sheet-col-4-15 sheet-attr sheet-vert-top sheet-right sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-md">
+							Languages
 						</div>
-						<div class="sheet-row flexrow">
-							<div
-								class="sheet-col-1-5 sheet-attr sheet-vert-middle sheet-right sheet-pad-t-md sheet-pad-l-sm sheet-pad-r-md">
-								Actions
-							</div>
-							<div class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-pad-r-md">
-								<input type="number" name="attr_npc_action_number" value="1">
-							</div>
-							<div
-								class="sheet-col-1-4 sheet-attr sheet-vert-middle sheet-right sheet-pad-t-md sheet-pad-l-sm sheet-pad-r-md">
-								Attacks
-							</div>
-							<div class="sheet-col-1-10 sheet-attr sheet-vert-middle sheet-pad-r-md">
-								<input type="number" name="attr_npc_attack_number" value="1">
-							</div>
-							<div
-								class="sheet-col-1-5 sheet-attr sheet-vert-middle sheet-right sheet-pad-t-md sheet-pad-r-md">
-								Morale
-							</div>
-							<div class="sheet-col-1-10 sheet-attr sheet-vert-middle sheet-pad-r-sm">
-								<input type="number" name="attr_npc_morale" value="10">
-							</div>
-							<div class="sheet-col-1-10 sheet-attr sheet-vert-middle sheet-pad-r-sm">
-								<button type="roll" class="sheet-button btn ui-draggable" name="roll_npc_morale"
-									value=""></button>
-							</div>
+						<div class="sheet-col-11-15 sheet-attr sheet-vert-middle sheet-pad-r-sm">
+							<textarea class="sheet-small-textarea sheet-resize-vertical" name="system.base.languages"
+								placeholder="Languages known">{{system.base.languages}}</textarea>
 						</div>
-						<div class="sheet-row">
-							<div
-								class="sheet-col-1 sheet-title-banner-subheading sheet-pad-t-md sheet-pad-b-sm sheet-mar-t-md sheet-mar-b-sm">
-								<h3>Saving Throws</h3>
-							</div>
+					</div>
+					<div class="sheet-row sheet-pad-t-md">
+						<div
+							class="sheet-col-4-15 sheet-attr sheet-vert-top sheet-right sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-md">
+							Goals
 						</div>
-						<div class="sheet-row sheet-pad-b-sm">
-							<div
-								class="sheet-col-3-10 sheet-attr sheet-vert-middle sheet-center sheet-underline sheet-pad-l-sm sheet-pad-r-md">
-								<br>
-							</div>
-							<div
-								class="sheet-col-1-5 sheet-attr sheet-vert-middle sheet-center sheet-underline sheet-pad-r-md">
-								DC
-							</div>
-							<div
-								class="sheet-col-1-5 sheet-attr sheet-vert-middle sheet-center sheet-underline sheet-pad-r-md">
-								Bonus
-							</div>
-							<div
-								class="sheet-col-1-5 sheet-attr sheet-vert-middle sheet-center sheet-underline sheet-pad-r-md">
-								Penalty
-							</div>
-							<div
-								class="sheet-col-1-10 sheet-attr sheet-vert-middle sheet-center sheet-underline sheet-pad-r-sm">
-								Roll
-							</div>
+						<div class="sheet-col-11-15 sheet-attr sheet-vert-middle sheet-pad-r-sm">
+							<textarea class="sheet-small-textarea sheet-resize-vertical" name="system.base.goals"
+								data-dtype="String" placeholder="Goals">{{system.base.goals}}</textarea>
 						</div>
-						<div class="sheet-row sheet-pad-b-sm">
-							<div
-								class="sheet-col-3-10 sheet-attr sheet-vert-middle sheet-right sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-md">
-								Hardiness
-							</div>
-							<div
-								class="sheet-col-1-5 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-md">
-								<input type="number" name="system.coreStats.saves.hardiness.dc"
-									value="{{system.coreStats.saves.hardiness.dc}}">
-							</div>
-							<div
-								class="sheet-col-1-5 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-md">
-								<input type="number" disabled="true"
-									name="system.coreStats.saves.hardiness.attributeModifier"
-									value="{{system.coreStats.saves.hardiness.attributeModifier}}">
-							</div>
-							<div
-								class="sheet-col-1-5 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-md">
-								<input type="number" disabled="true"
-									name="system.coreStats.saves.hardiness.penaltyModifier"
-									value="{{system.coreStats.saves.hardiness.penaltyModifier}}">
-							</div>
-							<div class="sheet-col-1-10 sheet-attr sheet-vert-middle sheet-center sheet-pad-r-sm">
-								<button type="roll" data-dialog="true" data-type="hardiness" class="sheet-button"
-									name="roll_hardiness_save" value=""></button>
-							</div>
+					</div>
+				</div>
+				<div class="sheet-col-1-3 sheet-pad-t-md sheet-pad-r-md sheet-pad-b-sm">
+					<div class="sheet-row">
+						<div
+							class="sheet-col-1 sheet-title-banner-subheading sheet-pad-t-md sheet-pad-b-sm sheet-mar-t-md sheet-mar-b-sm">
+							<h3>Hit Dice</h3>
 						</div>
-						<div class="sheet-row sheet-pad-b-sm">
-							<div
-								class="sheet-col-3-10 sheet-attr sheet-vert-middle sheet-right sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-md">
-								Evasion
-							</div>
-							<div
-								class="sheet-col-1-5 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-md">
-								<input type="number" name="system.coreStats.saves.evasion.dc"
-									value="{{system.coreStats.saves.evasion.dc}}">
-							</div>
-							<div
-								class="sheet-col-1-5 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-md">
-								<input type="number" disabled="true"
-									name="system.coreStats.saves.evasion.attributeModifier"
-									value="{{system.coreStats.saves.evasion.attributeModifier}}">
-							</div>
-							<div
-								class="sheet-col-1-5 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-md">
-								<input type="number" disabled="true"
-									name="system.coreStats.saves.evasion.penaltyModifier"
-									value="{{system.coreStats.saves.evasion.penaltyModifier}}">
-							</div>
-							<div class="sheet-col-1-10 sheet-attr sheet-vert-middle sheet-center sheet-pad-r-sm">
-								<button type="roll" data-dialog="true" data-type="evasion" class="sheet-button"
-									name="roll_evasion_save" value=""></button>
-							</div>
+					</div>
+					<div class="sheet-row">
+						<div
+							class="sheet-col-1 sheet-title-banner-subheading sheet-pad-t-md sheet-pad-b-sm sheet-mar-t-md sheet-mar-b-sm">
+							<h3>Stats</h3>
 						</div>
-						<div class="sheet-row sheet-pad-b-sm">
-							<div
-								class="sheet-col-3-10 sheet-attr sheet-vert-middle sheet-right sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-md">
-								Spirit
-							</div>
-							<div
-								class="sheet-col-1-5 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-md">
-								<input type="number" name="system.coreStats.saves.spirit.dc"
-									value="{{system.coreStats.saves.spirit.dc}}">
-							</div>
-							<div
-								class="sheet-col-1-5 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-md">
-								<input type="number" disabled="true"
-									name="system.coreStats.saves.spirit.attributeModifier"
-									value="{{system.coreStats.saves.spirit.attributeModifier}}">
-							</div>
-							<div
-								class="sheet-col-1-5 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-md">
-								<input type="number" disabled="true"
-									name="system.coreStats.saves.spirit.penaltyModifier"
-									value="{{system.coreStats.saves.spirit.penaltyModifier}}">
-							</div>
-							<div class="sheet-col-1-10 sheet-attr sheet-vert-middle sheet-center sheet-pad-r-sm">
-								<button type="roll" data-dialog="true" s data-type="spirit" class="sheet-button"
-									name="roll_spirit_save" value=""></button>
-							</div>
+					</div>
+					<div class="sheet-row flexrow">
+						<div
+							class="sheet-col-1-5 sheet-attr sheet-vert-middle sheet-right sheet-pad-t-md sheet-pad-l-sm sheet-pad-r-md">
+							Actions
 						</div>
-						<div class="flexrow flex-between">
-							<div class="flex0 sheet-attr sheet-vert-middle sheet-right sheet-pad-l-sm sheet-pad-r-md sheet-pad-t-lg"
-								style="white-space: nowrap;">
-								Save Penalties:
-							</div>
-							<div
-								class="flex0 sheet-attr sheet-vert-middle sheet-pad-t-md sheet-pad-r-md sheet-pad-b-sm sheet-mar-t-md">
-								<input type="checkbox" class="sheet-box-check"
-									name="system.coreStats.saves.hardiness.isArmorPenalty" {{checked
-									system.coreStats.saves.hardiness.isArmorPenalty}}><label>Hardiness</label>
-							</div>
-							<div
-								class="flex0 sheet-attr sheet-vert-middle sheet-pad-t-md sheet-pad-r-md sheet-pad-b-sm sheet-mar-t-md">
-								<input type="checkbox" class="sheet-box-check"
-									name="system.coreStats.saves.evasion.isArmorPenalty" {{checked
-									system.coreStats.saves.evasion.isArmorPenalty}}><label>Evasion</label>
-							</div>
-							<div
-								class="flex0 sheet-attr sheet-vert-middle sheet-pad-t-md sheet-pad-r-sm sheet-pad-b-sm sheet-mar-t-md">
-								<input type="checkbox" class="sheet-box-check"
-									name="system.coreStats.saves.spirit.isArmorPenalty" {{checked
-									system.coreStats.saves.spirit.isArmorPenalty}}><label>Spirit</label>
-							</div>
+						<div class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-pad-r-md">
+							<input type="number" name="attr_npc_action_number" value="1">
 						</div>
-						<div class="sheet-row">
-							<div
-								class="sheet-col-1 sheet-title-banner-subheading sheet-pad-t-md sheet-pad-b-sm sheet-mar-t-md sheet-mar-b-sm">
-								<h3>Armor</h3>
-							</div>
+						<div
+							class="sheet-col-1-4 sheet-attr sheet-vert-middle sheet-right sheet-pad-t-md sheet-pad-l-sm sheet-pad-r-md">
+							Attacks
 						</div>
-						<div class="sheet-row sheet-pad-b-sm">
-							<div
-								class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-right sheet-pad-l-sm sheet-pad-r-md">
-								Type
-							</div>
-							<div class="sheet-col-17-20 sheet-attr sheet-vert-middle sheet-pad-t-sm sheet-pad-r-md">
-								<select class="sheet-select" name="system.coreStats.ac.armorType">
-									{{#select system.coreStats.ac.armorType}}
-									<option value="none">None (Skin or clothing)</option>
-									<option value="light">Light (Leathers or hides)</option>
-									<option value="medium">Medium (Mail or light plate) [-4 to one save]
-									</option>
-									<option value="heavy">Heavy (Heavy plate) [-4 to two saves]</option>
-									<option value="special">Divine Gift (Granted AC of 3)</option>
-									{{/select}}
-								</select>
-							</div>
+						<div class="sheet-col-1-10 sheet-attr sheet-vert-middle sheet-pad-r-md">
+							<input type="number" name="attr_npc_attack_number" value="1">
 						</div>
-						<div class="sheet-row sheet-pad-t-md">
-							<div
-								class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-right sheet-pad-l-sm sheet-pad-r-md">
-								AC
-							</div>
-							<div class="sheet-col-1-10 sheet-attr sheet-vert-middle sheet-center sheet-pad-r-md">
-								<input type="number" name="system.coreStats.ac.total"
-									value="{{system.coreStats.ac.total}}" disabled="true">
-							</div>
-							<div
-								class="sheet-col-1-5 sheet-attr sheet-vert-middle sheet-center sheet-pad-r-md sheet-mar-t-sm">
-								<input type="checkbox" class="sheet-box-check" name="system.coreStats.ac.hasShield"
-									{{checked system.coreStats.ac.hasShield}}><label>Shield</label>
-							</div>
-							<div class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-right sheet-pad-r-md">
-								Bonus
-							</div>
-							<div class="sheet-col-1-10 sheet-attr sheet-vert-middle sheet-center sheet-pad-r-md">
-								<input type="number" name="system.coreStats.ac.miscModifier"
-									value="{{system.coreStats.ac.miscModifier}}">
-							</div>
-							<!-- <div
+						<div
+							class="sheet-col-1-5 sheet-attr sheet-vert-middle sheet-right sheet-pad-t-md sheet-pad-r-md">
+							Morale
+						</div>
+						<div class="sheet-col-1-10 sheet-attr sheet-vert-middle sheet-pad-r-sm">
+							<input type="number" name="attr_npc_morale" value="10">
+						</div>
+						<div class="sheet-col-1-10 sheet-attr sheet-vert-middle sheet-pad-r-sm">
+							<button type="roll" class="sheet-button btn ui-draggable" name="roll_npc_morale"
+								value=""></button>
+						</div>
+					</div>
+					<div class="sheet-row">
+						<div
+							class="sheet-col-1 sheet-title-banner-subheading sheet-pad-t-md sheet-pad-b-sm sheet-mar-t-md sheet-mar-b-sm">
+							<h3>Saving Throws</h3>
+						</div>
+					</div>
+					<div class="sheet-row sheet-pad-b-sm">
+						<div
+							class="sheet-col-3-10 sheet-attr sheet-vert-middle sheet-center sheet-underline sheet-pad-l-sm sheet-pad-r-md">
+							<br>
+						</div>
+						<div
+							class="sheet-col-1-5 sheet-attr sheet-vert-middle sheet-center sheet-underline sheet-pad-r-md">
+							DC
+						</div>
+						<div
+							class="sheet-col-1-5 sheet-attr sheet-vert-middle sheet-center sheet-underline sheet-pad-r-md">
+							Bonus
+						</div>
+						<div
+							class="sheet-col-1-5 sheet-attr sheet-vert-middle sheet-center sheet-underline sheet-pad-r-md">
+							Penalty
+						</div>
+						<div
+							class="sheet-col-1-10 sheet-attr sheet-vert-middle sheet-center sheet-underline sheet-pad-r-sm">
+							Roll
+						</div>
+					</div>
+					<div class="sheet-row sheet-pad-b-sm">
+						<div
+							class="sheet-col-3-10 sheet-attr sheet-vert-middle sheet-right sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-md">
+							Hardiness
+						</div>
+						<div
+							class="sheet-col-1-5 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-md">
+							<input type="number" name="system.coreStats.saves.hardiness.dc"
+								value="{{system.coreStats.saves.hardiness.dc}}">
+						</div>
+						<div
+							class="sheet-col-1-5 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-md">
+							<input type="number" disabled="true"
+								name="system.coreStats.saves.hardiness.attributeModifier"
+								value="{{system.coreStats.saves.hardiness.attributeModifier}}">
+						</div>
+						<div
+							class="sheet-col-1-5 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-md">
+							<input type="number" disabled="true" name="system.coreStats.saves.hardiness.penaltyModifier"
+								value="{{system.coreStats.saves.hardiness.penaltyModifier}}">
+						</div>
+						<div class="sheet-col-1-10 sheet-attr sheet-vert-middle sheet-center sheet-pad-r-sm">
+							<button type="roll" data-dialog="true" data-type="hardiness" class="sheet-button"
+								name="roll_hardiness_save" value=""></button>
+						</div>
+					</div>
+					<div class="sheet-row sheet-pad-b-sm">
+						<div
+							class="sheet-col-3-10 sheet-attr sheet-vert-middle sheet-right sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-md">
+							Evasion
+						</div>
+						<div
+							class="sheet-col-1-5 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-md">
+							<input type="number" name="system.coreStats.saves.evasion.dc"
+								value="{{system.coreStats.saves.evasion.dc}}">
+						</div>
+						<div
+							class="sheet-col-1-5 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-md">
+							<input type="number" disabled="true" name="system.coreStats.saves.evasion.attributeModifier"
+								value="{{system.coreStats.saves.evasion.attributeModifier}}">
+						</div>
+						<div
+							class="sheet-col-1-5 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-md">
+							<input type="number" disabled="true" name="system.coreStats.saves.evasion.penaltyModifier"
+								value="{{system.coreStats.saves.evasion.penaltyModifier}}">
+						</div>
+						<div class="sheet-col-1-10 sheet-attr sheet-vert-middle sheet-center sheet-pad-r-sm">
+							<button type="roll" data-dialog="true" data-type="evasion" class="sheet-button"
+								name="roll_evasion_save" value=""></button>
+						</div>
+					</div>
+					<div class="sheet-row sheet-pad-b-sm">
+						<div
+							class="sheet-col-3-10 sheet-attr sheet-vert-middle sheet-right sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-md">
+							Spirit
+						</div>
+						<div
+							class="sheet-col-1-5 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-md">
+							<input type="number" name="system.coreStats.saves.spirit.dc"
+								value="{{system.coreStats.saves.spirit.dc}}">
+						</div>
+						<div
+							class="sheet-col-1-5 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-md">
+							<input type="number" disabled="true" name="system.coreStats.saves.spirit.attributeModifier"
+								value="{{system.coreStats.saves.spirit.attributeModifier}}">
+						</div>
+						<div
+							class="sheet-col-1-5 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-md">
+							<input type="number" disabled="true" name="system.coreStats.saves.spirit.penaltyModifier"
+								value="{{system.coreStats.saves.spirit.penaltyModifier}}">
+						</div>
+						<div class="sheet-col-1-10 sheet-attr sheet-vert-middle sheet-center sheet-pad-r-sm">
+							<button type="roll" data-dialog="true" s data-type="spirit" class="sheet-button"
+								name="roll_spirit_save" value=""></button>
+						</div>
+					</div>
+					<div class="flexrow flex-between">
+						<div class="flex0 sheet-attr sheet-vert-middle sheet-right sheet-pad-l-sm sheet-pad-r-md sheet-pad-t-lg"
+							style="white-space: nowrap;">
+							Save Penalties:
+						</div>
+						<div
+							class="flex0 sheet-attr sheet-vert-middle sheet-pad-t-md sheet-pad-r-md sheet-pad-b-sm sheet-mar-t-md">
+							<input type="checkbox" class="sheet-box-check"
+								name="system.coreStats.saves.hardiness.isArmorPenalty" {{checked
+								system.coreStats.saves.hardiness.isArmorPenalty}}><label>Hardiness</label>
+						</div>
+						<div
+							class="flex0 sheet-attr sheet-vert-middle sheet-pad-t-md sheet-pad-r-md sheet-pad-b-sm sheet-mar-t-md">
+							<input type="checkbox" class="sheet-box-check"
+								name="system.coreStats.saves.evasion.isArmorPenalty" {{checked
+								system.coreStats.saves.evasion.isArmorPenalty}}><label>Evasion</label>
+						</div>
+						<div
+							class="flex0 sheet-attr sheet-vert-middle sheet-pad-t-md sheet-pad-r-sm sheet-pad-b-sm sheet-mar-t-md">
+							<input type="checkbox" class="sheet-box-check"
+								name="system.coreStats.saves.spirit.isArmorPenalty" {{checked
+								system.coreStats.saves.spirit.isArmorPenalty}}><label>Spirit</label>
+						</div>
+					</div>
+					<div class="sheet-row">
+						<div
+							class="sheet-col-1 sheet-title-banner-subheading sheet-pad-t-md sheet-pad-b-sm sheet-mar-t-md sheet-mar-b-sm">
+							<h3>Armor</h3>
+						</div>
+					</div>
+					<div class="sheet-row sheet-pad-b-sm">
+						<div
+							class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-right sheet-pad-l-sm sheet-pad-r-md">
+							Type
+						</div>
+						<div class="sheet-col-17-20 sheet-attr sheet-vert-middle sheet-pad-t-sm sheet-pad-r-md">
+							<select class="sheet-select" name="system.coreStats.ac.armorType">
+								{{#select system.coreStats.ac.armorType}}
+								<option value="none">None (Skin or clothing)</option>
+								<option value="light">Light (Leathers or hides)</option>
+								<option value="medium">Medium (Mail or light plate) [-4 to one save]
+								</option>
+								<option value="heavy">Heavy (Heavy plate) [-4 to two saves]</option>
+								<option value="special">Divine Gift (Granted AC of 3)</option>
+								{{/select}}
+							</select>
+						</div>
+					</div>
+					<div class="sheet-row sheet-pad-t-md">
+						<div
+							class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-right sheet-pad-l-sm sheet-pad-r-md">
+							AC
+						</div>
+						<div class="sheet-col-1-10 sheet-attr sheet-vert-middle sheet-center sheet-pad-r-md">
+							<input type="number" name="system.coreStats.ac.total" value="{{system.coreStats.ac.total}}"
+								disabled="true">
+						</div>
+						<div
+							class="sheet-col-1-5 sheet-attr sheet-vert-middle sheet-center sheet-pad-r-md sheet-mar-t-sm">
+							<input type="checkbox" class="sheet-box-check" name="system.coreStats.ac.hasShield"
+								{{checked system.coreStats.ac.hasShield}}><label>Shield</label>
+						</div>
+						<div class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-right sheet-pad-r-md">
+							Bonus
+						</div>
+						<div class="sheet-col-1-10 sheet-attr sheet-vert-middle sheet-center sheet-pad-r-md">
+							<input type="number" name="system.coreStats.ac.miscModifier"
+								value="{{system.coreStats.ac.miscModifier}}">
+						</div>
+						<!-- <div
 								class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-right sheet-pad-l-sm sheet-pad-r-md">
 								Total
 							</div>
@@ -324,28 +404,28 @@
 								<input type="number" name="attr_armor_total" value="9" disabled="true"
 									data-formula="((@{armor_ac}) + (@{armor_shield}) - (@{armor_bonus}) - (@{dexterity_mod}))">
 							</div> -->
+					</div>
+					<div class="sheet-row sheet-pad-b-sm sheet-pad-t-md">
+						<div class="sheet-col-1 sheet-attr sheet-pad-r-sm">
+							<textarea class="sheet-small-textarea sheet-resize-vertical"
+								name="system.coreStats.ac.armorDescription"
+								placeholder="Armor description">{{system.coreStats.ac.armorDescription}}</textarea>
 						</div>
-						<div class="sheet-row sheet-pad-b-sm sheet-pad-t-md">
-							<div class="sheet-col-1 sheet-attr sheet-pad-r-sm">
-								<textarea class="sheet-small-textarea sheet-resize-vertical"
-									name="system.coreStats.ac.armorDescription"
-									placeholder="Armor description">{{system.coreStats.ac.armorDescription}}</textarea>
-							</div>
+					</div>
+					<div class="sheet-rowd sheet-pad-b-sm">
+						<div
+							class="sheet-col-1 sheet-title-banner-subheading sheet-pad-t-md sheet-pad-b-sm sheet-mar-t-md">
+							<h3>Notes</h3>
 						</div>
-						<div class="sheet-rowd sheet-pad-b-sm">
-							<div
-								class="sheet-col-1 sheet-title-banner-subheading sheet-pad-t-md sheet-pad-b-sm sheet-mar-t-md">
-								<h3>Notes</h3>
-							</div>
+					</div>
+					<div class="sheet-row sheet-pad-b-sm">
+						<div class="sheet-col-1 sheet-pad-t-sm sheet-pad-r-sm">
+							<textarea class="sheet-medium-textarea sheet-resize-vertical"
+								name="system.base.notes">{{system.base.notes}}</textarea>
 						</div>
-						<div class="sheet-row sheet-pad-b-sm">
-							<div class="sheet-col-1 sheet-pad-t-sm sheet-pad-r-sm">
-								<textarea class="sheet-medium-textarea sheet-resize-vertical"
-									name="system.base.notes">{{system.base.notes}}</textarea>
-							</div>
-						</div>
+					</div>
 
-						<!-- <div class="sheet-row">
+					<!-- <div class="sheet-row">
 							<div
 								class="sheet-col-1 sheet-title-banner-subheading sheet-pad-t-md sheet-pad-b-sm sheet-mar-t-md sheet-mar-b-sm">
 								<h3>Actions and Attacks</h3>
@@ -404,8 +484,8 @@
 									value=""></button>
 							</div>
 						</div> -->
-						<!-- <hr> -->
-						<!-- <div class="sheet-row">
+					<!-- <hr> -->
+					<!-- <div class="sheet-row">
 							<div
 								class="sheet-col-2-5 sheet-attr sheet-vert-middle sheet-underline sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-md sheet-pad-b-md">
 								Weapon
@@ -479,790 +559,779 @@
 								class="btn repcontrol_edit flex0">Modify</button><button
 								class="btn repcontrol_add flex0">+Add</button>
 						</div> -->
-					</div>
-					<div class="sheet-col-1-3 sheet-pad-t-md sheet-pad-r-md sheet-pad-b-sm">
-
-						<div class="sheet-row">
-							<div
-								class="sheet-col-1 sheet-title-banner-subheading sheet-pad-t-md sheet-pad-b-sm sheet-mar-t-md sheet-mar-b-sm">
-								<h3>Efforts</h3>
-							</div>
-						</div>
-						<div class="sheet-row">
-							<div
-								class="sheet-col-3-10 sheet-attr sheet-vert-middle sheet-right sheet-underline sheet-pad-l-sm sheet-pad-t-md sheet-pad-r-md sheet-pad-b-sm">
-								<br>
-							</div>
-							<div
-								class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-center sheet-underline sheet-pad-t-sm sheet-pad-r-sm sheet-pad-b-sm">
-								Total
-							</div>
-							<div
-								class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-center sheet-underline sheet-pad-t-sm sheet-pad-r-sm sheet-pad-b-sm">
-								Spent
-							</div>
-							<div
-								class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-center sheet-underline sheet-pad-t-sm sheet-pad-r-sm sheet-pad-b-sm">
-								Free
-							</div>
-							<div
-								class="sheet-col-1-4 sheet-attr sheet-vert-middle sheet-center sheet-underline sheet-pad-t-sm sheet-pad-r-sm sheet-pad-b-sm">
-								<br>
-							</div>
-						</div>
-						<div class="sheet-row">
-							<div
-								class="sheet-col-3-10 sheet-attr sheet-vert-middle sheet-right sheet-pad-l-sm sheet-pad-t-md sheet-pad-r-md">
-								Effort
-							</div>
-							<div
-								class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-md">
-								<input type="number" name="system.coreStats.effort.max"
-									value="{{system.coreStats.effort.max}}" data-dtype="Number">
-							</div>
-							<div
-								class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-md">
-								<input type="number" name="system.coreStats.effort.committed"
-									value="{{system.coreStats.effort.committed}}" data-dtype="Number">
-							</div>
-							<div
-								class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-md">
-								<input type="number" name="system.coreStats.effort.free"
-									value="{{system.coreStats.effort.free}}" disabled="true" data-dtype="Number">
-							</div>
-							<div
-								class="sheet-col-1-4 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-md">
-								<br>
-							</div>
-						</div>
-						<hr>
-						<div class="sheet-row">
-							<div
-								class="sheet-col-4-5 sheet-attr sheet-vert-middle sheet-underline sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-md sheet-pad-b-sm">
-								Effort
-							</div>
-							<div
-								class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-center sheet-underline sheet-pad-t-sm sheet-pad-r-md sheet-pad-b-sm">
-								Effort
-							</div>
-							<div
-								class="sheet-col-1-20 sheet-attr sheet-vert-middle sheet-center sheet-underline sheet-pad-t-sm sheet-pad-r-sm sheet-pad-b-sm">
-								<br>
-							</div>
-						</div>
-						<fieldset class="repeating_npcefforts" style="display: none;">
-							<div class="sheet-row sheet-mar-b-sm">
-								<div
-									class="sheet-col-4-5 sheet-attr sheet-vert-middle sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-md sheet-pad-b-sm">
-									<input type="text" name="attr_npc_effort_name_repeat" placeholder="Effort">
-								</div>
-								<div
-									class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-md sheet-pad-b-sm">
-									<input type="number" name="attr_npc_effort_effort_repeat" value="0">
-								</div>
-								<div
-									class="sheet-col-1-20 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-sm sheet-pad-b-sm">
-									<input type="checkbox" class="sheet-circle-check"
-										name="attr_npc_effort_description_show_repeat" value="1"><span></span>
-								</div>
-							</div>
-							<input type="checkbox" name="attr_npc_effort_description_show_repeat"
-								class="sheet-hidden sheet-hider" value="1">
-							<div class="sheet-row sheet-block-a sheet-pad-t-sm sheet-pad-r-sm sheet-pad-b-sm">
-								<div class="sheet-col-9-10 sheet-attr sheet-auto-expand">
-									<span class="sheet-small-expand" name="attr_npc_effort_description_repeat"></span>
-									<textarea class="sheet-small-textarea" name="attr_npc_effort_description_repeat"
-										placeholder="Effort description"></textarea>
-								</div>
-								<div class="sheet-col-1-10 sheet-attr sheet-chatbutton">
-									<button type="roll" class="sheet-button btn ui-draggable"
-										name="roll_npc_effort_broadcast_repeat" value=""></button>
-								</div>
-							</div>
-						</fieldset>
-						<div class="repcontainer" data-groupname="repeating_npcefforts"></div>
-						<div class="repcontrol flexrow flex-between" data-groupname="repeating_npcefforts"><button
-								class="btn repcontrol_edit flex0">Modify</button><button
-								class="btn repcontrol_add flex0">+Add</button>
-						</div>
-						<div class="sheet-row sheet-pad-b-sm">
-							<div
-								class="sheet-col-1 sheet-title-banner-subheading sheet-pad-t-md sheet-pad-b-sm sheet-mar-t-md">
-								<h3>Abilities</h3>
-							</div>
-						</div>
-						<div class="sheet-row sheet-pad-b-md">
-							<div
-								class="sheet-col-4-5 sheet-attr sheet-vert-middle sheet-underline sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-md">
-								Ability
-							</div>
-							<!-- <div
-								class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-center sheet-underline sheet-pad-t-sm sheet-pad-r-md">
-								Effort
-							</div> -->
-							<div
-								class="sheet-col-1-20 sheet-attr sheet-vert-middle sheet-center sheet-underline sheet-pad-t-sm sheet-pad-r-sm">
-								<br>
-							</div>
-						</div>
-						<fieldset class="repeating_words" style="display: none;">
-							<div class="sheet-row sheet-mar-b-sm">
-								<div
-									class="sheet-col-4-5 sheet-attr sheet-vert-middle sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-md">
-									<input type="text" name="attr_word_name_repeat" placeholder="Word name">
-								</div>
-								<div
-									class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-sm">
-									<input type="number" name="attr_word_effort_repeat" value="0">
-								</div>
-								<div
-									class="sheet-col-1-20 sheet-attr sheet-vert-middle sheet-center sheet-underline sheet-pad-t-sm sheet-pad-r-sm">
-									<input type="checkbox" class="sheet-circle-check"
-										name="attr_word_description_show_repeat" value="1"><span></span>
-								</div>
-							</div>
-							<input type="checkbox" name="attr_word_description_show_repeat"
-								class="sheet-hidden sheet-hider" value="1">
-							<div class="sheet-row sheet-block-a sheet-pad-t-sm sheet-pad-b-sm sheet-pad-r-sm">
-								<div class="sheet-col-9-10 sheet-attr sheet-auto-expand">
-									<span class="sheet-small-expand" name="attr_word_description_repeat"></span>
-									<textarea class="sheet-small-textarea" name="attr_word_description_repeat"
-										placeholder="Word description"></textarea>
-								</div>
-								<div class="sheet-col-1-10 sheet-attr sheet-chatbutton">
-									<button type="roll" data-dialog="true" class="sheet-button btn "
-										name="roll_word_broadcast_repeat" value=""></button>
-								</div>
-							</div>
-						</fieldset>
-						<div class="repcontainer" data-groupname="repeating_words"></div>
-						<div class="repcontrol flexrow flex-between" data-groupname="repeating_words"><button
-								class="btn repcontrol_edit flex0">Modify</button><button
-								class="btn repcontrol_add flex0">+Add</button>
-						</div>
-					</div>
 				</div>
+				<div class="sheet-col-1-3 sheet-pad-t-md sheet-pad-r-md sheet-pad-b-sm">
 
-				<div class="sheet-row">
 					<div class="sheet-row">
 						<div
 							class="sheet-col-1 sheet-title-banner-subheading sheet-pad-t-md sheet-pad-b-sm sheet-mar-t-md sheet-mar-b-sm">
-							<h3>Attacks</h3>
+							<h3>Efforts</h3>
+						</div>
+					</div>
+					<div class="sheet-row">
+						<div
+							class="sheet-col-3-10 sheet-attr sheet-vert-middle sheet-right sheet-underline sheet-pad-l-sm sheet-pad-t-md sheet-pad-r-md sheet-pad-b-sm">
+							<br>
+						</div>
+						<div
+							class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-center sheet-underline sheet-pad-t-sm sheet-pad-r-sm sheet-pad-b-sm">
+							Total
+						</div>
+						<div
+							class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-center sheet-underline sheet-pad-t-sm sheet-pad-r-sm sheet-pad-b-sm">
+							Spent
+						</div>
+						<div
+							class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-center sheet-underline sheet-pad-t-sm sheet-pad-r-sm sheet-pad-b-sm">
+							Free
+						</div>
+						<div
+							class="sheet-col-1-4 sheet-attr sheet-vert-middle sheet-center sheet-underline sheet-pad-t-sm sheet-pad-r-sm sheet-pad-b-sm">
+							<br>
+						</div>
+					</div>
+					<div class="sheet-row">
+						<div
+							class="sheet-col-3-10 sheet-attr sheet-vert-middle sheet-right sheet-pad-l-sm sheet-pad-t-md sheet-pad-r-md">
+							Effort
+						</div>
+						<div
+							class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-md">
+							<input type="number" name="system.coreStats.effort.max"
+								value="{{system.coreStats.effort.max}}" data-dtype="Number">
+						</div>
+						<div
+							class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-md">
+							<input type="number" name="system.coreStats.effort.committed"
+								value="{{system.coreStats.effort.committed}}" data-dtype="Number">
+						</div>
+						<div
+							class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-md">
+							<input type="number" name="system.coreStats.effort.free"
+								value="{{system.coreStats.effort.free}}" disabled="true" data-dtype="Number">
+						</div>
+						<div
+							class="sheet-col-1-4 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-md">
+							<br>
+						</div>
+					</div>
+					<hr>
+					<div class="sheet-row">
+						<div
+							class="sheet-col-4-5 sheet-attr sheet-vert-middle sheet-underline sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-md sheet-pad-b-sm">
+							Effort
+						</div>
+						<div
+							class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-center sheet-underline sheet-pad-t-sm sheet-pad-r-md sheet-pad-b-sm">
+							Effort
+						</div>
+						<div
+							class="sheet-col-1-20 sheet-attr sheet-vert-middle sheet-center sheet-underline sheet-pad-t-sm sheet-pad-r-sm sheet-pad-b-sm">
+							<br>
+						</div>
+					</div>
+					<fieldset class="repeating_npcefforts" style="display: none;">
+						<div class="sheet-row sheet-mar-b-sm">
+							<div
+								class="sheet-col-4-5 sheet-attr sheet-vert-middle sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-md sheet-pad-b-sm">
+								<input type="text" name="attr_npc_effort_name_repeat" placeholder="Effort">
+							</div>
+							<div
+								class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-md sheet-pad-b-sm">
+								<input type="number" name="attr_npc_effort_effort_repeat" value="0">
+							</div>
+							<div
+								class="sheet-col-1-20 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-sm sheet-pad-b-sm">
+								<input type="checkbox" class="sheet-circle-check"
+									name="attr_npc_effort_description_show_repeat" value="1"><span></span>
+							</div>
+						</div>
+						<input type="checkbox" name="attr_npc_effort_description_show_repeat"
+							class="sheet-hidden sheet-hider" value="1">
+						<div class="sheet-row sheet-block-a sheet-pad-t-sm sheet-pad-r-sm sheet-pad-b-sm">
+							<div class="sheet-col-9-10 sheet-attr sheet-auto-expand">
+								<span class="sheet-small-expand" name="attr_npc_effort_description_repeat"></span>
+								<textarea class="sheet-small-textarea" name="attr_npc_effort_description_repeat"
+									placeholder="Effort description"></textarea>
+							</div>
+							<div class="sheet-col-1-10 sheet-attr sheet-chatbutton">
+								<button type="roll" class="sheet-button btn ui-draggable"
+									name="roll_npc_effort_broadcast_repeat" value=""></button>
+							</div>
+						</div>
+					</fieldset>
+					<div class="repcontainer" data-groupname="repeating_npcefforts"></div>
+					<div class="repcontrol flexrow flex-between" data-groupname="repeating_npcefforts"><button
+							class="btn repcontrol_edit flex0">Modify</button><button
+							class="btn repcontrol_add flex0">+Add</button>
+					</div>
+					<div class="sheet-row sheet-pad-b-sm">
+						<div
+							class="sheet-col-1 sheet-title-banner-subheading sheet-pad-t-md sheet-pad-b-sm sheet-mar-t-md">
+							<h3>Abilities</h3>
 						</div>
 					</div>
 					<div class="sheet-row sheet-pad-b-md">
 						<div
-							class="sheet-col-7-25 sheet-attr sheet-vert-middle sheet-underline sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-md">
-							Weapon or Gift
-						</div>
-						<div
-							class="sheet-col-2-25 sheet-attr sheet-vert-middle sheet-center sheet-underline sheet-pad-t-sm sheet-pad-r-md">
-							Attr
-						</div>
-						<div
-							class="sheet-col-11-100 sheet-attr sheet-vert-middle sheet-center sheet-underline sheet-pad-t-sm sheet-pad-r-mdd">
-							Hit Bonus
-						</div>
-						<div
-							class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-center sheet-underline sheet-pad-t-sm sheet-pad-r-md">
-							Range
-						</div>
-						<div
-							class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-center sheet-underline sheet-pad-t-sm sheet-pad-r-md">
-							Area
-						</div>
-						<div
-							class="sheet-col-9-50 sheet-attr sheet-vert-middle sheet-center sheet-underline sheet-pad-t-sm sheet-pad-r-md">
-							Damage Die
-						</div>
-						<div
-							class="sheet-col-1-20 sheet-attr sheet-vert-middle sheet-center sheet-underline sheet-pad-t-sm sheet-pad-r-sm">
-							Roll
-						</div>
-					</div>
-					<fieldset class="repeating_weapons" style="display: none;">
-						<div class="sheet-row sheet-mar-b-sm">
-							<div class="sheet-col-7-25 sheet-attr sheet-vert-middle sheet-pad-l-sm sheet-pad-r-md">
-								<input type="text" name="attr_weapon_name_repeat" placeholder="Attack">
-							</div>
-							<div class="sheet-col-2-25 sheet-attr sheet-vert-middle sheet-center sheet-pad-r-md">
-								<select class="sheet-select-center" name="attr_weapon_attribute_repeat">
-									<option value="0" selected="selected">?</option>
-									<option value="@{strength_mod}">Str</option>
-									<option value="@{dexterity_mod}">Dex</option>
-									<option value="@{constitution_mod}">Con</option>
-									<option value="@{intelligence_mod}">Int</option>
-									<option value="@{wisdom_mod}">Wis</option>
-									<option value="@{charisma_mod}">Cha</option>
-								</select>
-							</div>
-							<div class="sheet-col-11-100 sheet-attr sheet-vert-middle sheet-center sheet-pad-r-md">
-								<input type="number" name="attr_weapon_bonus_repeat" value="0"
-									title="Attribute modifier already included in hit bonus">
-							</div>
-							<div class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-center sheet-pad-r-md">
-								<input type="text" class="sheet-input-center" name="attr_weapon_range_repeat"
-									value="Melee / 30 ft">
-							</div>
-							<div class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-center sheet-pad-r-md">
-								<input type="text" class="sheet-input-center" name="attr_weapon_area_repeat"
-									value="Single target">
-							</div>
-							<div class="sheet-col-2-25 sheet-attr sheet-vert-middle sheet-center sheet-pad-r-sm">
-								<select class="sheet-select-center" name="attr_weapon_damage_die_repeat">
-									<option value="1d0" selected="selected">?</option>
-									<option value="1d4">1d4</option>
-									<option value="1d6">1d6</option>
-									<option value="1d8">1d8</option>
-									<option value="1d10">1d10</option>
-									<option value="1d12">1d12</option>
-									<option value="1d20">1d20</option>
-								</select>
-							</div>
-							<div class="sheet-col-1-50 sheet-attr sheet-vert-middle sheet-center sheet-pad-r-sm">
-								+
-							</div>
-							<div class="sheet-col-2-25 sheet-attr sheet-vert-middle sheet-center sheet-pad-r-md">
-								<input type="number" class="sheet-input-center" name="attr_weapon_damage_bonus_repeat"
-									value="0" title="Attribute modifier already included in damage">
-							</div>
-							<div class="sheet-col-1-20 sheet-attr sheet-vert-middle sheet-center sheet-pad-r-sm">
-								<button type="roll" data-dialog="true" class="sheet-button btn "
-									name="roll_weapon_repeat" value=""></button>
-							</div>
-						</div>
-					</fieldset>
-					<div class="repcontainer" data-groupname="repeating_weapons"></div>
-					<div class="repcontrol flexrow flex-between" data-groupname="repeating_weapons">
-						<button class="btn repcontrol_edit flex0">Modify</button><button
-							class="btn repcontrol_add flex0">+Add</button>
-					</div>
-				</div>
-
-				<div class="sheet-row">
-					<div class="sheet-col-1 sheet-pad-t-md sheet-pad-r-md sheet-pad-b-sm">
-						<div class="sheet-row">
-							<div
-								class="sheet-col-1 sheet-title-banner-subheading sheet-pad-t-md sheet-pad-b-sm sheet-mar-t-md sheet-mar-b-sm">
-								<h3>Tactics</h3>
-							</div>
-						</div>
-						<div class="sheet-row">
-							<div
-								class="sheet-col-1-5 sheet-attr sheet-vert-middle sheet-right sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-md sheet-pad-b-sm">
-								Choose Random Tactic
-							</div>
-							<div
-								class="sheet-col-1-20 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-md sheet-pad-b-sm">
-								<button type="roll" class="sheet-button btn ui-draggable" name="roll_npc_random_tactic"
-									value=""></button>
-							</div>
-							<div
-								class="sheet-col-1-5 sheet-attr sheet-vert-middle sheet-right sheet-pad-r-md sheet-pad-b-sm">
-								Number of NPC Tactics
-							</div>
-							<div
-								class="sheet-col-1-20 sheet-attr sheet-vert-middle sheet-underline sheet-pad-r-md sheet-pad-b-sm">
-								<input type="hidden" name="attr_calc_total_npc_tactics" value="0">
-								<input type="number" name="attr_total_npc_tactics" value="0" disabled="true"
-									data-formula="@{calc_total_npc_tactics}">
-							</div>
-							<div
-								class="sheet-col-1-2 sheet-attr sheet-vert-middle sheet-underline sheet-pad-r-sm sheet-pad-b-sm">
-								<br>
-							</div>
-						</div>
-						<div class="sheet-row">
-							<div
-								class="sheet-col-1-40 sheet-attr sheet-vert-middle sheet-underline sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-sm sheet-pad-b-sm">
-								<br>
-							</div>
-							<div
-								class="sheet-col-39-40 sheet-attr sheet-vert-middle sheet-underline sheet-pad-t-sm sheet-pad-r-sm sheet-pad-b-sm">
-								Tactics Description
-							</div>
-						</div>
-						<div class="sheet-row">
-							<div
-								class="sheet-col-1 sheet-attr sheet-vert-middle sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-sm sheet-pad-b-sm">
-								<ol class="sheet-tactics-list">
-									<fieldset class="repeating_npctactics" style="display: none;">
-										<li
-											class="sheet-top sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-sm sheet-mar-b-sm">
-											<div class="sheet-col-1 sheet-attr sheet-auto-expand">
-												<span class="sheet-xs-expand" name="attr_npc_tactic_repeat"></span>
-												<textarea class="sheet-xs-textarea" name="attr_npc_tactic_repeat"
-													placeholder="Word description"></textarea>
-											</div>
-										</li>
-									</fieldset>
-									<div class="repcontainer" data-groupname="repeating_npctactics"></div>
-									<div class="repcontrol flexrow flex-between" data-groupname="repeating_npctactics">
-										<button class="btn repcontrol_edit flex0">Modify</button><button
-											class="btn repcontrol_add flex0">+Add</button>
-									</div>
-								</ol>
-							</div>
-						</div>
-					</div>
-				</div>
-		</div> <!-- Bottom of sheet section npc-->
-		<section class="npcsheet-content">
-			<div data-group="npcsheet" data-tab="arts" class="tab">
-				<div class="sheet-col-1-3 sheet-pad-t-md sheet-pad-r-md sheet-pad-b-sm">
-					<div class="sheet-row sheet-pad-b-sm">
-						<div
-							class="sheet-col-1 sheet-title-banner-subheading sheet-pad-t-md sheet-pad-b-sm sheet-mar-t-md">
-							<h3>Martial Strifes</h3>
-						</div>
-					</div>
-					<fieldset class="repeating_strifes" style="display: none;">
-						<div class="sheet-row sheet-pad-b-sm">
-							<div
-								class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-underline sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-md">
-								Strife
-							</div>
-							<div
-								class="sheet-col-4-5 sheet-attr sheet-vert-middle sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-md">
-								<input type="text" name="attr_strife_name_repeat" placeholder="Strife Name">
-							</div>
-							<div
-								class="sheet-col-1-20 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-sm">
-								<input type="checkbox" class="sheet-circle-check"
-									name="attr_strife_description_show_repeat" value="1"><span></span>
-							</div>
-						</div>
-						<input type="checkbox" name="attr_strife_description_show_repeat"
-							class="sheet-hidden sheet-hider" value="1">
-						<div class="sheet-row sheet-block-a">
-							<div class="sheet-col-1">
-								<div class="sheet-row sheet-pad-b-sm">
-									<div
-										class="sheet-col-1 sheet-attr sheet-vert-middle sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-md">
-										<textarea class="sheet-small-textarea sheet-resize-vertical"
-											name="attr_strife_description_repeat"
-											placeholder="Strife description"></textarea>
-									</div>
-								</div>
-								<div class="sheet-row sheet-pad-b-sm">
-									<div
-										class="sheet-col-1 sheet-attr sheet-vert-middle sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-md">
-										<textarea class="sheet-small-textarea sheet-resize-vertical"
-											name="attr_lesser_strife_description_repeat"
-											placeholder="Lesser Strife description"></textarea>
-									</div>
-								</div>
-								<div class="sheet-row sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-md sheet-pad-b-sm">
-									<div
-										class="sheet-col-9-50 sheet-attr sheet-vert-top sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-md">
-										Initiate
-										<br>
-										<div class="sheet-col-1-10 sheet-attr sheet-chatbutton">
-											<button type="roll" class="sheet-button btn ui-draggable"
-												name="roll_strife_initiate_broadcast_repeat" value=""></button>
-										</div>
-									</div>
-									<div class="sheet-col-41-50 sheet-attr sheet-vert-middle sheet-auto-expand">
-										<span class="sheet-small-expand"
-											name="attr_strife_initiate_description_repeat"></span>
-										<textarea class="sheet-small-textarea"
-											name="attr_strife_initiate_description_repeat"
-											placeholder="Initiate description"></textarea>
-									</div>
-								</div>
-								<div class="sheet-row sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-md sheet-pad-b-sm">
-									<div
-										class="sheet-col-9-50 sheet-attr sheet-vert-top sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-md">
-										Disciple
-										<br>
-										<div
-											class="sheet-col-1-10 sheet-attr sheet-chatbutton sheet-pad-t-sm sheet-pad-r-sm">
-											<button type="roll" class="sheet-button btn ui-draggable"
-												name="roll_strife_disciple_broadcast_repeat" value=""></button>
-										</div>
-									</div>
-									<div class="sheet-col-41-50 sheet-attr sheet-vert-middle sheet-auto-expand">
-										<span class="sheet-small-expand"
-											name="attr_strife_disciple_description_repeat"></span>
-										<textarea class="sheet-small-textarea"
-											name="attr_strife_disciple_description_repeat"
-											placeholder="Disciple description"></textarea>
-									</div>
-								</div>
-								<div class="sheet-row sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-md sheet-pad-b-sm">
-									<div
-										class="sheet-col-9-50 sheet-attr sheet-vert-top sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-md">
-										Master
-										<br>
-										<div
-											class="sheet-col-1-10 sheet-attr sheet-chatbutton sheet-pad-t-sm sheet-pad-r-sm">
-											<button type="roll" class="sheet-button btn ui-draggable"
-												name="roll_strife_master_broadcast_repeat" value=""></button>
-										</div>
-									</div>
-									<div class="sheet-col-41-50 sheet-attr sheet-vert-middle sheet-auto-expand">
-										<span class="sheet-small-expand"
-											name="attr_strife_master_description_repeat"></span>
-										<textarea class="sheet-small-textarea"
-											name="attr_strife_master_description_repeat"
-											placeholder="Master description"></textarea>
-									</div>
-								</div>
-							</div>
-						</div>
-					</fieldset>
-					<div class="repcontainer" data-groupname="repeating_strifes"></div>
-					<div class="repcontrol flexrow flex-between" data-groupname="repeating_strifes"><button
-							class="btn repcontrol_edit flex0">Modify</button><button
-							class="btn repcontrol_add flex0">+Add</button>
-					</div>
-
-					<div class="sheet-row sheet-pad-b-sm">
-						<div
-							class="sheet-col-1 sheet-title-banner-subheading sheet-pad-t-md sheet-pad-b-sm sheet-mar-t-md">
-							<h3>True Strife Techniques</h3>
-						</div>
-					</div>
-					<div class="sheet-row sheet-pad-b-sm">
-						<div
 							class="sheet-col-4-5 sheet-attr sheet-vert-middle sheet-underline sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-md">
-							Technique
+							Ability
 						</div>
-						<div
-							class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-center sheet-underline sheet-pad-t-sm sheet-pad-r-md">
-							Effort
-						</div>
+						<!-- <div
+								class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-center sheet-underline sheet-pad-t-sm sheet-pad-r-md">
+								Effort
+							</div> -->
 						<div
 							class="sheet-col-1-20 sheet-attr sheet-vert-middle sheet-center sheet-underline sheet-pad-t-sm sheet-pad-r-sm">
 							<br>
 						</div>
 					</div>
-					<fieldset class="repeating_techniques" style="display: none;">
+					<fieldset class="repeating_words" style="display: none;">
 						<div class="sheet-row sheet-mar-b-sm">
 							<div
 								class="sheet-col-4-5 sheet-attr sheet-vert-middle sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-md">
-								<input type="text" name="attr_technique_name_repeat" placeholder="Technique name">
+								<input type="text" name="attr_word_name_repeat" placeholder="Word name">
 							</div>
 							<div
 								class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-sm">
-								<input type="number" name="attr_technique_effort_repeat" value="0">
+								<input type="number" name="attr_word_effort_repeat" value="0">
 							</div>
 							<div
 								class="sheet-col-1-20 sheet-attr sheet-vert-middle sheet-center sheet-underline sheet-pad-t-sm sheet-pad-r-sm">
 								<input type="checkbox" class="sheet-circle-check"
-									name="attr_technique_description_show_repeat" value="1"><span></span>
+									name="attr_word_description_show_repeat" value="1"><span></span>
 							</div>
 						</div>
-						<input type="checkbox" name="attr_technique_description_show_repeat"
-							class="sheet-hidden sheet-hider" value="1">
-						<div class="sheet-row sheet-block-a sheet-pad-t-sm sheet-pad-r-sm sheet-pad-b-sm">
+						<input type="checkbox" name="attr_word_description_show_repeat" class="sheet-hidden sheet-hider"
+							value="1">
+						<div class="sheet-row sheet-block-a sheet-pad-t-sm sheet-pad-b-sm sheet-pad-r-sm">
 							<div class="sheet-col-9-10 sheet-attr sheet-auto-expand">
-								<span class="sheet-medium-expand" name="attr_technique_description_repeat"></span>
-								<textarea class="sheet-medium-textarea" name="attr_technique_description_repeat"
-									placeholder="Technique description"></textarea>
+								<span class="sheet-small-expand" name="attr_word_description_repeat"></span>
+								<textarea class="sheet-small-textarea" name="attr_word_description_repeat"
+									placeholder="Word description"></textarea>
 							</div>
 							<div class="sheet-col-1-10 sheet-attr sheet-chatbutton">
-								<button type="roll" class="sheet-button btn ui-draggable"
-									name="roll_technique_broadcast_repeat" value=""></button>
+								<button type="roll" data-dialog="true" class="sheet-button btn "
+									name="roll_word_broadcast_repeat" value=""></button>
 							</div>
 						</div>
 					</fieldset>
-					<div class="repcontainer" data-groupname="repeating_techniques"></div>
-					<div class="repcontrol flexrow flex-between" data-groupname="repeating_techniques"><button
-							class="btn repcontrol_edit flex0">Modify</button><button
-							class="btn repcontrol_add flex0">+Add</button>
-					</div>
-				</div>
-				<div class="sheet-col-1-3 sheet-pad-t-md sheet-pad-r-md sheet-pad-b-sm">
-
-					<div class="sheet-row sheet-pad-b-sm">
-						<div
-							class="sheet-col-1 sheet-title-banner-subheading sheet-pad-t-md sheet-pad-b-sm sheet-mar-t-md">
-							<h3>Low Magic</h3>
-						</div>
-					</div>
-					<fieldset class="repeating_spells" style="display: none;">
-						<div class="sheet-row sheet-pad-b-sm">
-							<div
-								class="sheet-col-1-5 sheet-attr sheet-vert-middle sheet-underline sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-md">
-								Tradition
-							</div>
-							<div
-								class="sheet-col-3-4 sheet-attr sheet-vert-middle sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-md">
-								<input type="text" name="attr_tradition_name_repeat" placeholder="Tradition Name">
-							</div>
-							<div
-								class="sheet-col-1-20 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-sm">
-								<input type="checkbox" class="sheet-circle-check"
-									name="attr_tradition_description_show_repeat" value="1"><span></span>
-							</div>
-						</div>
-						<input type="checkbox" name="attr_tradition_description_show_repeat"
-							class="sheet-hidden sheet-hider" value="1">
-						<div class="sheet-row sheet-block-a">
-							<div class="sheet-col-1">
-								<div class="sheet-row sheet-pad-b-sm">
-									<div
-										class="sheet-col-1 sheet-attr sheet-vert-middle sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-md">
-										<textarea class="sheet-small-textarea sheet-resize-vertical"
-											name="attr_tradition_description_repeat"
-											placeholder="Tradition description"></textarea>
-									</div>
-								</div>
-								<div class="sheet-row sheet-pad-b-sm">
-									<div
-										class="sheet-col-1-4 sheet-attr sheet-vert-top sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-md">
-										Apprentice
-										<br>
-										<div class="sheet-col-1-10 sheet-attr sheet-chatbutton">
-											<button type="roll" class="sheet-button btn ui-draggable"
-												name="roll_tradition_apprentice_broadcast_repeat" value=""></button>
-										</div>
-									</div>
-									<div class="sheet-col-3-4 sheet-attr sheet-vert-middle sheet-auto-expand">
-										<span class="sheet-small-expand"
-											name="attr_tradition_apprentice_description_repeat"></span>
-										<textarea class="sheet-small-textarea"
-											name="attr_tradition_apprentice_description_repeat"
-											placeholder="Apprentice description"></textarea>
-									</div>
-								</div>
-								<div class="sheet-row sheet-pad-b-sm">
-									<div
-										class="sheet-col-1-4 sheet-attr sheet-vert-top sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-md">
-										Adept
-										<br>
-										<div class="sheet-col-1-10 sheet-attr sheet-chatbutton">
-											<button type="roll" class="sheet-button btn ui-draggable"
-												name="roll_tradition_adept_broadcast_repeat" value=""></button>
-										</div>
-									</div>
-									<div class="sheet-col-3-4 sheet-attr sheet-vert-middle sheet-auto-expand">
-										<span class="sheet-small-expand"
-											name="attr_tradition_adept_description_repeat"></span>
-										<textarea class="sheet-small-textarea"
-											name="attr_tradition_adept_description_repeat"
-											placeholder="Adept description"></textarea>
-									</div>
-								</div>
-								<div class="sheet-row sheet-pad-b-sm">
-									<div
-										class="sheet-col-1-4 sheet-attr sheet-vert-top sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-md">
-										Master
-										<br>
-										<div class="sheet-col-1-10 sheet-attr sheet-chatbutton">
-											<button type="roll" class="sheet-button btn ui-draggable"
-												name="roll_tradition_master_broadcast_repeat" value=""></button>
-										</div>
-									</div>
-									<div class="sheet-col-3-4 sheet-attr sheet-vert-middle sheet-auto-expand">
-										<span class="sheet-small-expand"
-											name="attr_tradition_master_description_repeat"></span>
-										<textarea class="sheet-small-textarea"
-											name="attr_tradition_master_description_repeat"
-											placeholder="Master description"></textarea>
-									</div>
-								</div>
-								<div class="sheet-row sheet-pad-b-sm">
-									<div
-										class="sheet-col-1-4 sheet-attr sheet-vert-top sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-md">
-										Archmage
-										<br>
-										<div class="sheet-col-1-10 sheet-attr sheet-chatbutton">
-											<button type="roll" class="sheet-button btn ui-draggable"
-												name="roll_tradition_archamage_broadcast_repeat" value=""></button>
-										</div>
-									</div>
-									<div class="sheet-col-3-4 sheet-attr sheet-vert-middle sheet-auto-expand">
-										<span class="sheet-small-expand"
-											name="attr_tradition_archmage_description_repeat"></span>
-										<textarea class="sheet-small-textarea"
-											name="attr_tradition_archmage_description_repeat"
-											placeholder="Archmage description"></textarea>
-									</div>
-								</div>
-							</div>
-						</div>
-					</fieldset>
-					<div class="repcontainer" data-groupname="repeating_spells"></div>
-					<div class="repcontrol flexrow flex-between" data-groupname="repeating_spells"><button
-							class="btn repcontrol_edit flex0">Modify</button><button
-							class="btn repcontrol_add flex0">+Add</button>
-					</div>
-				</div>
-				<div class="sheet-col-1-3 sheet-pad-t-md sheet-pad-r-md sheet-pad-b-sm">
-
-					<div class="sheet-row sheet-pad-b-sm">
-						<div
-							class="sheet-col-1 sheet-title-banner-subheading sheet-pad-t-md sheet-pad-b-sm sheet-mar-t-md">
-							<h3>Invocations of the Gate</h3>
-						</div>
-					</div>
-					<div class="sheet-row sheet-pad-b-md">
-						<div
-							class="sheet-col-4-5 sheet-attr sheet-vert-middle sheet-underline sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-md">
-							Invocation
-						</div>
-						<div
-							class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-center sheet-underline sheet-pad-t-sm sheet-pad-r-md">
-							Effort
-						</div>
-						<div
-							class="sheet-col-1-20 sheet-attr sheet-vert-middle sheet-center sheet-underline sheet-pad-t-sm sheet-pad-r-sm">
-							<br>
-						</div>
-					</div>
-					<fieldset class="repeating_gate" style="display: none;">
-						<div class="sheet-row sheet-mar-b-sm">
-							<div
-								class="sheet-col-4-5 sheet-attr sheet-vert-middle sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-md">
-								<input type="text" name="attr_invocation_gate_name_repeat"
-									placeholder="Invocation name">
-							</div>
-							<div
-								class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-sm">
-								<input type="number" name="attr_invocation_gate_effort_repeat" value="0">
-							</div>
-							<div
-								class="sheet-col-1-20 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-sm">
-								<input type="checkbox" class="sheet-circle-check"
-									name="attr_invocation_gate_description_show_repeat" value="1"><span></span>
-							</div>
-						</div>
-						<input type="checkbox" name="attr_invocation_gate_description_show_repeat"
-							class="sheet-hidden sheet-hider" value="1">
-						<div class="sheet-row sheet-block-a sheet-pad-b-sm">
-							<div class="sheet-col-9-10 sheet-attr sheet-auto-expand">
-								<span class="sheet-medium-expand" name="attr_invocation_gate_description_repeat"></span>
-								<textarea class="sheet-medium-textarea" name="attr_invocation_gate_description_repeat"
-									placeholder="Gift description"></textarea>
-							</div>
-							<div class="sheet-col-1-10 sheet-attr sheet-chatbutton">
-								<button type="roll" class="sheet-button btn ui-draggable"
-									name="roll_invocation_gate_broadcast_repeat" value=""></button>
-							</div>
-						</div>
-					</fieldset>
-					<div class="repcontainer" data-groupname="repeating_gate"></div>
-					<div class="repcontrol flexrow flex-between" data-groupname="repeating_gate"><button
-							class="btn repcontrol_edit flex0">Modify</button><button
-							class="btn repcontrol_add flex0">+Add</button>
-					</div>
-					<div class="sheet-row sheet-pad-b-sm">
-						<div
-							class="sheet-col-1 sheet-title-banner-subheading sheet-pad-t-md sheet-pad-b-sm sheet-mar-t-md">
-							<h3>Invocations of the Way</h3>
-						</div>
-					</div>
-					<div class="sheet-row sheet-pad-b-md">
-						<div
-							class="sheet-col-4-5 sheet-attr sheet-vert-middle sheet-underline sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-md">
-							Invocation
-						</div>
-						<div
-							class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-center sheet-underline sheet-pad-t-sm sheet-pad-r-md">
-							Effort
-						</div>
-						<div
-							class="sheet-col-1-20 sheet-attr sheet-vert-middle sheet-center sheet-underline sheet-pad-t-sm sheet-pad-r-sm">
-							<br>
-						</div>
-					</div>
-					<fieldset class="repeating_way" style="display: none;">
-						<div class="sheet-row sheet-mar-b-sm">
-							<div
-								class="sheet-col-4-5 sheet-attr sheet-vert-middle sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-md">
-								<input type="text" name="attr_invocation_way_name_repeat" placeholder="Invocation name">
-							</div>
-							<div
-								class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-sm">
-								<input type="number" name="attr_invocation_way_effort_repeat" value="0">
-							</div>
-							<div
-								class="sheet-col-1-20 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-sm">
-								<input type="checkbox" class="sheet-circle-check"
-									name="attr_invocation_way_description_show_repeat" value="1"><span></span>
-							</div>
-						</div>
-						<input type="checkbox" name="attr_invocation_way_description_show_repeat"
-							class="sheet-hidden sheet-hider" value="1">
-						<div class="sheet-row sheet-block-a sheet-pad-b-sm">
-							<div class="sheet-col-9-10 sheet-attr sheet-auto-expand">
-								<span class="sheet-medium-expand" name="attr_invocation_way_description_repeat"></span>
-								<textarea class="sheet-medium-textarea" name="attr_invocation_way_description_repeat"
-									placeholder="Gift description"></textarea>
-							</div>
-							<div class="sheet-col-1-10 sheet-attr sheet-chatbutton">
-								<button type="roll" class="sheet-button btn ui-draggable"
-									name="roll_invocation_way_broadcast_repeat" value=""></button>
-							</div>
-						</div>
-					</fieldset>
-					<div class="repcontainer" data-groupname="repeating_way"></div>
-					<div class="repcontrol flexrow flex-between" data-groupname="repeating_way"><button
-							class="btn repcontrol_edit flex0">Modify</button><button
-							class="btn repcontrol_add flex0">+Add</button>
-					</div>
-					<div class="sheet-row sheet-pad-b-sm">
-						<div
-							class="sheet-col-1 sheet-title-banner-subheading sheet-pad-t-md sheet-pad-b-sm sheet-mar-t-md">
-							<h3>Invocations of the Throne</h3>
-						</div>
-					</div>
-					<div class="sheet-row sheet-pad-b-md">
-						<div
-							class="sheet-col-4-5 sheet-attr sheet-vert-middle sheet-underline sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-md">
-							Invocation
-						</div>
-						<div
-							class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-center sheet-underline sheet-pad-t-sm sheet-pad-r-md">
-							Effort
-						</div>
-						<div
-							class="sheet-col-1-20 sheet-attr sheet-vert-middle sheet-center sheet-underline sheet-pad-t-sm sheet-pad-r-sm">
-							<br>
-						</div>
-					</div>
-					<fieldset class="repeating_throne" style="display: none;">
-						<div class="sheet-row sheet-mar-b-sm">
-							<div
-								class="sheet-col-4-5 sheet-attr sheet-vert-middle sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-md">
-								<input type="text" name="attr_invocation_throne_name_repeat"
-									placeholder="Invocation name">
-							</div>
-							<div
-								class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-sm">
-								<input type="number" name="attr_invocation_throne_effort_repeat" value="0">
-							</div>
-							<div
-								class="sheet-col-1-20 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-sm">
-								<input type="checkbox" class="sheet-circle-check"
-									name="attr_invocation_throne_description_show_repeat" value="1"><span></span>
-							</div>
-						</div>
-						<input type="checkbox" name="attr_invocation_throne_description_show_repeat"
-							class="sheet-hidden sheet-hider" value="1">
-						<div class="sheet-row sheet-block-a sheet-pad-b-sm">
-							<div class="sheet-col-9-10 sheet-attr sheet-auto-expand">
-								<span class="sheet-small-expand"
-									name="attr_invocation_throne_description_repeat"></span>
-								<textarea class="sheet-small-textarea" name="attr_invocation_throne_description_repeat"
-									placeholder="Gift description"></textarea>
-							</div>
-							<div class="sheet-col-1-10 sheet-attr sheet-chatbutton">
-								<button type="roll" class="sheet-button btn ui-draggable"
-									name="roll_invocation_throne_broadcast_repeat" value=""></button>
-							</div>
-						</div>
-					</fieldset>
-					<div class="repcontainer" data-groupname="repeating_throne"></div>
-					<div class="repcontrol flexrow flex-between" data-groupname="repeating_throne"><button
+					<div class="repcontainer" data-groupname="repeating_words"></div>
+					<div class="repcontrol flexrow flex-between" data-groupname="repeating_words"><button
 							class="btn repcontrol_edit flex0">Modify</button><button
 							class="btn repcontrol_add flex0">+Add</button>
 					</div>
 				</div>
 			</div>
-	</div><!-- Bottom of sheet section arts-->
-	</div><!-- Bottom of sheet overall wrapper-->
-	</div>
+
+			<div class="sheet-row">
+				<div class="sheet-row">
+					<div
+						class="sheet-col-1 sheet-title-banner-subheading sheet-pad-t-md sheet-pad-b-sm sheet-mar-t-md sheet-mar-b-sm">
+						<h3>Attacks</h3>
+					</div>
+				</div>
+				<div class="sheet-row sheet-pad-b-md">
+					<div
+						class="sheet-col-7-25 sheet-attr sheet-vert-middle sheet-underline sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-md">
+						Weapon or Gift
+					</div>
+					<div
+						class="sheet-col-2-25 sheet-attr sheet-vert-middle sheet-center sheet-underline sheet-pad-t-sm sheet-pad-r-md">
+						Attr
+					</div>
+					<div
+						class="sheet-col-11-100 sheet-attr sheet-vert-middle sheet-center sheet-underline sheet-pad-t-sm sheet-pad-r-mdd">
+						Hit Bonus
+					</div>
+					<div
+						class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-center sheet-underline sheet-pad-t-sm sheet-pad-r-md">
+						Range
+					</div>
+					<div
+						class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-center sheet-underline sheet-pad-t-sm sheet-pad-r-md">
+						Area
+					</div>
+					<div
+						class="sheet-col-9-50 sheet-attr sheet-vert-middle sheet-center sheet-underline sheet-pad-t-sm sheet-pad-r-md">
+						Damage Die
+					</div>
+					<div
+						class="sheet-col-1-20 sheet-attr sheet-vert-middle sheet-center sheet-underline sheet-pad-t-sm sheet-pad-r-sm">
+						Roll
+					</div>
+				</div>
+				<fieldset class="repeating_weapons" style="display: none;">
+					<div class="sheet-row sheet-mar-b-sm">
+						<div class="sheet-col-7-25 sheet-attr sheet-vert-middle sheet-pad-l-sm sheet-pad-r-md">
+							<input type="text" name="attr_weapon_name_repeat" placeholder="Attack">
+						</div>
+						<div class="sheet-col-2-25 sheet-attr sheet-vert-middle sheet-center sheet-pad-r-md">
+							<select class="sheet-select-center" name="attr_weapon_attribute_repeat">
+								<option value="0" selected="selected">?</option>
+								<option value="@{strength_mod}">Str</option>
+								<option value="@{dexterity_mod}">Dex</option>
+								<option value="@{constitution_mod}">Con</option>
+								<option value="@{intelligence_mod}">Int</option>
+								<option value="@{wisdom_mod}">Wis</option>
+								<option value="@{charisma_mod}">Cha</option>
+							</select>
+						</div>
+						<div class="sheet-col-11-100 sheet-attr sheet-vert-middle sheet-center sheet-pad-r-md">
+							<input type="number" name="attr_weapon_bonus_repeat" value="0"
+								title="Attribute modifier already included in hit bonus">
+						</div>
+						<div class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-center sheet-pad-r-md">
+							<input type="text" class="sheet-input-center" name="attr_weapon_range_repeat"
+								value="Melee / 30 ft">
+						</div>
+						<div class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-center sheet-pad-r-md">
+							<input type="text" class="sheet-input-center" name="attr_weapon_area_repeat"
+								value="Single target">
+						</div>
+						<div class="sheet-col-2-25 sheet-attr sheet-vert-middle sheet-center sheet-pad-r-sm">
+							<select class="sheet-select-center" name="attr_weapon_damage_die_repeat">
+								<option value="1d0" selected="selected">?</option>
+								<option value="1d4">1d4</option>
+								<option value="1d6">1d6</option>
+								<option value="1d8">1d8</option>
+								<option value="1d10">1d10</option>
+								<option value="1d12">1d12</option>
+								<option value="1d20">1d20</option>
+							</select>
+						</div>
+						<div class="sheet-col-1-50 sheet-attr sheet-vert-middle sheet-center sheet-pad-r-sm">
+							+
+						</div>
+						<div class="sheet-col-2-25 sheet-attr sheet-vert-middle sheet-center sheet-pad-r-md">
+							<input type="number" class="sheet-input-center" name="attr_weapon_damage_bonus_repeat"
+								value="0" title="Attribute modifier already included in damage">
+						</div>
+						<div class="sheet-col-1-20 sheet-attr sheet-vert-middle sheet-center sheet-pad-r-sm">
+							<button type="roll" data-dialog="true" class="sheet-button btn " name="roll_weapon_repeat"
+								value=""></button>
+						</div>
+					</div>
+				</fieldset>
+				<div class="repcontainer" data-groupname="repeating_weapons"></div>
+				<div class="repcontrol flexrow flex-between" data-groupname="repeating_weapons">
+					<button class="btn repcontrol_edit flex0">Modify</button><button
+						class="btn repcontrol_add flex0">+Add</button>
+				</div>
+			</div>
+
+			<div class="sheet-row">
+				<div class="sheet-col-1 sheet-pad-t-md sheet-pad-r-md sheet-pad-b-sm">
+					<div class="sheet-row">
+						<div
+							class="sheet-col-1 sheet-title-banner-subheading sheet-pad-t-md sheet-pad-b-sm sheet-mar-t-md sheet-mar-b-sm">
+							<h3>Tactics</h3>
+						</div>
+					</div>
+					<div class="sheet-row">
+						<div
+							class="sheet-col-1-5 sheet-attr sheet-vert-middle sheet-right sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-md sheet-pad-b-sm">
+							Choose Random Tactic
+						</div>
+						<div
+							class="sheet-col-1-20 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-md sheet-pad-b-sm">
+							<button type="roll" class="sheet-button btn ui-draggable" name="roll_npc_random_tactic"
+								value=""></button>
+						</div>
+						<div
+							class="sheet-col-1-5 sheet-attr sheet-vert-middle sheet-right sheet-pad-r-md sheet-pad-b-sm">
+							Number of NPC Tactics
+						</div>
+						<div
+							class="sheet-col-1-20 sheet-attr sheet-vert-middle sheet-underline sheet-pad-r-md sheet-pad-b-sm">
+							<input type="hidden" name="attr_calc_total_npc_tactics" value="0">
+							<input type="number" name="attr_total_npc_tactics" value="0" disabled="true"
+								data-formula="@{calc_total_npc_tactics}">
+						</div>
+						<div
+							class="sheet-col-1-2 sheet-attr sheet-vert-middle sheet-underline sheet-pad-r-sm sheet-pad-b-sm">
+							<br>
+						</div>
+					</div>
+					<div class="sheet-row">
+						<div
+							class="sheet-col-1-40 sheet-attr sheet-vert-middle sheet-underline sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-sm sheet-pad-b-sm">
+							<br>
+						</div>
+						<div
+							class="sheet-col-39-40 sheet-attr sheet-vert-middle sheet-underline sheet-pad-t-sm sheet-pad-r-sm sheet-pad-b-sm">
+							Tactics Description
+						</div>
+					</div>
+					<div class="sheet-row">
+						<div
+							class="sheet-col-1 sheet-attr sheet-vert-middle sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-sm sheet-pad-b-sm">
+							<ol class="sheet-tactics-list">
+								<fieldset class="repeating_npctactics" style="display: none;">
+									<li class="sheet-top sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-sm sheet-mar-b-sm">
+										<div class="sheet-col-1 sheet-attr sheet-auto-expand">
+											<span class="sheet-xs-expand" name="attr_npc_tactic_repeat"></span>
+											<textarea class="sheet-xs-textarea" name="attr_npc_tactic_repeat"
+												placeholder="Word description"></textarea>
+										</div>
+									</li>
+								</fieldset>
+								<div class="repcontainer" data-groupname="repeating_npctactics"></div>
+								<div class="repcontrol flexrow flex-between" data-groupname="repeating_npctactics">
+									<button class="btn repcontrol_edit flex0">Modify</button><button
+										class="btn repcontrol_add flex0">+Add</button>
+								</div>
+							</ol>
+						</div>
+					</div>
+				</div>
+			</div>
+	</div> <!-- Bottom of sheet section npc-->
+	<section class="npcsheet-content">
+		<div data-group="npcsheet" data-tab="arts" class="tab">
+			<div class="sheet-col-1-3 sheet-pad-t-md sheet-pad-r-md sheet-pad-b-sm">
+				<div class="sheet-row sheet-pad-b-sm">
+					<div class="sheet-col-1 sheet-title-banner-subheading sheet-pad-t-md sheet-pad-b-sm sheet-mar-t-md">
+						<h3>Martial Strifes</h3>
+					</div>
+				</div>
+				<fieldset class="repeating_strifes" style="display: none;">
+					<div class="sheet-row sheet-pad-b-sm">
+						<div
+							class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-underline sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-md">
+							Strife
+						</div>
+						<div
+							class="sheet-col-4-5 sheet-attr sheet-vert-middle sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-md">
+							<input type="text" name="attr_strife_name_repeat" placeholder="Strife Name">
+						</div>
+						<div
+							class="sheet-col-1-20 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-sm">
+							<input type="checkbox" class="sheet-circle-check" name="attr_strife_description_show_repeat"
+								value="1"><span></span>
+						</div>
+					</div>
+					<input type="checkbox" name="attr_strife_description_show_repeat" class="sheet-hidden sheet-hider"
+						value="1">
+					<div class="sheet-row sheet-block-a">
+						<div class="sheet-col-1">
+							<div class="sheet-row sheet-pad-b-sm">
+								<div
+									class="sheet-col-1 sheet-attr sheet-vert-middle sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-md">
+									<textarea class="sheet-small-textarea sheet-resize-vertical"
+										name="attr_strife_description_repeat"
+										placeholder="Strife description"></textarea>
+								</div>
+							</div>
+							<div class="sheet-row sheet-pad-b-sm">
+								<div
+									class="sheet-col-1 sheet-attr sheet-vert-middle sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-md">
+									<textarea class="sheet-small-textarea sheet-resize-vertical"
+										name="attr_lesser_strife_description_repeat"
+										placeholder="Lesser Strife description"></textarea>
+								</div>
+							</div>
+							<div class="sheet-row sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-md sheet-pad-b-sm">
+								<div
+									class="sheet-col-9-50 sheet-attr sheet-vert-top sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-md">
+									Initiate
+									<br>
+									<div class="sheet-col-1-10 sheet-attr sheet-chatbutton">
+										<button type="roll" class="sheet-button btn ui-draggable"
+											name="roll_strife_initiate_broadcast_repeat" value=""></button>
+									</div>
+								</div>
+								<div class="sheet-col-41-50 sheet-attr sheet-vert-middle sheet-auto-expand">
+									<span class="sheet-small-expand"
+										name="attr_strife_initiate_description_repeat"></span>
+									<textarea class="sheet-small-textarea"
+										name="attr_strife_initiate_description_repeat"
+										placeholder="Initiate description"></textarea>
+								</div>
+							</div>
+							<div class="sheet-row sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-md sheet-pad-b-sm">
+								<div
+									class="sheet-col-9-50 sheet-attr sheet-vert-top sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-md">
+									Disciple
+									<br>
+									<div
+										class="sheet-col-1-10 sheet-attr sheet-chatbutton sheet-pad-t-sm sheet-pad-r-sm">
+										<button type="roll" class="sheet-button btn ui-draggable"
+											name="roll_strife_disciple_broadcast_repeat" value=""></button>
+									</div>
+								</div>
+								<div class="sheet-col-41-50 sheet-attr sheet-vert-middle sheet-auto-expand">
+									<span class="sheet-small-expand"
+										name="attr_strife_disciple_description_repeat"></span>
+									<textarea class="sheet-small-textarea"
+										name="attr_strife_disciple_description_repeat"
+										placeholder="Disciple description"></textarea>
+								</div>
+							</div>
+							<div class="sheet-row sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-md sheet-pad-b-sm">
+								<div
+									class="sheet-col-9-50 sheet-attr sheet-vert-top sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-md">
+									Master
+									<br>
+									<div
+										class="sheet-col-1-10 sheet-attr sheet-chatbutton sheet-pad-t-sm sheet-pad-r-sm">
+										<button type="roll" class="sheet-button btn ui-draggable"
+											name="roll_strife_master_broadcast_repeat" value=""></button>
+									</div>
+								</div>
+								<div class="sheet-col-41-50 sheet-attr sheet-vert-middle sheet-auto-expand">
+									<span class="sheet-small-expand"
+										name="attr_strife_master_description_repeat"></span>
+									<textarea class="sheet-small-textarea" name="attr_strife_master_description_repeat"
+										placeholder="Master description"></textarea>
+								</div>
+							</div>
+						</div>
+					</div>
+				</fieldset>
+				<div class="repcontainer" data-groupname="repeating_strifes"></div>
+				<div class="repcontrol flexrow flex-between" data-groupname="repeating_strifes"><button
+						class="btn repcontrol_edit flex0">Modify</button><button
+						class="btn repcontrol_add flex0">+Add</button>
+				</div>
+
+				<div class="sheet-row sheet-pad-b-sm">
+					<div class="sheet-col-1 sheet-title-banner-subheading sheet-pad-t-md sheet-pad-b-sm sheet-mar-t-md">
+						<h3>True Strife Techniques</h3>
+					</div>
+				</div>
+				<div class="sheet-row sheet-pad-b-sm">
+					<div
+						class="sheet-col-4-5 sheet-attr sheet-vert-middle sheet-underline sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-md">
+						Technique
+					</div>
+					<div
+						class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-center sheet-underline sheet-pad-t-sm sheet-pad-r-md">
+						Effort
+					</div>
+					<div
+						class="sheet-col-1-20 sheet-attr sheet-vert-middle sheet-center sheet-underline sheet-pad-t-sm sheet-pad-r-sm">
+						<br>
+					</div>
+				</div>
+				<fieldset class="repeating_techniques" style="display: none;">
+					<div class="sheet-row sheet-mar-b-sm">
+						<div
+							class="sheet-col-4-5 sheet-attr sheet-vert-middle sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-md">
+							<input type="text" name="attr_technique_name_repeat" placeholder="Technique name">
+						</div>
+						<div
+							class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-sm">
+							<input type="number" name="attr_technique_effort_repeat" value="0">
+						</div>
+						<div
+							class="sheet-col-1-20 sheet-attr sheet-vert-middle sheet-center sheet-underline sheet-pad-t-sm sheet-pad-r-sm">
+							<input type="checkbox" class="sheet-circle-check"
+								name="attr_technique_description_show_repeat" value="1"><span></span>
+						</div>
+					</div>
+					<input type="checkbox" name="attr_technique_description_show_repeat"
+						class="sheet-hidden sheet-hider" value="1">
+					<div class="sheet-row sheet-block-a sheet-pad-t-sm sheet-pad-r-sm sheet-pad-b-sm">
+						<div class="sheet-col-9-10 sheet-attr sheet-auto-expand">
+							<span class="sheet-medium-expand" name="attr_technique_description_repeat"></span>
+							<textarea class="sheet-medium-textarea" name="attr_technique_description_repeat"
+								placeholder="Technique description"></textarea>
+						</div>
+						<div class="sheet-col-1-10 sheet-attr sheet-chatbutton">
+							<button type="roll" class="sheet-button btn ui-draggable"
+								name="roll_technique_broadcast_repeat" value=""></button>
+						</div>
+					</div>
+				</fieldset>
+				<div class="repcontainer" data-groupname="repeating_techniques"></div>
+				<div class="repcontrol flexrow flex-between" data-groupname="repeating_techniques"><button
+						class="btn repcontrol_edit flex0">Modify</button><button
+						class="btn repcontrol_add flex0">+Add</button>
+				</div>
+			</div>
+			<div class="sheet-col-1-3 sheet-pad-t-md sheet-pad-r-md sheet-pad-b-sm">
+
+				<div class="sheet-row sheet-pad-b-sm">
+					<div class="sheet-col-1 sheet-title-banner-subheading sheet-pad-t-md sheet-pad-b-sm sheet-mar-t-md">
+						<h3>Low Magic</h3>
+					</div>
+				</div>
+				<fieldset class="repeating_spells" style="display: none;">
+					<div class="sheet-row sheet-pad-b-sm">
+						<div
+							class="sheet-col-1-5 sheet-attr sheet-vert-middle sheet-underline sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-md">
+							Tradition
+						</div>
+						<div
+							class="sheet-col-3-4 sheet-attr sheet-vert-middle sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-md">
+							<input type="text" name="attr_tradition_name_repeat" placeholder="Tradition Name">
+						</div>
+						<div
+							class="sheet-col-1-20 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-sm">
+							<input type="checkbox" class="sheet-circle-check"
+								name="attr_tradition_description_show_repeat" value="1"><span></span>
+						</div>
+					</div>
+					<input type="checkbox" name="attr_tradition_description_show_repeat"
+						class="sheet-hidden sheet-hider" value="1">
+					<div class="sheet-row sheet-block-a">
+						<div class="sheet-col-1">
+							<div class="sheet-row sheet-pad-b-sm">
+								<div
+									class="sheet-col-1 sheet-attr sheet-vert-middle sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-md">
+									<textarea class="sheet-small-textarea sheet-resize-vertical"
+										name="attr_tradition_description_repeat"
+										placeholder="Tradition description"></textarea>
+								</div>
+							</div>
+							<div class="sheet-row sheet-pad-b-sm">
+								<div
+									class="sheet-col-1-4 sheet-attr sheet-vert-top sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-md">
+									Apprentice
+									<br>
+									<div class="sheet-col-1-10 sheet-attr sheet-chatbutton">
+										<button type="roll" class="sheet-button btn ui-draggable"
+											name="roll_tradition_apprentice_broadcast_repeat" value=""></button>
+									</div>
+								</div>
+								<div class="sheet-col-3-4 sheet-attr sheet-vert-middle sheet-auto-expand">
+									<span class="sheet-small-expand"
+										name="attr_tradition_apprentice_description_repeat"></span>
+									<textarea class="sheet-small-textarea"
+										name="attr_tradition_apprentice_description_repeat"
+										placeholder="Apprentice description"></textarea>
+								</div>
+							</div>
+							<div class="sheet-row sheet-pad-b-sm">
+								<div
+									class="sheet-col-1-4 sheet-attr sheet-vert-top sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-md">
+									Adept
+									<br>
+									<div class="sheet-col-1-10 sheet-attr sheet-chatbutton">
+										<button type="roll" class="sheet-button btn ui-draggable"
+											name="roll_tradition_adept_broadcast_repeat" value=""></button>
+									</div>
+								</div>
+								<div class="sheet-col-3-4 sheet-attr sheet-vert-middle sheet-auto-expand">
+									<span class="sheet-small-expand"
+										name="attr_tradition_adept_description_repeat"></span>
+									<textarea class="sheet-small-textarea"
+										name="attr_tradition_adept_description_repeat"
+										placeholder="Adept description"></textarea>
+								</div>
+							</div>
+							<div class="sheet-row sheet-pad-b-sm">
+								<div
+									class="sheet-col-1-4 sheet-attr sheet-vert-top sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-md">
+									Master
+									<br>
+									<div class="sheet-col-1-10 sheet-attr sheet-chatbutton">
+										<button type="roll" class="sheet-button btn ui-draggable"
+											name="roll_tradition_master_broadcast_repeat" value=""></button>
+									</div>
+								</div>
+								<div class="sheet-col-3-4 sheet-attr sheet-vert-middle sheet-auto-expand">
+									<span class="sheet-small-expand"
+										name="attr_tradition_master_description_repeat"></span>
+									<textarea class="sheet-small-textarea"
+										name="attr_tradition_master_description_repeat"
+										placeholder="Master description"></textarea>
+								</div>
+							</div>
+							<div class="sheet-row sheet-pad-b-sm">
+								<div
+									class="sheet-col-1-4 sheet-attr sheet-vert-top sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-md">
+									Archmage
+									<br>
+									<div class="sheet-col-1-10 sheet-attr sheet-chatbutton">
+										<button type="roll" class="sheet-button btn ui-draggable"
+											name="roll_tradition_archamage_broadcast_repeat" value=""></button>
+									</div>
+								</div>
+								<div class="sheet-col-3-4 sheet-attr sheet-vert-middle sheet-auto-expand">
+									<span class="sheet-small-expand"
+										name="attr_tradition_archmage_description_repeat"></span>
+									<textarea class="sheet-small-textarea"
+										name="attr_tradition_archmage_description_repeat"
+										placeholder="Archmage description"></textarea>
+								</div>
+							</div>
+						</div>
+					</div>
+				</fieldset>
+				<div class="repcontainer" data-groupname="repeating_spells"></div>
+				<div class="repcontrol flexrow flex-between" data-groupname="repeating_spells"><button
+						class="btn repcontrol_edit flex0">Modify</button><button
+						class="btn repcontrol_add flex0">+Add</button>
+				</div>
+			</div>
+			<div class="sheet-col-1-3 sheet-pad-t-md sheet-pad-r-md sheet-pad-b-sm">
+
+				<div class="sheet-row sheet-pad-b-sm">
+					<div class="sheet-col-1 sheet-title-banner-subheading sheet-pad-t-md sheet-pad-b-sm sheet-mar-t-md">
+						<h3>Invocations of the Gate</h3>
+					</div>
+				</div>
+				<div class="sheet-row sheet-pad-b-md">
+					<div
+						class="sheet-col-4-5 sheet-attr sheet-vert-middle sheet-underline sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-md">
+						Invocation
+					</div>
+					<div
+						class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-center sheet-underline sheet-pad-t-sm sheet-pad-r-md">
+						Effort
+					</div>
+					<div
+						class="sheet-col-1-20 sheet-attr sheet-vert-middle sheet-center sheet-underline sheet-pad-t-sm sheet-pad-r-sm">
+						<br>
+					</div>
+				</div>
+				<fieldset class="repeating_gate" style="display: none;">
+					<div class="sheet-row sheet-mar-b-sm">
+						<div
+							class="sheet-col-4-5 sheet-attr sheet-vert-middle sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-md">
+							<input type="text" name="attr_invocation_gate_name_repeat" placeholder="Invocation name">
+						</div>
+						<div
+							class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-sm">
+							<input type="number" name="attr_invocation_gate_effort_repeat" value="0">
+						</div>
+						<div
+							class="sheet-col-1-20 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-sm">
+							<input type="checkbox" class="sheet-circle-check"
+								name="attr_invocation_gate_description_show_repeat" value="1"><span></span>
+						</div>
+					</div>
+					<input type="checkbox" name="attr_invocation_gate_description_show_repeat"
+						class="sheet-hidden sheet-hider" value="1">
+					<div class="sheet-row sheet-block-a sheet-pad-b-sm">
+						<div class="sheet-col-9-10 sheet-attr sheet-auto-expand">
+							<span class="sheet-medium-expand" name="attr_invocation_gate_description_repeat"></span>
+							<textarea class="sheet-medium-textarea" name="attr_invocation_gate_description_repeat"
+								placeholder="Gift description"></textarea>
+						</div>
+						<div class="sheet-col-1-10 sheet-attr sheet-chatbutton">
+							<button type="roll" class="sheet-button btn ui-draggable"
+								name="roll_invocation_gate_broadcast_repeat" value=""></button>
+						</div>
+					</div>
+				</fieldset>
+				<div class="repcontainer" data-groupname="repeating_gate"></div>
+				<div class="repcontrol flexrow flex-between" data-groupname="repeating_gate"><button
+						class="btn repcontrol_edit flex0">Modify</button><button
+						class="btn repcontrol_add flex0">+Add</button>
+				</div>
+				<div class="sheet-row sheet-pad-b-sm">
+					<div class="sheet-col-1 sheet-title-banner-subheading sheet-pad-t-md sheet-pad-b-sm sheet-mar-t-md">
+						<h3>Invocations of the Way</h3>
+					</div>
+				</div>
+				<div class="sheet-row sheet-pad-b-md">
+					<div
+						class="sheet-col-4-5 sheet-attr sheet-vert-middle sheet-underline sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-md">
+						Invocation
+					</div>
+					<div
+						class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-center sheet-underline sheet-pad-t-sm sheet-pad-r-md">
+						Effort
+					</div>
+					<div
+						class="sheet-col-1-20 sheet-attr sheet-vert-middle sheet-center sheet-underline sheet-pad-t-sm sheet-pad-r-sm">
+						<br>
+					</div>
+				</div>
+				<fieldset class="repeating_way" style="display: none;">
+					<div class="sheet-row sheet-mar-b-sm">
+						<div
+							class="sheet-col-4-5 sheet-attr sheet-vert-middle sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-md">
+							<input type="text" name="attr_invocation_way_name_repeat" placeholder="Invocation name">
+						</div>
+						<div
+							class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-sm">
+							<input type="number" name="attr_invocation_way_effort_repeat" value="0">
+						</div>
+						<div
+							class="sheet-col-1-20 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-sm">
+							<input type="checkbox" class="sheet-circle-check"
+								name="attr_invocation_way_description_show_repeat" value="1"><span></span>
+						</div>
+					</div>
+					<input type="checkbox" name="attr_invocation_way_description_show_repeat"
+						class="sheet-hidden sheet-hider" value="1">
+					<div class="sheet-row sheet-block-a sheet-pad-b-sm">
+						<div class="sheet-col-9-10 sheet-attr sheet-auto-expand">
+							<span class="sheet-medium-expand" name="attr_invocation_way_description_repeat"></span>
+							<textarea class="sheet-medium-textarea" name="attr_invocation_way_description_repeat"
+								placeholder="Gift description"></textarea>
+						</div>
+						<div class="sheet-col-1-10 sheet-attr sheet-chatbutton">
+							<button type="roll" class="sheet-button btn ui-draggable"
+								name="roll_invocation_way_broadcast_repeat" value=""></button>
+						</div>
+					</div>
+				</fieldset>
+				<div class="repcontainer" data-groupname="repeating_way"></div>
+				<div class="repcontrol flexrow flex-between" data-groupname="repeating_way"><button
+						class="btn repcontrol_edit flex0">Modify</button><button
+						class="btn repcontrol_add flex0">+Add</button>
+				</div>
+				<div class="sheet-row sheet-pad-b-sm">
+					<div class="sheet-col-1 sheet-title-banner-subheading sheet-pad-t-md sheet-pad-b-sm sheet-mar-t-md">
+						<h3>Invocations of the Throne</h3>
+					</div>
+				</div>
+				<div class="sheet-row sheet-pad-b-md">
+					<div
+						class="sheet-col-4-5 sheet-attr sheet-vert-middle sheet-underline sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-md">
+						Invocation
+					</div>
+					<div
+						class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-center sheet-underline sheet-pad-t-sm sheet-pad-r-md">
+						Effort
+					</div>
+					<div
+						class="sheet-col-1-20 sheet-attr sheet-vert-middle sheet-center sheet-underline sheet-pad-t-sm sheet-pad-r-sm">
+						<br>
+					</div>
+				</div>
+				<fieldset class="repeating_throne" style="display: none;">
+					<div class="sheet-row sheet-mar-b-sm">
+						<div
+							class="sheet-col-4-5 sheet-attr sheet-vert-middle sheet-pad-l-sm sheet-pad-t-sm sheet-pad-r-md">
+							<input type="text" name="attr_invocation_throne_name_repeat" placeholder="Invocation name">
+						</div>
+						<div
+							class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-sm">
+							<input type="number" name="attr_invocation_throne_effort_repeat" value="0">
+						</div>
+						<div
+							class="sheet-col-1-20 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-sm">
+							<input type="checkbox" class="sheet-circle-check"
+								name="attr_invocation_throne_description_show_repeat" value="1"><span></span>
+						</div>
+					</div>
+					<input type="checkbox" name="attr_invocation_throne_description_show_repeat"
+						class="sheet-hidden sheet-hider" value="1">
+					<div class="sheet-row sheet-block-a sheet-pad-b-sm">
+						<div class="sheet-col-9-10 sheet-attr sheet-auto-expand">
+							<span class="sheet-small-expand" name="attr_invocation_throne_description_repeat"></span>
+							<textarea class="sheet-small-textarea" name="attr_invocation_throne_description_repeat"
+								placeholder="Gift description"></textarea>
+						</div>
+						<div class="sheet-col-1-10 sheet-attr sheet-chatbutton">
+							<button type="roll" class="sheet-button btn ui-draggable"
+								name="roll_invocation_throne_broadcast_repeat" value=""></button>
+						</div>
+					</div>
+				</fieldset>
+				<div class="repcontainer" data-groupname="repeating_throne"></div>
+				<div class="repcontrol flexrow flex-between" data-groupname="repeating_throne"><button
+						class="btn repcontrol_edit flex0">Modify</button><button
+						class="btn repcontrol_add flex0">+Add</button>
+				</div>
+			</div>
+		</div>
+		</div><!-- Bottom of sheet section arts-->
+		</div><!-- Bottom of sheet overall wrapper-->
+		</div>
 </form>
