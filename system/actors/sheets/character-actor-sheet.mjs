@@ -208,70 +208,72 @@ export class characterActorSheet extends ActorSheet {
 
     this.prepareToHitSummary(item, actor);
     this.prepareDamageSummary(item, actor);
-
+    this.prepareRangeSummary(item, actor);
+    this.prepareAreaSummary(item, actor);
   }
 
   prepareToHitSummary(item, actor) {
-    //To Hit
-    if (item.system.targeting.toHit.isAutomatic)
+
+    if (item.system.targeting.toHit.isAutomatic) {
       item.summaries.toHit = "Auto";
-    else {
-      item.summaries.toHit = "1d20";
+      return;
+    }
 
-      //Check advantage/disadvantage first
-      if (item.system.targeting.toHit.isAdvantaged && item.system.targeting.toHit.isDisadvantaged) {
-        item.summaries.toHit = "1d20"; //if both advantage and disadvantage apply, they cancel out
-      }
-      else if (item.system.targeting.toHit.isAdvantaged) {
-        item.summaries.toHit = "2d20kh1";
-      }
-      else if (item.system.targeting.toHit.isDisadvantaged) {
-        item.summaries.toHit = "2d20kl1";
-      }
-      //now calc modifiers
-      let modifier = 0;
-      let targetAC = 0;
-      let flavor = "#[";
+    item.summaries.toHit = "1d20";
 
-      //attribute bonus
-      if (item.system.targeting.toHit.relevantAttribute != "none" && item.system.targeting.toHit.useAttrBonus)
-        modifier += actor.system.attributes[item.system.targeting.toHit.relevantAttribute].mod;
+    //Check advantage/disadvantage first
+    if (item.system.targeting.toHit.isAdvantaged && item.system.targeting.toHit.isDisadvantaged) {
+      item.summaries.toHit = "1d20"; //if both advantage and disadvantage apply, they cancel out
+    }
+    else if (item.system.targeting.toHit.isAdvantaged) {
+      item.summaries.toHit = "2d20kh1";
+    }
+    else if (item.system.targeting.toHit.isDisadvantaged) {
+      item.summaries.toHit = "2d20kl1";
+    }
+    //now calc modifiers
+    let modifier = 0;
+    let targetAC = 0;
+    let flavor = "#[";
 
-      //level bonus
-      if (item.system.targeting.toHit.useLevelBonus)
-        modifier += actor.system.coreStats.levelOrHD;
+    //attribute bonus
+    if (item.system.targeting.toHit.relevantAttribute != "none" && item.system.targeting.toHit.useAttrBonus)
+      modifier += actor.system.attributes[item.system.targeting.toHit.relevantAttribute].mod;
 
-      //misc mod
-      modifier += item.system.targeting.toHit.miscBonus;
+    //level bonus
+    if (item.system.targeting.toHit.useLevelBonus)
+      modifier += actor.system.coreStats.levelOrHD;
 
-      let tempArr = Array.from(game.user.targets);
-      //get current AC
-      if (tempArr.length > 0)
-        targetAC = tempArr[0].actor.system.coreStats.ac.total;
-      else
-        targetAC = null;
+    //misc mod
+    modifier += item.system.targeting.toHit.miscBonus;
+
+    let tempArr = Array.from(game.user.targets);
+    //get current AC
+    if (tempArr.length > 0)
+      targetAC = tempArr[0].actor.system.coreStats.ac.total;
+    else
+      targetAC = null;
 
 
-      //flavor
-      if (item.system.targeting.isMagical)
-        flavor += "Magical,";
-      else
-        flavor += "Mundane,";
+    //flavor
+    if (item.system.targeting.isMagical)
+      flavor += "Magical,";
+    else
+      flavor += "Mundane,";
 
-      if (item.system.act.isSmite)
-        flavor += "Smite,";
+    if (item.system.act.isSmite)
+      flavor += "Smite,";
 
-      if (item.system.targeting.isMelee)
-        flavor += "Melee]";
-      else
-        flavor += "Ranged]";
+    if (item.system.targeting.isMelee)
+      flavor += "Melee]";
+    else
+      flavor += "Ranged]";
 
-      item.summaries.toHit += "+" + modifier + (targetAC != null ? "+" + targetAC : "") + " " + flavor
-    }// End To Hit
-  }
+    item.summaries.toHit += "+" + modifier + (targetAC != null ? "+" + targetAC : "") + " " + flavor
+
+  } // End To Hit
 
   prepareDamageSummary(item, actor) {
-    //console.log(item.system.damage);
 
     if (!item.system.damage.enableDamage) {
       item.summaries.damage = "None";
@@ -337,7 +339,69 @@ export class characterActorSheet extends ActorSheet {
       item.summaries.damage = modifier + damageType + " " + flavor
     else
       item.summaries.damage = dieQuantity + dieType + advantageDisadvantageSuffix + damageType + " + " + modifier + " " + flavor;
-  }
+  }//End Damage
+
+  prepareRangeSummary(item, actor) {
+
+    if (item.system.targeting.range.rangeUnits == [CONFIG.GODBOUND_CONSTANTS.distanceUnits[0]])
+      item.summaries.range = item.system.targeting.range.rangeSize + " " + "Feet";
+    else if (item.system.targeting.range.rangeUnits == [CONFIG.GODBOUND_CONSTANTS.distanceUnits[1]])
+      item.summaries.range = item.system.targeting.range.rangeSize + " " + "Miles";
+    else if (item.system.targeting.range.rangeUnits == [CONFIG.GODBOUND_CONSTANTS.distanceUnits[2]])
+      item.summaries.range = "Line Of Sight";
+    else if (item.system.targeting.range.rangeUnits == [CONFIG.GODBOUND_CONSTANTS.distanceUnits[3]])
+      item.summaries.range = "Region";
+    else if (item.system.targeting.range.rangeUnits == [CONFIG.GODBOUND_CONSTANTS.distanceUnits[4]])
+      item.summaries.range = "Realm";
+    else if (item.system.targeting.range.rangeUnits == [CONFIG.GODBOUND_CONSTANTS.distanceUnits[5]])
+      item.summaries.range = "Unlimited";
+    else
+      item.summaries.range = "UNKNOWN";
+
+  } // End Range
+
+  prepareAreaSummary(item, actor) {
+
+    if (!item.system.targeting.area.isArea) {
+      item.summaries.area = "Single";
+      return;
+    }
+
+    if (item.system.targeting.area.areaUnits == [CONFIG.GODBOUND_CONSTANTS.distanceUnits[0]])
+      item.summaries.area = item.system.targeting.area.areaSize + " " + "Feet";
+    else if (item.system.targeting.area.areaUnits == [CONFIG.GODBOUND_CONSTANTS.distanceUnits[1]])
+      item.summaries.area = item.system.targeting.area.areaSize + " " + "Miles";
+    else if (item.system.targeting.area.areaUnits == [CONFIG.GODBOUND_CONSTANTS.distanceUnits[2]]) {
+      item.summaries.area = "Line Of Sight";
+      return;
+    }
+    else if (item.system.targeting.area.areaUnits == [CONFIG.GODBOUND_CONSTANTS.distanceUnits[3]]) {
+      item.summaries.area = "Region";
+      return;
+    }
+    else if (item.system.targeting.area.areaUnits == [CONFIG.GODBOUND_CONSTANTS.distanceUnits[4]]) {
+      item.summaries.area = "Realm";
+      return;
+    }
+    else if (item.system.targeting.area.areaUnits == [CONFIG.GODBOUND_CONSTANTS.distanceUnits[5]]) {
+      item.summaries.area = "Unlimited";
+      return;
+    }
+    else {
+      item.summaries.area = "UNKNOWN";
+      return;
+    }
+
+    //If we are still here, we are still dealing with conventional feet/miles
+    let shapeSuffix;
+    if (item.system.targeting.area.areaShape == "none")
+      shapeSuffix = "";
+    else
+      shapeSuffix = " [" + item.system.targeting.area.areaShape.capitalize() + "]";
+
+    item.summaries.area += shapeSuffix;
+
+  } // End Area
 
   // Render the item sheet for viewing/editing prior to the editable check.
   // html.find('.item-edit').click(ev => {
@@ -417,10 +481,10 @@ export class characterActorSheet extends ActorSheet {
   }
 
   /**
- * Handles removal of values
- * @param {Event} event   The originating click event
- * @private
- */
+  * Handles removal of values
+  * @param {Event} event   The originating click event
+  * @private
+  */
   _onClickRemove(event) {
     event.preventDefault();
 
