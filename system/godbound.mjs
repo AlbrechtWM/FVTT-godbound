@@ -7,6 +7,7 @@ import { godboundItem } from "./items/documents/godbound-item.mjs";
 import { itemProxy } from "./items/documents/item-proxy.mjs";
 import { attackItem } from "./items/documents/attack-item.mjs";
 import { giftItem } from "./items/documents/gift-item.mjs";
+import { wordItem } from "./items/documents/word-item.mjs";
 // Import sheet classes.
 import { characterActorSheet } from "./actors/sheets/character-actor-sheet.mjs";
 import { npcActorSheet } from "./actors/sheets/npc-actor-sheet.mjs";
@@ -14,6 +15,7 @@ import { factionActorSheet } from "./actors/sheets/faction-actor-sheet.mjs";
 import { godboundItemSheet } from "./items/sheets/item-sheet.mjs";
 import { attackItemSheet } from "./items/sheets/attack-item-sheet.mjs";
 import { giftItemSheet } from "./items/sheets/gift-item-sheet.mjs";
+import { wordItemSheet } from "./items/sheets/word-item-sheet.mjs";
 // Import helper/utility classes and constants.
 import { preloadHandlebarsTemplates } from "./helpers/templates.mjs";
 import { godbound_constants } from "./helpers/godbound_constants.mjs";
@@ -32,6 +34,7 @@ Hooks.once('init', async function () {
     godboundItem,
     attackItem,
     giftItem,
+    wordItem,
     rollItemMacro
   };
 
@@ -66,6 +69,7 @@ Hooks.once('init', async function () {
   Items.registerSheet("godbound", godboundItemSheet, { makeDefault: false });
   Items.registerSheet("godbound", attackItemSheet, { types: ["attack"], makeDefault: false });
   Items.registerSheet("godbound", giftItemSheet, { types: ["gift"], makeDefault: false });
+  Items.registerSheet("godbound", wordItemSheet, { types: ["word"], makeDefault: false });
 
   // Preload Handlebars templates.
   return preloadHandlebarsTemplates();

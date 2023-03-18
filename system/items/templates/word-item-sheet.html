@@ -1,0 +1,38 @@
+<form class="sheetform godbound charsheet-form"
+  style="height: 550px; width: 1000px; min-width: 1000px; min-height: 500px; margin: -8px;" autocomplete="off">
+  <div class="flexrow" style="justify-content: center; margin-bottom: -5px;"> <!--  -->
+    <h1 class="flex0" style="white-space: nowrap; text-decoration: underline; margin-right: 11px;">
+      Word Profile</h1>
+  </div>
+  <hr />
+  <div class="flexcol" style="padding-left: 5px; padding-right: 5px;">
+    <div class="flexrow flex-start"
+      style="margin-bottom: 0px; align-items: center; white-space: nowrap; margin-left: 0px;">
+      <img class="flex0" src="{{item.img}}" style="height: 50px; width: 50px; margin-right: 11px; margin-bottom: auto;" data-edit="img"
+      title="{{item.name}}" />
+      <label class="flex0" style="font-weight: bold; margin-right: 5px;">Name: </label>
+      <input class="flex0" style="line-height: 20px; min-width: 200px; margin-right: 11px;" name="name"
+        value="{{item.name}}" type="text" />
+    </div>
+    <hr />
+    <div class="flexrow flex-start"
+      style="margin-bottom: 0px; min-height: 200; align-items: center; white-space: nowrap; margin-left: 0px;">
+      <textarea class="flex1" name="system.base.description" placeholder="Enter Description"
+        style="min-height: 200; min-width: 200px; margin-right: 5px;">{{system.base.description}}</textarea>
+    </div>
+    <hr />
+    <div class="flexrow flex-start" style="margin-bottom: 0px; align-items: center; white-space: nowrap; margin-left: 0px;">
+    </div>
+    <hr />
+  </div>
+  <div class="flexrow flex-start"
+    style="margin-bottom: 0px; margin-left: 5px; align-items: center; white-space: nowrap;">
+    <label class="flex0" style="font-style: italic; margin-right: 5px">Has Special Traits: </label>
+    <input class="flex0" style="line-height: 20px; margin-right: 8px; margin-left: -5px; min-width: 30px;"
+      name="system.enableSpecialTraits" {{checked system.enableSpecialTraits}} type="checkbox" />
+    <label class="flex0" style="font-style: italic; margin-right: 5px">Has Special Abilities: </label>
+    <input class="flex0" style="line-height: 20px; margin-right: 8px; margin-left: -5px; min-width: 30px;"
+      name="system.enableSpecialAbilities" {{checked system.enableSpecialAbilities}} type="checkbox" />
+  </div>
+  <hr />
+</form>

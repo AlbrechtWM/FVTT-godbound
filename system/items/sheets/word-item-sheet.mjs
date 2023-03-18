@@ -1,9 +1,10 @@
 import SelectChoices from './helpers/selectChoices.mjs';
+
 /**
  * Extend the basic ItemSheet with some very simple modifications
  * @extends {ItemSheet}
  */
-export class attackItemSheet extends ItemSheet {
+export class wordItemSheet extends ItemSheet {
 
   /** @override */
   static get defaultOptions() {
@@ -23,7 +24,7 @@ export class attackItemSheet extends ItemSheet {
 
     // Alternatively, you could use the following return statement to do a
     // unique item sheet by type, like `weapon-sheet.html`.
-    return `systems/godbound/system/items/templates/attack-item-sheet.html`;
+    return `systems/godbound/system/items/templates/word-item-sheet.html`;
   }
 
   /* -------------------------------------------- */
@@ -48,23 +49,25 @@ export class attackItemSheet extends ItemSheet {
     context.flags = itemData.flags;
     // context.GODBOUND_CONSTANTS = CONFIG.GODBOUND_CONSTANTS;
 
-    context.abilitySpeedChoices = SelectChoices.getAbilitySpeedChoices();
+    // context.abilitySpeedChoices = SelectChoices.getAbilitySpeedChoices();
 
-    context.rangeUnitChoices = SelectChoices.getRangeUnitChoices();
+    // context.durationUnitChoices = SelectChoices.getDurationUnitChoices();
 
-    context.effortChoices = SelectChoices.getEffortChoices();
+    // context.rangeUnitChoices = SelectChoices.getRangeUnitChoices();
 
-    context.areaShapeChoices = SelectChoices.getAreaShapeChoices();
+    // context.effortChoices = SelectChoices.getEffortChoices();
 
-    context.attributeChoices = SelectChoices.getAttributeChoices();
+    // context.areaShapeChoices = SelectChoices.getAreaShapeChoices();
 
-    context.dieTypeChoices = SelectChoices.getDieTypeChoices();
+    // context.attributeChoices = SelectChoices.getAttributeChoices();
 
-    context.damageTypeChoices = SelectChoices.getDamageTypeChoices();
+    // context.dieTypeChoices = SelectChoices.getDieTypeChoices();
 
-    context.savingThrowChoices = SelectChoices.getSavingThrowChoices();
+    // context.damageTypeChoices = SelectChoices.getDamageTypeChoices();
 
-    context.savingThrowSuccessChoices = SelectChoices.getSavingThrowSuccessChoices();
+    // context.savingThrowChoices = SelectChoices.getSavingThrowChoices();
+
+    // context.savingThrowSuccessChoices = SelectChoices.getSavingThrowSuccessChoices();
 
     return context;
   }

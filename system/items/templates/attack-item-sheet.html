@@ -1,6 +1,52 @@
 <form class="sheetform godbound charsheet-form"
   style="height: 550px; width: 1000px; min-width: 1000px; min-height: 500px; margin: -8px;" autocomplete="off">
-  {{!-- This is a Handlebars partial. They're stored in the `/parts` folder next to this sheet, and defined in
-  module/helpers/templates.mjs --}}
-  {{> "systems/godbound/system/items/templates/parts/attack.html"}}
+  <div class="flexrow" style="justify-content: center; margin-bottom: -5px;"> <!--  -->
+    <h1 class="flex0" style="white-space: nowrap; text-decoration: underline; margin-right: 11px;">
+      Attack Profile</h1>
+  </div>
+  <hr />
+  <div class="flexcol" style="padding-left: 5px; padding-right: 5px;">
+    <div class="flexrow flex-start"
+      style="margin-bottom: 0px; align-items: center; white-space: nowrap; margin-left: 0px;">
+      <img class="flex0" src="{{item.img}}" style="height: 50px; width: 50px; margin-right: 11px;" data-edit="img"
+        title="{{item.name}}" />
+      <!-- <label class="flex0" style="font-weight: bold; margin-right: 5px;">Description: </label> -->
+      <textarea class="flex1" name="system.base.description" placeholder="Enter Description"
+        style="height: 50;max-height: 50px; min-width: 200px; margin-right: 5px;">{{system.base.description}}</textarea>
+    </div>
+    <hr />
+    <div class="flexrow flex-start"
+      style="margin-bottom: 0px; align-items: center; white-space: nowrap; margin-left: 0px;">
+      <label class="flex0" style="font-weight: bold; margin-right: 5px;">Name: </label>
+      <input class="flex0" style="line-height: 20px; min-width: 200px; margin-right: 11px;" name="name"
+        value="{{item.name}}" type="text" />
+      <label class="flex0" style="font-weight: bold; margin-right: 5px;">Speed: </label>
+      <select class="flex0 sheet-select" name="system.act.speed"
+        style="line-height: 20px; width: max-content; margin-right: 11px;">
+        {{selectOptions abilitySpeedChoices selected=system.act.speed}}
+      </select>
+      <label class="flex0" style="font-weight: bold; margin-right: 5px;">Effort: </label>
+      <select class="flex0 sheet-select" name="system.act.effortCommitment"
+        style="line-height: 20px; width: max-content; margin-right: 11px;">
+        {{selectOptions effortChoices selected=system.act.effortCommitment}}
+      </select>
+      <label class="flex0" style="font-weight: bold; margin-right: 5px">Is Smite: </label>
+      <input class="flex0" style="line-height: 20px; margin-right: 8px; margin-left: -5px; min-width: 30px;"
+        name="system.act.isSmite" {{checked system.act.isSmite}} type="checkbox" />
+    </div>
+  </div>
+  <hr />
+
+  {{> "systems/godbound/system/items/templates/parts/targeting.html"}}
+
+  <div class="flexrow flex-start"
+    style="margin-bottom: 0px; margin-left: 5px; align-items: center; white-space: nowrap;">
+    <label class="flex0" style="font-style: italic; margin-right: 5px">Has Damage: </label>
+    <input class="flex0" style="line-height: 20px; margin-right: 8px; margin-left: -5px; min-width: 30px;"
+      name="system.damage.enableDamage" {{checked system.damage.enableDamage}} type="checkbox" />
+  </div>
+  <hr />
+  {{#if system.damage.enableDamage}}
+  {{> "systems/godbound/system/items/templates/parts/damage.html"}}
+  {{/if}}
 </form>

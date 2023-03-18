@@ -1,0 +1,81 @@
+<div class="flexrow" style="justify-content: center; margin-bottom: -10px;"> <!--  -->
+  <h2 class="flex0" style="white-space: nowrap; text-decoration: underline; margin-right: 11px;">
+    Targeting</h2>
+</div>
+<div class="flexcol" style="padding-left: 5px; padding-right: 5px;">
+  <hr />
+  <div class="flexrow flex-start"
+    style="margin-bottom: 0px; align-items: center; white-space: nowrap; margin-left: 0px;">
+    <label class="flex0" style="font-weight: bold; margin-right: 5px;">Range: </label>
+    <input class="flex0" style="line-height: 20px; min-width: 40px; margin-right: 11px; text-align: center;" name="system.targeting.range.rangeSize"
+      value="{{system.targeting.range.rangeSize}}" type="number" />
+    <label class="flex0" style="font-weight: bold; margin-right: 5px;">Range Units: </label>
+    <select class="flex0 sheet-select" name="system.targeting.range.rangeUnits"
+      style="line-height: 20px; width: max-content; margin-right: 11px;">
+      {{selectOptions rangeUnitChoices selected=system.targeting.range.rangeUnits}}
+    </select>
+    <label class="flex0" style="font-weight: bold; margin-right: 5px">Is Area: </label>
+    <input class="flex0" style="line-height: 20px; margin-right: 8px; margin-left: -5px; min-width: 30px;"
+      name="system.targeting.area.isArea" {{checked system.targeting.area.isArea}} type="checkbox" />
+    <label class="flex0" style="font-weight: bold; margin-right: 5px;">Area: </label>
+    <input class="flex0" style="line-height: 20px; min-width: 40px; margin-right: 11px; text-align: center;" name="system.targeting.area.areaSize"
+      value="{{system.targeting.area.areaSize}}" type="number" {{disabled (not system.targeting.area.isArea)}} />
+    <label class="flex0" style="font-weight: bold; margin-right: 5px;">Area Units: </label>
+    <select class="flex0 sheet-select" name="system.targeting.area.areaUnits" {{disabled (not system.targeting.area.isArea)}}
+      style="line-height: 20px; width: max-content; margin-right: 11px;">
+      {{selectOptions rangeUnitChoices selected=system.targeting.area.areaUnits}}
+    </select>
+    <label class="flex0" style="font-weight: bold; margin-right: 5px;">Area Shape: </label>
+    <select class="flex0 sheet-select" name="system.targeting.area.areaShape" {{disabled (not system.targeting.area.isArea)}}
+      style="line-height: 20px; width: max-content; margin-right: 0px;">
+      {{selectOptions areaShapeChoices selected=system.targeting.area.areaShape}}
+    </select>
+  </div>
+  <hr />
+  <div class="flexrow flex-start"
+    style="margin-bottom: 0px; align-items: center; white-space: nowrap; margin-left: 0px;">
+    <label class="flex0" style="font-weight: bold; margin-right: 5px">Automatic Hit: </label>
+    <input class="flex0" style="line-height: 20px; margin-right: 8px; margin-left: -5px; min-width: 30px;"
+      name="system.targeting.toHit.isAutomatic" {{checked system.targeting.toHit.isAutomatic}} type="checkbox" />
+    <label class="flex0" style="font-weight: bold; margin-right: 5px;">Attribute: </label>
+    <select class="flex0 sheet-select" name="system.targeting.toHit.relevantAttribute" {{disabled system.targeting.toHit.isAutomatic}}
+      style="line-height: 20px; width: max-content; margin-right: 11px;">
+      {{selectOptions attributeChoices selected=system.targeting.toHit.relevantAttribute}}
+    </select>
+    <label class="flex0" style="font-weight: bold; margin-right: 5px">Apply Attr: </label>
+    <input class="flex0" style="line-height: 20px; margin-right: 8px; margin-left: -5px; min-width: 30px;" {{disabled
+      system.targeting.toHit.isAutomatic}} name="system.targeting.toHit.useAttrBonus" {{checked system.targeting.toHit.useAttrBonus}}
+      type="checkbox" />
+    <label class="flex0" style="font-weight: bold; margin-right: 5px">Apply Level: </label>
+    <input class="flex0" style="line-height: 20px; margin-right: 8px; margin-left: -5px; min-width: 30px;" {{disabled
+      system.targeting.toHit.isAutomatic}} name="system.targeting.toHit.useLevelBonus" {{checked system.targeting.toHit.useLevelBonus}}
+      type="checkbox" />
+    <label class="flex0" style="font-weight: bold; margin-right: 5px;">Misc Bonus: </label>
+    <input class="flex0" style="line-height: 20px; min-width: 25px; margin-right: 11px; text-align: center;" name="system.targeting.toHit.miscBonus"
+      {{disabled system.targeting.toHit.isAutomatic}} value="{{system.targeting.toHit.miscBonus}}" type="number" />
+    <label class="flex0" style="font-weight: bold; margin-right: 5px">Apply Advantage: </label>
+    <input class="flex0" style="line-height: 20px; margin-right: 8px; margin-left: -5px; min-width: 30px;" {{disabled
+      system.targeting.toHit.isAutomatic}} name="system.targeting.toHit.isAdvantaged" {{checked system.targeting.toHit.isAdvantaged}}
+      type="checkbox" />
+    <label class="flex0" style="font-weight: bold; margin-right: 5px">Apply Disadvantage: </label>
+    <input class="flex0" style="line-height: 20px; margin-right: 8px; margin-left: -5px; min-width: 30px;" {{disabled
+      system.targeting.toHit.isAutomatic}} name="system.targeting.toHit.isDisadvantaged" {{checked system.targeting.toHit.isDisadvantaged}}
+      type="checkbox" />
+  </div>
+  <hr />
+  <div class="flexrow flex-start"
+    style="margin-bottom: 0px; align-items: center; white-space: nowrap; margin-left: 0px;">
+    <label class="flex0" style="font-weight: bold; margin-right: 5px">Is Melee: </label>
+    <input class="flex0" style="line-height: 20px; margin-right: 8px; margin-left: -5px; min-width: 30px;"
+      name="system.targeting.isMelee" {{checked system.targeting.isMelee}} type="checkbox" />
+    <label class="flex0" style="font-weight: bold; margin-right: 5px">Is Magical: </label>
+    <input class="flex0" style="line-height: 20px; margin-right: 8px; margin-left: -5px; min-width: 30px;"
+      name="system.targeting.isMagical" {{checked system.targeting.isMagical}} type="checkbox" />
+    <label class="flex0" style="font-weight: bold; margin-right: 5px">Can Target Worthy Foes: </label>
+    <input class="flex0" style="line-height: 20px; margin-right: 8px; margin-left: -5px; min-width: 30px;"
+      name="system.targeting.canTargetWorthyFoes" {{checked system.targeting.canTargetWorthyFoes}} type="checkbox" />
+  </div>
+  <hr />
+</div>
+
+

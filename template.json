@@ -338,10 +338,46 @@
     "templates": {
       "base": {
         "base": {
-          "name": "",
-          "description": "",
-          "id": "",
-          "icon": null
+          "description": ""
+        }
+      },
+      "act":{
+        "act":{
+          "speed": "action",
+          "isMultiTurnAct": false,
+          "requiresConcentration": false,
+          "multiTurnNum": 0,
+          "effortCommitment": "",
+          "isSmite": false
+        }
+      },
+      "targeting": {
+        "targeting": {
+          "enableTargeting": false,
+          "targetActors": null,
+          "canTargetWorthyFoes": false,
+          "isMagical": false,
+          "isMelee": false,
+          "range": {
+            "rangeSize": 0,
+            "rangeUnits": ""
+          },
+          "area": {
+            "isArea": false,
+            "areaShape": "",
+            "areaSize": 0,
+            "areaUnits": ""
+          },
+          "toHit": {
+            "totalBonus": 0,
+            "useLevelBonus": false,
+            "isAutomatic": false,
+            "miscBonus": 0,
+            "relevantAttribute": "",
+            "useAttrBonus": false,
+            "isAdvantaged": false,
+            "isDisadvantaged": false
+          }
         }
       },
       "duration": {
@@ -353,6 +389,7 @@
       },
       "damage": {
         "damage": {
+          "enableDamage": false,
           "numDie": 0,
           "dieType": "",
           "bonusDieForExtraLevels": false,
@@ -378,17 +415,7 @@
           "canOverflow": false,
           "isAdvantaged": false,
           "isDisadvantaged": false,
-          "isEnvironmental": false,
-          "enableDamage": false
-        }
-      },
-      "damageType": {
-        "damageType": {
-          "icon": null,
-          "name": "",
-          "primaryCategory": "",
-          "secondaryCategory": "",
-          "tertiaryCategory": ""
+          "isEnvironmental": false
         }
       }
     },
@@ -431,69 +458,44 @@
     "attack": {
       "templates": [
         "base",
+        "targeting",
         "damage"
-      ],
-      "effect": null,
-      "targetActors": null,
-      "range": {
-        "rangeSize": 0,
-        "rangeUnits": ""
-      },
-      "area": {
-        "isArea": false,
-        "areaShape": "",
-        "areaSize": 0,
-        "areaUnits": ""
-      },
-      "toHit": {
-        "totalBonus": 0,
-        "useLevelBonus": false,
-        "isAutomatic": false,
-        "miscBonus": 0,
-        "relevantAttribute": "",
-        "useAttrBonus": false,
-        "isAdvantaged": false,
-        "isDisadvantaged": false
-      },
-      "isSmite": false,
-      "isMelee": false,
-      "effortCommitment": "",
-      "canTargetWorthyFoes": false,
-      "isMagicalAttack": false
+      ]
     },
     "word": {
       "templates": [
         "base"
       ],
-      "specialTraits": null,
-      "specialAbilities": null,
-      "universalGifts": null,
-      "lesserGifts": null,
-      "greaterGifts": null
+      "enableSpecialTraits": false,
+      "enableSpecialAbilities": false,
+      "specialTraits": [],
+      "specialAbilities": [],
+      "universalGifts": [],
+      "lesserGifts": [],
+      "greaterGifts": []
     },
     "gift": {
       "templates": [
         "base",
-        "duration"
+        "duration",
+        "targeting",
+        "damage",
+        "act"
       ],
       "enableSpecialTraits": false,
       "enableSpecialAbilities": false,
-      "enableAttack": false,
       "specialTraits": null,
       "specialAbilities": null,
-      "speed": "",
-      "effortCommitment": "",
-      "isGreaterGift": false,
-      "attack": null
+      "isGreaterGift": false
     },
     "specialAbility": {
       "templates": [
         "base",
-        "duration"
-      ],
-      "speed": "",
-      "effortCommitment": "",
-      "attack": null
+        "duration",
+        "targeting",
+        "damage",
+        "act"
+      ]
     },
     "specialTrait": {
       "templates": [
@@ -517,11 +519,13 @@
     "lowMagicSpell": {
       "templates": [
         "base",
-        "duration"
+        "duration",
+        "targeting",
+        "damage",
+        "act"
       ],
       "selfConditions": null,
-      "selfDamage": null,
-      "attack": null
+      "selfDamage": null
     },
     "highMagicRank": {
       "templates": [
@@ -536,15 +540,16 @@
     "highMagicSpell": {
       "templates": [
         "base",
-        "duration"
+        "duration",
+        "targeting",
+        "damage",
+        "act"
       ],
-      "castingSpeed": "",
-      "effortCommitment": "",
+      "spellLevel": 0,
       "isExcellentPaused": false,
       "selfConditions": null,
       "selfDamage": null,
-      "arcaneConnectionRequired": false,
-      "attack": null
+      "arcaneConnectionRequired": false
     },
     "lesserStrife": {},
     "trueStrife": {},
@@ -560,17 +565,22 @@
     },
     "equipment": {
       "templates": [
-        "base"
+        "base",
+        "targeting",
+        "damage",
+        "act"
       ],
       "weight": "",
       "value": "",
       "quantity": 0,
-      "isEquipped": false,
-      "attack": null
+      "isEquipped": false
     },
     "artifact": {
       "templates": [
-        "base"
+        "base",
+        "targeting",
+        "damage",
+        "act"
       ],
       "specialTraits": null,
       "specialAbilities": null,
@@ -585,13 +595,15 @@
       },
       "selfConditions": null,
       "selfDamage": null,
-      "isEquipped": false,
-      "attack": null
+      "isEquipped": false
     },
     "minorMagicItem": {
       "templates": [
         "base",
-        "duration"
+        "duration",
+        "targeting",
+        "damage",
+        "act"
       ],
       "creationCost": 0,
       "creationTime": "",
@@ -600,8 +612,7 @@
       "specialTraits": null,
       "specialAbilities": null,
       "selfConditions": null,
-      "selfDamage": null,
-      "attack": null
+      "selfDamage": null
     }
   }
 }
