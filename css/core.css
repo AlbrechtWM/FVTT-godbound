@@ -130,7 +130,7 @@ div [type=button] {
 
 .fable-font {
     font-family: "Godbound", Garamond, "Times New Roman", Georgia, serif;
-    color: rgb(0, 89, 64);
+    color: rgb(25, 53, 47);
     font-size: 18px;
 }
 
@@ -168,7 +168,7 @@ div [type=button] {
 
 .trash-button {
     font-size: 16px;
-    color: rgb(0, 89, 64);
+    color: rgb(25, 53, 47);
 }
 
 .text-left {

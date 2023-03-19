@@ -9,8 +9,7 @@
 								<div class="fable-font margin-bottom-1em margin-right-1em bold">
 									Name
 								</div>
-								<input type="text" name="name" value="{{actor.name}}"
-									data-type="String">
+								<input type="text" name="name" value="{{actor.name}}" data-type="String">
 							</div>
 							<div class="flex">
 								<div class="margin-right-1em portrait">
@@ -263,11 +262,9 @@
 								</div>
 							</div>
 							<div data-group="charsheet" data-tab="combat" class="tab">
-								<div class="sheet-row">
-									<div
-										class="sheet-col-1 sheet-title-banner-subheading sheet-pad-t-md sheet-pad-b-sm sheet-mar-t-md sheet-mar-b-sm">
-										<h3>Armor</h3>
-									</div>
+								<div
+									class="fable-font margin-right-1em bold sheet-text-header sheet-text-header-main stat-info margin-bottom-halfem margin-top-halfem">
+									Armor
 								</div>
 								<div class="sheet-row sheet-pad-b-sm">
 									<div
@@ -353,43 +350,50 @@
 											system.coreStats.saves.spirit.isArmorPenalty}}><label>Spirit</label>
 									</div>
 								</div>
-								<div class="sheet-row">
-									<div
-										class="sheet-col-1 sheet-title-banner-subheading sheet-pad-t-md sheet-pad-b-sm sheet-mar-t-md sheet-mar-b-sm">
-										<h3>Attacks</h3>
-									</div>
+								<div
+									class="fable-font margin-right-1em bold sheet-text-header sheet-text-header-main stat-info margin-bottom-halfem margin-top-halfem">
+									Attacks
 								</div>
 								<ol class="items-list">
 									<li class="item flexrow items-header">
 										<div class="item-name flex0" style="min-width: max-content;">Icon</div>
-										<div class="item-name flex0" style="min-width: max-content; margin-left: 20px; margin-right: 30px;">Name</div>
+										<div class="item-name flex0"
+											style="min-width: max-content; margin-left: 20px; margin-right: 30px;">Name
+										</div>
 										<div class="item-name flex1" style="min-width: max-content; ">To Hit</div>
 										<div class="item-name flex2" style="min-width: max-content; ">Damage</div>
 										<div class="item-name flex1" style="min-width: max-content; ">Range</div>
 										<div class="item-name flex1" style="min-width: max-content;">Area</div>
 										<div class="item-controls">
-											<a class="item-control item-create" title="Create item" style="min-width: max-content;"
-												data-type="attack"><i class="fas fa-plus"></i> Add Attack</a>
+											<a class="item-control item-create" title="Create item"
+												style="min-width: max-content;" data-type="attack"><i
+													class="fas fa-plus"></i> Add Attack</a>
 										</div>
 									</li>
 									{{#each attacks as |item id|}}
 									<li class="item flexrow" style="align-items: center;" data-item-id="{{item._id}}">
-										<div class="item-name flex0" style="min-width: max-content; margin-right: 10px;">
+										<div class="item-name flex0"
+											style="min-width: max-content; margin-right: 10px;">
 											<img src="{{item.img}}" title="{{item.name}}" width="24" height="24" />
 										</div>
-										<div class="item-name flex0" style="min-width: max-content; margin-right: 10px;">
+										<div class="item-name flex0"
+											style="min-width: max-content; margin-right: 10px;">
 											<label style="font-weight: bold;">{{item.name}}</label>
 										</div>
-										<div class="item-name flex1" style="min-width: max-content; margin-right: 10px;">
+										<div class="item-name flex1"
+											style="min-width: max-content; margin-right: 10px;">
 											<label>{{item.summaries.toHit}}</label>
 										</div>
-										<div class="item-name flex2" style="min-width: max-content; margin-right: 10px;">
+										<div class="item-name flex2"
+											style="min-width: max-content; margin-right: 10px;">
 											<label>{{item.summaries.damage}}</label>
 										</div>
-										<div class="item-name flex1" style="min-width: max-content; margin-right: 10px;">
+										<div class="item-name flex1"
+											style="min-width: max-content; margin-right: 10px;">
 											<label>{{item.summaries.range}}</label>
 										</div>
-										<div class="item-name flex1" style="min-width: max-content; margin-right: 10px;">
+										<div class="item-name flex1"
+											style="min-width: max-content; margin-right: 10px;">
 											<label>{{item.summaries.area}}</label>
 										</div>
 										<div class="item-controls">
@@ -410,11 +414,9 @@
 								</ol>
 							</div>
 							<div data-group="charsheet" data-tab="divine" class="tab">
-								<div class="sheet-row">
-									<div
-										class="sheet-col-1 sheet-title-banner-subheading sheet-pad-t-md sheet-pad-b-sm sheet-mar-t-md sheet-mar-b-sm">
-										<h3>Effort</h3>
-									</div>
+								<div
+									class="fable-font margin-right-1em bold sheet-text-header sheet-text-header-main  stat-info margin-bottom-halfem no-left-border no-right-border">
+									Effort
 								</div>
 								<div class="flexrow"
 									style="margin-top: 5px; align-items: center; justify-content: center;">
@@ -440,16 +442,15 @@
 											value="{{system.coreStats.effort.max}}" data-type="Number">
 									</div>
 								</div>
-								<div class="sheet-row">
-									<div
-										class="sheet-col-1 sheet-title-banner-subheading sheet-pad-t-md sheet-pad-b-sm sheet-mar-t-md sheet-mar-b-sm">
-										<h3>Words of Creation</h3>
-									</div>
+								<div
+									class="fable-font margin-right-1em bold sheet-text-header sheet-text-header-main stat-info margin-bottom-halfem margin-top-halfem">
+									Words of Creation
 								</div>
 								<ol class="items-list">
 									<li class="item flexrow items-header">
 										<div class="item-name flex0" style="min-width: max-content;">Icon</div>
-										<div class="item-name flex0" style="min-width: max-content; margin-left: 20px;">Name</div>
+										<div class="item-name flex0" style="min-width: max-content; margin-left: 20px;">
+											Name</div>
 										<div class="item-name flex1" style="margin-left: 180px;">Description</div>
 										<div class="item-controls">
 											<a class="item-control item-create" title="Create item" data-type="word"><i
@@ -458,10 +459,12 @@
 									</li>
 									{{#each words as |item id|}}
 									<li class="item flexrow" style="align-items: center;" data-item-id="{{item._id}}">
-										<div class="item-name flex0" style="min-width: max-content; margin-right: 10px;">
+										<div class="item-name flex0"
+											style="min-width: max-content; margin-right: 10px;">
 											<img src="{{item.img}}" title="{{item.name}}" width="24" height="24" />
 										</div>
-										<div class="item-name flex0" style="min-width: max-content; margin-right: 10px;">
+										<div class="item-name flex0"
+											style="min-width: max-content; margin-right: 10px;">
 											<label style="font-weight: bold;">{{item.name}}</label>
 										</div>
 										<div class="item-name flex1" style="margin-right: 10px;">
@@ -479,16 +482,15 @@
 									</li>
 									{{/each}}
 								</ol>
-								<div class="sheet-row">
-									<div
-										class="sheet-col-1 sheet-title-banner-subheading sheet-pad-t-md sheet-pad-b-sm sheet-mar-t-md sheet-mar-b-sm">
-										<h3>Gifts</h3>
-									</div>
+								<div
+									class="fable-font margin-right-1em bold sheet-text-header sheet-text-header-main stat-info margin-bottom-halfem margin-top-halfem">
+									Gifts
 								</div>
 								<ol class="items-list">
 									<li class="item flexrow items-header">
 										<div class="item-name flex0" style="min-width: max-content;">Icon</div>
-										<div class="item-name flex0" style="min-width: max-content; margin-left: 20px;">Name</div>
+										<div class="item-name flex0" style="min-width: max-content; margin-left: 20px;">
+											Name</div>
 										<div class="item-name flex1" style="margin-left: 180px;">Description</div>
 										<div class="item-controls">
 											<a class="item-control item-create" title="Create item" data-type="gift"><i
@@ -497,10 +499,12 @@
 									</li>
 									{{#each gifts as |item id|}}
 									<li class="item flexrow" style="align-items: center;" data-item-id="{{item._id}}">
-										<div class="item-name flex0" style="min-width: max-content; margin-right: 10px;">
+										<div class="item-name flex0"
+											style="min-width: max-content; margin-right: 10px;">
 											<img src="{{item.img}}" title="{{item.name}}" width="24" height="24" />
 										</div>
-										<div class="item-name flex0" style="min-width: max-content; margin-right: 10px;">
+										<div class="item-name flex0"
+											style="min-width: max-content; margin-right: 10px;">
 											<label style="font-weight: bold;">{{item.name}}</label>
 										</div>
 										<div class="item-name flex1" style="margin-right: 10px;">
@@ -524,7 +528,8 @@
 							<div data-group="charsheet" data-tab="dominion" class="tab">
 								<div class="flex margin-right-halfem">
 									<div class="flex column center-column stat-col w100">
-										<div class="fable-font bold stat-info margin-bottom-1em no-left-border no-right-border">
+										<div
+											class="fable-font bold stat-info margin-bottom-1em no-left-border no-right-border">
 											Dominion
 										</div>
 										<div class="flex column single-col-tab-stats">
