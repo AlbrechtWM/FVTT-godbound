@@ -33,6 +33,17 @@
 	width: 100%;
 	text-align: center;
 }
+
+.item-control {
+	cursor: pointer;
+}
+
+.item-control:hover {
+	background: none !important;
+	color: rgb(221 72 72);
+}
+
+
 .sheet-text-header-main {
 	background-image: url('../images/fancyborder.png');
 	background-repeat: no-repeat;
