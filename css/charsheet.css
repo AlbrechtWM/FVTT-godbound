@@ -56,6 +56,14 @@
 	overflow-x: hidden;
 }
 
+.single-col-tab-stats {
+	width: 320px;
+}
+
+.single-col-tab-stats-title {
+	width: 80px;
+}
+
 .charsheet-tabs {
 	margin-bottom: 17px;
 	margin-top: 21px;

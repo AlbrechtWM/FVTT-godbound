@@ -413,17 +413,49 @@
 								<div class="sheet-row">
 									<div
 										class="sheet-col-1 sheet-title-banner-subheading sheet-pad-t-md sheet-pad-b-sm sheet-mar-t-md sheet-mar-b-sm">
+										<h3>Effort</h3>
+									</div>
+								</div>
+								<div class="flexrow"
+									style="margin-top: 5px; align-items: center; justify-content: center;">
+									<div class="flex">
+										<div class="godbound-font bold margin-right-halfem single-col-tab-stats-title">
+											Committed
+										</div>
+										<div
+											class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-center sheet-pad-r-md">
+											<input type="number" name="system.coreStats.effort.committed"
+												value="{{system.coreStats.effort.committed}}" data-type="Number">
+										</div>
+									</div>
+									<div class="godbound-font bold margin-right-halfem single-col-tab-stats-title">
+										Totals
+									</div>
+									<div class="flex">
+										<input disabled="true" min="0" max="{{system.coreStats.effort.max}}"
+											type="number" name="system.coreStats.effort.free"
+											value="{{system.coreStats.effort.free}}" data-type="Number">
+										<div class="bold margin-left-halfem margin-right-halfem">/</div>
+										<input disabled="true" type="number" name="system.coreStats.effort.max"
+											value="{{system.coreStats.effort.max}}" data-type="Number">
+									</div>
+								</div>
+								<div class="sheet-row">
+									<div
+										class="sheet-col-1 sheet-title-banner-subheading sheet-pad-t-md sheet-pad-b-sm sheet-mar-t-md sheet-mar-b-sm">
 										<h3>Words of Creation</h3>
 									</div>
 								</div>
-								<ol class="items-list"> 
-									<li class="item flexrow items-header flex-start">
-										<div class="item-name flex0 flex-start" style="margin-right: 0px; width: 30px; float: left;">Icon</div>
-										<div class="item-name flex0 flex-start" style="margin-right: 0px; width: 30px; float: left;">Name</div>
-										<div class="item-name flex0" style="margin-right: auto;">Description</div>
+								<ol class="items-list">
+									<li class="item flexrow items-header">
+										<div class="item-name"
+											style="margin-right: 0px; width: 30px; float: left;">Icon</div>
+										<div class="item-name"
+											style="margin-right: 0px; width: 30px; float: left;">Name</div>
+										<div class="item-name" style="margin-right: auto;">Description</div>
 										<div class="item-controls">
-											<a class="item-control item-create" title="Create item"
-												data-type="word"><i class="fas fa-plus"></i> Add Word</a>
+											<a class="item-control item-create" title="Create item" data-type="word"><i
+													class="fas fa-plus"></i> Add Word</a>
 										</div>
 									</li>
 									{{#each words as |item id|}}
@@ -453,17 +485,48 @@
 							<div data-group="charsheet" data-tab="arts" class="tab">
 							</div>
 							<div data-group="charsheet" data-tab="dominion" class="tab">
+								<div class="flex margin-right-halfem">
+									<div class="flex column center-column stat-col w100">
+										<div class="fable-font bold stat-info margin-bottom-1em">
+											Dominion
+										</div>
+										<div class="flex column single-col-tab-stats">
+											<div class="flex">
+												<div
+													class="godbound-font bold margin-right-halfem margin-bottom-1em single-col-tab-stats-title">
+													Spent
+												</div>
+												<div
+													class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-md">
+													<input type="number" name="system.dominion.spent"
+														value="{{system.dominion.spent}}" data-type="Number">
+												</div>
+											</div>
+											<div class="flex">
+												<div
+													class="godbound-font bold margin-right-halfem single-col-tab-stats-title">
+													Totals
+												</div>
+												<div class="flex">
+													<input disabled="true" min="0" max="{{system.dominion.total}}"
+														type="number" name="system.dominion.free"
+														value="{{system.dominion.free}}" data-type="Number">
+													<div class="bold margin-left-halfem margin-right-halfem">/</div>
+													<input type="number" name="system.dominion.total"
+														value="{{system.dominion.total}}" data-type="Number">
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
 							</div>
 							<div data-group="charsheet" data-tab="inventory" class="tab">
 							</div>
 							<div data-group="charsheet" data-tab="status" class="tab">
 							</div>
-					</div><!-- Bottom of sheet overall wrapper-->
-					<div data-group="charsheet" data-tab="arts" class="tab">
+						</section>
 					</div>
-					</section>
 				</div>
 			</div>
 		</div>
-	</div>
 </form>
