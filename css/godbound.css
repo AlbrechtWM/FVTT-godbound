@@ -321,18 +321,27 @@
   font-weight: bold;
   padding-left: 5px;
   text-align: left;
-  /* display: -webkit-box;
-  display: -ms-flexbox; */
-  /* display: flex; */
 }
 
 .godbound .items-list {
   list-style: none;
   margin: 0;
   padding: 0;
-  overflow-y: auto;
+  overflow-y: scroll;
   scrollbar-width: thin;
   color: #444;
+}
+
+.attacks-list {
+  max-height: 245px;
+}
+
+.words-list {
+  max-height: 160px;
+}
+
+.gifts-list {
+  max-height: 130px;
 }
 
 .godbound .items-list .item-list {
