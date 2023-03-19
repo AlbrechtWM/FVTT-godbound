@@ -77,7 +77,7 @@ const _performAttack = (actor, tohit, damage) => {
                 let numericalResult = '';
                 results.forEach((resultObj, i) => {
                     const { result } = resultObj;
-                    if (indexToModify === i && indexToModify !== 0) {
+                    if (indexToModify === i && number !== 0) {
                         rollVals += i === 0 ? result : `, ${result}`;
                         damageVals += i === 0 ? _getDamageValueDisplay(result + number, true) : ` + ${_getDamageValueDisplay(result + number, true)}`;
                         numericalResult += i === 0 ? _getDamageNumber(result + number) : ` + ${_getDamageNumber(result + number)}`
