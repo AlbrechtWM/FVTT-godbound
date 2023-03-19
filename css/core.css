@@ -171,6 +171,10 @@ div [type=button] {
     color: rgb(25, 53, 47);
 }
 
+.trash-button:hover {
+    color: rgb(221 72 72);
+}
+
 .text-left {
     text-align: left;
 }
