@@ -63,6 +63,19 @@ div [type=roll] {
     cursor: pointer;
 }
 
+div [type=roll]:hover {
+    background: #b791304d;
+}
+
+/* Gives all divs serving as button a pointer */
+div [type=button] {
+    cursor: pointer;
+}
+
+div [type=button] {
+    background: #b791304d;
+}
+
 .small-font {
     font-size: 0.8rem;
 }
@@ -118,7 +131,7 @@ div [type=roll] {
 .fable-font {
     font-family: "Godbound", Garamond, "Times New Roman", Georgia, serif;
     color: rgb(0, 89, 64);
-    font-size: 15px;
+    font-size: 18px;
 }
 
 .flex {
