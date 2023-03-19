@@ -80,7 +80,6 @@ const _performAttack = (actor, tohit, damage) => {
 
             rolls.forEach((roll) => {
                 roll.evaluate().then(({ result, terms }) => {
-                    console.log(terms);
                     const { flavor } = terms[0].options;
                     const evaluated = eval(result);
                     const damageType = flavor ? damageFlavor.replace(']', `,${flavor}]`) : damageFlavor;
@@ -156,7 +155,7 @@ const _getDamageValue = (evaluated) => {
     } else if (evaluated >= 6 && evaluated <= 9) {
         return '<b style="color:purple">2</b>'
     } else if (evaluated >= 10) {
-        return '<b style="color:orange">3</b>'
+        return '<b style="color:orange">4</b>'
     }
 
     return '<b style="color:grey">No</b>'
