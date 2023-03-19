@@ -33,6 +33,14 @@
 	width: 100%;
 	text-align: center;
 }
+.sheet-text-header-main {
+	background-image: url('../images/fancyborder.png');
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	border: none;
+	padding: 7px;
+	height: 35px
+}
 
 .sheet-text-header {
 	min-width: 45px;
