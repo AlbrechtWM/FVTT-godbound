@@ -448,11 +448,9 @@
 								</div>
 								<ol class="items-list">
 									<li class="item flexrow items-header">
-										<div class="item-name"
-											style="margin-right: 0px; width: 30px; float: left;">Icon</div>
-										<div class="item-name"
-											style="margin-right: 0px; width: 30px; float: left;">Name</div>
-										<div class="item-name" style="margin-right: auto;">Description</div>
+										<div class="item-name flex0" style="min-width: max-content;">Icon</div>
+										<div class="item-name flex0" style="min-width: max-content;">Name</div>
+										<div class="item-name flex1" style="margin-left: 200px;">Description</div>
 										<div class="item-controls">
 											<a class="item-control item-create" title="Create item" data-type="word"><i
 													class="fas fa-plus"></i> Add Word</a>
@@ -460,13 +458,13 @@
 									</li>
 									{{#each words as |item id|}}
 									<li class="item flexrow" style="align-items: center;" data-item-id="{{item._id}}">
-										<div class="item-name">
+										<div class="item-name flex0" style="min-width: max-content;">
 											<img src="{{item.img}}" title="{{item.name}}" width="24" height="24" />
 										</div>
-										<div class="item-name">
+										<div class="item-name flex0" style="min-width: max-content;">
 											<label>{{item.name}}</label>
 										</div>
-										<div class="item-name">
+										<div class="item-name flex1">
 											<textarea>{{item.system.base.description}}</textarea>
 										</div>
 										<div class="item-controls">
