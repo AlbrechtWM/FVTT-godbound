@@ -87,6 +87,10 @@ div [type=roll] {
     margin-bottom: 1em;
 }
 
+.margin-top-1em {
+    margin-top: 1em;
+}
+
 .margin-right-1em {
     margin-right: 1em;
 }
@@ -135,6 +139,10 @@ div [type=roll] {
 
 .space-between {
     justify-content: space-between;
+}
+
+.space-evenly {
+    justify-content: space-evenly;
 }
 
 .w50 {

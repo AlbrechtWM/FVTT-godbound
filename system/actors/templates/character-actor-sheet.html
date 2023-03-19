@@ -410,21 +410,98 @@
 								</ol>
 							</div>
 							<div data-group="charsheet" data-tab="divine" class="tab">
+								<div class="flex margin-right-halfem">
+									<div class="flex column center-column stat-col w100">
+										<div class="fable-font bold stat-info margin-bottom-1em">
+											Effort
+										</div>
+										<div class="flex column single-col-tab-stats">
+											<div class="flex">
+												<div
+													class="godbound-font bold margin-right-halfem margin-bottom-1em single-col-tab-stats-title">
+													Committed
+												</div>
+												<div
+													class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-md">
+													<input type="number" name="system.coreStats.effort.committed"
+														value="{{system.coreStats.effort.committed}}"
+														data-type="Number">
+												</div>
+											</div>
+											<div class="flex">
+												<div
+													class="godbound-font bold margin-right-halfem single-col-tab-stats-title">
+													Totals
+												</div>
+												<div class="flex">
+													<input disabled="true" min="0" max="{{system.coreStats.effort.max}}"
+														type="number" name="system.coreStats.effort.free"
+														value="{{system.coreStats.effort.free}}" data-type="Number">
+													<div class="bold margin-left-halfem margin-right-halfem">/</div>
+													<input disabled="true" type="number"
+														name="system.coreStats.effort.max"
+														value="{{system.coreStats.effort.max}}" data-type="Number">
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="flex margin-right-halfem">
+									<div class="flex column center-column stat-col w100">
+										<div class="fable-font bold stat-info margin-bottom-1em margin-top-1em">
+											Words and Gifts
+										</div>
+									</div>
+								</div>
 							</div>
 							<div data-group="charsheet" data-tab="arts" class="tab">
 							</div>
 							<div data-group="charsheet" data-tab="dominion" class="tab">
+								<div class="flex margin-right-halfem">
+									<div class="flex column center-column stat-col w100">
+										<div class="fable-font bold stat-info margin-bottom-1em">
+											Dominion
+										</div>
+										<div class="flex column single-col-tab-stats">
+											<div class="flex">
+												<div
+													class="godbound-font bold margin-right-halfem margin-bottom-1em single-col-tab-stats-title">
+													Spent
+												</div>
+												<div
+													class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-md">
+													<input type="number" name="system.dominion.spent"
+														value="{{system.dominion.spent}}"
+														data-type="Number">
+												</div>
+											</div>
+											<div class="flex">
+												<div
+													class="godbound-font bold margin-right-halfem single-col-tab-stats-title">
+													Totals
+												</div>
+												<div class="flex">
+													<input disabled="true" min="0"
+														max="{{system.dominion.total}}" type="number"
+														name="system.dominion.free"
+														value="{{system.dominion.free}}" data-type="Number">
+													<div class="bold margin-left-halfem margin-right-halfem">/</div>
+													<input type="number"
+														name="system.dominion.total"
+														value="{{system.dominion.total}}" data-type="Number">
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
 							</div>
 							<div data-group="charsheet" data-tab="inventory" class="tab">
 							</div>
 							<div data-group="charsheet" data-tab="status" class="tab">
 							</div>
-					</div><!-- Bottom of sheet overall wrapper-->
-					<div data-group="charsheet" data-tab="arts" class="tab">
+						</section>
 					</div>
-					</section>
 				</div>
 			</div>
 		</div>
-	</div>
 </form>
