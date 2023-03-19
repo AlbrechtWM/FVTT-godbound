@@ -968,6 +968,9 @@ body.sheet-darkmode .attributesabilities {
 	width: 670px;
 	min-height: 780px;
 	max-height: 780px;
+	margin-top: -13px;
+    margin-left: -11px;
+	margin-bottom: -5px;
 	height: 780px;
 	padding: 5px 3px 3px 3px !important;
 	-moz-background-size: 100% !important;

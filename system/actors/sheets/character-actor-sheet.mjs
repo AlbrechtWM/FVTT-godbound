@@ -15,8 +15,8 @@ export class characterActorSheet extends ActorSheet {
     return mergeObject(super.defaultOptions, {
       classes: ["godbound", "sheet", "actor"],
       template: "systems/godbound/system/actors/templates/character-actor-sheet.html",
-      width: 665,
-      height: 825,
+      width: 647,
+      height: 811,
       tabs: [{ navSelector: ".charsheet-tabs", contentSelector: ".charsheet-content", initial: "char" }]
     });
   }
