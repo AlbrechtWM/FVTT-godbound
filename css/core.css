@@ -205,6 +205,11 @@ div [type=button] {
     padding: 3px;
 }
 
+
+.godbound-button:hover {
+    background: #e5cc8e;
+}
+
 .godbound-button.active {
     color: rgb(221 72 72);
 }
