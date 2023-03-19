@@ -52,13 +52,10 @@ const _performAttributeCheck = (actor, stat, modifier) => {
  * @param {damage} damage - Damage value
  */
 const _performAttack = (actor, tohit, damage) => {
-    const splitToHit = tohit.split('#');
-    const toHitRoll = splitToHit[0];
-    const toHitFlavor = splitToHit[1];
-    const hitRoll = new Roll(toHitRoll);
+    const hitRoll = new Roll(tohit);
     hitRoll.evaluate().then(({ result }) => {
         const evaluatedResult = eval(result);
-        const flavor = `<div style="text-align: center"><div>Rolling to Hit ( >= 20)</div><div>${toHitFlavor}</div> ${_getSuccessDisplayForAttack(evaluatedResult)}`;
+        const flavor = `<div style="text-align: center"><div>Rolling to Hit ( >= 20)</div> ${_getSuccessDisplayForAttack(evaluatedResult)}`;
         const speaker = ChatMessage.getSpeaker({ actor });
 
         hitRoll.toMessage({
@@ -69,41 +66,49 @@ const _performAttack = (actor, tohit, damage) => {
         if (evaluatedResult >= 20) {
             const splitDamage = damage.split('#');
             const damageRoll = splitDamage[0];
-            const damageFlavor = splitDamage[1];
 
-            const rollWithoutDice = damageRoll.slice(1);
-            const rolls = []
-            for (let i = 1; i <= damageRoll.charAt(0); i++) {
-                const singleRoll = `1${rollWithoutDice}`;
-                rolls.push(new Roll(singleRoll));
-            }
+            new Roll(damage).evaluate().then(({ terms }) => {
+                const { results } = terms[0];
+                const { flavor } = terms[0].options;
+                const { number } = terms[2];
+                const indexToModify = _findHighestDamageIndex(results, number);
+                let rollVals = '';
+                let damageVals = '';
+                let numericalResult = '';
+                results.forEach((resultObj, i) => {
+                    const { result } = resultObj;
+                    if (indexToModify === i) {
+                        rollVals += i === 0 ? result : `, ${result}`;
+                        damageVals += i === 0 ? _getDamageValueDisplay(result + number, true) : ` + ${_getDamageValueDisplay(result + number, true)}`;
+                        numericalResult += i === 0 ? _getDamageNumber(result + number) : ` + ${_getDamageNumber(result + number)}`
+                    } else {
+                        rollVals += i === 0 ? result : `, ${result}`;
+                        damageVals += i === 0 ? _getDamageValueDisplay(result) : ` + ${_getDamageValueDisplay(result)}`;
+                        numericalResult += i === 0 ? _getDamageNumber(result) : ` + ${_getDamageNumber(result)}`
+                    }
 
-            rolls.forEach((roll) => {
-                roll.evaluate().then(({ result, terms }) => {
-                    const { flavor } = terms[0].options;
-                    const evaluated = eval(result);
-                    const damageType = flavor ? damageFlavor.replace(']', `,${flavor}]`) : damageFlavor;
+                });
 
-                    const message = `<div style="text-align: center">
-                    <div>Rolled: ${result} (${evaluated})</div>
-                    <div>Dealt: ${_getDamageValue(evaluated)} ${damageType} Damage</div>`;
-                    
-                    const speaker = ChatMessage.getSpeaker({ actor });
+                const message = `<div style="text-align: center">
+                    <div>Rolling: ${damageRoll}</div>
+                    <div>Rolled: ${rollVals} </div>
+                    <div>Dealt: ${damageVals} = ${eval(numericalResult)} ${flavor} damage</div>`;
 
-                    const chatData = {
-                        user: game.user._id,
-                        speaker,
-                        content: message,
-                    };
-                    ChatMessage.create(chatData, {});
-                })
-            })
+                const speaker = ChatMessage.getSpeaker({ actor });
+
+                const chatData = {
+                    user: game.user._id,
+                    speaker,
+                    content: message,
+                };
+                ChatMessage.create(chatData, {});
+            });
+            // })
 
 
         }
     });
 }
-
 
 /**
  * Performs a saving throw
@@ -145,20 +150,62 @@ const _getSuccessDisplay = (result, dc) => {
     return result >= dc ? '<b style="color:green">Success!</b>' : '<b style="color:red">Failure!</b></div>';
 }
 
+
 /**
  * Gets display for amount of damage dealt
  * @param {number} evaluated - The roll result
+ * @param {boolean} wasModified - If true, damage modifier was added
  */
-const _getDamageValue = (evaluated) => {
+const _getDamageValueDisplay = (evaluated, wasModified) => {
     if (evaluated >= 2 && evaluated <= 5) {
-        return '<b style="color:blue">1</b>'
+        return `<b style="color:blue">1</b>${wasModified ? ' (Modified)' : ''}`
     } else if (evaluated >= 6 && evaluated <= 9) {
-        return '<b style="color:purple">2</b>'
+        return `<b style="color:purple">2</b>${wasModified ? ' (Modified)' : ''}`
     } else if (evaluated >= 10) {
-        return '<b style="color:orange">4</b>'
+        return `<b style="color:orange">4</b>${wasModified ? ' (Modified)' : ''}`
     }
 
-    return '<b style="color:grey">No</b>'
+    return '<b style="color:grey">0</b>'
+}
+
+/**
+ * Finds the index of the damage modifier to add, to obtain the highest possible damage roll
+ * @param {Array} results - The array of result objects
+ * @param {number} modifier - The modifier
+ */
+const _findHighestDamageIndex = (results, modifier) => {
+    const numericalResults = results.map((resultObj) => resultObj.result);
+    let indexOfNumToUse = -1;
+    let highestTotal = 0;
+
+    for (let i = 0; i < numericalResults.length; i++) {
+        const currResult = numericalResults[i];
+        const resultsBefore = numericalResults.slice(0, i).map((result) => _getDamageNumber(result));
+        const resultsAfter = numericalResults.slice(i + 1, numericalResults.length).map((result) => _getDamageNumber(result)).filter((item) => item);
+        const adjustedCurr = _getDamageNumber(currResult + modifier);
+
+        const total = [...resultsBefore, adjustedCurr, ...resultsAfter].reduce((a, b) => a + b, 0);
+        if (total > highestTotal) {
+            highestTotal = total;
+            indexOfNumToUse = i;
+        }
+    }
+    return indexOfNumToUse;
+}
+
+
+/**
+ * Gets damage number
+ * @param {number} evaluated - The roll result
+ */
+const _getDamageNumber = (evaluated) => {
+    if (evaluated >= 2 && evaluated <= 5) {
+        return 1;
+    } else if (evaluated >= 6 && evaluated <= 9) {
+        return 2;
+    } else if (evaluated >= 10) {
+        return 4;
+    }
 }
 
 /**
