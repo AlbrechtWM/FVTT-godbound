@@ -261,7 +261,7 @@ export class characterActorSheet extends ActorSheet {
     else
       flavor += "Mundane,";
 
-    if (item.system.act.isSmite)
+    if (item.system.act?.isSmite)
       flavor += "Smite,";
 
     if (item.system.targeting.isMelee)
@@ -342,7 +342,6 @@ export class characterActorSheet extends ActorSheet {
   }//End Damage
 
   prepareRangeSummary(item, actor) {
-
     if (item.system.targeting.range.rangeUnits == [CONFIG.GODBOUND_CONSTANTS.distanceUnits[0]])
       item.summaries.range = item.system.targeting.range.rangeSize + " " + "Feet";
     else if (item.system.targeting.range.rangeUnits == [CONFIG.GODBOUND_CONSTANTS.distanceUnits[1]])
@@ -361,7 +360,6 @@ export class characterActorSheet extends ActorSheet {
   } // End Range
 
   prepareAreaSummary(item, actor) {
-
     if (!item.system.targeting.area.isArea) {
       item.summaries.area = "Single";
       return;
@@ -503,7 +501,7 @@ export class characterActorSheet extends ActorSheet {
     event.preventDefault();
 
     const element = event.currentTarget;
-    const { type, stat, dialog } = element.dataset;
+    const { type, stat, dialog, tohit, damage } = element.dataset;
 
     if (dialog) {
       new Dialog({
@@ -514,8 +512,8 @@ export class characterActorSheet extends ActorSheet {
           button1: {
             label: "Proceed",
             callback: (html) => {
-              const value = html.find("input#roll-modifier-dialog").val();
-              Rolls.performRoll(this.actor, this.getData().system, type, value, stat);
+              const modifier = html.find("input#roll-modifier-dialog").val();
+              Rolls.performRoll(this.actor, { type, modifier, stat, tohit, damage })
             },
             icon: `<i class="fas fa-check"></i>`
           },
@@ -527,7 +525,7 @@ export class characterActorSheet extends ActorSheet {
         }
       }).render(true);
     } else {
-      Rolls.performRoll(this.actor, this.getData().system, type, value, stat)
+      Rolls.performRoll(this.actor, { type, stat, tohit, damage })
     }
 
     // // Handle item rolls.
