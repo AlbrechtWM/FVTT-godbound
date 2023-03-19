@@ -256,20 +256,20 @@ export class characterActorSheet extends ActorSheet {
 
 
     //flavor
-    if (item.system.targeting.isMagical)
-      flavor += "Magical,";
-    else
-      flavor += "Mundane,";
+    // if (item.system.targeting.isMagical)
+    //   flavor += "Magical,";
+    // else
+    //   flavor += "Mundane,";
 
-    if (item.system.act?.isSmite)
-      flavor += "Smite,";
+    // if (item.system.act?.isSmite)
+    //   flavor += "Smite,";
 
-    if (item.system.targeting.isMelee)
-      flavor += "Melee]";
-    else
-      flavor += "Ranged]";
+    // if (item.system.targeting.isMelee)
+    //   flavor += "Melee]";
+    // else
+    //   flavor += "Ranged]";
 
-    item.summaries.toHit += "+" + modifier + (targetAC != null ? "+" + targetAC : "") + " " + flavor
+    item.summaries.toHit += "+" + modifier + (targetAC != null ? "+" + targetAC : "") /*+ " " + flavor*/;
 
   } // End To Hit
 
@@ -318,27 +318,27 @@ export class characterActorSheet extends ActorSheet {
       dieQuantity = dieQuantity * 2; //double the number of dice
     }
 
-    let flavor = "#[";
+    // let flavor = "#[";
 
     //flavor
-    if (item.system.damage.isStraight)
-      flavor += "Straight";
-    else
-      flavor += "Regular";
+    // if (item.system.damage.isStraight)
+    //   flavor += "Straight";
+    // else
+    //   flavor += "Regular";
 
-    if (item.system.damage.canOverflow)
-      flavor += ",Overflows";
+    // if (item.system.damage.canOverflow)
+    //   flavor += ",Overflows";
 
-    if (item.system.damage.isEnvironmental)
-      flavor += ",Environmental]";
+    // if (item.system.damage.isEnvironmental)
+    //   flavor += ",Environmental]";
 
-    flavor += "]";
+    // flavor += "]";
 
     //put it all together
     if (fixedDamage)
-      item.summaries.damage = modifier + damageType + " " + flavor
+      item.summaries.damage = modifier + damageType; /*+ " " + flavor*/
     else
-      item.summaries.damage = dieQuantity + dieType + advantageDisadvantageSuffix + damageType + " + " + modifier + " " + flavor;
+      item.summaries.damage = dieQuantity + dieType + advantageDisadvantageSuffix + damageType + " + " + modifier /*+ " " + flavor*/;
   }//End Damage
 
   prepareRangeSummary(item, actor) {
