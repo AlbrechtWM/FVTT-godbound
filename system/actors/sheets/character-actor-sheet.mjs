@@ -113,13 +113,31 @@ export class characterActorSheet extends ActorSheet {
     html.find('.item-delete').click(ev => {
       const li = $(ev.currentTarget).parents(".item");
       const item = this.actor.items.get(li.data("itemId"));
-      item.delete();
-      li.slideUp(200, () => this.render(false));
+
+      new Dialog({
+        title: "Confirm Deletion",
+        content: `<div class="margin-bottom-1em">Really Delete ${item.name}?</div>`,
+        default: "button1",
+        buttons: {
+          button1: {
+            label: "Delete",
+            callback: () => {
+              item.delete();
+              li.slideUp(200, () => this.render(false));
+            },
+            icon: `<i class="fas fa-check"></i>`
+          },
+          button2: {
+            label: "Cancel",
+            callback: () => { },
+            icon: `<i class="fas fa-cancel"></i>`
+          },
+        }
+      }).render(true);
     });
 
     // Active Effect management
     html.find(".effect-control").click(ev => onManageActiveEffect(ev, this.actor));
-
 
     // Rollable abilities.
     html.find('div[type=roll]').click(this._onRoll.bind(this));
@@ -488,8 +506,26 @@ export class characterActorSheet extends ActorSheet {
 
     const element = event.currentTarget;
     const { typetoremove, index } = element.dataset;
-    console.log(typetoremove, index);
-    Character.remove(this.actor, typetoremove, index)
+
+    new Dialog({
+      title: "Confirm Deletion",
+      content: `<div class="margin-bottom-1em">Really Delete ${typetoremove.charAt(0).toUpperCase()}${typetoremove.slice(1)}?</div>`,
+      default: "button1",
+      buttons: {
+        button1: {
+          label: "Delete",
+          callback: () => {
+            Character.remove(this.actor, typetoremove, index);
+          },
+          icon: `<i class="fas fa-check"></i>`
+        },
+        button2: {
+          label: "Cancel",
+          callback: () => { },
+          icon: `<i class="fas fa-cancel"></i>`
+        },
+      }
+    }).render(true);
   }
 
   /**
