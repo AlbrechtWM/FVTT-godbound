@@ -410,6 +410,45 @@
 								</ol>
 							</div>
 							<div data-group="charsheet" data-tab="divine" class="tab">
+								<div class="sheet-row">
+									<div
+										class="sheet-col-1 sheet-title-banner-subheading sheet-pad-t-md sheet-pad-b-sm sheet-mar-t-md sheet-mar-b-sm">
+										<h3>Words of Creation</h3>
+									</div>
+								</div>
+								<ol class="items-list"> 
+									<li class="item flexrow items-header flex-start">
+										<div class="item-name flex0 flex-start" style="margin-right: 0px; width: 30px; float: left;">Icon</div>
+										<div class="item-name flex0 flex-start" style="margin-right: 0px; width: 30px; float: left;">Name</div>
+										<div class="item-name flex0" style="margin-right: auto;">Description</div>
+										<div class="item-controls">
+											<a class="item-control item-create" title="Create item"
+												data-type="word"><i class="fas fa-plus"></i> Add Word</a>
+										</div>
+									</li>
+									{{#each words as |item id|}}
+									<li class="item flexrow" style="align-items: center;" data-item-id="{{item._id}}">
+										<div class="item-name">
+											<img src="{{item.img}}" title="{{item.name}}" width="24" height="24" />
+										</div>
+										<div class="item-name">
+											<label>{{item.name}}</label>
+										</div>
+										<div class="item-name">
+											<textarea>{{item.system.base.description}}</textarea>
+										</div>
+										<div class="item-controls">
+											<div class="item-control item-paste margin-right-halfem" title="Paste Item">
+												<i class="fas fa-comment"></i>
+											</div>
+											<div class="item-control item-edit margin-right-halfem" title="Edit Item"><i
+													class="fas fa-edit"></i></div>
+											<div class="item-control item-delete" title="Delete Item"><i
+													class="fas fa-trash"></i></div>
+										</div>
+									</li>
+									{{/each}}
+								</ol>
 							</div>
 							<div data-group="charsheet" data-tab="arts" class="tab">
 							</div>
