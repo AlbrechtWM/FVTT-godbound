@@ -595,7 +595,7 @@ export class characterActorSheet extends ActorSheet {
     const tempActor = this.actor;
     const speaker = ChatMessage.getSpeaker({ tempActor });
 
-    let message = "Hello World";
+    let message = `<div style="text-align: center; font-weight: bold; text-decoration: underline;">${item.name}</div><hr/><p style="font-style: italic">${item.system.base.description}</p>`;
 
     const chatData = {
         user: game.user._id,
