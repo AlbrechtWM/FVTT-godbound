@@ -108,6 +108,30 @@ Hooks.once("ready", async function () {
 });
 
 /* -------------------------------------------- */
+/*  Other Hooks                                 */
+/* -------------------------------------------- */
+
+Hooks.on("preCreateToken", (docArg, dataArg, optionsArg) => 
+{
+  // console.log("Pre Create Token");
+  // console.log(docArg);
+  // console.log(dataArg);
+  // console.log(optionsArg);
+});
+
+Hooks.on("createToken", (docArg, dataArg, optionsArg) => 
+{
+  // console.log("Create Token");
+  // console.log(docArg);
+  // console.log(dataArg);
+  // console.log(optionsArg); 
+  let tempName = docArg.data.name;
+  // console.log(tempName);
+  docArg.updateSource({actorLink: true});
+  docArg.updateSource({name: tempName});
+});
+
+/* -------------------------------------------- */
 /*  Hotbar Macros                               */
 /* -------------------------------------------- */
 

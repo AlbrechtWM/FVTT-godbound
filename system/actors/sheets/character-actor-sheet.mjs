@@ -109,6 +109,9 @@ export class characterActorSheet extends ActorSheet {
     // Add Inventory Item
     html.find('.item-create').click(this._onItemCreate.bind(this));
 
+    // Past Inventory Item to Chat
+    html.find('.item-chat-paste').click(this._onChatPaste.bind(this));
+
     // Delete Inventory Item
     html.find('.item-delete').click(ev => {
       const li = $(ev.currentTarget).parents(".item");
@@ -584,6 +587,22 @@ export class characterActorSheet extends ActorSheet {
     //   });
     //   return roll;
     // }
+  }
+
+  _onChatPaste(event) {
+    const li = $(event.currentTarget).parents(".item");
+    const item = this.actor.items.get(li.data("itemId"));
+    const tempActor = this.actor;
+    const speaker = ChatMessage.getSpeaker({ tempActor });
+
+    let message = "Hello World";
+
+    const chatData = {
+        user: game.user._id,
+        speaker,
+        content: message,
+    };
+    ChatMessage.create(chatData, {});
   }
 
 }
