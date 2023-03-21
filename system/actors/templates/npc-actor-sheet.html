@@ -6,12 +6,12 @@
 					<div class="fable-font margin-bottom-1em margin-right-1em bold">
 						Name
 					</div>
-					<input type="text" name="system.base.name" value="{{system.base.name}}" data-type="String">
+					<input type="text" name="name" value="{{actor.name}}" data-type="String">
 				</div>
 				<div class="flex">
 					<div class="margin-right-1em portrait">
 						<img class="profile-img godbound-border" src="{{actor.img}}" data-edit="img"
-							title="{{system.base.name}}" />
+							title="{{actor.name}}" />
 					</div>
 					<div class="flex column">
 						<div class="flex column stat-container center margin-bottom-halfem">
@@ -23,16 +23,16 @@
 									<div class="flex column padding-halfem stat-info-npc-border">
 										<div class="flex">
 											<div class="stat-info-npc stat-info-sub-item-npc">
-												Level
+												HD Level
 											</div>
 											<div class="padding-left-14px stat-info-npc stat-info-sub-item-npc">
-												<input type="number" name="actor.coreStats.levelOrHD"
+												<input type="number" name="system.coreStats.levelOrHD"
 													value="{{system.coreStats.levelOrHD}}" data-type="Number">
 											</div>
 										</div>
 										<div class="flex">
 											<div class="stat-info-npc stat-info-sub-item-npc">
-												Bonus
+												HD Bonus
 											</div>
 											<div class="padding-left-14px stat-info-npc stat-info-sub-item-npc">
 												<input type="number" name="system.coreStats.hp.miscBonus"
@@ -40,6 +40,9 @@
 											</div>
 										</div>
 										<div class="stat-info-npc stat-info-sub-item-npc flex center">
+											<div class="stat-info-npc stat-info-sub-item-npc">
+												Current / Total HD
+											</div>
 											<input class="stat-info-npc-hp-input" min="0"
 												max="{{system.coreStats.hp.max}}" type="number"
 												name="system.coreStats.hp.current"
