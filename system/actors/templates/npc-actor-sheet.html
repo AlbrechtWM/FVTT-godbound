@@ -196,28 +196,76 @@
 						class="fable-font bold sheet-text-header sheet-text-header-main  stat-info margin-bottom-halfem no-left-border no-right-border">
 						Effort
 					</div>
-					<div class="flexrow" style="margin-top: 5px; align-items: center; justify-content: center;">
-						<div class="flex">
-							<div class="godbound-font bold margin-right-halfem single-col-tab-stats-title">
-								Committed
+					<ol class="items-list effort-list">
+						<li class="item flexrow items-header" style="justify-content: space-around;">
+							<div class="item-name" style="min-width: max-content; margin-right: 5px">Sustained</div>
+							<div class="item-name" style="min-width: max-content; padding-left: 25px">Turn</div>
+							<div class="item-name" style="min-width: max-content; padding-left: 18px">Scene</div>
+							<div class="item-name" style="min-width: max-content; padding-left: 25px">Day</div>
+							<div class="item-name effort-controls"
+								style="min-width: max-content; justify-content: flex-end; padding-left: 15px">Free</div>
+							<div class="item-name effort-controls"
+								style="min-width: max-content; justify-content: flex-end; padding-right: 22px">Max</div>
+						</li>
+						<li class="item flexrow" style="align-items: center;">
+							<div class="item-name" style="min-width: fit-content; align-items: center;">
+								<a class="stat-plus" title="Increase Effort" style="min-width: max-content;"
+									data-type="sustainCommitted"><i class="fas fa-plus"></i></a>
+								<input style="width: 30px;" type="number"
+									name="system.coreStats.effort.sustainCommitted" disabled="true"
+									value="{{system.coreStats.effort.sustainCommitted}}" data-type="Number">
+								<a class="stat-minus" title="Decrease Effort"
+									style="min-width: max-content;" data-type="sustainCommitted"><i
+										class="fas fa-minus"></i></a>
+								<!-- <a class="stat-reset" title="Reset Effort" style="min-width: max-content;"
+									data-type="sustainCommitted"><i class="fas fa-arrows-rotate"></i></a> -->
 							</div>
-							<div class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-center sheet-pad-r-md">
-								<input type="number" name="system.coreStats.effort.committed"
-									value="{{system.coreStats.effort.committed}}" data-type="Number">
+							<div class="item-name" style="min-width: fit-content; align-items: center;">
+								<a class="stat-plus" title="Increase Effort" style="min-width: max-content;"
+									data-type="turnCommitted"><i class="fas fa-plus"></i></a>
+								<input style="width: 30px;" type="number"
+									name="system.coreStats.effort.turnCommitted" disabled="true"
+									value="{{system.coreStats.effort.turnCommitted}}" data-type="Number">
+								<a class="stat-reset" title="Reset Effort" style="min-width: max-content;"
+									data-type="turnCommitted"><i class="fas fa-arrows-rotate"></i></a>
 							</div>
-						</div>
-						<div class="godbound-font bold margin-right-halfem single-col-tab-stats-title">
-							Totals
-						</div>
-						<div class="flex">
-							<input disabled="true" min="0" max="{{system.coreStats.effort.max}}" type="number"
-								name="system.coreStats.effort.free" value="{{system.coreStats.effort.free}}"
-								data-type="Number">
-							<div class="bold margin-left-halfem margin-right-halfem">/</div>
-							<input type="number" name="system.coreStats.effort.max"
-								value="{{system.coreStats.effort.max}}" data-type="Number">
-						</div>
-					</div>
+							<div class="item-name" style="min-width: fit-content; align-items: center;">
+								<a class="stat-plus" title="Increase Effort" style="min-width: max-content;"
+									data-type="sceneCommitted"><i class="fas fa-plus"></i></a>
+								<input style="width: 30px;" type="number"
+									name="system.coreStats.effort.sceneCommitted" disabled="true"
+									value="{{system.coreStats.effort.sceneCommitted}}" data-type="Number">
+								<a class="stat-reset" title="Reset Effort" style="min-width: max-content;"
+									data-type="sceneCommitted"><i class="fas fa-arrows-rotate"></i></a>
+							</div>
+							<div class="item-name" style="min-width: fit-content; align-items: center;">
+								<a class="stat-plus" title="Increase Effort" style="min-width: max-content;"
+									data-type="dayCommitted"><i class="fas fa-plus"></i></a>
+								<input style="width: 30px;" type="number"
+									name="system.coreStats.effort.dayCommitted" disabled="true"
+									value="{{system.coreStats.effort.dayCommitted}}" data-type="Number">
+								<a class="stat-reset" title="Reset Effort" style="min-width: max-content;"
+									data-type="dayCommitted"><i class="fas fa-arrows-rotate"></i></a>
+							</div>
+							<div class="item-name effort-controls"
+								style="min-width: fit-content; align-items: center;">
+								<input style="width: 30px;" type="number"
+									name="system.coreStats.effort.free" disabled="true"
+									value="{{system.coreStats.effort.free}}" data-type="Number">
+							</div>
+							<div class="item-name effort-controls"
+								style="min-width: fit-content; align-items: center;">
+								<a class="stat-plus" title="Increase Effort" style="min-width: max-content;"
+									data-type="max"><i class="fas fa-plus"></i></a>
+								<input style="width: 30px;" type="number" name="system.coreStats.effort.max"
+									disabled="true" value="{{system.coreStats.effort.max}}"
+									data-type="Number">
+								<a class="stat-minus" title="Decrease Effort"
+									style="min-width: max-content;" data-type="max"><i
+										class="fas fa-minus"></i></a>
+							</div>
+						</li>
+					</ol>
 					<div
 						class="fable-font bold sheet-text-header sheet-text-header-main stat-info margin-bottom-halfem margin-top-halfem">
 						Words of Creation

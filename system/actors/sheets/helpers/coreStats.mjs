@@ -130,7 +130,7 @@ const calculateAC = (system) => {
 }
 
 /**
- * Calculates effort for the actor
+ * Sets whether this actor uses HD or not
  * @param {Object} system - actor system object
  */
 const setUseHD = (system, useHD) => {
@@ -142,7 +142,8 @@ const setUseHD = (system, useHD) => {
  * @param {Object} system - actor system object
  */
 const calculateEffort = (system) => {
-    system.coreStats.effort.free = system.coreStats.effort.max - system.coreStats.effort.committed;
+    system.coreStats.effort.totalCommitted = system.coreStats.effort.turnCommitted + system.coreStats.effort.sustainCommitted + system.coreStats.effort.sceneCommitted + system.coreStats.effort.dayCommitted; 
+    system.coreStats.effort.free = system.coreStats.effort.max - system.coreStats.effort.totalCommitted;
 }
 
 

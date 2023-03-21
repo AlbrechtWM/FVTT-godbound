@@ -166,7 +166,11 @@
           },
           "effort": {
             "max": 0,
-            "committed": 0,
+            "totalCommitted": 0,
+            "turnCommitted": 0,
+            "sustainCommitted": 0,
+            "sceneCommitted": 0,
+            "dayCommitted": 0,
             "free": 0,
             "baseCostModifier": 0
           },

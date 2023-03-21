@@ -40,6 +40,8 @@ export class characterActorSheet extends ActorSheet {
     // Use a safe clone of the actor data for further operations.
     const actorData = this.actor;
 
+    //console.log(actorData);
+
     // Add the actor's data to context.data for easier access, as well as flags.
     context.system = actorData.system;
     context.flags = actorData.flags;
@@ -149,6 +151,11 @@ export class characterActorSheet extends ActorSheet {
     html.find('div[type=addto]').click(this._onClickAdd.bind(this));
 
     html.find('div[type=remove]').click(this._onClickRemove.bind(this));
+
+    //Stat manipulation
+    html.find('.stat-plus').click(this.onStatPlus.bind(this));
+    html.find('.stat-minus').click(this.onStatMinus.bind(this));
+    html.find('.stat-reset').click(this.onStatReset.bind(this));
   }
 
   /**
@@ -225,7 +232,7 @@ export class characterActorSheet extends ActorSheet {
   }
 
   /* -------------------------------------------- */
- 
+
   // Render the item sheet for viewing/editing prior to the editable check.
   // html.find('.item-edit').click(ev => {
   //   const li = $(ev.currentTarget).parents(".item");
@@ -287,6 +294,129 @@ export class characterActorSheet extends ActorSheet {
 
     // Finally, create the item!
     return await Item.create(itemData, { parent: this.actor });
+  }
+
+  async onStatPlus(event) {
+    const header = event.currentTarget;
+    const statField = header.dataset.type;
+    let currentValue = this.actor.system.coreStats.effort[statField];
+    currentValue++;
+    let statPath = `system.coreStats.effort.${statField}`;
+    let newValue = { [statPath]: currentValue };
+    await this.actor.update(newValue);
+
+    //Chat Message
+    const tempActor = this.actor;
+    const speaker = ChatMessage.getSpeaker({ tempActor });
+
+    CoreStats.calculateEffort(this.actor.system);
+
+    let messagePreamble = tempActor.name + " has committed ";
+    switch (statField + "") {
+      case "sustainCommitted":
+        messagePreamble += "Sustained Effort.";
+        break;
+      case "turnCommitted":
+        messagePreamble += "Effort for the Turn.";
+        break;
+      case "sceneCommitted":
+        messagePreamble += "Effort for the Scene.";
+        break;
+      case "dayCommitted":
+        messagePreamble += "Effort for the Day.";
+        break;
+    }
+
+    let message = `<p style="font-style: italic">${messagePreamble}</p><p style="font-weight: bold">  Remaining Effort: ${this.actor.system.coreStats.effort.free}/${this.actor.system.coreStats.effort.max}`;
+
+    const chatData = {
+      user: game.user._id,
+      speaker,
+      content: message,
+    };
+    ChatMessage.create(chatData, {});
+  }
+
+  async onStatMinus(event) {
+    const header = event.currentTarget;
+    const statField = header.dataset.type;
+    let currentValue = this.actor.system.coreStats.effort[statField];
+    currentValue--;
+    let statPath = `system.coreStats.effort.${statField}`;
+    let newValue = { [statPath]: currentValue };
+    await this.actor.update(newValue);
+
+    //Chat Message
+    const tempActor = this.actor;
+    const speaker = ChatMessage.getSpeaker({ tempActor });
+
+    CoreStats.calculateEffort(this.actor.system);
+
+    let messagePreamble = tempActor.name + " has reclaimed ";
+    switch (statField + "") {
+      case "sustainCommitted":
+        messagePreamble += "Sustained Effort.";
+        break;
+      // case "turnCommitted":
+      //   messagePreamble += "Effort for the Turn.";
+      //   break;
+      // case "sceneCommitted":
+      //   messagePreamble += "Effort for the Scene.";
+      //   break;
+      // case "dayCommitted":
+      //   messagePreamble += "Effort for the Day.";
+      //   break;
+    }
+
+    let message = `<p style="font-style: italic">${messagePreamble}</p><p style="font-weight: bold">  Remaining Effort: ${this.actor.system.coreStats.effort.free}/${this.actor.system.coreStats.effort.max}`;
+
+    const chatData = {
+      user: game.user._id,
+      speaker,
+      content: message,
+    };
+    ChatMessage.create(chatData, {});
+  }
+
+  async onStatReset(event) {
+    const header = event.currentTarget;
+    const statField = header.dataset.type;
+    let currentValue = this.actor.system.coreStats.effort[statField];
+    currentValue = 0;
+    let statPath = `system.coreStats.effort.${statField}`;
+    let newValue = { [statPath]: currentValue };
+    await this.actor.update(newValue);
+
+    //Chat Message
+    const tempActor = this.actor;
+    const speaker = ChatMessage.getSpeaker({ tempActor });
+
+    CoreStats.calculateEffort(this.actor.system);
+
+    let messagePreamble = tempActor.name + " has reset their ";
+    switch (statField + "") {
+      // case "sustainCommitted":
+      //   messagePreamble += "Sustained Effort.";
+      //   break;
+      case "turnCommitted":
+        messagePreamble += " Turn Effort.";
+        break;
+      case "sceneCommitted":
+        messagePreamble += " Scene Effort.";
+        break;
+      case "dayCommitted":
+        messagePreamble += " Day Effort.";
+        break;
+    }
+
+    let message = `<p style="font-style: italic">${messagePreamble}</p><p style="font-weight: bold">  Remaining Effort: ${this.actor.system.coreStats.effort.free}/${this.actor.system.coreStats.effort.max}`;
+
+    const chatData = {
+      user: game.user._id,
+      speaker,
+      content: message,
+    };
+    ChatMessage.create(chatData, {});
   }
 
   /**
@@ -402,9 +532,9 @@ export class characterActorSheet extends ActorSheet {
     let message = `<div style="text-align: center; font-weight: bold; text-decoration: underline;">${item.name}</div><hr/><p style="font-style: italic">${item.system.base.description}</p>`;
 
     const chatData = {
-        user: game.user._id,
-        speaker,
-        content: message,
+      user: game.user._id,
+      speaker,
+      content: message,
     };
     ChatMessage.create(chatData, {});
   }
