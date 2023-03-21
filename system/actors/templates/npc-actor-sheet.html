@@ -3,12 +3,12 @@
 		<div class="charsheet-overall-wrapper" style="min-height: 770; height: 770;">
 			<div>
 				<div class="flex">
-					<div class="fable-font margin-bottom-1em margin-right-1em bold">
+					<div class="fable-font margin-right-1em bold" style="margin-bottom: 10px;">
 						Name
 					</div>
 					<input type="text" name="name" value="{{actor.name}}" data-type="String">
 				</div>
-				<div class="flex">
+				<div class="flex" style="margin-bottom: 7px;">
 					<div class="margin-right-1em portrait">
 						<img class="profile-img godbound-border" src="{{actor.img}}" data-edit="img"
 							title="{{actor.name}}" />
@@ -140,9 +140,12 @@
 			<div class="npcsheet-tabs flex center" data-group="npcsheet">
 				<div class="margin-right-1em item godbound-button" data-tab="npc" data-group="npcsheet">
 					Character</div>
+				<div class="margin-right-1em item godbound-button" data-tab="divine" data-group="npcsheet">
+					Divine</div>
 				<div class="margin-right-1em item godbound-button" data-tab="combat" data-group="npcsheet">
 					Combat</div>
-				<div class="margin-right-1em item godbound-button" data-tab="arts" data-group="npcsheet">Arts</div>
+				<div class="margin-right-1em item godbound-button" data-tab="arts" data-group="npcsheet">
+					Arts</div>
 			</div>
 			<section class="npcsheet-content">
 				<div data-group="npcsheet" data-tab="npc" class="tab">
@@ -188,6 +191,110 @@
 						</div>
 					</div>
 				</div>
+				<div data-group="npcsheet" data-tab="divine" class="tab">
+					<div
+						class="fable-font bold sheet-text-header sheet-text-header-main  stat-info margin-bottom-halfem no-left-border no-right-border">
+						Effort
+					</div>
+					<div class="flexrow" style="margin-top: 5px; align-items: center; justify-content: center;">
+						<div class="flex">
+							<div class="godbound-font bold margin-right-halfem single-col-tab-stats-title">
+								Committed
+							</div>
+							<div class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-center sheet-pad-r-md">
+								<input type="number" name="system.coreStats.effort.committed"
+									value="{{system.coreStats.effort.committed}}" data-type="Number">
+							</div>
+						</div>
+						<div class="godbound-font bold margin-right-halfem single-col-tab-stats-title">
+							Totals
+						</div>
+						<div class="flex">
+							<input disabled="true" min="0" max="{{system.coreStats.effort.max}}" type="number"
+								name="system.coreStats.effort.free" value="{{system.coreStats.effort.free}}"
+								data-type="Number">
+							<div class="bold margin-left-halfem margin-right-halfem">/</div>
+							<input type="number" name="system.coreStats.effort.max"
+								value="{{system.coreStats.effort.max}}" data-type="Number">
+						</div>
+					</div>
+					<div
+						class="fable-font bold sheet-text-header sheet-text-header-main stat-info margin-bottom-halfem margin-top-halfem">
+						Words of Creation
+					</div>
+					<ol class="items-list words-list">
+						<li class="item flexrow items-header">
+							<div class="item-name flex0" style="min-width: max-content;">Icon</div>
+							<div class="item-name flex0" style="min-width: max-content; margin-left: 20px;">
+								Name</div>
+							<div class="item-name flex1" style="margin-left: 180px;">Description</div>
+							<div class="item-controls">
+								<a class="item-control item-create" title="Create item" data-type="word"><i
+										class="fas fa-plus"></i> Add Word</a>
+							</div>
+						</li>
+						{{#each words as |item id|}}
+						<li class="item flexrow" style="align-items: center;" data-item-id="{{item._id}}">
+							<div class="item-name flex0" style="min-width: max-content; margin-right: 10px;">
+								<img src="{{item.img}}" title="{{item.name}}" width="24" height="24" />
+							</div>
+							<div class="item-name flex0" style="min-width: max-content; margin-right: 10px;">
+								<label style="font-weight: bold;">{{item.name}}</label>
+							</div>
+							<div class="item-name flex1" style="margin-right: 10px;">
+								<textarea>{{item.system.base.description}}</textarea>
+							</div>
+							<div class="item-controls flex0" style="min-width: max-content;">
+								<div class="item-control item-chat-paste margin-right-halfem" title="Paste Item">
+									<i class="fas fa-comment"></i>
+								</div>
+								<div class="item-control item-edit margin-right-halfem" title="Edit Item"><i
+										class="fas fa-edit"></i></div>
+								<div class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i>
+								</div>
+							</div>
+						</li>
+						{{/each}}
+					</ol>
+					<div
+						class="fable-font bold sheet-text-header sheet-text-header-main stat-info margin-bottom-halfem margin-top-halfem">
+						Gifts
+					</div>
+					<ol class="items-list gifts-list">
+						<li class="item flexrow items-header">
+							<div class="item-name flex0" style="min-width: max-content;">Icon</div>
+							<div class="item-name flex0" style="min-width: max-content; margin-left: 20px;">
+								Name</div>
+							<div class="item-name flex1" style="margin-left: 180px;">Description</div>
+							<div class="item-controls">
+								<a class="item-control item-create" title="Create item" data-type="gift"><i
+										class="fas fa-plus"></i> Add Gift</a>
+							</div>
+						</li>
+						{{#each gifts as |item id|}}
+						<li class="item flexrow" style="align-items: center;" data-item-id="{{item._id}}">
+							<div class="item-name flex0" style="min-width: max-content; margin-right: 10px;">
+								<img src="{{item.img}}" title="{{item.name}}" width="24" height="24" />
+							</div>
+							<div class="item-name flex0" style="min-width: max-content; margin-right: 10px;">
+								<label style="font-weight: bold;">{{item.name}}</label>
+							</div>
+							<div class="item-name flex1" style="margin-right: 10px;">
+								<textarea>{{item.system.base.description}}</textarea>
+							</div>
+							<div class="item-controls flex0" style="min-width: max-content;">
+								<div class="item-control item-chat-paste margin-right-halfem" title="Paste Item">
+									<i class="fas fa-comment"></i>
+								</div>
+								<div class="item-control item-edit margin-right-halfem" title="Edit Item"><i
+										class="fas fa-edit"></i></div>
+								<div class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i>
+								</div>
+							</div>
+						</li>
+						{{/each}}
+					</ol>
+				</div>
 				<div data-group="npcsheet" data-tab="combat" class="tab">
 					<div
 						class="fable-font bold sheet-text-header sheet-text-header-main stat-info margin-bottom-halfem margin-top-halfem">
@@ -198,8 +305,7 @@
 							class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-right sheet-pad-l-sm sheet-pad-r-md">
 							Type
 						</div>
-						<div
-							class="sheet-col-17-20 sheet-attr sheet-vert-middle sheet-pad-t-sm sheet-pad-r-md">
+						<div class="sheet-col-17-20 sheet-attr sheet-vert-middle sheet-pad-t-sm sheet-pad-r-md">
 							<select class="sheet-select" name="system.coreStats.ac.armorType">
 								{{#select system.coreStats.ac.armorType}}
 								<option value="none">None (Skin or clothing)</option>
@@ -217,22 +323,19 @@
 							class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-right sheet-pad-l-sm sheet-pad-r-md">
 							AC
 						</div>
-						<div
-							class="sheet-col-1-10 sheet-attr sheet-vert-middle sheet-center sheet-pad-r-md">
-							<input type="number" name="system.coreStats.ac.total"
-								value="{{system.coreStats.ac.total}}" disabled="true">
+						<div class="sheet-col-1-10 sheet-attr sheet-vert-middle sheet-center sheet-pad-r-md">
+							<input type="number" name="system.coreStats.ac.total" value="{{system.coreStats.ac.total}}"
+								disabled="true">
 						</div>
 						<div
 							class="sheet-col-1-5 sheet-attr sheet-vert-middle sheet-center sheet-pad-r-md sheet-mar-t-sm">
-							<input type="checkbox" class="sheet-box-check"
-								name="system.coreStats.ac.hasShield" {{checked
-								system.coreStats.ac.hasShield}}><label>Shield</label>
+							<input type="checkbox" class="sheet-box-check" name="system.coreStats.ac.hasShield"
+								{{checked system.coreStats.ac.hasShield}}><label>Shield</label>
 						</div>
 						<div class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-right sheet-pad-r-md">
 							Bonus
 						</div>
-						<div
-							class="sheet-col-1-10 sheet-attr sheet-vert-middle sheet-center sheet-pad-r-md">
+						<div class="sheet-col-1-10 sheet-attr sheet-vert-middle sheet-center sheet-pad-r-md">
 							<input type="number" name="system.coreStats.ac.miscModifier"
 								value="{{system.coreStats.ac.miscModifier}}">
 						</div>
@@ -259,35 +362,28 @@
 							<div class="item-name flex1" style="min-width: max-content; ">Range</div>
 							<div class="item-name flex1" style="min-width: max-content;">Area</div>
 							<div class="item-controls">
-								<a class="item-control item-create" title="Create item"
-									style="min-width: max-content;" data-type="attack"><i
-										class="fas fa-plus"></i> Add Attack</a>
+								<a class="item-control item-create" title="Create item" style="min-width: max-content;"
+									data-type="attack"><i class="fas fa-plus"></i> Add Attack</a>
 							</div>
 						</li>
 						{{#each attacks as |item id|}}
 						<li class="item flexrow" style="align-items: center;" data-item-id="{{item._id}}">
-							<div class="item-name flex0"
-								style="min-width: max-content; margin-right: 10px;">
+							<div class="item-name flex0" style="min-width: max-content; margin-right: 10px;">
 								<img src="{{item.img}}" title="{{item.name}}" width="24" height="24" />
 							</div>
-							<div class="item-name flex0"
-								style="min-width: max-content; margin-right: 10px;">
+							<div class="item-name flex0" style="min-width: max-content; margin-right: 10px;">
 								<label style="font-weight: bold;">{{item.name}}</label>
 							</div>
-							<div class="item-name flex1"
-								style="min-width: max-content; margin-right: 10px;">
+							<div class="item-name flex1" style="min-width: max-content; margin-right: 10px;">
 								<label>{{item.summaries.toHit}}</label>
 							</div>
-							<div class="item-name flex2"
-								style="min-width: max-content; margin-right: 10px;">
+							<div class="item-name flex2" style="min-width: max-content; margin-right: 10px;">
 								<label>{{item.summaries.damage}}</label>
 							</div>
-							<div class="item-name flex1"
-								style="min-width: max-content; margin-right: 10px;">
+							<div class="item-name flex1" style="min-width: max-content; margin-right: 10px;">
 								<label>{{item.summaries.range}}</label>
 							</div>
-							<div class="item-name flex1"
-								style="min-width: max-content; margin-right: 10px;">
+							<div class="item-name flex1" style="min-width: max-content; margin-right: 10px;">
 								<label>{{item.summaries.area}}</label>
 							</div>
 							<div class="item-controls">
@@ -300,8 +396,8 @@
 										class="fas fa-dice-d20"></i></div>
 								<div class="item-control item-edit margin-right-halfem" title="Edit Item"><i
 										class="fas fa-edit"></i></div>
-								<div class="item-control item-delete" title="Delete Item"><i
-										class="fas fa-trash"></i></div>
+								<div class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i>
+								</div>
 							</div>
 						</li>
 						{{/each}}
