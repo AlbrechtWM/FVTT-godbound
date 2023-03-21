@@ -116,10 +116,17 @@ Hooks.on("preCreateToken", (docArg, dataArg, optionsArg) => {
   // console.log(docArg);
   // console.log(dataArg);
   // console.log(optionsArg);
+  let tempTexture = docArg.texture;
+  tempTexture.src = docArg.actor.img;
+  docArg.updateSource( {texture: tempTexture});
+  docArg.updateSource({ actorLink: true, name: docArg.actor.name});
 });
 
 Hooks.on("createToken", (docArg, dataArg, optionsArg) => {
-  docArg.updateSource({ actorLink: true, name: docArg.actor.name });
+  // console.log(docArg);
+  // console.log(dataArg);
+  // console.log(optionsArg);
+
 });
 
 /* -------------------------------------------- */
