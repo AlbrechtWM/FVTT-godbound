@@ -3,6 +3,7 @@ import CoreStats from './helpers/coreStats.mjs';
 import Character from './helpers/character.mjs';
 import Dominion from './helpers/dominion.mjs';
 import Rolls from './helpers/rolls.mjs';
+import Attacks from './helpers/attacks.mjs';
 
 /**
  * Extend the basic ActorSheet with some very simple modifications
@@ -200,7 +201,7 @@ export class characterActorSheet extends ActorSheet {
       }
       // Append to features.
       else if (i.type === 'attack') {
-        this.prepareAttackSummaries(i, context);
+        Attacks.prepareAttackSummaries(i, context);
         attacks.push(i);
       }
       // Append to features.
@@ -224,204 +225,7 @@ export class characterActorSheet extends ActorSheet {
   }
 
   /* -------------------------------------------- */
-  prepareAttackSummaries(item, actor) {
-    item.summaries = {};
-
-    this.prepareToHitSummary(item, actor);
-    this.prepareDamageSummary(item, actor);
-    this.prepareRangeSummary(item, actor);
-    this.prepareAreaSummary(item, actor);
-  }
-
-  prepareToHitSummary(item, actor) {
-
-    if (item.system.targeting.toHit.isAutomatic) {
-      item.summaries.toHit = "Auto";
-      return;
-    }
-
-    item.summaries.toHit = "1d20";
-
-    //Check advantage/disadvantage first
-    if (item.system.targeting.toHit.isAdvantaged && item.system.targeting.toHit.isDisadvantaged) {
-      item.summaries.toHit = "1d20"; //if both advantage and disadvantage apply, they cancel out
-    }
-    else if (item.system.targeting.toHit.isAdvantaged) {
-      item.summaries.toHit = "2d20kh1";
-    }
-    else if (item.system.targeting.toHit.isDisadvantaged) {
-      item.summaries.toHit = "2d20kl1";
-    }
-    //now calc modifiers
-    let modifier = 0;
-    let targetAC = 0;
-    let flavor = "#[";
-
-    //attribute bonus
-    if (item.system.targeting.toHit.relevantAttribute != "none" && item.system.targeting.toHit.useAttrBonus)
-      modifier += actor.system.attributes[item.system.targeting.toHit.relevantAttribute].mod;
-
-    //level bonus
-    if (item.system.targeting.toHit.useLevelBonus)
-      modifier += actor.system.coreStats.levelOrHD;
-
-    //misc mod
-    modifier += item.system.targeting.toHit.miscBonus;
-
-    let tempArr = Array.from(game.user.targets);
-    //get current AC
-    if (tempArr.length > 0)
-      targetAC = tempArr[0].actor.system.coreStats.ac.total;
-    else
-      targetAC = null;
-
-
-    //flavor
-    // if (item.system.targeting.isMagical)
-    //   flavor += "Magical,";
-    // else
-    //   flavor += "Mundane,";
-
-    // if (item.system.act?.isSmite)
-    //   flavor += "Smite,";
-
-    // if (item.system.targeting.isMelee)
-    //   flavor += "Melee]";
-    // else
-    //   flavor += "Ranged]";
-
-    item.summaries.toHit += "+" + modifier + (targetAC != null ? "+" + targetAC : "") /*+ " " + flavor*/;
-
-  } // End To Hit
-
-  prepareDamageSummary(item, actor) {
-
-    if (!item.system.damage.enableDamage) {
-      item.summaries.damage = "None";
-      return;
-    }
-
-    let dieQuantity = item.system.damage.numDie + (item.system.damage.bonusDieForExtraLevels ? (actor.system.coreStats.levelOrHD - 1) : 0);
-    let dieType = item.system.damage.dieType;
-
-    let fixedDamage = (dieType === "none"); //if dieType is "none", we're doing some fixed damage CONFIG.GODBOUND_CONSTANTS.dieTypes[0]
-
-    if (!fixedDamage)
-      dieType = dieType.slice(1);
-
-    let modifier = 0;
-
-    //attribute bonus
-    if (item.system.damage.relevantAttribute != "none" && item.system.damage.useAttrBonus)
-      modifier += actor.system.attributes[item.system.damage.relevantAttribute].mod;
-
-    //level bonus
-    if (item.system.damage.useLevelBonus)
-      modifier += actor.system.coreStats.levelOrHD;
-
-    //misc mod
-    modifier += item.system.damage.miscBonus;
-
-    //get the damage type inline text
-    let damageType = "[" + item.system.damage.damageType + "]";
-    let advantageDisadvantageSuffix = "";
-
-    //get potential advantage / disadvantage stuff ready
-    if (item.system.damage.isAdvantaged && item.system.damage.isDisadvantaged) {
-      //do nothing
-    }
-    else if (item.system.damage.isAdvantaged) {
-      advantageDisadvantageSuffix = "kh" + dieQuantity; //keep highest of original number
-      dieQuantity = dieQuantity * 2; //double the number of dice
-    }
-    else if (item.system.damage.isDisadvantaged) {
-      advantageDisadvantageSuffix = "kl" + dieQuantity; //keep lowest of original number
-      dieQuantity = dieQuantity * 2; //double the number of dice
-    }
-
-    // let flavor = "#[";
-
-    //flavor
-    // if (item.system.damage.isStraight)
-    //   flavor += "Straight";
-    // else
-    //   flavor += "Regular";
-
-    // if (item.system.damage.canOverflow)
-    //   flavor += ",Overflows";
-
-    // if (item.system.damage.isEnvironmental)
-    //   flavor += ",Environmental]";
-
-    // flavor += "]";
-
-    //put it all together
-    if (fixedDamage)
-      item.summaries.damage = modifier + damageType; /*+ " " + flavor*/
-    else
-      item.summaries.damage = dieQuantity + dieType + advantageDisadvantageSuffix + damageType + " + " + modifier /*+ " " + flavor*/;
-  }//End Damage
-
-  prepareRangeSummary(item, actor) {
-    if (item.system.targeting.range.rangeUnits == [CONFIG.GODBOUND_CONSTANTS.distanceUnits[0]])
-      item.summaries.range = item.system.targeting.range.rangeSize + " " + "Feet";
-    else if (item.system.targeting.range.rangeUnits == [CONFIG.GODBOUND_CONSTANTS.distanceUnits[1]])
-      item.summaries.range = item.system.targeting.range.rangeSize + " " + "Miles";
-    else if (item.system.targeting.range.rangeUnits == [CONFIG.GODBOUND_CONSTANTS.distanceUnits[2]])
-      item.summaries.range = "Line Of Sight";
-    else if (item.system.targeting.range.rangeUnits == [CONFIG.GODBOUND_CONSTANTS.distanceUnits[3]])
-      item.summaries.range = "Region";
-    else if (item.system.targeting.range.rangeUnits == [CONFIG.GODBOUND_CONSTANTS.distanceUnits[4]])
-      item.summaries.range = "Realm";
-    else if (item.system.targeting.range.rangeUnits == [CONFIG.GODBOUND_CONSTANTS.distanceUnits[5]])
-      item.summaries.range = "Unlimited";
-    else
-      item.summaries.range = "UNKNOWN";
-
-  } // End Range
-
-  prepareAreaSummary(item, actor) {
-    if (!item.system.targeting.area.isArea) {
-      item.summaries.area = "Single";
-      return;
-    }
-
-    if (item.system.targeting.area.areaUnits == [CONFIG.GODBOUND_CONSTANTS.distanceUnits[0]])
-      item.summaries.area = item.system.targeting.area.areaSize + " " + "Feet";
-    else if (item.system.targeting.area.areaUnits == [CONFIG.GODBOUND_CONSTANTS.distanceUnits[1]])
-      item.summaries.area = item.system.targeting.area.areaSize + " " + "Miles";
-    else if (item.system.targeting.area.areaUnits == [CONFIG.GODBOUND_CONSTANTS.distanceUnits[2]]) {
-      item.summaries.area = "Line Of Sight";
-      return;
-    }
-    else if (item.system.targeting.area.areaUnits == [CONFIG.GODBOUND_CONSTANTS.distanceUnits[3]]) {
-      item.summaries.area = "Region";
-      return;
-    }
-    else if (item.system.targeting.area.areaUnits == [CONFIG.GODBOUND_CONSTANTS.distanceUnits[4]]) {
-      item.summaries.area = "Realm";
-      return;
-    }
-    else if (item.system.targeting.area.areaUnits == [CONFIG.GODBOUND_CONSTANTS.distanceUnits[5]]) {
-      item.summaries.area = "Unlimited";
-      return;
-    }
-    else {
-      item.summaries.area = "UNKNOWN";
-      return;
-    }
-
-    //If we are still here, we are still dealing with conventional feet/miles
-    let shapeSuffix;
-    if (item.system.targeting.area.areaShape == "none")
-      shapeSuffix = "";
-    else
-      shapeSuffix = " [" + item.system.targeting.area.areaShape.capitalize() + "]";
-
-    item.summaries.area += shapeSuffix;
-
-  } // End Area
-
+ 
   // Render the item sheet for viewing/editing prior to the editable check.
   // html.find('.item-edit').click(ev => {
   //   const li = $(ev.currentTarget).parents(".item");

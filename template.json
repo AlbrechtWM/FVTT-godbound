@@ -128,7 +128,7 @@
               "isArmorPenalty": false,
               "miscModifier": 0,
               "isAutomatic": false,
-              "dc": -1
+              "dc": 16
             },
             "evasion": {
               "base": 16,

@@ -1004,6 +1004,12 @@ body.sheet-darkmode .attributesabilities {
 	padding: 5px 3px 3px 3px !important;
 }
 
+.sheetform-npc{
+	margin-top: -8px;
+    margin-left: -8px;
+	margin-bottom: -8px;
+}
+
 .charsheet-npc {
 	min-width: 670px;
 	max-width: 670px;
