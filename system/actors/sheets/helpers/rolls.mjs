@@ -52,10 +52,16 @@ const _performAttributeCheck = (actor, stat, modifier) => {
  * @param {damage} damage - Damage value
  */
 const _performAttack = (actor, tohit, damage) => {
-    const hitRoll = new Roll(tohit);
-    hitRoll.evaluate().then(({ result }) => {
+
+    const splitToHit = tohit.split('#');
+    let toHitRoll = splitToHit[0];
+
+    if (toHitRoll.startsWith("Auto"))
+        toHitRoll = "20";
+    const hitRoll = new Roll(toHitRoll);
+    hitRoll.evaluate("async=false").then(({ result }) => {
         const evaluatedResult = eval(result);
-        const flavor = `<div style="text-align: center"><div>Rolling to Hit ( >= 20)</div> ${_getSuccessDisplayForAttack(evaluatedResult)}`;
+        const flavor = `<div style="text-align: center"><div>Rolling to Hit ( >= 20) ${splitToHit[1]}</div> ${_getSuccessDisplayForAttack(evaluatedResult)}`;
         const speaker = ChatMessage.getSpeaker({ actor });
 
         hitRoll.toMessage({
@@ -67,32 +73,57 @@ const _performAttack = (actor, tohit, damage) => {
             const splitDamage = damage.split('#');
             const damageRoll = splitDamage[0];
 
-            new Roll(damage).evaluate().then(({ terms }) => {
+            new Roll(damageRoll).evaluate().then(({ terms }) => {
                 const { results } = terms[0];
-                const { flavor } = terms[0].options;
+                //console.log(terms[0]);
+                const damageType = terms[0].options.flavor;
                 const { number } = terms[2];
-                const indexToModify = _findHighestDamageIndex(results, number);
-                let rollVals = '';
-                let damageVals = '';
-                let numericalResult = '';
-                results.forEach((resultObj, i) => {
-                    const { result } = resultObj;
-                    if (number !== 0 && indexToModify === i) {
-                        rollVals += i === 0 ? result : `, ${result}`;
-                        damageVals += i === 0 ? _getDamageValueDisplay(result + number, true) : ` + ${_getDamageValueDisplay(result + number, true)}`;
-                        numericalResult += i === 0 ? _getDamageNumber(result + number) : ` + ${_getDamageNumber(result + number)}`
-                    } else {
-                        rollVals += i === 0 ? result : `, ${result}`;
-                        damageVals += i === 0 ? _getDamageValueDisplay(result) : ` + ${_getDamageValueDisplay(result)}`;
-                        numericalResult += i === 0 ? _getDamageNumber(result) : ` + ${_getDamageNumber(result)}`
-                    }
 
+                let rollVals = '';
+                let prunedResults = [];
+                //Just get the raw rolls first, and prune for advantage / disadvantage if needed
+                results.forEach((resultObj, i) => {
+                    rollVals += i === 0 ? resultObj.result : `, ${resultObj.result}`;
+                    if (resultObj?.discarded) {
+                        //freakin' "continue" doesn't work in this language so we get this cool empty if block.
+                    }
+                    else
+                        prunedResults.push(resultObj); //it was not chucked from either advantage or disadvantage so keep it
                 });
 
+                const indexToModify = _findHighestDamageIndex(prunedResults, number);
+                let damageVals = '';
+                let numericalResult = '';
+                const isStraight = !(splitDamage[1].includes("Regular"));
+
+                prunedResults.forEach((resultObj, i) => {
+                    const { result } = resultObj;
+                    if (number !== 0 && indexToModify === i) {
+                        if (!isStraight) {
+                            damageVals += i === 0 ? _getDamageValueDisplay(result + number, true) : ` + ${_getDamageValueDisplay(result + number, true)}`;
+                            numericalResult += i === 0 ? _getDamageNumber(result + number) : ` + ${_getDamageNumber(result + number)}`
+                        }
+                        else { //straight damage
+                            damageVals += i === 0 ? _getStraightDamageValueDisplay(result + number, true) : ` + ${_getStraightDamageValueDisplay(result + number, true)}`;
+                            numericalResult += i === 0 ? result + number : ` + ${result + number}`;
+                        }
+                    } else {
+                        if (!isStraight) {
+                            damageVals += i === 0 ? _getDamageValueDisplay(result) : ` + ${_getDamageValueDisplay(result)}`;
+                            numericalResult += i === 0 ? _getDamageNumber(result) : ` + ${_getDamageNumber(result)}`
+                        }
+                        else { //straight damage
+                            damageVals += i === 0 ? _getStraightDamageValueDisplay(result) : ` + ${_getStraightDamageValueDisplay(result)}`;
+                            numericalResult += i === 0 ? result : ` + ${result}`
+                        }
+                    }
+                });
+
+
                 const message = `<div style="text-align: center">
-                    <div>Rolling: ${damageRoll}</div>
+                    <div>Rolling: ${damageRoll} </div>
                     <div>Rolled: ${rollVals} </div>
-                    <div>Dealt: ${damageVals} = ${eval(numericalResult)} ${flavor} damage</div>`;
+                    <div>Dealt: ${damageVals} = ${eval(numericalResult)} ${damageType} damage</div>`;
 
                 const speaker = ChatMessage.getSpeaker({ actor });
 
@@ -100,12 +131,10 @@ const _performAttack = (actor, tohit, damage) => {
                     user: game.user._id,
                     speaker,
                     content: message,
+                    flavor: `<div style="text-align: center">${splitDamage[1]}</div>`,
                 };
                 ChatMessage.create(chatData, {});
             });
-            // })
-
-
         }
     });
 }
@@ -166,6 +195,18 @@ const _getDamageValueDisplay = (evaluated, wasModified) => {
     }
 
     return '<b style="color:grey">0</b>'
+}
+
+const _getStraightDamageValueDisplay = (evaluated, wasModified) => {
+    if (evaluated >= 2 && evaluated <= 5) {
+        return `<b style="color:blue">${evaluated}</b>${wasModified ? ' (Modified)' : ''}`
+    } else if (evaluated >= 6 && evaluated <= 9) {
+        return `<b style="color:purple">${evaluated}</b>${wasModified ? ' (Modified)' : ''}`
+    } else if (evaluated >= 10) {
+        return `<b style="color:orange">${evaluated}</b>${wasModified ? ' (Modified)' : ''}`
+    }
+
+    return `<b style="color:grey">${evaluated}</b>`
 }
 
 /**

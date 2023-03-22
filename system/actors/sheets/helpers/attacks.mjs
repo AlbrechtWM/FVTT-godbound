@@ -1,5 +1,6 @@
 const prepareAttackSummaries = (item, actor) => {
     item.summaries = {};
+    item.verboseSummaries = {};
 
     prepareToHitSummary(item, actor);
     prepareDamageSummary(item, actor);
@@ -9,62 +10,68 @@ const prepareAttackSummaries = (item, actor) => {
 
 const prepareToHitSummary = (item, actor) => {
 
-    if (item.system.targeting.toHit.isAutomatic) {
-        item.summaries.toHit = "Auto";
-        return;
-    }
-
-    item.summaries.toHit = "1d20";
-
-    //Check advantage/disadvantage first
-    if (item.system.targeting.toHit.isAdvantaged && item.system.targeting.toHit.isDisadvantaged) {
-        item.summaries.toHit = "1d20"; //if both advantage and disadvantage apply, they cancel out
-    }
-    else if (item.system.targeting.toHit.isAdvantaged) {
-        item.summaries.toHit = "2d20kh1";
-    }
-    else if (item.system.targeting.toHit.isDisadvantaged) {
-        item.summaries.toHit = "2d20kl1";
-    }
-    //now calc modifiers
+    let toHit = "";
     let modifier = 0;
     let targetAC = 0;
+
+    if (item.system.targeting.toHit.isAutomatic) {
+        toHit = "Auto";
+    }
+    else {
+        toHit = "1d20";
+
+        //Check advantage/disadvantage first
+        if (item.system.targeting.toHit.isAdvantaged && item.system.targeting.toHit.isDisadvantaged) {
+            toHit = "1d20"; //if both advantage and disadvantage apply, they cancel out
+        }
+        else if (item.system.targeting.toHit.isAdvantaged) {
+            toHit = "2d20kh1";
+        }
+        else if (item.system.targeting.toHit.isDisadvantaged) {
+            toHit = "2d20kl1";
+        }
+        //now calc modifiers
+
+        //attribute bonus
+        if (item.system.targeting.toHit.relevantAttribute != "none" && item.system.targeting.toHit.useAttrBonus)
+            modifier += actor.system.attributes[item.system.targeting.toHit.relevantAttribute].mod;
+
+        //level bonus
+        if (item.system.targeting.toHit.useLevelBonus)
+            modifier += actor.system.coreStats.levelOrHD;
+
+        //misc mod
+        modifier += item.system.targeting.toHit.miscBonus;
+
+        let tempArr = Array.from(game.user.targets);
+        //get current AC
+        if (tempArr.length > 0)
+            targetAC = tempArr[0].actor.system.coreStats.ac.total;
+        else
+            targetAC = null;
+    }
+
     let flavor = "#[";
-
-    //attribute bonus
-    if (item.system.targeting.toHit.relevantAttribute != "none" && item.system.targeting.toHit.useAttrBonus)
-        modifier += actor.system.attributes[item.system.targeting.toHit.relevantAttribute].mod;
-
-    //level bonus
-    if (item.system.targeting.toHit.useLevelBonus)
-        modifier += actor.system.coreStats.levelOrHD;
-
-    //misc mod
-    modifier += item.system.targeting.toHit.miscBonus;
-
-    let tempArr = Array.from(game.user.targets);
-    //get current AC
-    if (tempArr.length > 0)
-        targetAC = tempArr[0].actor.system.coreStats.ac.total;
-    else
-        targetAC = null;
-
-
     //flavor
-    // if (item.system.targeting.isMagical)
-    //   flavor += "Magical,";
-    // else
-    //   flavor += "Mundane,";
+    if (item.system.targeting.isMagical)
+        flavor += "Magical,";
+    else
+        flavor += "Mundane,";
 
-    // if (item.system.act?.isSmite)
-    //   flavor += "Smite,";
+    if (item.system.act?.isSmite)
+        flavor += "Smite,";
 
-    // if (item.system.targeting.isMelee)
-    //   flavor += "Melee]";
-    // else
-    //   flavor += "Ranged]";
+    if (item.system.targeting.isMelee)
+        flavor += "Melee]";
+    else
+        flavor += "Ranged]";
 
-    item.summaries.toHit += "+" + modifier + (targetAC != null ? "+" + targetAC : "") /*+ " " + flavor*/;
+    item.summaries.toHit = toHit;
+
+    if (!item.system.targeting.toHit.isAutomatic)
+        item.summaries.toHit += "+" + modifier + (targetAC != null ? "+" + targetAC : "");
+
+    item.verboseSummaries.toHit = item.summaries.toHit + " " + flavor;
 
 } // End To Hit
 
@@ -72,6 +79,7 @@ const prepareDamageSummary = (item, actor) => {
 
     if (!item.system.damage.enableDamage) {
         item.summaries.damage = "None";
+        item.verboseSummaries.damage = "None";
         return;
     }
 
@@ -113,27 +121,31 @@ const prepareDamageSummary = (item, actor) => {
         dieQuantity = dieQuantity * 2; //double the number of dice
     }
 
-    // let flavor = "#[";
+    let flavor = "#[";
 
-    //flavor
-    // if (item.system.damage.isStraight)
-    //   flavor += "Straight";
-    // else
-    //   flavor += "Regular";
+    flavor
+    if (item.system.damage.isStraight)
+        flavor += "Straight";
+    else
+        flavor += "Regular";
 
-    // if (item.system.damage.canOverflow)
-    //   flavor += ",Overflows";
+    if (item.system.damage.canOverflow)
+        flavor += ",Overflows";
 
-    // if (item.system.damage.isEnvironmental)
-    //   flavor += ",Environmental]";
+    if (item.system.damage.isEnvironmental)
+        flavor += ",Environmental]";
 
-    // flavor += "]";
+    flavor += "]";
 
     //put it all together
-    if (fixedDamage)
-        item.summaries.damage = modifier + damageType; /*+ " " + flavor*/
-    else
-        item.summaries.damage = dieQuantity + dieType + advantageDisadvantageSuffix + damageType + " + " + modifier /*+ " " + flavor*/;
+    if (fixedDamage) {
+        item.summaries.damage = modifier + damageType;
+        item.verboseSummaries.damage = item.summaries.damage + " " + flavor;
+    }
+    else {
+        item.summaries.damage = dieQuantity + dieType + advantageDisadvantageSuffix + damageType + " + " + modifier;
+        item.verboseSummaries.damage = item.summaries.damage + " " + flavor;
+    }
 }//End Damage
 
 const prepareRangeSummary = (item, actor) => {
