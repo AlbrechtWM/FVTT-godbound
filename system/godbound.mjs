@@ -46,7 +46,7 @@ Hooks.once('init', async function () {
    * @type {String}
    */
   CONFIG.Combat.initiative = {
-    formula: "1d20 + @abilities.dex.mod",
+    formula: "10",
     decimals: 2
   };
 
@@ -118,8 +118,8 @@ Hooks.on("preCreateToken", (docArg, dataArg, optionsArg) => {
   // console.log(optionsArg);
   let tempTexture = docArg.texture;
   tempTexture.src = docArg.actor.img;
-  docArg.updateSource( {texture: tempTexture});
-  docArg.updateSource({ actorLink: true, name: docArg.actor.name});
+  docArg.updateSource({ texture: tempTexture });
+  docArg.updateSource({ actorLink: true, name: docArg.actor.name });
 });
 
 Hooks.on("createToken", (docArg, dataArg, optionsArg) => {
@@ -127,6 +127,35 @@ Hooks.on("createToken", (docArg, dataArg, optionsArg) => {
   // console.log(dataArg);
   // console.log(optionsArg);
 
+});
+
+Hooks.on("combatStart", (combatArg, updateDataArg) => {
+  console.log(combatArg);
+
+  new Dialog({
+    title: "Players Surprised or Ambushed",
+    content: `<div class="flexrow" style="align-items: center; margin-bottom: 10px; justify-content: flex-start;"><label>Are the Players Surprised?</label><input id="surprise-checkbox" type="checkbox"/></div>`,
+    default: "button1",
+    buttons: {
+      button1: {
+        label: "Proceed",
+        callback: (html) => {
+          let areSurprised = html.find("input#surprise-checkbox").prop("checked");
+          for (let actor of combatArg.combatants) {
+            if (actor.token.disposition == 1)
+              areSurprised ? combatArg.setInitiative(actor.id, 10) : combatArg.setInitiative(actor.id, 20);
+            else if (actor.token.disposition == 0)
+              combatArg.setInitiative(actor.id, 15);
+            else if (actor.token.disposition == -1)
+            areSurprised ? combatArg.setInitiative(actor.id, 20) : combatArg.setInitiative(actor.id, 10);
+            else
+              combatArg.setInitiative(actor.id, 5);
+          }
+        },
+        icon: `<i class="fas fa-check"></i>`
+      }
+    }
+  }).render(true);
 });
 
 /* -------------------------------------------- */
