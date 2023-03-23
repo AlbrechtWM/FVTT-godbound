@@ -281,7 +281,7 @@ export class characterActorSheet extends ActorSheet {
     event.preventDefault();
     const header = event.currentTarget;
     // Get the type of item to create.
-    const { type, parentid } = header.dataset;
+    const { type } = header.dataset;
     // Grab any data associated with this control.
     const data = duplicate(header.dataset);
     // Initialize a default name.
@@ -292,7 +292,6 @@ export class characterActorSheet extends ActorSheet {
       name,
       type,
       system: data,
-      word,
     };
     // Remove the type from the dataset since it's in the itemData.type prop.
 
