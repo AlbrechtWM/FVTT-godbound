@@ -5,6 +5,7 @@ import Dominion from './helpers/dominion.mjs';
 import Rolls from './helpers/rolls.mjs';
 import Attacks from './helpers/attacks.mjs';
 import Accordion from '../../helpers/Accordion.mjs';
+import uuid from '../../helpers/uuid.mjs';
 
 /**
  * Extend the basic ActorSheet with some very simple modifications
@@ -281,7 +282,7 @@ export class characterActorSheet extends ActorSheet {
     event.preventDefault();
     const header = event.currentTarget;
     // Get the type of item to create.
-    const { type, word } = header.dataset;
+    const { type, parentid } = header.dataset;
     // Grab any data associated with this control.
     const data = duplicate(header.dataset);
     // Initialize a default name.
@@ -292,9 +293,9 @@ export class characterActorSheet extends ActorSheet {
       type,
       system: data,
       word,
+      id: uuid(),
     };
     // Remove the type from the dataset since it's in the itemData.type prop.
-    delete itemData.system.type;
 
     // Finally, create the item!
     return await Item.create(itemData, { parent: this.actor });
