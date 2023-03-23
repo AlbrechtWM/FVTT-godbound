@@ -4,6 +4,7 @@ import Character from './helpers/character.mjs';
 import Dominion from './helpers/dominion.mjs';
 import Rolls from './helpers/rolls.mjs';
 import Attacks from './helpers/attacks.mjs';
+import Accordion from '../../helpers/Accordion.mjs';
 
 /**
  * Extend the basic ActorSheet with some very simple modifications
@@ -97,28 +98,6 @@ export class characterActorSheet extends ActorSheet {
   /** @override */
   activateListeners(html) {
     super.activateListeners(html);
-
-    class Accordion {
-      constructor(el, clickElementName, multiple) {
-        this.el = el || {};
-        this.multiple = multiple || false;
-        const clickElement = el.find(`.${clickElementName}`);
-
-        clickElement.on('click', { el: this.el, multiple: this.multiple }, this.dropdown)
-      }
-
-      dropdown(e) {
-        const { el, multiple } = e.data;
-        const next = $(this).parent().next();
-        console.log(next);
-        next.slideToggle();
-
-        $(this).parent().toggleClass('open');
-        if (!multiple) {
-          el.find('.accordion-sub-item').not(next).slideUp().parent().removeClass('open');
-        };
-      }
-    }
 
     new Accordion($('.word-accordion'), 'item-icon', false);
 
@@ -302,19 +281,20 @@ export class characterActorSheet extends ActorSheet {
     event.preventDefault();
     const header = event.currentTarget;
     // Get the type of item to create.
-    const type = header.dataset.type;
+    const { type, word } = header.dataset;
     // Grab any data associated with this control.
     const data = duplicate(header.dataset);
     // Initialize a default name.
     const name = `New ${type.capitalize()}`;
     // Prepare the item object.
     const itemData = {
-      name: name,
-      type: type,
-      system: data
+      name,
+      type,
+      system: data,
+      word,
     };
     // Remove the type from the dataset since it's in the itemData.type prop.
-    delete itemData.system["type"];
+    delete itemData.system.type;
 
     // Finally, create the item!
     return await Item.create(itemData, { parent: this.actor });
