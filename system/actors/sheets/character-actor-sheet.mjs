@@ -5,7 +5,6 @@ import Dominion from './helpers/dominion.mjs';
 import Rolls from './helpers/rolls.mjs';
 import Attacks from './helpers/attacks.mjs';
 import Accordion from '../../helpers/Accordion.mjs';
-import uuid from '../../helpers/uuid.mjs';
 
 /**
  * Extend the basic ActorSheet with some very simple modifications
@@ -288,12 +287,12 @@ export class characterActorSheet extends ActorSheet {
     // Initialize a default name.
     const name = `New ${type.capitalize()}`;
     // Prepare the item object.
+
     const itemData = {
       name,
       type,
       system: data,
       word,
-      id: uuid(),
     };
     // Remove the type from the dataset since it's in the itemData.type prop.
 
