@@ -345,8 +345,8 @@
           "description": ""
         }
       },
-      "act":{
-        "act":{
+      "act": {
+        "act": {
           "speed": "action",
           "isMultiTurnAct": false,
           "requiresConcentration": false,
