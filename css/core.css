@@ -217,3 +217,86 @@ div [type=button] {
 .godbound-button.active {
     color: rgb(221 72 72);
 }
+
+.accordion .link {
+    cursor: pointer;
+    display: block;
+    padding: 65px 15px 30px 42px;
+    color: #1a1a1a;
+    font-size: 14px;
+    font-weight: 700;
+    position: relative;
+    -webkit-transition: all 0.4s ease;
+    -o-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+}
+
+.accordion li:last-child .link {
+    border-bottom: 0;
+}
+
+.accordion li i {
+    position: absolute;
+    top: 16px;
+    left: 12px;
+    font-size: 18px;
+    color: #1a1a1a;
+    -webkit-transition: all 0.4s ease;
+    -o-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+}
+
+.accordion li i.fa-chevron-down {
+    right: 12px;
+    left: auto;
+    font-size: 16px;
+}
+
+.accordion li.open .link {
+    color: #872b2b;
+}
+
+.accordion li.open i {
+    color: #872b2b;
+}
+
+.accordion li.open i.fa-chevron-down {
+    -webkit-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+
+/**
+ * Submenu
+-----------------------------*/
+
+.accordion-sub-item {
+    display: none;
+    font-size: 13px;
+    text-align: center;
+    padding-top: 3%;
+    padding-bottom: 2%;
+    padding-left: 3%;
+    padding-right: 3%;
+}
+
+.accordion-sub-item li {
+    border-bottom: 1px solid #4b4a5e;
+}
+
+.accordion-sub-item a {
+    display: block;
+    text-decoration: none;
+    color: #1a1a1a;
+    padding: 12px;
+    padding-left: 42px;
+    -webkit-transition: all 0.25s ease;
+    -o-transition: all 0.25s ease;
+    transition: all 0.25s ease;
+}
+
+.accordion-sub-item a:hover {
+    background: #b63b4d;
+    color: #FFF;
+}

@@ -38,6 +38,7 @@ Hooks.once('init', async function () {
     rollItemMacro
   };
 
+
   // Add custom constants for configuration.
   CONFIG.GODBOUND_CONSTANTS = godbound_constants;
 
@@ -147,7 +148,7 @@ Hooks.on("combatStart", (combatArg, updateDataArg) => {
             else if (actor.token.disposition == 0)
               combatArg.setInitiative(actor.id, 15);
             else if (actor.token.disposition == -1)
-            areSurprised ? combatArg.setInitiative(actor.id, 20) : combatArg.setInitiative(actor.id, 10);
+              areSurprised ? combatArg.setInitiative(actor.id, 20) : combatArg.setInitiative(actor.id, 10);
             else
               combatArg.setInitiative(actor.id, 5);
           }

@@ -392,7 +392,8 @@
 												title="Paste Item">
 												<i class="fas fa-comment"></i>
 											</div>
-											<div type="roll" data-type="attack" data-damage="{{item.verboseSummaries.damage}}"
+											<div type="roll" data-type="attack"
+												data-damage="{{item.verboseSummaries.damage}}"
 												data-tohit="{{item.verboseSummaries.toHit}}"
 												class="item-control item-roll margin-right-halfem" title="Roll Item"><i
 													class="fas fa-dice-d20"></i></div>
@@ -412,14 +413,20 @@
 								</div>
 								<ol class="items-list effort-list">
 									<li class="item flexrow items-header" style="justify-content: space-around;">
-										<div class="item-name" style="min-width: max-content; margin-right: 5px">Sustained</div>
-										<div class="item-name" style="min-width: max-content; padding-left: 25px">Turn</div>
-										<div class="item-name" style="min-width: max-content; padding-left: 18px">Scene</div>
-										<div class="item-name" style="min-width: max-content; padding-left: 25px">Day</div>
+										<div class="item-name" style="min-width: max-content; margin-right: 5px">
+											Sustained</div>
+										<div class="item-name" style="min-width: max-content; padding-left: 25px">Turn
+										</div>
+										<div class="item-name" style="min-width: max-content; padding-left: 18px">Scene
+										</div>
+										<div class="item-name" style="min-width: max-content; padding-left: 25px">Day
+										</div>
 										<div class="item-name effort-controls"
-											style="min-width: max-content; justify-content: flex-end; padding-left: 15px">Free</div>
+											style="min-width: max-content; justify-content: flex-end; padding-left: 15px">
+											Free</div>
 										<div class="item-name effort-controls"
-											style="min-width: max-content; justify-content: flex-end; padding-right: 22px">Max</div>
+											style="min-width: max-content; justify-content: flex-end; padding-right: 22px">
+											Max</div>
 									</li>
 									<li class="item flexrow" style="align-items: center;">
 										<div class="item-name" style="min-width: fit-content; align-items: center;">
@@ -496,8 +503,9 @@
 										</div>
 									</li>
 									{{#each words as |item id|}}
-									<li class="item flexrow" style="align-items: center;" data-item-id="{{item._id}}">
-										<div class="item-name flex0"
+									<li class="word-accordion item flexrow" style="align-items: center;"
+										data-item-id="{{item._id}}">
+										<div class="item-name flex0 item-icon"
 											style="min-width: max-content; margin-right: 10px;">
 											<img src="{{item.img}}" title="{{item.name}}" width="24" height="24" />
 										</div>
@@ -519,46 +527,48 @@
 													class="fas fa-trash"></i></div>
 										</div>
 									</li>
-									{{/each}}
-								</ol>
-								<div
-									class="fable-font bold sheet-text-header sheet-text-header-main stat-info margin-bottom-halfem margin-top-halfem">
-									Gifts
-								</div>
-								<ol class="items-list gifts-list">
-									<li class="item flexrow items-header">
-										<div class="item-name flex0" style="min-width: max-content;">Icon</div>
-										<div class="item-name flex0" style="min-width: max-content; margin-left: 20px;">
-											Name</div>
-										<div class="item-name flex1" style="margin-left: 180px;">Description</div>
-										<div class="item-controls">
-											<a class="item-control item-create" title="Create item" data-type="gift"><i
-													class="fas fa-plus"></i> Add Gift</a>
-										</div>
-									</li>
-									{{#each gifts as |item id|}}
-									<li class="item flexrow" style="align-items: center;" data-item-id="{{item._id}}">
-										<div class="item-name flex0"
-											style="min-width: max-content; margin-right: 10px;">
-											<img src="{{item.img}}" title="{{item.name}}" width="24" height="24" />
-										</div>
-										<div class="item-name flex0"
-											style="min-width: max-content; margin-right: 10px;">
-											<label style="font-weight: bold;">{{item.name}}</label>
-										</div>
-										<div class="item-name flex1" style="margin-right: 10px;">
-											<textarea>{{item.system.base.description}}</textarea>
-										</div>
-										<div class="item-controls flex0" style="min-width: max-content;">
-											<div class="item-control item-chat-paste margin-right-halfem"
-												title="Paste Item">
-												<i class="fas fa-comment"></i>
-											</div>
-											<div class="item-control item-edit margin-right-halfem" title="Edit Item"><i
-													class="fas fa-edit"></i></div>
-											<div class="item-control item-delete" title="Delete Item"><i
-													class="fas fa-trash"></i></div>
-										</div>
+									<li class="accordion-sub-item">
+										<ol class="items-list gifts-list">
+											<li class="item flexrow items-header">
+												<div class="item-name flex0" style="min-width: max-content;">Icon</div>
+												<div class="item-name flex0"
+													style="min-width: max-content; margin-left: 20px;">
+													Name</div>
+												<div class="item-name flex1" style="margin-left: 180px;">Description
+												</div>
+												<div class="item-controls">
+													<a class="item-control item-create" title="Create item"
+														data-type="gift"><i class="fas fa-plus"></i> Add Gift</a>
+												</div>
+											</li>
+											{{#each gifts as |item id|}}
+											<li class="item flexrow" style="align-items: center;"
+												data-item-id="{{item._id}}">
+												<div class="item-name flex0"
+													style="min-width: max-content; margin-right: 10px;">
+													<img src="{{item.img}}" title="{{item.name}}" width="24"
+														height="24" />
+												</div>
+												<div class="item-name flex0"
+													style="min-width: max-content; margin-right: 10px;">
+													<label style="font-weight: bold;">{{item.name}}</label>
+												</div>
+												<div class="item-name flex1" style="margin-right: 10px;">
+													<textarea>{{item.system.base.description}}</textarea>
+												</div>
+												<div class="item-controls flex0" style="min-width: max-content;">
+													<div class="item-control item-chat-paste margin-right-halfem"
+														title="Paste Item">
+														<i class="fas fa-comment"></i>
+													</div>
+													<div class="item-control item-edit margin-right-halfem"
+														title="Edit Item"><i class="fas fa-edit"></i></div>
+													<div class="item-control item-delete" title="Delete Item"><i
+															class="fas fa-trash"></i></div>
+												</div>
+											</li>
+											{{/each}}
+										</ol>
 									</li>
 									{{/each}}
 								</ol>
