@@ -99,7 +99,10 @@ export class characterActorSheet extends ActorSheet {
   activateListeners(html) {
     super.activateListeners(html);
 
-    new Accordion($('.word-accordion'), 'item-icon', false);
+    //new Accordion($('.word-accordion'), 'item-icon', false);
+
+    //Accordion Banners
+    html.find('.accordion-banner').click(this._toggleAccordionBanner.bind(this));
 
     // Render the item sheet for viewing/editing prior to the editable check.
     html.find('.item-edit').click(ev => {
@@ -159,7 +162,23 @@ export class characterActorSheet extends ActorSheet {
     html.find('.stat-plus').click(this.onStatPlus.bind(this));
     html.find('.stat-minus').click(this.onStatMinus.bind(this));
     html.find('.stat-reset').click(this.onStatReset.bind(this));
+
   }
+
+  /**
+  * Toggles the Accordion Banners
+  */
+  _toggleAccordionBanner(event) {
+    event.preventDefault();
+    const target = event.currentTarget;
+    // target.classList.toggle("active");
+    var accordionPanel = target.nextElementSibling;
+    if (accordionPanel.style.maxHeight) {
+      accordionPanel.style.maxHeight = null;
+    } else {
+      accordionPanel.style.maxHeight = accordionPanel.scrollHeight + "px";
+    }
+  };
 
   /**
    * Organize and classify Items for Character sheets.
@@ -186,52 +205,60 @@ export class characterActorSheet extends ActorSheet {
   _prepareItems(context) {
     // Initialize containers.
     const gifts = [];
+    const standaloneGifts = [];
+    const universalGifts = [];
     const words = [];
     const attacks = [];
-
-    // const spells = {
-    //   0: [],
-    //   1: [],
-    //   2: [],
-    //   3: [],
-    //   4: [],
-    //   5: [],
-    //   6: [],
-    //   7: [],
-    //   8: [],
-    //   9: []
-    // };
 
     // Iterate through items, allocating to containers
     for (let i of context.items) {
       i.img = i.img || DEFAULT_TOKEN;
-      // Append to gear.
-      if (i.type === 'gift') {
-        gifts.push(i);
-      }
-      // Append to features.
-      else if (i.type === 'attack') {
+      // Append to attacks.
+      if (i.type === 'attack') {
         Attacks.prepareAttackSummaries(i, context);
         attacks.push(i);
       }
-      // Append to features.
+      // Append to words.
       else if (i.type === 'word') {
         words.push(i);
       }
+    }
 
+    // Iterate through gifts, allocating to containers
+    for (let i of context.items) {
+      i.img = i.img || DEFAULT_TOKEN;
+      // Append to gift categories.
+      if (i.type === 'gift') {
+        if (i.system.parentWord == "None") {
+          standaloneGifts.push(i);
+        }
+        else if (i.system.parentWord == "Universal") {
+          universalGifts.push(i);
+        }
+        else {
+          let parentFound = false;
+          words.forEach(word => {
+            if (word.name == i.system.parentWord) {
+              parentFound = true;
+            }
+          });
 
-      // // Append to spells.
-      // else if (i.type === 'spell') {
-      //   if (i.system.spellLevel != undefined) {
-      //     spells[i.system.spellLevel].push(i);
-      //   }
-      // }
+          if (!parentFound)
+            standaloneGifts.push(i);
+          else
+            gifts.push(i);
+        }
+      }
     }
 
     // Assign and return
     context.gifts = gifts;
+    context.standaloneGifts = standaloneGifts;
+    context.universalGifts = universalGifts;
     context.words = words;
     context.attacks = attacks;
+
+    console.log(context);
   }
 
   /* -------------------------------------------- */
@@ -282,10 +309,13 @@ export class characterActorSheet extends ActorSheet {
     const header = event.currentTarget;
     // Get the type of item to create.
     const { type } = header.dataset;
+    // console.log(type);
     // Grab any data associated with this control.
     const data = duplicate(header.dataset);
+    // console.log(data);
     // Initialize a default name.
     const name = `New ${type.capitalize()}`;
+    // console.log(name);
     // Prepare the item object.
 
     const itemData = {

@@ -99,6 +99,14 @@ Handlebars.registerHelper('getStringArrayValue', function (strArray, index) {
   return strArray[index];
 });
 
+Handlebars.registerHelper('areStringsEqual', function (str1, str2) {
+  console.log("yaya");
+  if (str1 == str2)
+    return "true"
+  else
+    return "false"
+});
+
 /* -------------------------------------------- */
 /*  Ready Hook                                  */
 /* -------------------------------------------- */
@@ -111,6 +119,17 @@ Hooks.once("ready", async function () {
 /* -------------------------------------------- */
 /*  Other Hooks                                 */
 /* -------------------------------------------- */
+
+//Prefire all the expansions... as much of a hack as this is it's needed apparently to preserve the animation and to have them start opened
+Hooks.on("renderActorSheet", (docArg, htmlArg) => {
+  const accordionBanners = htmlArg.find('.accordion-banner');
+  //console.log(accordionBanners);
+  for (let tempAB of accordionBanners) {
+    var accordionPanel = tempAB.nextElementSibling;
+    accordionPanel.style.maxHeight = "fit-content";
+    //console.log(accordionPanel);
+  }
+});
 
 Hooks.on("preCreateToken", (docArg, dataArg, optionsArg) => {
   // console.log("Pre Create Token");

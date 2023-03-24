@@ -263,315 +263,366 @@
 							</div>
 							<div data-group="charsheet" data-tab="combat" class="tab">
 								<div
-									class="fable-font bold sheet-text-header sheet-text-header-main stat-info margin-bottom-halfem margin-top-halfem">
+									class="fable-font bold sheet-text-header sheet-text-header-main stat-info margin-bottom-halfem margin-top-halfem accordion-banner">
 									Armor
 								</div>
-								<div class="sheet-row sheet-pad-b-sm">
-									<div
-										class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-right sheet-pad-l-sm sheet-pad-r-md">
-										Type
+								<div class="accordion-panel">
+									<div class="sheet-row sheet-pad-b-sm">
+										<div
+											class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-right sheet-pad-l-sm sheet-pad-r-md">
+											Type
+										</div>
+										<div
+											class="sheet-col-17-20 sheet-attr sheet-vert-middle sheet-pad-t-sm sheet-pad-r-md">
+											<select class="sheet-select" name="system.coreStats.ac.armorType">
+												{{#select system.coreStats.ac.armorType}}
+												<option value="none">None (Skin or clothing)</option>
+												<option value="light">Light (Leathers or hides)</option>
+												<option value="medium">Medium (Mail or light plate) [-4 to one save]
+												</option>
+												<option value="heavy">Heavy (Heavy plate) [-4 to two saves]</option>
+												<option value="special">Divine Gift (Granted AC of 3)</option>
+												{{/select}}
+											</select>
+										</div>
 									</div>
-									<div
-										class="sheet-col-17-20 sheet-attr sheet-vert-middle sheet-pad-t-sm sheet-pad-r-md">
-										<select class="sheet-select" name="system.coreStats.ac.armorType">
-											{{#select system.coreStats.ac.armorType}}
-											<option value="none">None (Skin or clothing)</option>
-											<option value="light">Light (Leathers or hides)</option>
-											<option value="medium">Medium (Mail or light plate) [-4 to one save]
-											</option>
-											<option value="heavy">Heavy (Heavy plate) [-4 to two saves]</option>
-											<option value="special">Divine Gift (Granted AC of 3)</option>
-											{{/select}}
-										</select>
+									<div class="sheet-row sheet-pad-t-md">
+										<div
+											class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-right sheet-pad-l-sm sheet-pad-r-md">
+											AC
+										</div>
+										<div
+											class="sheet-col-1-10 sheet-attr sheet-vert-middle sheet-center sheet-pad-r-md">
+											<input type="number" name="system.coreStats.ac.total"
+												value="{{system.coreStats.ac.total}}" disabled="true">
+										</div>
+										<div
+											class="sheet-col-1-5 sheet-attr sheet-vert-middle sheet-center sheet-pad-r-md sheet-mar-t-sm">
+											<input type="checkbox" class="sheet-box-check"
+												name="system.coreStats.ac.hasShield" {{checked
+												system.coreStats.ac.hasShield}}><label>Shield</label>
+										</div>
+										<div
+											class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-right sheet-pad-r-md">
+											Bonus
+										</div>
+										<div
+											class="sheet-col-1-10 sheet-attr sheet-vert-middle sheet-center sheet-pad-r-md">
+											<input type="number" name="system.coreStats.ac.miscModifier"
+												value="{{system.coreStats.ac.miscModifier}}">
+										</div>
 									</div>
-								</div>
-								<div class="sheet-row sheet-pad-t-md">
-									<div
-										class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-right sheet-pad-l-sm sheet-pad-r-md">
-										AC
+									<div class="sheet-row sheet-pad-b-sm sheet-pad-t-md">
+										<div class="sheet-col-1 sheet-attr sheet-pad-r-sm">
+											<textarea class="sheet-small-textarea sheet-resize-vertical"
+												name="system.coreStats.ac.armorDescription"
+												placeholder="Armor description">{{system.coreStats.ac.armorDescription}}</textarea>
+										</div>
 									</div>
-									<div
-										class="sheet-col-1-10 sheet-attr sheet-vert-middle sheet-center sheet-pad-r-md">
-										<input type="number" name="system.coreStats.ac.total"
-											value="{{system.coreStats.ac.total}}" disabled="true">
-									</div>
-									<div
-										class="sheet-col-1-5 sheet-attr sheet-vert-middle sheet-center sheet-pad-r-md sheet-mar-t-sm">
-										<input type="checkbox" class="sheet-box-check"
-											name="system.coreStats.ac.hasShield" {{checked
-											system.coreStats.ac.hasShield}}><label>Shield</label>
-									</div>
-									<div class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-right sheet-pad-r-md">
-										Bonus
-									</div>
-									<div
-										class="sheet-col-1-10 sheet-attr sheet-vert-middle sheet-center sheet-pad-r-md">
-										<input type="number" name="system.coreStats.ac.miscModifier"
-											value="{{system.coreStats.ac.miscModifier}}">
-									</div>
-								</div>
-								<div class="sheet-row sheet-pad-b-sm sheet-pad-t-md">
-									<div class="sheet-col-1 sheet-attr sheet-pad-r-sm">
-										<textarea class="sheet-small-textarea sheet-resize-vertical"
-											name="system.coreStats.ac.armorDescription"
-											placeholder="Armor description">{{system.coreStats.ac.armorDescription}}</textarea>
-									</div>
-								</div>
-								<div class="flexrow" style="justify-content: space-evenly;">
-									<div class="flex0 sheet-attr sheet-vert-middle sheet-right sheet-pad-l-sm sheet-pad-r-md sheet-pad-t-lg"
-										style="white-space: nowrap;">
-										Save Penalties:
-									</div>
-									<div
-										class="flex0 sheet-attr sheet-vert-middle sheet-pad-t-md sheet-pad-r-md sheet-pad-b-sm sheet-mar-t-md">
-										<input type="checkbox" class="sheet-box-check"
-											name="system.coreStats.saves.hardiness.isArmorPenalty" {{checked
-											system.coreStats.saves.hardiness.isArmorPenalty}}><label>Hardiness</label>
-									</div>
-									<div
-										class="flex0 sheet-attr sheet-vert-middle sheet-pad-t-md sheet-pad-r-md sheet-pad-b-sm sheet-mar-t-md">
-										<input type="checkbox" class="sheet-box-check"
-											name="system.coreStats.saves.evasion.isArmorPenalty" {{checked
-											system.coreStats.saves.evasion.isArmorPenalty}}><label>Evasion</label>
-									</div>
-									<div
-										class="flex0 sheet-attr sheet-vert-middle sheet-pad-t-md sheet-pad-r-sm sheet-pad-b-sm sheet-mar-t-md">
-										<input type="checkbox" class="sheet-box-check"
-											name="system.coreStats.saves.spirit.isArmorPenalty" {{checked
-											system.coreStats.saves.spirit.isArmorPenalty}}><label>Spirit</label>
+									<div class="flexrow" style="justify-content: space-evenly;">
+										<div class="flex0 sheet-attr sheet-vert-middle sheet-right sheet-pad-l-sm sheet-pad-r-md sheet-pad-t-lg"
+											style="white-space: nowrap;">
+											Save Penalties:
+										</div>
+										<div
+											class="flex0 sheet-attr sheet-vert-middle sheet-pad-t-md sheet-pad-r-md sheet-pad-b-sm sheet-mar-t-md">
+											<input type="checkbox" class="sheet-box-check"
+												name="system.coreStats.saves.hardiness.isArmorPenalty" {{checked
+												system.coreStats.saves.hardiness.isArmorPenalty}}><label>Hardiness</label>
+										</div>
+										<div
+											class="flex0 sheet-attr sheet-vert-middle sheet-pad-t-md sheet-pad-r-md sheet-pad-b-sm sheet-mar-t-md">
+											<input type="checkbox" class="sheet-box-check"
+												name="system.coreStats.saves.evasion.isArmorPenalty" {{checked
+												system.coreStats.saves.evasion.isArmorPenalty}}><label>Evasion</label>
+										</div>
+										<div
+											class="flex0 sheet-attr sheet-vert-middle sheet-pad-t-md sheet-pad-r-sm sheet-pad-b-sm sheet-mar-t-md">
+											<input type="checkbox" class="sheet-box-check"
+												name="system.coreStats.saves.spirit.isArmorPenalty" {{checked
+												system.coreStats.saves.spirit.isArmorPenalty}}><label>Spirit</label>
+										</div>
 									</div>
 								</div>
 								<div
-									class="fable-font bold sheet-text-header sheet-text-header-main stat-info margin-bottom-halfem">
+									class="fable-font bold sheet-text-header sheet-text-header-main stat-info margin-bottom-halfem accordion-banner">
 									Attacks
 								</div>
-								<ol class="items-list attacks-list">
-									<li class="item flexrow items-header">
-										<div class="item-name flex0" style="min-width: max-content;">Icon</div>
-										<div class="item-name flex0"
-											style="min-width: max-content; margin-left: 20px; margin-right: 30px;">Name
-										</div>
-										<div class="item-name flex1" style="min-width: max-content; ">To Hit</div>
-										<div class="item-name flex2" style="min-width: max-content; ">Damage</div>
-										<div class="item-name flex1" style="min-width: max-content; ">Range</div>
-										<div class="item-name flex1" style="min-width: max-content;">Area</div>
-										<div class="item-controls">
-											<a class="item-control item-create" title="Create item"
-												style="min-width: max-content;" data-type="attack"><i
-													class="fas fa-plus"></i> Add Attack</a>
-										</div>
-									</li>
-									{{#each attacks as |item id|}}
-									<li class="item flexrow" style="align-items: center;" data-item-id="{{item._id}}">
-										<div class="item-name flex0"
-											style="min-width: max-content; margin-right: 10px;">
-											<img src="{{item.img}}" title="{{item.name}}" width="24" height="24" />
-										</div>
-										<div class="item-name flex0"
-											style="min-width: max-content; margin-right: 10px;">
-											<label style="font-weight: bold;">{{item.name}}</label>
-										</div>
-										<div class="item-name flex1"
-											style="min-width: max-content; margin-right: 10px;">
-											<label>{{item.summaries.toHit}}</label>
-										</div>
-										<div class="item-name flex2"
-											style="min-width: max-content; margin-right: 10px;">
-											<label>{{item.summaries.damage}}</label>
-										</div>
-										<div class="item-name flex1"
-											style="min-width: max-content; margin-right: 10px;">
-											<label>{{item.summaries.range}}</label>
-										</div>
-										<div class="item-name flex1"
-											style="min-width: max-content; margin-right: 10px;">
-											<label>{{item.summaries.area}}</label>
-										</div>
-										<div class="item-controls">
-											<div class="item-control item-chat-paste margin-right-halfem"
-												title="Paste Item">
-												<i class="fas fa-comment"></i>
+								<div class="accordion-panel">
+									<ol class="items-list attacks-list">
+										<li class="item flexrow items-header">
+											<div class="item-name flex0" style="min-width: max-content;">Icon</div>
+											<div class="item-name flex0"
+												style="min-width: max-content; margin-left: 20px; margin-right: 30px;">
+												Name
 											</div>
-											<div type="roll" data-type="attack"
-												data-damage="{{item.verboseSummaries.damage}}"
-												data-tohit="{{item.verboseSummaries.toHit}}"
-												class="item-control item-roll margin-right-halfem" title="Roll Item"><i
-													class="fas fa-dice-d20"></i></div>
-											<div class="item-control item-edit margin-right-halfem" title="Edit Item"><i
-													class="fas fa-edit"></i></div>
-											<div class="item-control item-delete" title="Delete Item"><i
-													class="fas fa-trash"></i></div>
-										</div>
-									</li>
-									{{/each}}
-								</ol>
+											<div class="item-name flex1" style="min-width: max-content; ">To Hit</div>
+											<div class="item-name flex2" style="min-width: max-content; ">Damage</div>
+											<div class="item-name flex1" style="min-width: max-content; ">Range</div>
+											<div class="item-name flex1" style="min-width: max-content;">Area</div>
+											<div class="item-controls">
+												<a class="item-control item-create" title="Create item"
+													style="min-width: max-content;" data-type="attack"><i
+														class="fas fa-plus"></i> Add Attack</a>
+											</div>
+										</li>
+										{{#each attacks as |item|}}
+										<li class="item flexrow" style="align-items: center;"
+											data-item-id="{{item._id}}">
+											<div class="item-name flex0"
+												style="min-width: max-content; margin-right: 10px;">
+												<img src="{{item.img}}" title="{{item.name}}" width="24" height="24" />
+											</div>
+											<div class="item-name flex0"
+												style="min-width: max-content; margin-right: 10px;">
+												<label style="font-weight: bold;">{{item.name}}</label>
+											</div>
+											<div class="item-name flex1"
+												style="min-width: max-content; margin-right: 10px;">
+												<label>{{item.summaries.toHit}}</label>
+											</div>
+											<div class="item-name flex2"
+												style="min-width: max-content; margin-right: 10px;">
+												<label>{{item.summaries.damage}}</label>
+											</div>
+											<div class="item-name flex1"
+												style="min-width: max-content; margin-right: 10px;">
+												<label>{{item.summaries.range}}</label>
+											</div>
+											<div class="item-name flex1"
+												style="min-width: max-content; margin-right: 10px;">
+												<label>{{item.summaries.area}}</label>
+											</div>
+											<div class="item-controls">
+												<div class="item-control item-chat-paste margin-right-halfem"
+													title="Paste Item">
+													<i class="fas fa-comment"></i>
+												</div>
+												<div type="roll" data-type="attack"
+													data-damage="{{item.verboseSummaries.damage}}"
+													data-tohit="{{item.verboseSummaries.toHit}}"
+													class="item-control item-roll margin-right-halfem"
+													title="Roll Item"><i class="fas fa-dice-d20"></i></div>
+												<div class="item-control item-edit margin-right-halfem"
+													title="Edit Item"><i class="fas fa-edit"></i></div>
+												<div class="item-control item-delete" title="Delete Item"><i
+														class="fas fa-trash"></i></div>
+											</div>
+										</li>
+										{{/each}}
+									</ol>
+								</div>
 							</div>
 							<div data-group="charsheet" data-tab="divine" class="tab">
 								<div
-									class="fable-font bold sheet-text-header sheet-text-header-main  stat-info margin-bottom-halfem no-left-border no-right-border">
+									class="fable-font bold sheet-text-header sheet-text-header-main  stat-info margin-bottom-halfem no-left-border no-right-border accordion-banner">
 									Effort
 								</div>
-								<ol class="items-list effort-list">
-									<li class="item flexrow items-header" style="justify-content: space-around;">
-										<div class="item-name" style="min-width: max-content; margin-right: 5px">
-											Sustained</div>
-										<div class="item-name" style="min-width: max-content; padding-left: 25px">Turn
-										</div>
-										<div class="item-name" style="min-width: max-content; padding-left: 18px">Scene
-										</div>
-										<div class="item-name" style="min-width: max-content; padding-left: 25px">Day
-										</div>
-										<div class="item-name effort-controls"
-											style="min-width: max-content; justify-content: flex-end; padding-left: 15px">
-											Free</div>
-										<div class="item-name effort-controls"
-											style="min-width: max-content; justify-content: flex-end; padding-right: 22px">
-											Max</div>
-									</li>
-									<li class="item flexrow" style="align-items: center;">
-										<div class="item-name" style="min-width: fit-content; align-items: center;">
-											<a class="stat-plus" title="Increase Effort" style="min-width: max-content;"
-												data-type="sustainCommitted"><i class="fas fa-plus"></i></a>
-											<input style="width: 30px;" type="number"
-												name="system.coreStats.effort.sustainCommitted" disabled="true"
-												value="{{system.coreStats.effort.sustainCommitted}}" data-type="Number">
-											<a class="stat-minus" title="Decrease Effort"
-												style="min-width: max-content;" data-type="sustainCommitted"><i
-													class="fas fa-minus"></i></a>
-											<!-- <a class="stat-reset" title="Reset Effort" style="min-width: max-content;"
+								<div class="accordion-panel">
+									<ol class="items-list effort-list">
+										<li class="item flexrow items-header" style="justify-content: space-around;">
+											<div class="item-name" style="min-width: max-content; margin-right: 5px">
+												Sustained</div>
+											<div class="item-name" style="min-width: max-content; padding-left: 25px">
+												Turn
+											</div>
+											<div class="item-name" style="min-width: max-content; padding-left: 18px">
+												Scene
+											</div>
+											<div class="item-name" style="min-width: max-content; padding-left: 25px">
+												Day
+											</div>
+											<div class="item-name effort-controls"
+												style="min-width: max-content; justify-content: flex-end; padding-left: 15px">
+												Free</div>
+											<div class="item-name effort-controls"
+												style="min-width: max-content; justify-content: flex-end; padding-right: 22px">
+												Max</div>
+										</li>
+										<li class="item flexrow" style="align-items: center;">
+											<div class="item-name" style="min-width: fit-content; align-items: center;">
+												<a class="stat-plus" title="Increase Effort"
+													style="min-width: max-content;" data-type="sustainCommitted"><i
+														class="fas fa-plus"></i></a>
+												<input style="width: 30px;" type="number"
+													name="system.coreStats.effort.sustainCommitted" disabled="true"
+													value="{{system.coreStats.effort.sustainCommitted}}"
+													data-type="Number">
+												<a class="stat-minus" title="Decrease Effort"
+													style="min-width: max-content;" data-type="sustainCommitted"><i
+														class="fas fa-minus"></i></a>
+												<!-- <a class="stat-reset" title="Reset Effort" style="min-width: max-content;"
 												data-type="sustainCommitted"><i class="fas fa-arrows-rotate"></i></a> -->
-										</div>
-										<div class="item-name" style="min-width: fit-content; align-items: center;">
-											<a class="stat-plus" title="Increase Effort" style="min-width: max-content;"
-												data-type="turnCommitted"><i class="fas fa-plus"></i></a>
-											<input style="width: 30px;" type="number"
-												name="system.coreStats.effort.turnCommitted" disabled="true"
-												value="{{system.coreStats.effort.turnCommitted}}" data-type="Number">
-											<a class="stat-reset" title="Reset Effort" style="min-width: max-content;"
-												data-type="turnCommitted"><i class="fas fa-arrows-rotate"></i></a>
-										</div>
-										<div class="item-name" style="min-width: fit-content; align-items: center;">
-											<a class="stat-plus" title="Increase Effort" style="min-width: max-content;"
-												data-type="sceneCommitted"><i class="fas fa-plus"></i></a>
-											<input style="width: 30px;" type="number"
-												name="system.coreStats.effort.sceneCommitted" disabled="true"
-												value="{{system.coreStats.effort.sceneCommitted}}" data-type="Number">
-											<a class="stat-reset" title="Reset Effort" style="min-width: max-content;"
-												data-type="sceneCommitted"><i class="fas fa-arrows-rotate"></i></a>
-										</div>
-										<div class="item-name" style="min-width: fit-content; align-items: center;">
-											<a class="stat-plus" title="Increase Effort" style="min-width: max-content;"
-												data-type="dayCommitted"><i class="fas fa-plus"></i></a>
-											<input style="width: 30px;" type="number"
-												name="system.coreStats.effort.dayCommitted" disabled="true"
-												value="{{system.coreStats.effort.dayCommitted}}" data-type="Number">
-											<a class="stat-reset" title="Reset Effort" style="min-width: max-content;"
-												data-type="dayCommitted"><i class="fas fa-arrows-rotate"></i></a>
-										</div>
-										<div class="item-name effort-controls"
-											style="min-width: fit-content; align-items: center;">
-											<input style="width: 30px;" type="number"
-												name="system.coreStats.effort.free" disabled="true"
-												value="{{system.coreStats.effort.free}}" data-type="Number">
-										</div>
-										<div class="item-name effort-controls"
-											style="min-width: fit-content; align-items: center;">
-											<a class="stat-plus" title="Increase Effort" style="min-width: max-content;"
-												data-type="max"><i class="fas fa-plus"></i></a>
-											<input style="width: 30px;" type="number" name="system.coreStats.effort.max"
-												disabled="true" value="{{system.coreStats.effort.max}}"
-												data-type="Number">
-											<a class="stat-minus" title="Decrease Effort"
-												style="min-width: max-content;" data-type="max"><i
-													class="fas fa-minus"></i></a>
-										</div>
-									</li>
-								</ol>
+											</div>
+											<div class="item-name" style="min-width: fit-content; align-items: center;">
+												<a class="stat-plus" title="Increase Effort"
+													style="min-width: max-content;" data-type="turnCommitted"><i
+														class="fas fa-plus"></i></a>
+												<input style="width: 30px;" type="number"
+													name="system.coreStats.effort.turnCommitted" disabled="true"
+													value="{{system.coreStats.effort.turnCommitted}}"
+													data-type="Number">
+												<a class="stat-reset" title="Reset Effort"
+													style="min-width: max-content;" data-type="turnCommitted"><i
+														class="fas fa-arrows-rotate"></i></a>
+											</div>
+											<div class="item-name" style="min-width: fit-content; align-items: center;">
+												<a class="stat-plus" title="Increase Effort"
+													style="min-width: max-content;" data-type="sceneCommitted"><i
+														class="fas fa-plus"></i></a>
+												<input style="width: 30px;" type="number"
+													name="system.coreStats.effort.sceneCommitted" disabled="true"
+													value="{{system.coreStats.effort.sceneCommitted}}"
+													data-type="Number">
+												<a class="stat-reset" title="Reset Effort"
+													style="min-width: max-content;" data-type="sceneCommitted"><i
+														class="fas fa-arrows-rotate"></i></a>
+											</div>
+											<div class="item-name" style="min-width: fit-content; align-items: center;">
+												<a class="stat-plus" title="Increase Effort"
+													style="min-width: max-content;" data-type="dayCommitted"><i
+														class="fas fa-plus"></i></a>
+												<input style="width: 30px;" type="number"
+													name="system.coreStats.effort.dayCommitted" disabled="true"
+													value="{{system.coreStats.effort.dayCommitted}}" data-type="Number">
+												<a class="stat-reset" title="Reset Effort"
+													style="min-width: max-content;" data-type="dayCommitted"><i
+														class="fas fa-arrows-rotate"></i></a>
+											</div>
+											<div class="item-name effort-controls"
+												style="min-width: fit-content; align-items: center;">
+												<input style="width: 30px;" type="number"
+													name="system.coreStats.effort.free" disabled="true"
+													value="{{system.coreStats.effort.free}}" data-type="Number">
+											</div>
+											<div class="item-name effort-controls"
+												style="min-width: fit-content; align-items: center;">
+												<a class="stat-plus" title="Increase Effort"
+													style="min-width: max-content;" data-type="max"><i
+														class="fas fa-plus"></i></a>
+												<input style="width: 30px;" type="number"
+													name="system.coreStats.effort.max" disabled="true"
+													value="{{system.coreStats.effort.max}}" data-type="Number">
+												<a class="stat-minus" title="Decrease Effort"
+													style="min-width: max-content;" data-type="max"><i
+														class="fas fa-minus"></i></a>
+											</div>
+										</li>
+									</ol>
+								</div>
 								<div
-									class="fable-font bold sheet-text-header sheet-text-header-main stat-info margin-bottom-halfem margin-top-halfem">
+									class="fable-font bold sheet-text-header sheet-text-header-main stat-info margin-bottom-halfem margin-top-halfem accordion-banner">
 									Words of Creation
 								</div>
-								<ol class="items-list words-list">
-									<li class="item flexrow items-header">
-										<div class="item-name flex0" style="min-width: max-content;">Icon</div>
-										<div class="item-name flex0" style="min-width: max-content; margin-left: 20px;">
-											Name</div>
-										<div class="item-name flex1" style="margin-left: 180px;">Description</div>
-										<div class="item-controls">
-											<a class="item-control item-create" title="Create item" data-type="word"><i
-													class="fas fa-plus"></i> Add Word</a>
-										</div>
-									</li>
-									{{#each words as |item id|}}
-									<li class="word-accordion item flexrow" style="align-items: center;"
-										data-item-id="{{item._id}}">
-										<div class="item-name flex0 item-icon"
-											style="min-width: max-content; margin-right: 10px;">
-											<img src="{{item.img}}" title="{{item.name}}" width="24" height="24" />
-										</div>
-										<div class="item-name flex0"
-											style="min-width: max-content; margin-right: 10px;">
-											<label style="font-weight: bold;">{{item.name}}</label>
-										</div>
-										<div class="item-name flex1" style="margin-right: 10px;">
-											<textarea>{{item.system.base.description}}</textarea>
-										</div>
-										<div class="item-controls flex0" style="min-width: max-content;">
-											<div class="item-control item-chat-paste margin-right-halfem"
-												title="Paste Item">
-												<i class="fas fa-comment"></i>
+								<div class="accordion-panel">
+									<ol class="items-list words-list">
+										<li class="item flexrow items-header">
+											<div class="item-name flex0" style="min-width: max-content;">Icon</div>
+											<div class="item-name flex0"
+												style="min-width: max-content; margin-left: 20px;">
+												Name</div>
+											<div class="item-name flex1" style="margin-left: 180px;">Description</div>
+											<div class="item-controls">
+												<a class="item-control item-create" title="Create item"
+													data-type="word"><i class="fas fa-plus"></i> Add Word</a>
+												<a class="item-control item-create" title="Create item"
+													data-type="gift"><i class="fas fa-plus"></i> Add Gift</a>
 											</div>
-											<div class="item-control item-edit margin-right-halfem" title="Edit Item"><i
-													class="fas fa-edit"></i></div>
-											<div class="item-control item-delete" title="Delete Item"><i
-													class="fas fa-trash"></i></div>
-										</div>
-									</li>
-									<li class="accordion-sub-item">
-										<ol class="items-list gifts-list">
-											<li class="item flexrow items-header">
-												<div class="item-name flex0" style="min-width: max-content;">Icon</div>
-												<div class="item-name flex0"
-													style="min-width: max-content; margin-left: 20px;">
-													Name</div>
-												<div class="item-name flex1" style="margin-left: 180px;">Description
+										</li>
+										{{#each words as |wordItem wordIndex|}}
+										<li class="word-accordion item flexrow" style="align-items: center;"
+											data-item-id="{{wordItem._id}}">
+											<div class="item-name flex0 item-icon"
+												style="min-width: max-content; margin-right: 10px;">
+												<img src="{{wordItem.img}}" title="{{wordItem.name}}" width="24"
+													height="24" />
+											</div>
+											<div class="item-name flex0"
+												style="min-width: max-content; margin-right: 10px;">
+												<label style="font-weight: bold;">{{wordItem.name}}</label>
+											</div>
+											<div class="item-name flex1" style="margin-right: 10px;">
+												<textarea>{{wordItem.system.base.description}}</textarea>
+											</div>
+											<div class="item-controls flex0" style="min-width: max-content;">
+												<div class="item-control item-chat-paste margin-right-halfem"
+													title="Paste Item">
+													<i class="fas fa-comment"></i>
 												</div>
-												<div class="item-controls">
-													<a class="item-control item-create" title="Create item"
-														data-type="gift" data-parentid="{{item.id}}"><i class="fas fa-plus"></i>Add Gift</a>
+												<div class="item-control item-edit margin-right-halfem"
+													title="Edit Item"><i class="fas fa-edit"></i></div>
+												<div class="item-control item-delete" title="Delete Item"><i
+														class="fas fa-trash"></i></div>
+											</div>
+										</li>
+										{{#each gifts as |giftItem giftIndex|}}
+										<li class="item flexrow" style="align-items: center;"
+											data-item-id="{{giftItem._id}}">
+											<div class="item-name flex0" style="min-width: max-content;">
+												<input type="checkbox" class="bullet-checkbox"
+													name="giftItem.system.isPurchased" {{checked
+													giftItem.system.isPurchased}} />
+											</div>
+											<div class="item-name flex0"
+												style="min-width: max-content; margin-right: 10px;">
+												<img src="{{giftItem.img}}" title="{{giftItem.name}}" width="24"
+													height="24" />
+											</div>
+											<div class="item-name flex0"
+												style="min-width: max-content; margin-right: 10px;">
+												<label style="font-weight: bold;">{{giftItem.name}}</label>
+											</div>
+											<div class="item-name flex1" style="margin-right: 10px;">
+												<textarea>{{giftItem.system.base.description}}</textarea>
+											</div>
+											<div class="item-controls flex0" style="min-width: max-content;">
+												<div class="item-control item-chat-paste margin-right-halfem"
+													title="Paste Item">
+													<i class="fas fa-comment"></i>
 												</div>
-											</li>
-											{{#each gifts as |item id|}}
-											<li class="item flexrow" style="align-items: center;"
-												data-item-id="{{item._id}}">
-												<div class="item-name flex0"
-													style="min-width: max-content; margin-right: 10px;">
-													<img src="{{item.img}}" title="{{item.name}}" width="24"
-														height="24" />
+												<div class="item-control item-edit margin-right-halfem"
+													title="Edit Item"><i class="fas fa-edit"></i></div>
+												<div class="item-control item-delete" title="Delete Item"><i
+														class="fas fa-trash"></i></div>
+											</div>
+										</li>				
+										{{/each}}
+										{{/each}}
+										{{#each standaloneGifts as |saGiftItem saGiftIndex|}}
+										<li class="item flexrow" style="align-items: center;"
+											data-item-id="{{saGiftItem._id}}">
+											<!-- <div class="item-name flex0"
+												style="min-width: max-content;">
+												<input type="checkbox" class="bullet-checkbox"
+													name="saGiftItem.system.isPurchased" {{checked
+													saGiftItem.system.isPurchased}}/>
+											</div> -->
+											<div class="item-name flex0"
+												style="min-width: max-content; margin-right: 10px;">
+												<img src="{{saGiftItem.img}}" title="{{saGiftItem.name}}" width="24"
+													height="24" />
+											</div>
+											<div class="item-name flex0"
+												style="min-width: max-content; margin-right: 10px;">
+												<label style="font-weight: bold;">{{saGiftItem.name}}</label>
+											</div>
+											<div class="item-name flex1" style="margin-right: 10px;">
+												<textarea>{{saGiftItem.system.base.description}}</textarea>
+											</div>
+											<div class="item-controls flex0" style="min-width: max-content;">
+												<div class="item-control item-chat-paste margin-right-halfem"
+													title="Paste Item">
+													<i class="fas fa-comment"></i>
 												</div>
-												<div class="item-name flex0"
-													style="min-width: max-content; margin-right: 10px;">
-													<label style="font-weight: bold;">{{item.name}}</label>
-												</div>
-												<div class="item-name flex1" style="margin-right: 10px;">
-													<textarea>{{item.system.base.description}}</textarea>
-												</div>
-												<div class="item-controls flex0" style="min-width: max-content;">
-													<div class="item-control item-chat-paste margin-right-halfem"
-														title="Paste Item">
-														<i class="fas fa-comment"></i>
-													</div>
-													<div class="item-control item-edit margin-right-halfem"
-														title="Edit Item"><i class="fas fa-edit"></i></div>
-													<div class="item-control item-delete" title="Delete Item"><i
-															class="fas fa-trash"></i></div>
-												</div>
-											</li>
-											{{/each}}
-										</ol>
-									</li>
-									{{/each}}
-								</ol>
+												<div class="item-control item-edit margin-right-halfem"
+													title="Edit Item"><i class="fas fa-edit"></i></div>
+												<div class="item-control item-delete" title="Delete Item"><i
+														class="fas fa-trash"></i></div>
+											</div>
+										</li>
+										{{/each}}
+									</ol>
+								</div>
 							</div>
 							<div data-group="charsheet" data-tab="arts" class="tab">
 							</div>

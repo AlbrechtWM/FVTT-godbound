@@ -281,7 +281,7 @@
 										class="fas fa-plus"></i> Add Word</a>
 							</div>
 						</li>
-						{{#each words as |item id|}}
+						{{#each words as |item|}}
 						<li class="item flexrow" style="align-items: center;" data-item-id="{{item._id}}">
 							<div class="item-name flex0" style="min-width: max-content; margin-right: 10px;">
 								<img src="{{item.img}}" title="{{item.name}}" width="24" height="24" />
@@ -319,7 +319,7 @@
 										class="fas fa-plus"></i> Add Gift</a>
 							</div>
 						</li>
-						{{#each gifts as |item id|}}
+						{{#each gifts as |item|}}
 						<li class="item flexrow" style="align-items: center;" data-item-id="{{item._id}}">
 							<div class="item-name flex0" style="min-width: max-content; margin-right: 10px;">
 								<img src="{{item.img}}" title="{{item.name}}" width="24" height="24" />
@@ -414,7 +414,7 @@
 									data-type="attack"><i class="fas fa-plus"></i> Add Attack</a>
 							</div>
 						</li>
-						{{#each attacks as |item id|}}
+						{{#each attacks as |item|}}
 						<li class="item flexrow" style="align-items: center;" data-item-id="{{item._id}}">
 							<div class="item-name flex0" style="min-width: max-content; margin-right: 10px;">
 								<img src="{{item.img}}" title="{{item.name}}" width="24" height="24" />

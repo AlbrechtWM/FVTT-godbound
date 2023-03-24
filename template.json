@@ -486,6 +486,8 @@
         "damage",
         "act"
       ],
+      "parentWord": "None",
+      "isPurchased": false,
       "enableSpecialTraits": false,
       "enableSpecialAbilities": false,
       "specialTraits": null,

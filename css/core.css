@@ -300,3 +300,28 @@ div [type=button] {
     background: #b63b4d;
     color: #FFF;
 }
+
+input[type=checkbox].bullet-checkbox {
+    width: 13px;
+    height: 13px;
+    margin-top: 3px;
+    margin-bottom: 0px;
+    margin-left: 5px;
+    margin-right: 5px;
+    clip-path: circle(43% at 50% 50%);
+    filter: brightness(35%);/*sepia(100%) brightness(80%) hue-rotate(170deg) saturate(70%) contrast(300%);*/
+}
+
+input[type=checkbox].bullet-checkbox:checked{
+    -webkit-filter: none;
+    /* accent-color: darkgreen; */
+    accent-color: black;
+}
+
+/* input[type=checkbox].bullet-checkbox:checked:before {
+    accent-color: darkgreen;
+}
+
+input[type=checkbox].bullet-checkbox:checked:after {
+    accent-color: darkgreen; 
+} */

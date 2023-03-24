@@ -69,6 +69,8 @@ export class giftItemSheet extends ItemSheet {
 
     context.savingThrowSuccessChoices = SelectChoices.getSavingThrowSuccessChoices();
 
+    context.giftParentWordChoices = CONFIG.GODBOUND_CONSTANTS.giftParentTypes;
+
     return context;
   }
 

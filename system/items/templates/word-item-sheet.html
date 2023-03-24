@@ -12,7 +12,13 @@
       title="{{item.name}}" />
       <label class="flex0" style="font-weight: bold; margin-right: 5px;">Name: </label>
       <input class="flex0" style="line-height: 20px; min-width: 200px; margin-right: 11px;" name="name"
-        value="{{item.name}}" type="text" />
+        list="wordDataList" value="{{item.name}}" type="text">
+      <datalist id="wordDataList">
+        {{#each wordChoices as |choice|}}
+        <option value="{{choice}}"></option> 
+        {{/each}}
+      </datalist>
+      </input>
     </div>
     <hr />
     <div class="flexrow flex-start"

@@ -9,6 +9,7 @@ export default class {
 
     dropdown(e) {
         const { el, multiple } = e.data;
+        console.log(next);
         const next = $(this).parent().next();
 
         next.slideToggle();

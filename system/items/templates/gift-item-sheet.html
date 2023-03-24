@@ -20,6 +20,22 @@
       <label class="flex0" style="font-weight: bold; margin-right: 5px;">Name: </label>
       <input class="flex0" style="line-height: 20px; min-width: 200px; margin-right: 11px;" name="name"
         value="{{item.name}}" type="text" />
+      <label class="flex0" style="font-weight: bold; margin-right: 5px;">Parent Word: </label>
+      <input class="flex0" style="line-height: 20px; min-width: 200px; margin-right: 11px;" name="system.parentWord"
+        list="giftParentWordDataList" value="{{system.parentWord}}" type="text">
+      <datalist id="giftParentWordDataList">
+        {{#each giftParentWordChoices as |choice|}}
+        <option value="{{choice}}"></option> 
+        {{/each}}
+      </datalist>
+      </input>
+      <label class="flex0" style="font-weight: bold; margin-right: 5px">Greater Gift: </label>
+      <input class="flex0" style="line-height: 20px; margin-right: 8px; margin-left: -5px; min-width: 30px;"
+        name="system.isGreaterGift" {{checked system.isGreaterGift}} type="checkbox" />
+    </div>
+    <hr />
+    <div class="flexrow flex-start"
+      style="margin-bottom: 0px; align-items: center; white-space: nowrap; margin-left: 0px;">
       <label class="flex0" style="font-weight: bold; margin-right: 5px;">Speed: </label>
       <select class="flex0 sheet-select" name="system.act.speed"
         style="line-height: 20px; width: max-content; margin-right: 11px;">
@@ -33,12 +49,6 @@
       <label class="flex0" style="font-weight: bold; margin-right: 5px">Is Smite: </label>
       <input class="flex0" style="line-height: 20px; margin-right: 8px; margin-left: -5px; min-width: 30px;"
         name="system.act.isSmite" {{checked system.act.isSmite}} type="checkbox" />
-    </div>
-    <hr />
-    <div class="flexrow flex-start" style="margin-bottom: 0px; align-items: center; white-space: nowrap; margin-left: 0px;">
-      <label class="flex0" style="font-weight: bold; margin-right: 5px">Greater Gift: </label>
-      <input class="flex0" style="line-height: 20px; margin-right: 8px; margin-left: -5px; min-width: 30px;"
-        name="system.isGreaterGift" {{checked system.isGreaterGift}} type="checkbox" />
       <label class="flex0" style="font-weight: bold; margin-right: 5px;">Duration: </label>
       <input class="flex0" style="line-height: 20px; min-width: 40px; margin-right: 11px; text-align: center;"
         name="system.duration.durationNum" value="{{system.duration.durationNum}}" type="number" />
