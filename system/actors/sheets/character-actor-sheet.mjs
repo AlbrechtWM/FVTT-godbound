@@ -5,7 +5,7 @@ import Dominion from './helpers/dominion.mjs';
 import Rolls from './helpers/rolls.mjs';
 import Attacks from './helpers/attacks.mjs';
 import Accordion from '../../helpers/Accordion.mjs';
-import Utils from '../../helpers/utils.mjs';
+// import Utils from '../../helpers/utils.mjs';
 
 /**
  * Extend the basic ActorSheet with some very simple modifications
@@ -94,7 +94,7 @@ export class characterActorSheet extends ActorSheet {
     // // Prepare item data.
     this._prepareItems(context);
 
-    //console.log(context);
+    console.log(context);
     return context;
   }
 
@@ -183,32 +183,17 @@ export class characterActorSheet extends ActorSheet {
   };
 
   /**
-  * Toggles the Accordion Banners
+  * Inline Bullet Checkbox Change
   */
 
-  _onBulletCheckboxClick(event) {
+  async _onBulletCheckboxClick(event) {
     //event.preventDefault();
-    const target = event.currentTarget;
-    const strArray = (target.name).split('.');
-    let fieldPath = "";
-    //console.log(strArray);
-    for (let i = 1; i < strArray.length; i++) {
-      if (i == 1)
-        fieldPath += strArray[i];
-      else
-        fieldPath += "." + strArray[i];
-    }
-
-    //console.log(fieldPath);
-
-    for (let item of this.actor.items) {
-      if (item._id == strArray[0]) {
-        //We've found the item to modify
-        Utils.put(item,fieldPath,"not");
-        //console.log(item);
-        return;
-      }
-    }
+    const dataset = event.currentTarget.dataset;
+    const targetId = dataset.targetId;
+    const targetProp = dataset.targetProp;
+    const item = this.actor.items.get(targetId);
+    let value = !getProperty(item, targetProp)
+    await item.update({[targetProp]:value});
   };
 
   /**
