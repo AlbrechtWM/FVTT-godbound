@@ -7,14 +7,14 @@ import Attacks from './helpers/attacks.mjs';
 import Accordion from '../../helpers/Accordion.mjs';
 
 /**
- * Extend the basic ActorSheet with some very simple modifications
+ * Extend the basic ActorSheet with some very simple 4
  * @extends {ActorSheet}
  */
 export class characterActorSheet extends ActorSheet {
 
   /** @override */
   static get defaultOptions() {
-    const wordAccordion = new Accordion($('.word-accordion'), 'item-icon', false);
+    const wordAccordion = new Accordion($('.word-accordion'), 'item-icon', true);
     return mergeObject(super.defaultOptions, {
       classes: ["godbound", "sheet", "actor"],
       template: "systems/godbound/system/actors/templates/character-actor-sheet.html",

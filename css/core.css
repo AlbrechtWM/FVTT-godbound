@@ -273,12 +273,8 @@ div [type=button] {
 
 .accordion-sub-item {
     display: none;
-    font-size: 13px;
     text-align: center;
-    padding-top: 3%;
-    padding-bottom: 2%;
-    padding-left: 3%;
-    padding-right: 3%;
+    padding-right: 0.5em;
 }
 
 .accordion-sub-item li {
