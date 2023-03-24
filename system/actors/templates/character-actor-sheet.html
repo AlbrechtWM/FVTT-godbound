@@ -555,7 +555,8 @@
 														class="fas fa-trash"></i></div>
 											</div>
 										</li>
-										{{#each gifts as |giftItem giftIndex|}}
+										{{#each ../gifts as |giftItem giftIndex|}}
+										{{#if (areStringsEqual giftItem.system.parentWord wordItem.name)}}
 										<li class="item flexrow" style="align-items: center;"
 											data-item-id="{{giftItem._id}}">
 											<div class="item-name flex0" style="min-width: max-content;">
@@ -585,7 +586,8 @@
 												<div class="item-control item-delete" title="Delete Item"><i
 														class="fas fa-trash"></i></div>
 											</div>
-										</li>				
+										</li>
+										{{/if}}
 										{{/each}}
 										{{/each}}
 										{{#each standaloneGifts as |saGiftItem saGiftIndex|}}

@@ -100,11 +100,9 @@ Handlebars.registerHelper('getStringArrayValue', function (strArray, index) {
 });
 
 Handlebars.registerHelper('areStringsEqual', function (str1, str2) {
-  console.log("yaya");
-  if (str1 == str2)
-    return "true"
-  else
-    return "false"
+  //console.log(str1);
+  //console.log(str2);
+  return (str1 == str2);
 });
 
 /* -------------------------------------------- */
