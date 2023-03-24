@@ -543,7 +543,7 @@
 													<label style="font-weight: bold;">{{wordItem.name}}</label>
 												</div>
 												<div class="item-name flex1" style="margin-right: 10px;">
-													<textarea>{{wordItem.system.base.description}}</textarea>
+													<textarea disabled="true">{{wordItem.system.base.description}}</textarea>
 												</div>
 												<div class="item-controls flex0" style="min-width: max-content;">
 													<div class="item-control item-chat-paste margin-right-halfem"
@@ -563,7 +563,7 @@
 												<div class="flex center-column w100">
 													<div class="item-name " style="min-width: max-content;">
 														<input type="checkbox" class="bullet-checkbox"
-															name="giftItem.system.isPurchased" {{checked
+															name="{{giftItem._id}}.system.isPurchased" {{checked
 															giftItem.system.isPurchased}} />
 													</div>
 													<div class="item-name "
@@ -576,7 +576,7 @@
 														<label style="font-weight: bold;">{{giftItem.name}}</label>
 													</div>
 													<div class="item-name w100" style="margin-right: 10px;">
-														<textarea>{{giftItem.system.base.description}}</textarea>
+														<textarea disabled="true">{{giftItem.system.base.description}}</textarea>
 													</div>
 													<div class="item-controls " style="min-width: max-content;">
 														<div class="item-control item-chat-paste margin-right-halfem"
@@ -600,7 +600,7 @@
 											<!-- <div class="item-name flex0"
 												style="min-width: max-content;">
 												<input type="checkbox" class="bullet-checkbox"
-													name="saGiftItem.system.isPurchased" {{checked
+													name="{{saGiftItem._id}}.system.isPurchased" {{checked
 													saGiftItem.system.isPurchased}}/>
 											</div> -->
 											<div class="item-name flex0"
@@ -613,7 +613,7 @@
 												<label style="font-weight: bold;">{{saGiftItem.name}}</label>
 											</div>
 											<div class="item-name flex1" style="margin-right: 10px;">
-												<textarea>{{saGiftItem.system.base.description}}</textarea>
+												<textarea disabled="true">{{saGiftItem.system.base.description}}</textarea>
 											</div>
 											<div class="item-controls flex0" style="min-width: max-content;">
 												<div class="item-control item-chat-paste margin-right-halfem"

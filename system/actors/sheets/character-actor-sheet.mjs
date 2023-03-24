@@ -5,6 +5,7 @@ import Dominion from './helpers/dominion.mjs';
 import Rolls from './helpers/rolls.mjs';
 import Attacks from './helpers/attacks.mjs';
 import Accordion from '../../helpers/Accordion.mjs';
+import Utils from '../../helpers/utils.mjs';
 
 /**
  * Extend the basic ActorSheet with some very simple modifications
@@ -153,15 +154,16 @@ export class characterActorSheet extends ActorSheet {
 
     // Rollable abilities.
     html.find('div[type=roll]').click(this._onRoll.bind(this));
-
     html.find('div[type=addto]').click(this._onClickAdd.bind(this));
-
     html.find('div[type=remove]').click(this._onClickRemove.bind(this));
 
     //Stat manipulation
     html.find('.stat-plus').click(this.onStatPlus.bind(this));
     html.find('.stat-minus').click(this.onStatMinus.bind(this));
     html.find('.stat-reset').click(this.onStatReset.bind(this));
+
+    //Inline bullet checkbox listeners
+    html.find('.bullet-checkbox').click(this._onBulletCheckboxClick.bind(this));
 
   }
 
@@ -177,6 +179,35 @@ export class characterActorSheet extends ActorSheet {
       accordionPanel.style.maxHeight = null;
     } else {
       accordionPanel.style.maxHeight = accordionPanel.scrollHeight + "px";
+    }
+  };
+
+  /**
+  * Toggles the Accordion Banners
+  */
+
+  _onBulletCheckboxClick(event) {
+    //event.preventDefault();
+    const target = event.currentTarget;
+    const strArray = (target.name).split('.');
+    let fieldPath = "";
+    //console.log(strArray);
+    for (let i = 1; i < strArray.length; i++) {
+      if (i == 1)
+        fieldPath += strArray[i];
+      else
+        fieldPath += "." + strArray[i];
+    }
+
+    //console.log(fieldPath);
+
+    for (let item of this.actor.items) {
+      if (item._id == strArray[0]) {
+        //We've found the item to modify
+        Utils.put(item,fieldPath,"not");
+        //console.log(item);
+        return;
+      }
     }
   };
 
@@ -257,8 +288,6 @@ export class characterActorSheet extends ActorSheet {
     context.universalGifts = universalGifts;
     context.words = words;
     context.attacks = attacks;
-
-    console.log(context);
   }
 
   /* -------------------------------------------- */
