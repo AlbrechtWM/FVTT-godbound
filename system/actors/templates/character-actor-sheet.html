@@ -529,55 +529,23 @@
 													data-type="gift"><i class="fas fa-plus"></i> Add Gift</a>
 											</div>
 										</li>
-										{{#each words as |wordItem wordIndex|}}
-										<li class="word-accordion item flexrow" style="align-items: center;"
-											data-item-id="{{wordItem._id}}">
-											<div class="item-name flex0 item-icon"
-												style="min-width: max-content; margin-right: 10px;">
-												<img src="{{wordItem.img}}" title="{{wordItem.name}}" width="24"
-													height="24" />
-											</div>
-											<div class="item-name flex0"
-												style="min-width: max-content; margin-right: 10px;">
-												<label style="font-weight: bold;">{{wordItem.name}}</label>
-											</div>
-											<div class="item-name flex1" style="margin-right: 10px;">
-												<textarea>{{wordItem.system.base.description}}</textarea>
-											</div>
-											<div class="item-controls flex0" style="min-width: max-content;">
-												<div class="item-control item-chat-paste margin-right-halfem"
-													title="Paste Item">
-													<i class="fas fa-comment"></i>
-												</div>
-												<div class="item-control item-edit margin-right-halfem"
-													title="Edit Item"><i class="fas fa-edit"></i></div>
-												<div class="item-control item-delete" title="Delete Item"><i
-														class="fas fa-trash"></i></div>
-											</div>
-										</li>
-										{{#each ../gifts as |giftItem giftIndex|}}
-										{{#if (areStringsEqual giftItem.system.parentWord wordItem.name)}}
-										<li class="accordion-sub-item item flexrow" style="align-items: center;"
-											data-item-id="{{giftItem._id}}">
-											<div class="flex center-column w100">
-												<div class="item-name " style="min-width: max-content;">
-													<input type="checkbox" class="bullet-checkbox"
-														name="giftItem.system.isPurchased" {{checked
-														giftItem.system.isPurchased}} />
-												</div>
-												<div class="item-name "
+										<div>
+											{{#each words as |wordItem wordIndex|}}
+											<li class="word-accordion item flexrow" style="align-items: center;"
+												data-item-id="{{wordItem._id}}">
+												<div class="item-name flex0 item-icon"
 													style="min-width: max-content; margin-right: 10px;">
-													<img src="{{giftItem.img}}" title="{{giftItem.name}}" width="24"
+													<img src="{{wordItem.img}}" title="{{wordItem.name}}" width="24"
 														height="24" />
 												</div>
-												<div class="item-name "
+												<div class="item-name flex0"
 													style="min-width: max-content; margin-right: 10px;">
-													<label style="font-weight: bold;">{{giftItem.name}}</label>
+													<label style="font-weight: bold;">{{wordItem.name}}</label>
 												</div>
-												<div class="item-name w100" style="margin-right: 10px;">
-													<textarea>{{giftItem.system.base.description}}</textarea>
+												<div class="item-name flex1" style="margin-right: 10px;">
+													<textarea>{{wordItem.system.base.description}}</textarea>
 												</div>
-												<div class="item-controls " style="min-width: max-content;">
+												<div class="item-controls flex0" style="min-width: max-content;">
 													<div class="item-control item-chat-paste margin-right-halfem"
 														title="Paste Item">
 														<i class="fas fa-comment"></i>
@@ -587,11 +555,45 @@
 													<div class="item-control item-delete" title="Delete Item"><i
 															class="fas fa-trash"></i></div>
 												</div>
-											</div>
-										</li>
-										{{/if}}
-										{{/each}}
-										{{/each}}
+											</li>
+											{{#each ../gifts as |giftItem giftIndex|}}
+											{{#if (areStringsEqual giftItem.system.parentWord wordItem.name)}}
+											<li class="accordion-sub-item item flexrow" style="align-items: center;"
+												data-item-id="{{giftItem._id}}">
+												<div class="flex center-column w100">
+													<div class="item-name " style="min-width: max-content;">
+														<input type="checkbox" class="bullet-checkbox"
+															name="giftItem.system.isPurchased" {{checked
+															giftItem.system.isPurchased}} />
+													</div>
+													<div class="item-name "
+														style="min-width: max-content; margin-right: 10px;">
+														<img src="{{giftItem.img}}" title="{{giftItem.name}}" width="24"
+															height="24" />
+													</div>
+													<div class="item-name "
+														style="min-width: max-content; margin-right: 10px;">
+														<label style="font-weight: bold;">{{giftItem.name}}</label>
+													</div>
+													<div class="item-name w100" style="margin-right: 10px;">
+														<textarea>{{giftItem.system.base.description}}</textarea>
+													</div>
+													<div class="item-controls " style="min-width: max-content;">
+														<div class="item-control item-chat-paste margin-right-halfem"
+															title="Paste Item">
+															<i class="fas fa-comment"></i>
+														</div>
+														<div class="item-control item-edit margin-right-halfem"
+															title="Edit Item"><i class="fas fa-edit"></i></div>
+														<div class="item-control item-delete" title="Delete Item"><i
+																class="fas fa-trash"></i></div>
+													</div>
+												</div>
+											</li>
+											{{/if}}
+											{{/each}}
+											{{/each}}
+										</div>
 										{{#each standaloneGifts as |saGiftItem saGiftIndex|}}
 										<li class="item flexrow" style="align-items: center;"
 											data-item-id="{{saGiftItem._id}}">

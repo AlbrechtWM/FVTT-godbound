@@ -19,7 +19,8 @@ export class characterActorSheet extends ActorSheet {
       template: "systems/godbound/system/actors/templates/character-actor-sheet.html",
       width: 647,
       height: 811,
-      tabs: [{ navSelector: ".charsheet-tabs", contentSelector: ".charsheet-content", initial: "char" }]
+      tabs: [{ navSelector: ".charsheet-tabs", contentSelector: ".charsheet-content", initial: "char" }],
+      accordions: [new Accordion($('.word-accordion'), 'item-icon', false)],
     });
   }
 
@@ -98,8 +99,6 @@ export class characterActorSheet extends ActorSheet {
   /** @override */
   activateListeners(html) {
     super.activateListeners(html);
-
-    new Accordion($('.word-accordion'), 'item-icon', false);
 
     //Accordion Banners
     html.find('.accordion-banner').click(this._toggleAccordionBanner.bind(this));
