@@ -14,13 +14,14 @@ export class characterActorSheet extends ActorSheet {
 
   /** @override */
   static get defaultOptions() {
+    const wordAccordion = new Accordion($('.word-accordion'), 'item-icon', false);
     return mergeObject(super.defaultOptions, {
       classes: ["godbound", "sheet", "actor"],
       template: "systems/godbound/system/actors/templates/character-actor-sheet.html",
       width: 647,
       height: 811,
       tabs: [{ navSelector: ".charsheet-tabs", contentSelector: ".charsheet-content", initial: "char" }],
-      accordions: [new Accordion($('.word-accordion'), 'item-icon', false)],
+      accordions: [wordAccordion],
     });
   }
 
