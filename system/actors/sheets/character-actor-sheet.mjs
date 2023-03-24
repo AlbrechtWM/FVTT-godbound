@@ -99,7 +99,7 @@ export class characterActorSheet extends ActorSheet {
   activateListeners(html) {
     super.activateListeners(html);
 
-    //new Accordion($('.word-accordion'), 'item-icon', false);
+    new Accordion($('.word-accordion'), 'item-icon', false);
 
     //Accordion Banners
     html.find('.accordion-banner').click(this._toggleAccordionBanner.bind(this));
