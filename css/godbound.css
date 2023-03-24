@@ -348,14 +348,6 @@
   max-height: 245px;
 }
 
-.words-list {
-  max-height: 300px;
-}
-
-.gifts-list {
-  max-height: 130px;
-}
-
 .godbound .items-list .item-list {
   list-style: none;
   margin: 0;
