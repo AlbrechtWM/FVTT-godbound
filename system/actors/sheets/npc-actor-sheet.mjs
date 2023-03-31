@@ -56,8 +56,6 @@ export class npcActorSheet extends ActorSheet {
     Object.entries(choices).forEach(([key, label]) => choices[key] = `${label.toLowerCase().capitalize()}`);
     context.dispositionChoices = choices;
 
-    console.log(choices);
-
     //Armor Classs
     CoreStats.calculateAC(context.system);
 
