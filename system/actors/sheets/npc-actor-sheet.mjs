@@ -1,7 +1,8 @@
 import { onManageActiveEffect, prepareActiveEffectCategories } from "../../helpers/effects.mjs";
-import CoreStats from './helpers/coreStats.mjs';
-import Rolls from './helpers/rolls.mjs';
-import Attacks from './helpers/attacks.mjs';
+import CoreStats from '../helpers/coreStats.mjs';
+import Rolls from '../helpers/rolls.mjs';
+import Attacks from '../helpers/attacks.mjs';
+//import SelectChoices from '../helpers/actorSelectChoices.mjs';
 
 /**
  * Extend the basic ActorSheet with some very simple modifications
@@ -51,6 +52,12 @@ export class npcActorSheet extends ActorSheet {
     //Important for later CoreStat functions knowing whether this is an NPC or PC
     CoreStats.setUseHD(context.system, true);
 
+    const choices = foundry.utils.invertObject(CONST.TOKEN_DISPOSITIONS);
+    Object.entries(choices).forEach(([key, label]) => choices[key] = `${label.toLowerCase().capitalize()}`);
+    context.dispositionChoices = choices;
+
+    console.log(choices);
+
     //Armor Classs
     CoreStats.calculateAC(context.system);
 
@@ -68,7 +75,7 @@ export class npcActorSheet extends ActorSheet {
     // // Prepare item data.
     this._prepareItems(context);
 
-    //console.log(context);
+    //console.log(context.prototypeToken.disposition);
     return context;
   }
 
@@ -355,7 +362,7 @@ export class npcActorSheet extends ActorSheet {
         break;
     }
 
-    let message = `<p style="font-style: italic">${messagePreamble}</p>`; //This part hidden for NPCs  <p style="font-weight: bold">  Remaining Effort: ${this.actor.system.coreStats.effort.free}/${this.actor.system.coreStats.effort.max}
+    let message = `<p style="font-style: italic">${messagePreamble}</p>`; //This part hidden for NPCs  <p style="font-weight: bold">  Remaining Effort: ${this.actor.system.coreStats.effort.value}/${this.actor.system.coreStats.effort.max}
 
     const chatData = {
       user: game.user._id,
@@ -396,7 +403,7 @@ export class npcActorSheet extends ActorSheet {
       //   break;
     }
 
-    let message = `<p style="font-style: italic">${messagePreamble}</p>`; //This part hidden for NPCs  <p style="font-weight: bold">  Remaining Effort: ${this.actor.system.coreStats.effort.free}/${this.actor.system.coreStats.effort.max}
+    let message = `<p style="font-style: italic">${messagePreamble}</p>`; //This part hidden for NPCs  <p style="font-weight: bold">  Remaining Effort: ${this.actor.system.coreStats.effort.value}/${this.actor.system.coreStats.effort.max}
 
     const chatData = {
       user: game.user._id,
@@ -437,7 +444,7 @@ export class npcActorSheet extends ActorSheet {
         break;
     }
 
-    let message = `<p style="font-style: italic">${messagePreamble}</p>`; //This part hidden for NPCs  <p style="font-weight: bold">  Remaining Effort: ${this.actor.system.coreStats.effort.free}/${this.actor.system.coreStats.effort.max}
+    let message = `<p style="font-style: italic">${messagePreamble}</p>`; //This part hidden for NPCs  <p style="font-weight: bold">  Remaining Effort: ${this.actor.system.coreStats.effort.value}/${this.actor.system.coreStats.effort.max}
 
     const chatData = {
       user: game.user._id,

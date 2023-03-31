@@ -100,8 +100,6 @@ Handlebars.registerHelper('getStringArrayValue', function (strArray, index) {
 });
 
 Handlebars.registerHelper('areStringsEqual', function (str1, str2) {
-  //console.log(str1);
-  //console.log(str2);
   return (str1 == str2);
 });
 
@@ -129,15 +127,51 @@ Hooks.on("renderActorSheet", (docArg, htmlArg) => {
   }
 });
 
+Hooks.on("targetToken", (userArg, tokenArg, targetedArg) => {
+  // console.log(userArg);
+  // console.log(tokenArg);
+  // console.log(targetedArg);
+  //console.log(ui.windows);
+
+  let windows = ui.windows;
+  Object.entries(windows).forEach(([key, window]) => {
+    if (window.options.baseApplication == "ActorSheet") {
+      window.render();
+    }
+  })
+});
+
 Hooks.on("preCreateToken", (docArg, dataArg, optionsArg) => {
   // console.log("Pre Create Token");
-  // console.log(docArg);
+  //console.log(docArg);
   // console.log(dataArg);
   // console.log(optionsArg);
   let tempTexture = docArg.texture;
   tempTexture.src = docArg.actor.img;
+  let tempBar1 = docArg.bar1;
+  tempBar1.attribute = "coreStats.hp";
+  let tempBar2 = docArg.bar2;
+  tempBar2.attribute = "coreStats.effort";
   docArg.updateSource({ texture: tempTexture });
-  docArg.updateSource({ actorLink: true, name: docArg.actor.name });
+  docArg.updateSource({ name: docArg.actor.name });
+  if(docArg.actor.type == "character")
+  {
+    docArg.updateSource({ actorLink: true});
+  }
+  if (docArg.actor.prototypeToken.disposition == CONST.TOKEN_DISPOSITIONS.FRIENDLY) {
+    //docArg.updateSource({ disposition: 1 }); 
+    docArg.updateSource({ displayBars: 50 });
+    docArg.updateSource({ displayName: 50 });
+    docArg.updateSource({ bar1: tempBar1 });
+    docArg.updateSource({ bar2: tempBar2 });
+  }
+  else {
+    //docArg.updateSource({ disposition: docArg.actor.prototypeToken.disposition });
+    docArg.updateSource({ displayBars: 40 });
+    docArg.updateSource({ displayName: 50 });
+    docArg.updateSource({ bar1: tempBar1 });
+    docArg.updateSource({ bar2: tempBar2 });
+  }
 });
 
 Hooks.on("createToken", (docArg, dataArg, optionsArg) => {
@@ -148,7 +182,7 @@ Hooks.on("createToken", (docArg, dataArg, optionsArg) => {
 });
 
 Hooks.on("combatStart", (combatArg, updateDataArg) => {
-  console.log(combatArg);
+  //console.log(combatArg);
 
   new Dialog({
     title: "Players Surprised or Ambushed",
@@ -160,11 +194,11 @@ Hooks.on("combatStart", (combatArg, updateDataArg) => {
         callback: (html) => {
           let areSurprised = html.find("input#surprise-checkbox").prop("checked");
           for (let actor of combatArg.combatants) {
-            if (actor.token.disposition == 1)
+            if (actor.token.disposition == CONST.TOKEN_DISPOSITIONS.FRIENDLY)
               areSurprised ? combatArg.setInitiative(actor.id, 10) : combatArg.setInitiative(actor.id, 20);
-            else if (actor.token.disposition == 0)
+            else if (actor.token.disposition == CONST.TOKEN_DISPOSITIONS.NEUTRAL)
               combatArg.setInitiative(actor.id, 15);
-            else if (actor.token.disposition == -1)
+            else if (actor.token.disposition == CONST.TOKEN_DISPOSITIONS.HOSTILE)
               areSurprised ? combatArg.setInitiative(actor.id, 20) : combatArg.setInitiative(actor.id, 10);
             else
               combatArg.setInitiative(actor.id, 5);

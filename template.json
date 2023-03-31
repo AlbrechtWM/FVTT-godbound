@@ -8,7 +8,6 @@
     "templates": {
       "base": {
         "base": {
-          "name": "",
           "description": "",
           "goals": "",
           "portrait": null,
@@ -18,8 +17,7 @@
             "name": "",
             "id": ""
           }
-        },
-        "id": ""
+        }
       },
       "dominion": {
         "dominion": {
@@ -159,7 +157,7 @@
             "total": 9
           },
           "hp": {
-            "current": 0,
+            "value": 0,
             "miscBonus": 0,
             "max": 0,
             "isHD": false
@@ -171,7 +169,7 @@
             "sustainCommitted": 0,
             "sceneCommitted": 0,
             "dayCommitted": 0,
-            "free": 0,
+            "value": 0,
             "baseCostModifier": 0
           },
           "movement": {

@@ -1,4 +1,7 @@
 import { godboundActor } from "./godbound-actor.mjs";
+import CoreStats from '../helpers/coreStats.mjs';
+import Character from '../helpers/character.mjs';
+import Dominion from '../helpers/dominion.mjs';
 
 /**
  * Extend the base Actor document by defining a custom roll data structure which is ideal for the Simple system.
@@ -19,6 +22,37 @@ export class characterActor extends godboundActor {
   prepareBaseData() {
     // Data modifications in this step occur before processing embedded
     // documents or derived data.
+
+        //set PC disposition to Friendly
+        this.prototypeToken.disposition = CONST.TOKEN_DISPOSITIONS.FRIENDLY;
+
+        //Important for later CoreStat functions knowing whether this is an NPC or PC
+        CoreStats.setUseHD(this.system, false);
+
+        // Attributes
+        Character.calculateDerivedAttributes(this.system);
+    
+        //Armor Classs
+        CoreStats.calculateAC(this.system);
+    
+        // Saving throws
+        CoreStats.calculateSavingThrowBonuses(this.system);
+        CoreStats.calculateSavingThrowPenalties(this.system);
+        CoreStats.calculateSavingThrowTotals(this.system);
+    
+        //HP
+        CoreStats.calculateMaxHealth(this.system);
+    
+        //Effort
+        CoreStats.calculateEffort(this.system);
+    
+        //Influence
+        Character.calculateInfluencePointsRemaining(this.system);
+    
+        //Dominion
+        Dominion.calculateDominionPointsRemaining(this.system);
+
+        //console.log(this);
   }
 
   /**

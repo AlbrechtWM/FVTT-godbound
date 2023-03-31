@@ -1,4 +1,4 @@
-import SelectChoices from './helpers/selectChoices.mjs';
+import SelectChoices from './helpers/itemSelectChoices.mjs';
 
 /**
  * Extend the basic ItemSheet with some very simple modifications

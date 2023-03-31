@@ -1,9 +1,9 @@
 import { onManageActiveEffect, prepareActiveEffectCategories } from "../../helpers/effects.mjs";
-import CoreStats from './helpers/coreStats.mjs';
-import Character from './helpers/character.mjs';
-import Dominion from './helpers/dominion.mjs';
-import Rolls from './helpers/rolls.mjs';
-import Attacks from './helpers/attacks.mjs';
+import CoreStats from '../helpers/coreStats.mjs';
+import Character from '../helpers/character.mjs';
+import Dominion from '../helpers/dominion.mjs';
+import Rolls from '../helpers/rolls.mjs';
+import Attacks from '../helpers/attacks.mjs';
 import Accordion from '../../helpers/Accordion.mjs';
 // import Utils from '../../helpers/utils.mjs';
 
@@ -94,7 +94,6 @@ export class characterActorSheet extends ActorSheet {
     // // Prepare item data.
     this._prepareItems(context);
 
-    console.log(context);
     return context;
   }
 
@@ -374,7 +373,7 @@ export class characterActorSheet extends ActorSheet {
         break;
     }
 
-    let message = `<p style="font-style: italic">${messagePreamble}</p><p style="font-weight: bold">  Remaining Effort: ${this.actor.system.coreStats.effort.free}/${this.actor.system.coreStats.effort.max}`;
+    let message = `<p style="font-style: italic">${messagePreamble}</p><p style="font-weight: bold">  Remaining Effort: ${this.actor.system.coreStats.effort.value}/${this.actor.system.coreStats.effort.max}`;
 
     const chatData = {
       user: game.user._id,
@@ -415,7 +414,7 @@ export class characterActorSheet extends ActorSheet {
       //   break;
     }
 
-    let message = `<p style="font-style: italic">${messagePreamble}</p><p style="font-weight: bold">  Remaining Effort: ${this.actor.system.coreStats.effort.free}/${this.actor.system.coreStats.effort.max}`;
+    let message = `<p style="font-style: italic">${messagePreamble}</p><p style="font-weight: bold">  Remaining Effort: ${this.actor.system.coreStats.effort.value}/${this.actor.system.coreStats.effort.max}`;
 
     const chatData = {
       user: game.user._id,
@@ -456,7 +455,7 @@ export class characterActorSheet extends ActorSheet {
         break;
     }
 
-    let message = `<p style="font-style: italic">${messagePreamble}</p><p style="font-weight: bold">  Remaining Effort: ${this.actor.system.coreStats.effort.free}/${this.actor.system.coreStats.effort.max}`;
+    let message = `<p style="font-style: italic">${messagePreamble}</p><p style="font-weight: bold">  Remaining Effort: ${this.actor.system.coreStats.effort.value}/${this.actor.system.coreStats.effort.max}`;
 
     const chatData = {
       user: game.user._id,

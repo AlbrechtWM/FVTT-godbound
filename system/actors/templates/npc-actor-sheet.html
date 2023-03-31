@@ -45,8 +45,8 @@
 											</div>
 											<input class="stat-info-npc-hp-input" min="0"
 												max="{{system.coreStats.hp.max}}" type="number"
-												name="system.coreStats.hp.current"
-												value="{{system.coreStats.hp.current}}" data-type="Number">
+												name="system.coreStats.hp.value" value="{{system.coreStats.hp.value}}"
+												data-type="Number">
 											<div class="bold margin-left-halfem margin-right-halfem">/</div>
 											<input class="stat-info-npc-hp-input" disabled="true" type="number"
 												name="system.coreStats.hp.max" value="{{system.coreStats.hp.max}}"
@@ -189,6 +189,22 @@
 								</div>
 							</div>
 						</div>
+						<div class="flex column w50 margin-right-halfem right-col">
+							<div
+								class="fable-font margin-right-1em bold sheet-text-header sheet-text-header-main stat-info margin-bottom-halfem fancy-break">
+								NPC
+							</div>
+							<div class="charsheet-col-sub-area sheet-column">
+								<div class="flex space-between" style="align-items: center;">
+									<div class="fable-font margin-right-1em bold sheet-text-header" style="margin-bottom: 5px;">
+										Disposition
+									</div>
+									<select class="sheet-select fable-font" name="prototypeToken.disposition" style="margin-left: 20px; font-size: 14px;">
+										{{selectOptions dispositionChoices selected=actor.prototypeToken.disposition}}
+									</select>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 				<div data-group="npcsheet" data-tab="divine" class="tab">
@@ -214,55 +230,48 @@
 								<input style="width: 30px;" type="number"
 									name="system.coreStats.effort.sustainCommitted" disabled="true"
 									value="{{system.coreStats.effort.sustainCommitted}}" data-type="Number">
-								<a class="stat-minus" title="Decrease Effort"
-									style="min-width: max-content;" data-type="sustainCommitted"><i
-										class="fas fa-minus"></i></a>
+								<a class="stat-minus" title="Decrease Effort" style="min-width: max-content;"
+									data-type="sustainCommitted"><i class="fas fa-minus"></i></a>
 								<!-- <a class="stat-reset" title="Reset Effort" style="min-width: max-content;"
 									data-type="sustainCommitted"><i class="fas fa-arrows-rotate"></i></a> -->
 							</div>
 							<div class="item-name" style="min-width: fit-content; align-items: center;">
 								<a class="stat-plus" title="Increase Effort" style="min-width: max-content;"
 									data-type="turnCommitted"><i class="fas fa-plus"></i></a>
-								<input style="width: 30px;" type="number"
-									name="system.coreStats.effort.turnCommitted" disabled="true"
-									value="{{system.coreStats.effort.turnCommitted}}" data-type="Number">
+								<input style="width: 30px;" type="number" name="system.coreStats.effort.turnCommitted"
+									disabled="true" value="{{system.coreStats.effort.turnCommitted}}"
+									data-type="Number">
 								<a class="stat-reset" title="Reset Effort" style="min-width: max-content;"
 									data-type="turnCommitted"><i class="fas fa-arrows-rotate"></i></a>
 							</div>
 							<div class="item-name" style="min-width: fit-content; align-items: center;">
 								<a class="stat-plus" title="Increase Effort" style="min-width: max-content;"
 									data-type="sceneCommitted"><i class="fas fa-plus"></i></a>
-								<input style="width: 30px;" type="number"
-									name="system.coreStats.effort.sceneCommitted" disabled="true"
-									value="{{system.coreStats.effort.sceneCommitted}}" data-type="Number">
+								<input style="width: 30px;" type="number" name="system.coreStats.effort.sceneCommitted"
+									disabled="true" value="{{system.coreStats.effort.sceneCommitted}}"
+									data-type="Number">
 								<a class="stat-reset" title="Reset Effort" style="min-width: max-content;"
 									data-type="sceneCommitted"><i class="fas fa-arrows-rotate"></i></a>
 							</div>
 							<div class="item-name" style="min-width: fit-content; align-items: center;">
 								<a class="stat-plus" title="Increase Effort" style="min-width: max-content;"
 									data-type="dayCommitted"><i class="fas fa-plus"></i></a>
-								<input style="width: 30px;" type="number"
-									name="system.coreStats.effort.dayCommitted" disabled="true"
-									value="{{system.coreStats.effort.dayCommitted}}" data-type="Number">
+								<input style="width: 30px;" type="number" name="system.coreStats.effort.dayCommitted"
+									disabled="true" value="{{system.coreStats.effort.dayCommitted}}" data-type="Number">
 								<a class="stat-reset" title="Reset Effort" style="min-width: max-content;"
 									data-type="dayCommitted"><i class="fas fa-arrows-rotate"></i></a>
 							</div>
-							<div class="item-name effort-controls"
-								style="min-width: fit-content; align-items: center;">
-								<input style="width: 30px;" type="number"
-									name="system.coreStats.effort.free" disabled="true"
-									value="{{system.coreStats.effort.free}}" data-type="Number">
+							<div class="item-name effort-controls" style="min-width: fit-content; align-items: center;">
+								<input style="width: 30px;" type="number" name="system.coreStats.effort.value"
+									disabled="true" value="{{system.coreStats.effort.value}}" data-type="Number">
 							</div>
-							<div class="item-name effort-controls"
-								style="min-width: fit-content; align-items: center;">
+							<div class="item-name effort-controls" style="min-width: fit-content; align-items: center;">
 								<a class="stat-plus" title="Increase Effort" style="min-width: max-content;"
 									data-type="max"><i class="fas fa-plus"></i></a>
 								<input style="width: 30px;" type="number" name="system.coreStats.effort.max"
-									disabled="true" value="{{system.coreStats.effort.max}}"
-									data-type="Number">
-								<a class="stat-minus" title="Decrease Effort"
-									style="min-width: max-content;" data-type="max"><i
-										class="fas fa-minus"></i></a>
+									disabled="true" value="{{system.coreStats.effort.max}}" data-type="Number">
+								<a class="stat-minus" title="Decrease Effort" style="min-width: max-content;"
+									data-type="max"><i class="fas fa-minus"></i></a>
 							</div>
 						</li>
 					</ol>

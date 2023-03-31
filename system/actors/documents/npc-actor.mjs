@@ -1,4 +1,5 @@
 import { godboundActor } from "./godbound-actor.mjs";
+import CoreStats from '../helpers/coreStats.mjs';
 
 export class npcActor extends godboundActor {
 
@@ -15,6 +16,23 @@ export class npcActor extends godboundActor {
   prepareBaseData() {
     // Data modifications in this step occur before processing embedded
     // documents or derived data.
+
+        //Important for later CoreStat functions knowing whether this is an NPC or PC
+        CoreStats.setUseHD(this.system, true);
+
+        //Armor Classs
+        CoreStats.calculateAC(this.system);
+    
+        // Saving throws
+        //CoreStats.calculateSavingThrowBonuses(context.system);
+        //CoreStats.calculateSavingThrowPenalties(context.system);
+        //CoreStats.calculateSavingThrowTotals(context.system);
+    
+        //HP
+        CoreStats.calculateMaxHealth(this.system);
+    
+        //Effort
+        CoreStats.calculateEffort(this.system);
   }
 
   /**
