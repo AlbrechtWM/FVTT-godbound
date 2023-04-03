@@ -128,11 +128,6 @@ Hooks.on("renderActorSheet", (docArg, htmlArg) => {
 });
 
 Hooks.on("targetToken", (userArg, tokenArg, targetedArg) => {
-  // console.log(userArg);
-  // console.log(tokenArg);
-  // console.log(targetedArg);
-  //console.log(ui.windows);
-
   let windows = ui.windows;
   Object.entries(windows).forEach(([key, window]) => {
     if (window.options.baseApplication == "ActorSheet") {

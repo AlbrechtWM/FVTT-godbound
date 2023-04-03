@@ -209,6 +209,12 @@ div [type=button] {
     padding: 3px;
 }
 
+.gb-label {
+    font-family: "Godbound", Garamond, "Times New Roman", Georgia, serif;
+    font-size: 16px;
+    font-weight: 600;
+}
+
 
 .godbound-button:hover {
     background: #e5cc8e;

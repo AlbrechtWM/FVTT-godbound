@@ -418,9 +418,10 @@
 									class="fable-font bold sheet-text-header sheet-text-header-main  stat-info margin-bottom-halfem no-left-border no-right-border accordion-banner">
 									Effort
 								</div>
-								<div class="accordion-panel">
+								<div class="accordion-panel" style="margin-top: -5px;">
 									<ol class="items-list effort-list">
-										<li class="item flexrow items-header" style="justify-content: space-around;">
+										<li class="item flexrow items-header"
+											style="justify-content: space-around; margin-bottom: 3px;">
 											<div class="item-name" style="min-width: max-content; margin-right: 5px">
 												Sustained</div>
 											<div class="item-name" style="min-width: max-content; padding-left: 25px">
@@ -512,9 +513,9 @@
 								</div>
 								<div
 									class="fable-font bold sheet-text-header sheet-text-header-main stat-info margin-bottom-halfem margin-top-halfem">
-									Words of Creation
+									Words and Gifts
 								</div>
-								<div style="height: 300px; overflow: scroll;">
+								<div style="height: 300px; overflow: scroll; margin-top: -5px;">
 									<ol class="items-list words-list">
 										<li class="item flexrow items-header">
 											<div class="item-name flex0" style="min-width: max-content;">Icon</div>
@@ -543,7 +544,8 @@
 													<label style="font-weight: bold;">{{wordItem.name}}</label>
 												</div>
 												<div class="item-name flex1" style="margin-right: 10px;">
-													<textarea disabled="true">{{wordItem.system.base.description}}</textarea>
+													<textarea
+														disabled="true">{{wordItem.system.base.description}}</textarea>
 												</div>
 												<div class="item-controls flex0" style="min-width: max-content;">
 													<div class="item-control item-chat-paste margin-right-halfem"
@@ -564,7 +566,8 @@
 													<div class="flex center-column w100">
 														<div class="item-name " style="min-width: max-content;">
 															<input type="checkbox" class="bullet-checkbox"
-															    data-target-prop="system.isPurchased" data-target-id="{{giftItem._id}}" {{checked
+																data-target-prop="system.isPurchased"
+																data-target-id="{{giftItem._id}}" {{checked
 																giftItem.system.isPurchased}} />
 														</div>
 														<div class="item-name "
@@ -577,7 +580,8 @@
 															<label style="font-weight: bold;">{{giftItem.name}}</label>
 														</div>
 														<div class="item-name w100" style="margin-right: 10px;">
-															<textarea disabled="true">{{giftItem.system.base.description}}</textarea>
+															<textarea
+																disabled="true">{{giftItem.system.base.description}}</textarea>
 														</div>
 														<div class="item-controls " style="min-width: max-content;">
 															<div class="item-control item-chat-paste margin-right-halfem"
@@ -615,7 +619,8 @@
 												<label style="font-weight: bold;">{{saGiftItem.name}}</label>
 											</div>
 											<div class="item-name flex1" style="margin-right: 10px;">
-												<textarea disabled="true">{{saGiftItem.system.base.description}}</textarea>
+												<textarea
+													disabled="true">{{saGiftItem.system.base.description}}</textarea>
 											</div>
 											<div class="item-controls flex0" style="min-width: max-content;">
 												<div class="item-control item-chat-paste margin-right-halfem"
@@ -635,40 +640,60 @@
 							<div data-group="charsheet" data-tab="arts" class="tab">
 							</div>
 							<div data-group="charsheet" data-tab="dominion" class="tab">
-								<div class="flex margin-right-halfem">
-									<div class="flex column center-column stat-col w100">
-										<div
-											class="fable-font bold sheet-text-header sheet-text-header-main stat-info margin-bottom-halfem margin-top-halfem">
-											Dominion
-										</div>
-										<div class="flex column single-col-tab-stats">
-											<div class="flex">
-												<div
-													class="godbound-font bold margin-right-halfem margin-bottom-1em single-col-tab-stats-title">
-													Spent
-												</div>
-												<div
-													class="sheet-col-3-20 sheet-attr sheet-vert-middle sheet-center sheet-pad-t-sm sheet-pad-r-md">
-													<input type="number" name="system.dominion.spent"
-														value="{{system.dominion.spent}}" data-type="Number">
-												</div>
+								<!-- <div
+									class="fable-font bold sheet-text-header sheet-text-header-main stat-info margin-bottom-halfem no-left-border no-right-border accordion-banner">
+									Dominion and Influence
+								</div> -->
+								<!-- <div class="accordion-panel"> -->
+								<div class="flexrow flex-between">
+									<fieldset class="fieldset-box" style="align-items: center;">
+										<legend class="fable-font bold">Dominion:</legend>
+										<div class="flexrow">
+											<div class="flex0" style="white-space:nowrap;">
+												<label class="gb-label" style="font-weight: bold;"
+													for="dom-spent">Spent:</label>
+												<input id="dom-spent" class="flex0" style="width: 61px;" type="number"
+													max="{{system.dominion.total}}" name="system.dominion.spent"
+													value="{{system.dominion.spent}}" data-type="Number">
 											</div>
-											<div class="flex">
-												<div
-													class="godbound-font bold margin-right-halfem single-col-tab-stats-title">
-													Totals
-												</div>
-												<div class="flex">
-													<input disabled="true" min="0" max="{{system.dominion.total}}"
-														type="number" name="system.dominion.free"
-														value="{{system.dominion.free}}" data-type="Number">
-													<div class="bold margin-left-halfem margin-right-halfem">/</div>
-													<input type="number" name="system.dominion.total"
-														value="{{system.dominion.total}}" data-type="Number">
-												</div>
+											<div class="flex0"
+												style="white-space:nowrap; margin-left: auto; margin-right: auto;">
+												<label class="gb-label" style="font-weight: bold;"
+													for="dom-total">Total:</label>
+												<input id="dom-total" class="flex0" style="width: 61px;" type="number"
+													name="system.dominion.total" value="{{system.dominion.total}}"
+													data-type="Number">
 											</div>
 										</div>
-									</div>
+									</fieldset>
+									<fieldset class="fieldset-box" style="align-items: center;">
+										<legend class="fable-font bold">Influence:</legend>
+										<div class="flexrow">
+											<div class="flex0" style="white-space:nowrap;">
+												<label class="gb-label" style="font-weight: bold;"
+													for="inf-committed">Committed:</label>
+												<input id="inf-committed" class="flex0" style="width: 61px;"
+													type="number" max="{{system.influence.max}}"
+													name="system.influence.committed"
+													value="{{system.influence.committed}}" data-type="Number">
+											</div>
+											<div class="flex0"
+												style="white-space:nowrap; margin-left: auto; margin-right: auto;">
+												<label class="gb-label" style="font-weight: bold;"
+													for="inf-max">Max:</label>
+												<input id="inf-max" class="flex0" style="width: 61px;" type="number"
+													name="system.influence.max" value="{{system.influence.max}}"
+													data-type="Number">
+											</div>
+										</div>
+									</fieldset>
+								</div>
+								<div
+									class="fable-font bold sheet-text-header sheet-text-header-main stat-info margin-bottom-halfem no-left-border no-right-border accordion-banner"
+									style="margin-top: 10px;">
+									Projects
+								</div>
+								<div class="accordion-panel">
 								</div>
 							</div>
 							<div data-group="charsheet" data-tab="inventory" class="tab">
