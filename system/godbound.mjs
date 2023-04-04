@@ -152,6 +152,7 @@ Hooks.on("preCreateToken", (docArg, dataArg, optionsArg) => {
   if(docArg.actor.type == "character")
   {
     docArg.updateSource({ actorLink: true});
+    docArg.updateSource({ disposition: 1 }); 
   }
   if (docArg.actor.prototypeToken.disposition == CONST.TOKEN_DISPOSITIONS.FRIENDLY) {
     //docArg.updateSource({ disposition: 1 }); 
